@@ -2888,31 +2888,17 @@ mm.add("(min-width: 641px)", () => {
         ease: "none"
       }
     )
-.reasoning-system::before {
-  content: "";
+.to(
+  ".reasoning-system",
+  {
+    "--reasoning-line-progress": 1,
 
-  position: absolute;
+    duration: 0.42,
 
-  left: 16.666%;
-  right: 16.666%;
-  top: 70px;
-
-  height: 1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(213, 255, 63, 0.08),
-      rgba(213, 255, 63, 0.36),
-      rgba(213, 255, 63, 0.08)
-    );
-
-  transform: scaleX(var(--reasoning-line-progress, 1));
-
-  transform-origin: center;
-
-  transition: transform 300ms ease;
-}
+    ease: "none"
+  },
+  "-=0.10"
+)
 
     /* três caminhos entram */
 
