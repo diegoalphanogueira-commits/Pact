@@ -1464,3 +1464,21 @@ textarea {
   }
 
 }
+/* =========================================================
+   SCREEN 02 — MOBILE COMPOSITION FIX
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .tools-content {
+    padding-top: 70px;
+    padding-bottom: 70px;
+
+    transform: translateY(-5vh);
+  }
+
+  .tools-reveal p {
+    max-width: 310px;
+  }
+
+}
