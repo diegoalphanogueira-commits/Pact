@@ -441,7 +441,13 @@ textarea {
 }
 
 .button-arrow {
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-arrow svg {
+  display: block;
 }
 
 .button-ghost {
@@ -623,6 +629,7 @@ textarea {
 
 
 /* =========================================================
+/* =========================================================
    MOBILE
 ========================================================= */
 
@@ -634,12 +641,34 @@ textarea {
 
   .header-inner {
     width: calc(100% - 32px);
-
     min-height: 66px;
   }
 
   .header-cta {
     display: none;
+  }
+
+  .button-ghost {
+    width: fit-content;
+
+    min-height: 44px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    color: rgba(245, 246, 247, 0.68);
+
+    justify-content: flex-start;
+  }
+
+  .button-ghost:hover {
+    background: transparent;
   }
 
 
@@ -693,13 +722,13 @@ textarea {
   }
 
   .hero-title {
-    max-width: 460px;
+    max-width: 500px;
 
-    font-size: clamp(2.65rem, 12vw, 3.35rem);
+    font-size: clamp(2.5rem, 10.8vw, 3.05rem);
 
-    line-height: 1;
+    line-height: 1.02;
 
-    letter-spacing: -0.055em;
+    letter-spacing: -0.05em;
   }
 
   .hero-description {
@@ -710,7 +739,6 @@ textarea {
     font-size: 0.94rem;
     line-height: 1.65;
   }
-
 
   /* BUTTONS */
 
