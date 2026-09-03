@@ -5329,3 +5329,994 @@ textarea {
 
   transform: scale(1.06);
 }
+/* =========================================================
+   SCREEN 06 — STRATEGIC REASONING
+========================================================= */
+
+.reasoning-section {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 38%,
+      rgba(213, 255, 63, 0.038),
+      transparent 27%
+    ),
+    linear-gradient(
+      180deg,
+      #050709 0%,
+      #070a0d 48%,
+      #050709 100%
+    );
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.055);
+}
+
+
+/* subtle grid */
+
+.reasoning-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.017) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.017) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    78px 78px;
+
+  opacity: 0.32;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 14%,
+      black 88%,
+      transparent
+    );
+}
+
+
+.reasoning-stage {
+  position: relative;
+  z-index: 1;
+
+  width:
+    min(1280px, calc(100% - 80px));
+
+  margin:
+    0 auto;
+
+  padding:
+    140px 0 118px;
+}
+
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.reasoning-intro {
+  max-width: 900px;
+}
+
+
+.reasoning-kicker {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 12px;
+
+  color: #d5ff3f;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+
+.reasoning-kicker::before {
+  content: "";
+
+  width: 38px;
+  height: 1px;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 16px rgba(213, 255, 63, 0.32);
+}
+
+
+.reasoning-title {
+  max-width: 900px;
+
+  margin:
+    24px 0 0;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(3.4rem, 5.6vw, 5.2rem);
+
+  line-height: 0.98;
+
+  letter-spacing: -0.058em;
+
+  font-weight: 500;
+}
+
+
+.reasoning-title span {
+  display: block;
+
+  color: #d5ff3f;
+}
+
+
+
+/* =========================================================
+   BUSINESS SIGNAL
+========================================================= */
+
+.reasoning-signal {
+  position: relative;
+
+  max-width: 760px;
+
+  margin:
+    118px auto 0;
+
+  padding:
+    56px 40px 70px;
+
+  text-align: center;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  background:
+    radial-gradient(
+      circle at 50% 55%,
+      rgba(213, 255, 63, 0.04),
+      transparent 55%
+    );
+}
+
+
+.reasoning-signal-label {
+  display: block;
+
+  margin-bottom: 28px;
+
+  color:
+    rgba(246, 247, 248, 0.3);
+
+  font-size: 0.6rem;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+
+.reasoning-signal blockquote {
+  margin: 0;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(3rem, 5.2vw, 4.9rem);
+
+  line-height: 0.98;
+
+  letter-spacing: -0.055em;
+
+  font-style: normal;
+  font-weight: 500;
+}
+
+
+.reasoning-signal blockquote strong {
+  display: block;
+
+  color: #d5ff3f;
+
+  font-weight: 500;
+}
+
+
+.reasoning-signal-pulse {
+  position: absolute;
+
+  left: 50%;
+  bottom: -6px;
+
+  width: 11px;
+  height: 11px;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 0 8px rgba(213, 255, 63, 0.045),
+    0 0 28px rgba(213, 255, 63, 0.35);
+}
+
+
+
+/* =========================================================
+   REASONING SYSTEM
+========================================================= */
+
+.reasoning-system {
+  position: relative;
+
+  margin-top: 0;
+
+  padding-top: 130px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  column-gap: 0;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.065);
+}
+
+
+
+/* horizontal branching line */
+
+.reasoning-system::before {
+  content: "";
+
+  position: absolute;
+
+  left: 16.666%;
+  right: 16.666%;
+  top: 70px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(213, 255, 63, 0.08),
+      rgba(213, 255, 63, 0.36),
+      rgba(213, 255, 63, 0.08)
+    );
+}
+
+
+
+/* =========================================================
+   TRUNK
+========================================================= */
+
+.reasoning-trunk {
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+
+  width: 1px;
+  height: 70px;
+
+  transform:
+    translateX(-50%);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(213, 255, 63, 0.52),
+      rgba(213, 255, 63, 0.12)
+    );
+}
+
+
+.reasoning-trunk span {
+  position: absolute;
+
+  left: 50%;
+  bottom: -4px;
+
+  width: 7px;
+  height: 7px;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 18px rgba(213, 255, 63, 0.38);
+}
+
+
+
+/* =========================================================
+   BRANCH
+========================================================= */
+
+.reasoning-branch {
+  position: relative;
+
+  min-height: 640px;
+
+  padding:
+    60px 38px 44px;
+
+  display: flex;
+  flex-direction: column;
+
+  border-right:
+    1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.reasoning-branch:last-child {
+  border-right: 0;
+}
+
+
+/* small vertical connector */
+
+.reasoning-branch::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: -60px;
+
+  width: 1px;
+  height: 60px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(213, 255, 63, 0.26),
+      rgba(255, 255, 255, 0.06)
+    );
+}
+
+
+
+/* =========================================================
+   BRANCH HEAD
+========================================================= */
+
+.reasoning-branch-head {
+  min-height: 108px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 16px;
+}
+
+
+.reasoning-letter {
+  width: 52px;
+  height: 52px;
+
+  flex:
+    0 0 52px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  color: #d5ff3f;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  border:
+    1px solid rgba(213, 255, 63, 0.26);
+
+  background:
+    rgba(213, 255, 63, 0.025);
+
+  box-shadow:
+    0 0 24px rgba(213, 255, 63, 0.035);
+}
+
+
+.reasoning-branch-head > div {
+  padding-top: 2px;
+}
+
+
+.reasoning-area {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color:
+    rgba(213, 255, 63, 0.62);
+
+  font-size: 0.58rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+
+.reasoning-branch-head strong {
+  display: block;
+
+  max-width: 280px;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(1.3rem, 1.8vw, 1.75rem);
+
+  line-height: 1.12;
+
+  letter-spacing: -0.035em;
+
+  font-weight: 500;
+}
+
+
+
+/* =========================================================
+   BRANCH BODY
+========================================================= */
+
+.reasoning-branch-body {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+
+  margin-top: 38px;
+}
+
+
+.reasoning-branch-body > p {
+  max-width: 315px;
+
+  margin: 0;
+
+  color:
+    rgba(246, 247, 248, 0.43);
+
+  font-size: 0.82rem;
+
+  line-height: 1.68;
+}
+
+
+
+/* =========================================================
+   QUESTION
+========================================================= */
+
+.reasoning-question {
+  margin-top: 54px;
+
+  padding:
+    23px 0;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.06);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.reasoning-question > span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color:
+    rgba(246, 247, 248, 0.25);
+
+  font-size: 0.53rem;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+}
+
+
+.reasoning-question strong {
+  display: block;
+
+  max-width: 320px;
+
+  color:
+    rgba(246, 247, 248, 0.76);
+
+  font-size: 0.8rem;
+  font-weight: 500;
+
+  line-height: 1.6;
+}
+
+
+
+/* =========================================================
+   POSSIBLE PRESCRIPTION
+========================================================= */
+
+.reasoning-answer {
+  margin-top: auto;
+
+  padding-top: 34px;
+}
+
+
+.reasoning-answer > span {
+  display: block;
+
+  margin-bottom: 14px;
+
+  color:
+    rgba(246, 247, 248, 0.25);
+
+  font-size: 0.53rem;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+}
+
+
+.reasoning-answer > div {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 6px;
+}
+
+
+.reasoning-answer small {
+  padding:
+    7px 9px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  color:
+    rgba(246, 247, 248, 0.48);
+
+  background:
+    rgba(255, 255, 255, 0.018);
+
+  font-size: 0.62rem;
+  font-weight: 500;
+}
+
+
+
+/* subtle individual atmospheres */
+
+.reasoning-branch-a {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(213, 255, 63, 0.018),
+      transparent 45%
+    );
+}
+
+
+.reasoning-branch-c {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.012),
+      transparent 45%
+    );
+}
+
+
+.reasoning-branch-t {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(213, 255, 63, 0.012),
+      transparent 45%
+    );
+}
+
+
+
+/* =========================================================
+   CONCLUSION
+========================================================= */
+
+.reasoning-conclusion {
+  position: relative;
+
+  max-width: 940px;
+
+  margin:
+    132px auto 0;
+
+  padding-top: 56px;
+
+  text-align: center;
+}
+
+
+.reasoning-conclusion-line {
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+
+  width: 1px;
+  height: 34px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(213, 255, 63, 0),
+      #d5ff3f
+    );
+}
+
+
+.reasoning-conclusion p {
+  margin: 0;
+
+  color:
+    rgba(246, 247, 248, 0.4);
+
+  font-size:
+    clamp(2rem, 3.4vw, 3.25rem);
+
+  line-height: 1.12;
+
+  letter-spacing: -0.045em;
+}
+
+
+.reasoning-conclusion p span {
+  color:
+    rgba(246, 247, 248, 0.75);
+}
+
+
+.reasoning-conclusion > strong {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #d5ff3f;
+
+  font-size:
+    clamp(3rem, 5.5vw, 5rem);
+
+  line-height: 1;
+
+  letter-spacing: -0.06em;
+
+  font-weight: 500;
+}
+
+
+.reasoning-conclusion > small {
+  display: block;
+
+  max-width: 520px;
+
+  margin:
+    34px auto 0;
+
+  color:
+    rgba(246, 247, 248, 0.4);
+
+  font-size: 0.82rem;
+
+  line-height: 1.7;
+}
+
+
+
+/* =========================================================
+   SCREEN INDEX
+========================================================= */
+
+.reasoning-screen-index {
+  position: absolute;
+
+  right: -16px;
+  bottom: 22px;
+
+  z-index: -1;
+
+  color:
+    rgba(255, 255, 255, 0.016);
+
+  font-size: 11rem;
+
+  line-height: 0.8;
+
+  letter-spacing: -0.08em;
+
+  font-weight: 500;
+
+  user-select: none;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .reasoning-stage {
+    width:
+      min(920px, calc(100% - 48px));
+  }
+
+
+  .reasoning-branch {
+    padding:
+      52px 24px 40px;
+  }
+
+
+  .reasoning-branch-head {
+    flex-direction: column;
+
+    min-height: 150px;
+  }
+
+}
+
+
+
+/* =========================================================
+   SCREEN 06 — MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .reasoning-stage {
+    width:
+      calc(100% - 32px);
+
+    padding:
+      94px 0 76px;
+  }
+
+
+
+  /* INTRO */
+
+  .reasoning-kicker {
+    font-size: 0.58rem;
+  }
+
+
+  .reasoning-kicker::before {
+    width: 26px;
+  }
+
+
+  .reasoning-title {
+    margin-top: 18px;
+
+    font-size:
+      clamp(2.7rem, 12.7vw, 3.45rem);
+
+    line-height: 0.99;
+  }
+
+
+
+  /* SIGNAL */
+
+  .reasoning-signal {
+    margin-top: 78px;
+
+    padding:
+      46px 10px 58px;
+  }
+
+
+  .reasoning-signal-label {
+    margin-bottom: 23px;
+
+    font-size: 0.55rem;
+  }
+
+
+  .reasoning-signal blockquote {
+    font-size:
+      clamp(2.75rem, 13vw, 3.55rem);
+  }
+
+
+
+  /* SYSTEM */
+
+  .reasoning-system {
+    padding-top: 94px;
+
+    display: block;
+
+    border-bottom: 0;
+  }
+
+
+  .reasoning-system::before {
+    display: none;
+  }
+
+
+  .reasoning-trunk {
+    height: 94px;
+  }
+
+
+
+  /* BRANCH */
+
+  .reasoning-branch {
+    min-height: 0;
+
+    padding:
+      50px 0 56px;
+
+    border-right: 0;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.065);
+  }
+
+
+  .reasoning-branch::before {
+    left: 26px;
+    top: -24px;
+
+    height: 24px;
+  }
+
+
+  .reasoning-branch-head {
+    min-height: 0;
+
+    flex-direction: row;
+
+    gap: 15px;
+  }
+
+
+  .reasoning-letter {
+    width: 50px;
+    height: 50px;
+
+    flex-basis: 50px;
+  }
+
+
+  .reasoning-area {
+    font-size: 0.54rem;
+  }
+
+
+  .reasoning-branch-head strong {
+    max-width: 260px;
+
+    font-size:
+      clamp(1.4rem, 6.7vw, 1.75rem);
+  }
+
+
+
+  /* BODY */
+
+  .reasoning-branch-body {
+    margin-top: 34px;
+  }
+
+
+  .reasoning-branch-body > p {
+    max-width: 330px;
+
+    font-size: 0.79rem;
+  }
+
+
+  .reasoning-question {
+    margin-top: 38px;
+  }
+
+
+  .reasoning-answer {
+    margin-top: 34px;
+  }
+
+
+
+  /* CONCLUSION */
+
+  .reasoning-conclusion {
+    margin-top: 90px;
+
+    padding-top: 47px;
+
+    text-align: left;
+  }
+
+
+  .reasoning-conclusion-line {
+    left: 0;
+
+    height: 30px;
+  }
+
+
+  .reasoning-conclusion p {
+    font-size:
+      clamp(1.8rem, 8.2vw, 2.25rem);
+  }
+
+
+  .reasoning-conclusion > strong {
+    margin-top: 8px;
+
+    font-size:
+      clamp(2.8rem, 12vw, 3.5rem);
+  }
+
+
+  .reasoning-conclusion > small {
+    max-width: 320px;
+
+    margin:
+      28px 0 0;
+
+    font-size: 0.78rem;
+  }
+
+
+  .reasoning-screen-index {
+    right: -7px;
+
+    font-size: 7rem;
+  }
+
+}
