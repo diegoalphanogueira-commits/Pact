@@ -2957,3 +2957,929 @@ textarea {
   }
 
 }
+/* =========================================================
+   SCREEN 04 — IMPLEMENTATION
+========================================================= */
+
+.implementation-section {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 78% 42%,
+      rgba(213, 255, 63, 0.035),
+      transparent 28%
+    ),
+    #050709;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.055);
+}
+
+
+/* subtle vertical architecture */
+
+.implementation-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 24.9%,
+      rgba(255, 255, 255, 0.025) 25%,
+      transparent 25.1%,
+      transparent 49.9%,
+      rgba(255, 255, 255, 0.025) 50%,
+      transparent 50.1%,
+      transparent 74.9%,
+      rgba(255, 255, 255, 0.025) 75%,
+      transparent 75.1%
+    );
+
+  opacity: 0.55;
+}
+
+
+.implementation-stage {
+  position: relative;
+  z-index: 1;
+
+  width:
+    min(1280px, calc(100% - 80px));
+
+  margin: 0 auto;
+
+  padding:
+    140px 0 110px;
+}
+
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.implementation-intro {
+  max-width: 920px;
+}
+
+
+.implementation-kicker {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 12px;
+
+  color: #d5ff3f;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+
+.implementation-kicker::before {
+  content: "";
+
+  width: 38px;
+  height: 1px;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 15px rgba(213, 255, 63, 0.32);
+}
+
+
+.implementation-title {
+  margin:
+    24px 0 0;
+
+  max-width: 900px;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(3.4rem, 5.6vw, 5.2rem);
+
+  line-height: 0.98;
+
+  letter-spacing: -0.058em;
+
+  font-weight: 500;
+}
+
+
+.implementation-title span {
+  color:
+    rgba(246, 247, 248, 0.42);
+}
+
+
+.implementation-title strong {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #d5ff3f;
+
+  font-weight: 500;
+}
+
+
+.implementation-description {
+  max-width: 570px;
+
+  margin-top: 30px;
+
+  color:
+    rgba(246, 247, 248, 0.52);
+
+  font-size: 1rem;
+
+  line-height: 1.72;
+}
+
+
+
+/* =========================================================
+   SELECTOR
+========================================================= */
+
+.implementation-selector {
+  margin-top: 92px;
+}
+
+
+.implementation-selector-label {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color:
+    rgba(246, 247, 248, 0.28);
+
+  font-size: 0.61rem;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+
+.implementation-tabs {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.implementation-tab {
+  position: relative;
+
+  min-height: 94px;
+
+  padding:
+    0 24px;
+
+  border: 0;
+  border-right:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  background: transparent;
+
+  color: inherit;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  text-align: left;
+
+  transition:
+    background 260ms ease,
+    opacity 260ms ease;
+}
+
+
+.implementation-tab:last-child {
+  border-right: 0;
+}
+
+
+.implementation-tab strong {
+  color:
+    rgba(246, 247, 248, 0.28);
+
+  font-size: 1.35rem;
+  font-weight: 600;
+
+  transition:
+    color 260ms ease;
+}
+
+
+.implementation-tab span {
+  color:
+    rgba(246, 247, 248, 0.45);
+
+  font-size: 0.78rem;
+  font-weight: 500;
+
+  transition:
+    color 260ms ease;
+}
+
+
+.implementation-tab::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -1px;
+
+  height: 2px;
+
+  background: #d5ff3f;
+
+  transform: scaleX(0);
+
+  transform-origin:
+    left center;
+
+  transition:
+    transform 300ms ease;
+}
+
+
+.implementation-tab:hover {
+  background:
+    rgba(255, 255, 255, 0.018);
+}
+
+
+.implementation-tab:hover strong {
+  color:
+    rgba(213, 255, 63, 0.72);
+}
+
+
+.implementation-tab.active {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(213, 255, 63, 0.035),
+      transparent
+    );
+}
+
+
+.implementation-tab.active::after {
+  transform: scaleX(1);
+}
+
+
+.implementation-tab.active strong {
+  color: #d5ff3f;
+}
+
+
+.implementation-tab.active span {
+  color: #f6f7f8;
+}
+
+
+
+/* =========================================================
+   IMPLEMENTATION VIEW
+========================================================= */
+
+.implementation-view {
+  position: relative;
+
+  min-height: 650px;
+
+  margin-top: 72px;
+
+  overflow: hidden;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(280px, 0.7fr)
+    minmax(0, 1.3fr);
+
+  align-items: stretch;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+
+/* =========================================================
+   GIANT LETTER
+========================================================= */
+
+.implementation-letter {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 650px;
+
+  overflow: hidden;
+
+  color:
+    rgba(213, 255, 63, 0.06);
+
+  font-size:
+    clamp(18rem, 31vw, 28rem);
+
+  line-height: 0.72;
+
+  font-weight: 500;
+
+  letter-spacing: -0.1em;
+
+  user-select: none;
+
+  border-right:
+    1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.implementation-letter::before {
+  content: "";
+
+  position: absolute;
+
+  width: 330px;
+  height: 330px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(213, 255, 63, 0.045);
+
+  filter: blur(75px);
+}
+
+
+
+/* =========================================================
+   PANELS
+========================================================= */
+
+.implementation-panel {
+  display: none;
+}
+
+
+.implementation-panel.active {
+  min-height: 650px;
+
+  padding:
+    64px 0 58px 68px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+.implementation-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  padding-right: 10px;
+}
+
+
+.implementation-index {
+  color: #d5ff3f;
+
+  font-size: 0.67rem;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
+
+.implementation-category {
+  color:
+    rgba(246, 247, 248, 0.28);
+
+  font-size: 0.62rem;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+
+.implementation-panel-copy {
+  max-width: 670px;
+
+  margin-top: 95px;
+}
+
+
+.implementation-panel-copy h3 {
+  margin: 0;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(2.7rem, 4.1vw, 4.15rem);
+
+  line-height: 1.01;
+
+  letter-spacing: -0.052em;
+
+  font-weight: 500;
+}
+
+
+.implementation-panel-copy p {
+  max-width: 535px;
+
+  margin-top: 26px;
+
+  color:
+    rgba(246, 247, 248, 0.48);
+
+  font-size: 0.98rem;
+
+  line-height: 1.72;
+}
+
+
+
+/* =========================================================
+   CAPABILITIES
+========================================================= */
+
+.implementation-capabilities {
+  margin-top: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.065);
+}
+
+
+.implementation-capabilities span {
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+
+  padding:
+    0 16px 0 0;
+
+  color:
+    rgba(246, 247, 248, 0.48);
+
+  font-size: 0.77rem;
+  font-weight: 500;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.055);
+}
+
+
+.implementation-capabilities span:nth-child(odd) {
+  border-right:
+    1px solid rgba(255, 255, 255, 0.055);
+}
+
+
+.implementation-capabilities span:nth-child(even) {
+  padding-left: 24px;
+}
+
+
+.implementation-capabilities span::before {
+  content: "";
+
+  width: 4px;
+  height: 4px;
+
+  flex: 0 0 4px;
+
+  margin-right: 11px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(213, 255, 63, 0.5);
+}
+
+
+
+/* =========================================================
+   PRINCIPLE
+========================================================= */
+
+.implementation-principle {
+  position: relative;
+
+  max-width: 990px;
+
+  margin:
+    110px auto 0;
+
+  padding:
+    52px 0 8px 88px;
+}
+
+
+.implementation-principle-line {
+  position: absolute;
+
+  left: 0;
+  top: 62px;
+
+  width: 54px;
+  height: 1px;
+
+  background: #d5ff3f;
+}
+
+
+.implementation-principle p {
+  margin: 0;
+
+  color:
+    rgba(246, 247, 248, 0.46);
+
+  font-size:
+    clamp(1.45rem, 2.2vw, 2.1rem);
+
+  line-height: 1.35;
+
+  letter-spacing: -0.025em;
+}
+
+
+.implementation-principle p strong {
+  color:
+    rgba(246, 247, 248, 0.9);
+
+  font-weight: 500;
+}
+
+
+.implementation-principle-answer {
+  margin-top: 8px !important;
+
+  color:
+    rgba(246, 247, 248, 0.82) !important;
+}
+
+
+.implementation-principle-answer strong {
+  color: #d5ff3f !important;
+}
+
+
+
+/* =========================================================
+   SCREEN NUMBER
+========================================================= */
+
+.implementation-screen-index {
+  position: absolute;
+
+  right: -18px;
+  bottom: 18px;
+
+  z-index: -1;
+
+  color:
+    rgba(255, 255, 255, 0.016);
+
+  font-size: 11rem;
+
+  line-height: 0.8;
+
+  font-weight: 500;
+
+  letter-spacing: -0.08em;
+
+  user-select: none;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .implementation-stage {
+    width:
+      min(900px, calc(100% - 48px));
+  }
+
+
+  .implementation-view {
+    grid-template-columns:
+      250px 1fr;
+  }
+
+
+  .implementation-panel.active {
+    padding-left: 48px;
+  }
+
+
+  .implementation-panel-copy {
+    margin-top: 70px;
+  }
+
+}
+
+
+
+/* =========================================================
+   SCREEN 04 — MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .implementation-stage {
+    width:
+      calc(100% - 32px);
+
+    padding:
+      94px 0 76px;
+  }
+
+
+  /* INTRO */
+
+  .implementation-kicker {
+    font-size: 0.61rem;
+  }
+
+
+  .implementation-kicker::before {
+    width: 27px;
+  }
+
+
+  .implementation-title {
+    margin-top: 18px;
+
+    font-size:
+      clamp(2.65rem, 12.8vw, 3.4rem);
+
+    line-height: 0.99;
+  }
+
+
+  .implementation-title strong {
+    margin-top: 5px;
+  }
+
+
+  .implementation-description {
+    max-width: 340px;
+
+    margin-top: 23px;
+
+    font-size: 0.91rem;
+
+    line-height: 1.65;
+  }
+
+
+
+  /* SELECTOR */
+
+  .implementation-selector {
+    margin-top: 64px;
+  }
+
+
+  .implementation-selector-label {
+    margin-bottom: 14px;
+
+    font-size: 0.55rem;
+  }
+
+
+  .implementation-tabs {
+    grid-template-columns:
+      repeat(4, 1fr);
+  }
+
+
+  .implementation-tab {
+    min-width: 0;
+    min-height: 78px;
+
+    padding:
+      0 4px;
+
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 4px;
+
+    text-align: center;
+  }
+
+
+  .implementation-tab strong {
+    font-size: 1.1rem;
+  }
+
+
+  .implementation-tab span {
+    max-width: 76px;
+
+    overflow: hidden;
+
+    font-size: 0.52rem;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+
+
+  /* VIEW */
+
+  .implementation-view {
+    min-height: 0;
+
+    margin-top: 42px;
+
+    display: block;
+  }
+
+
+  /* GIANT LETTER */
+
+  .implementation-letter {
+    min-height: 260px;
+
+    border-right: 0;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.06);
+
+    font-size: 15rem;
+  }
+
+
+  .implementation-letter::before {
+    width: 220px;
+    height: 220px;
+  }
+
+
+
+  /* PANEL */
+
+  .implementation-panel.active {
+    min-height: 0;
+
+    padding:
+      32px 0 0;
+
+    display: block;
+  }
+
+
+  .implementation-panel-head {
+    padding: 0;
+  }
+
+
+  .implementation-index,
+  .implementation-category {
+    font-size: 0.56rem;
+  }
+
+
+  .implementation-panel-copy {
+    margin-top: 52px;
+  }
+
+
+  .implementation-panel-copy h3 {
+    font-size:
+      clamp(2.25rem, 10.3vw, 2.9rem);
+
+    line-height: 1.02;
+  }
+
+
+  .implementation-panel-copy p {
+    max-width: 340px;
+
+    margin-top: 20px;
+
+    font-size: 0.89rem;
+
+    line-height: 1.65;
+  }
+
+
+
+  /* CAPABILITIES */
+
+  .implementation-capabilities {
+    margin-top: 44px;
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .implementation-capabilities span {
+    min-height: 48px;
+
+    padding: 0 !important;
+
+    border-right: 0 !important;
+
+    font-size: 0.72rem;
+  }
+
+
+
+  /* PRINCIPLE */
+
+  .implementation-principle {
+    margin-top: 80px;
+
+    padding:
+      38px 0 0;
+  }
+
+
+  .implementation-principle-line {
+    left: 0;
+    top: 0;
+
+    width: 42px;
+  }
+
+
+  .implementation-principle p {
+    font-size:
+      clamp(1.3rem, 6vw, 1.65rem);
+
+    line-height: 1.38;
+  }
+
+
+  .implementation-principle-answer {
+    margin-top:
+      10px !important;
+  }
+
+
+  .implementation-screen-index {
+    right: -8px;
+
+    font-size: 7rem;
+  }
+
+}
