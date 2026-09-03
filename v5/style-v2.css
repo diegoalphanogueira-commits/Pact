@@ -6320,3 +6320,66 @@ textarea {
   }
 
 }
+/* =========================================================
+   SCREEN 06 — REASONING MOTION STATES
+========================================================= */
+
+.reasoning-branch,
+.reasoning-letter,
+.reasoning-branch-body,
+.reasoning-trunk,
+.reasoning-conclusion {
+  will-change: transform, opacity;
+}
+
+
+.reasoning-branch {
+  transition:
+    opacity 280ms ease,
+    background 280ms ease;
+}
+
+
+/* ramo sendo investigado */
+
+.reasoning-branch.is-active {
+  opacity: 1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(213, 255, 63, 0.045),
+      transparent 48%
+    );
+}
+
+
+.reasoning-branch.is-active .reasoning-letter {
+  color: #050709;
+
+  background: #d5ff3f;
+
+  border-color: #d5ff3f;
+
+  box-shadow:
+    0 0 0 7px rgba(213, 255, 63, 0.04),
+    0 0 28px rgba(213, 255, 63, 0.17);
+}
+
+
+/* outros caminhos perdem força */
+
+.reasoning-branch.is-muted {
+  opacity: 0.24;
+}
+
+
+/* mobile não deixa os ramos apagados demais */
+
+@media (max-width: 640px) {
+
+  .reasoning-branch.is-muted {
+    opacity: 0.34;
+  }
+
+}
