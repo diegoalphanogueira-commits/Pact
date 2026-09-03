@@ -3931,3 +3931,61 @@ textarea {
   }
 
 }
+
+/* =========================================================
+   SCREEN 04 — INTERACTIVE STATES
+========================================================= */
+
+.implementation-panel,
+.implementation-letter {
+  will-change: transform, opacity;
+}
+
+.implementation-tab {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.implementation-tab:focus-visible {
+  outline: none;
+}
+
+.implementation-tab:focus-visible::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 8px;
+
+  border:
+    1px solid rgba(213, 255, 63, 0.42);
+
+  pointer-events: none;
+}
+
+
+/* capacidades respondem suavemente */
+
+.implementation-capabilities span {
+  transition:
+    color 240ms ease,
+    background 240ms ease;
+}
+
+.implementation-capabilities span:hover {
+  color:
+    rgba(246, 247, 248, 0.78);
+
+  background:
+    rgba(213, 255, 63, 0.018);
+}
+
+
+/* mobile */
+
+@media (max-width: 640px) {
+
+  .implementation-tab {
+    touch-action: manipulation;
+  }
+
+}
