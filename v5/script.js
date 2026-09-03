@@ -551,52 +551,302 @@ gsap.set(".tools-orbit-ring-2", {
 
   mm.add("(max-width: 640px)", () => {
 
-    const wordXMobile = [
-      -50,
-      45,
-      -40,
-      50,
-      -45,
-      45
-    ];
+  const mobileWords = toolWords.filter(
+    (word) => getComputedStyle(word).display !== "none"
+  );
 
 
-    const wordYMobile = [
-      -35,
-      -45,
-      20,
-      15,
-      40,
-      45
-    ];
+  /* ====================================================
+     MOBILE SCROLL STORY
+  ==================================================== */
+
+  const toolsMobileTimeline = gsap.timeline({
+
+    scrollTrigger: {
+
+      trigger: ".tools-section",
+
+      start: "top top",
+
+      end: "+=165%",
+
+      pin: ".tools-stage",
+
+      scrub: 0.65,
+
+      anticipatePin: 1,
+
+      invalidateOnRefresh: true,
 
 
-    const mobileWords = toolWords.filter(
-      (word) => getComputedStyle(word).display !== "none"
-    );
+      /* ================================================
+         INDICADOR CONTROLADO PELO SCROLL REAL
+      ================================================= */
+
+      onUpdate: (self) => {
+
+        const progress = self.progress;
 
 
-    const toolsMobileTimeline = gsap.timeline({
+        /*
+          Primeiros 28% da experiência:
+          barra vai de 0 até 100%
+        */
 
-      scrollTrigger: {
+        const cueProgress = Math.min(
+          progress / 0.28,
+          1
+        );
 
-        trigger: ".tools-section",
 
-        start: "top top",
+        gsap.set(
+          ".tools-scroll-progress i",
+          {
+            scaleX: cueProgress
+          }
+        );
 
-        end: "+=145%",
 
-        pin: ".tools-stage",
+        /*
+          Os círculos crescem junto com a rolagem
+        */
 
-        scrub: 0.85,
+        gsap.set(
+          ".tools-orbit-ring-1",
+          {
+            scale: 1 + cueProgress * 1.5,
+            autoAlpha:
+              0.8 - cueProgress * 0.68
+          }
+        );
 
-        anticipatePin: 1,
 
-        invalidateOnRefresh: true
+        gsap.set(
+          ".tools-orbit-ring-2",
+          {
+            scale: 1 + cueProgress * 2.1,
+            autoAlpha:
+              0.45 - cueProgress * 0.42
+          }
+        );
+
+
+        /*
+          Indicador começa a sumir
+          entre 22% e 32% do scroll
+        */
+
+        let cueOpacity = 1;
+
+
+        if (progress > 0.22) {
+
+          cueOpacity =
+            1 -
+            Math.min(
+              (progress - 0.22) / 0.10,
+              1
+            );
+
+        }
+
+
+        gsap.set(
+          ".tools-scroll-cue",
+          {
+            autoAlpha: cueOpacity,
+
+            scale:
+              1 +
+              cueProgress * 0.04
+          }
+        );
+
+      },
+
+
+      /* garante que nunca fique preso */
+
+      onLeave: () => {
+
+        gsap.set(
+          ".tools-scroll-cue",
+          {
+            autoAlpha: 0
+          }
+        );
 
       }
 
-    });
+    }
+
+  });
+
+
+
+  /* ====================================================
+     PRIMEIRO MOMENTO:
+     só ambiente + palavras + indicador
+  ==================================================== */
+
+  toolsMobileTimeline
+
+    .to(
+      mobileWords,
+      {
+        autoAlpha: 0.40,
+        duration: 0.32,
+        stagger: 0.025
+      }
+    )
+
+
+    /*
+      RESPIRO
+
+      O usuário vê as ferramentas,
+      o núcleo e entende que deve continuar.
+    */
+
+    .to(
+      {},
+      {
+        duration: 0.58
+      }
+    )
+
+
+
+    /* ====================================================
+       KICKER
+    ==================================================== */
+
+    .to(
+      ".tools-kicker",
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.32
+      }
+    )
+
+
+
+    /* ====================================================
+       MAIS FERRAMENTAS
+    ==================================================== */
+
+    .to(
+      titleParts[0],
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.42
+      }
+    )
+
+
+
+    /* ====================================================
+       NÃO SIGNIFICAM
+    ==================================================== */
+
+    .to(
+      titleParts[1],
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.42
+      },
+      "-=0.10"
+    )
+
+
+
+    /* ====================================================
+       MAIS ESTRUTURA
+    ==================================================== */
+
+    .to(
+      titleParts[2],
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.45
+      },
+      "-=0.10"
+    )
+
+
+
+    /* ====================================================
+       FERRAMENTAS PERDEM IMPORTÂNCIA
+    ==================================================== */
+
+    .to(
+      mobileWords,
+      {
+        x: (index) => [
+          -42,
+          38,
+          -35,
+          42,
+          -38,
+          40
+        ][index] || 0,
+
+        y: (index) => [
+          -28,
+          -36,
+          18,
+          14,
+          34,
+          38
+        ][index] || 0,
+
+        autoAlpha: 0.055,
+
+        scale: 1.05,
+
+        filter: "blur(3px)",
+
+        duration: 0.72,
+
+        stagger: 0.015
+      },
+      "-=0.22"
+    )
+
+
+
+    /* ====================================================
+       FRASE FINAL
+    ==================================================== */
+
+    .to(
+      ".tools-reveal",
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.42
+      },
+      "-=0.26"
+    )
+
+
+
+    /* ====================================================
+       RESPIRO FINAL
+    ==================================================== */
+
+    .to(
+      {},
+      {
+        duration: 0.34
+      }
+    );
+
+});
 
 
     toolsMobileTimeline
