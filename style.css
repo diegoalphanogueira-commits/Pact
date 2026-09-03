@@ -9,9 +9,11 @@
   --text-muted: #6f7885;
 
   --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.14);
 
   --accent: #d5ff3f;
   --accent-soft: rgba(213, 255, 63, 0.12);
+  --accent-soft-2: rgba(213, 255, 63, 0.06);
   --accent-glow: rgba(213, 255, 63, 0.18);
 
   --white: #ffffff;
@@ -20,17 +22,21 @@
   --radius-sm: 14px;
   --radius-md: 22px;
   --radius-lg: 32px;
+  --radius-xl: 42px;
 
   --container: 1180px;
 
   --shadow:
     0 20px 60px rgba(0, 0, 0, 0.28),
     0 0 0 1px rgba(255, 255, 255, 0.03);
+
+  --shadow-accent:
+    0 20px 80px rgba(213, 255, 63, 0.06);
 }
 
-/* =========================================
+/* ======================================================
    RESET
-========================================= */
+====================================================== */
 
 * {
   margin: 0;
@@ -40,6 +46,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
@@ -48,6 +55,7 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 img {
@@ -56,8 +64,8 @@ img {
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 ul {
@@ -70,9 +78,9 @@ textarea {
   font: inherit;
 }
 
-/* =========================================
+/* ======================================================
    GLOBAL
-========================================= */
+====================================================== */
 
 .container {
   width: min(100% - 36px, var(--container));
@@ -87,24 +95,25 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.78rem;
+  margin-bottom: 18px;
+  color: var(--accent);
+  font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 18px;
 }
 
 .section-label::before {
   content: "";
   width: 26px;
   height: 1px;
+  flex-shrink: 0;
   background: var(--accent);
 }
 
 .section-heading {
-  max-width: 760px;
-  margin-bottom: 42px;
+  max-width: 810px;
+  margin-bottom: 46px;
 }
 
 .section-heading h2,
@@ -112,7 +121,7 @@ textarea {
 .about-content h2,
 .philosophy-heading h2,
 .final-cta h2 {
-  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
   line-height: 0.98;
   letter-spacing: -0.055em;
 }
@@ -120,15 +129,19 @@ textarea {
 .section-heading p,
 .section-lead,
 .final-cta p {
+  max-width: 690px;
   margin-top: 20px;
   color: var(--text-soft);
-  font-size: 1.05rem;
-  max-width: 680px;
+  font-size: 1.03rem;
 }
 
-/* =========================================
+strong {
+  font-weight: 700;
+}
+
+/* ======================================================
    BUTTONS
-========================================= */
+====================================================== */
 
 .btn {
   display: inline-flex;
@@ -138,6 +151,7 @@ textarea {
   padding: 0 22px;
   border-radius: 999px;
   font-weight: 750;
+  text-align: center;
   transition:
     transform 0.25s ease,
     background 0.25s ease,
@@ -150,32 +164,32 @@ textarea {
 }
 
 .btn-primary {
-  color: #0a0c0f;
+  color: #090b0d;
   background: var(--accent);
   box-shadow: 0 10px 40px rgba(213, 255, 63, 0.14);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 14px 50px rgba(213, 255, 63, 0.22);
+  box-shadow: 0 14px 50px rgba(213, 255, 63, 0.24);
 }
 
 .btn-secondary {
+  color: var(--text);
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.025);
-  color: var(--text);
 }
 
 .btn-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.18);
+  border-color: var(--line-strong);
   background: rgba(255, 255, 255, 0.05);
 }
 
 .btn-small {
   min-height: 44px;
   padding: 0 18px;
-  color: #0a0c0f;
+  color: #090b0d;
   background: var(--accent);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
 }
 
 .btn-large {
@@ -183,22 +197,23 @@ textarea {
   padding: 0 28px;
 }
 
-/* =========================================
+/* ======================================================
    HEADER
-========================================= */
+====================================================== */
 
 .header {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 1000;
-  background: rgba(7, 9, 12, 0.75);
+  background: rgba(7, 9, 12, 0.76);
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .header.scrolled {
-  background: rgba(7, 9, 12, 0.93);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+  background: rgba(7, 9, 12, 0.94);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.22);
 }
 
 .header-content {
@@ -209,31 +224,37 @@ textarea {
   gap: 20px;
 }
 
+.brand {
+  flex-shrink: 0;
+}
+
 .brand-mark {
-  font-size: 1.2rem;
+  font-size: 1.22rem;
   font-weight: 900;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.055em;
 }
 
 .nav {
   display: none;
   align-items: center;
-  gap: 28px;
+  justify-content: center;
+  gap: 20px;
 }
 
 .nav a {
-  font-size: 0.9rem;
   color: var(--text-soft);
+  font-size: 0.83rem;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav a:hover {
   color: var(--text);
 }
 
-/* =========================================
+/* ======================================================
    HERO
-========================================= */
+====================================================== */
 
 .hero {
   position: relative;
@@ -259,13 +280,13 @@ textarea {
 
 .hero-glow {
   position: absolute;
-  width: 520px;
-  height: 520px;
-  top: 0;
+  width: 540px;
+  height: 540px;
+  top: -80px;
   right: -220px;
   border-radius: 50%;
   background: var(--accent-glow);
-  filter: blur(140px);
+  filter: blur(145px);
   pointer-events: none;
 }
 
@@ -279,33 +300,34 @@ textarea {
 
 .eyebrow {
   display: inline-block;
+  margin-bottom: 24px;
   padding: 8px 12px;
-  border: 1px solid rgba(213, 255, 63, 0.22);
-  background: var(--accent-soft);
   color: var(--accent);
-  border-radius: 999px;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.14em;
-  margin-bottom: 24px;
+  border: 1px solid rgba(213, 255, 63, 0.22);
+  border-radius: 999px;
+  background: var(--accent-soft);
 }
 
 .hero h1 {
+  max-width: 900px;
   font-size: clamp(3rem, 11vw, 6.8rem);
   line-height: 0.91;
   letter-spacing: -0.07em;
-  max-width: 920px;
 }
 
 .hero h1 span {
+  display: block;
   color: var(--text-soft);
 }
 
 .hero-text {
-  margin-top: 28px;
   max-width: 680px;
+  margin-top: 28px;
   color: var(--text-soft);
-  font-size: 1.05rem;
+  font-size: 1.04rem;
 }
 
 .hero-text strong {
@@ -324,9 +346,10 @@ textarea {
   margin-top: 24px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 18px;
+  gap: 9px 14px;
   color: var(--text-muted);
-  font-size: 0.78rem;
+  font-size: 0.77rem;
+  letter-spacing: 0.015em;
 }
 
 .hero-visual {
@@ -337,9 +360,9 @@ textarea {
 .hero-image-wrap {
   position: relative;
   min-height: 480px;
-  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
   background: var(--bg-card);
   box-shadow: var(--shadow);
 }
@@ -351,8 +374,8 @@ textarea {
   background:
     linear-gradient(
       180deg,
-      transparent 45%,
-      rgba(7, 9, 12, 0.82) 100%
+      transparent 48%,
+      rgba(7, 9, 12, 0.72) 100%
     );
   pointer-events: none;
 }
@@ -365,9 +388,9 @@ textarea {
   object-position: center 28%;
 }
 
-/* =========================================
-   PROBLEMA
-========================================= */
+/* ======================================================
+   PROBLEMA / TESE
+====================================================== */
 
 .problem-section {
   padding: 90px 0;
@@ -377,49 +400,307 @@ textarea {
 }
 
 .section-highlight {
-  margin-top: 22px;
+  margin-top: 24px;
   color: var(--text);
-  font-size: 1.35rem;
+  font-size: 1.36rem;
   font-weight: 650;
-  line-height: 1.35;
+  line-height: 1.36;
 }
 
 .problem-grid {
   display: grid;
   gap: 14px;
-  margin-top: 46px;
+  margin-top: 48px;
 }
 
 .problem-card {
   min-height: 220px;
   padding: 24px;
-  border-radius: var(--radius-md);
   border: 1px solid var(--line);
-  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(213, 255, 63, 0.035),
+      transparent 35%
+    ),
+    var(--bg-card);
 }
 
 .problem-card > span {
   color: var(--accent);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 800;
 }
 
 .problem-card h3 {
-  margin-top: 40px;
-  font-size: 1.28rem;
-  line-height: 1.15;
+  margin-top: 38px;
+  font-size: 1.25rem;
+  line-height: 1.17;
   letter-spacing: -0.03em;
 }
 
 .problem-card p {
-  margin-top: 10px;
+  margin-top: 11px;
   color: var(--text-soft);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
-/* =========================================
-   VISUAL BREAK / GROWTH
-========================================= */
+/* ======================================================
+   PACT
+====================================================== */
+
+.pact-section {
+  position: relative;
+  padding: 100px 0;
+}
+
+.pact-system-visual {
+  margin-bottom: 42px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+}
+
+.pact-system-visual img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.pact-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.pact-card {
+  position: relative;
+  min-height: 300px;
+  padding: 26px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(213, 255, 63, 0.06),
+      transparent 40%
+    ),
+    var(--bg-card);
+}
+
+.pact-letter {
+  color: var(--accent);
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.08em;
+}
+
+.pact-card > span {
+  display: block;
+  margin-top: 18px;
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.pact-card h3 {
+  margin-top: 14px;
+  font-size: 1.32rem;
+  line-height: 1.17;
+  letter-spacing: -0.035em;
+}
+
+.pact-card p {
+  margin-top: 14px;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+}
+
+.pact-conclusion {
+  margin-top: 36px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.pact-conclusion p {
+  color: var(--text-soft);
+}
+
+.pact-conclusion strong {
+  display: block;
+  margin-top: 5px;
+  color: var(--accent);
+  font-size: clamp(1.8rem, 7vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+/* ======================================================
+   O QUE O PACT ESTRUTURA
+====================================================== */
+
+.delivery-section {
+  padding: 100px 0;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.delivery-heading {
+  max-width: 900px;
+}
+
+.delivery-pillar {
+  position: relative;
+  margin-top: 28px;
+  padding: 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(213, 255, 63, 0.05),
+      transparent 28%
+    ),
+    var(--bg-card);
+  box-shadow: var(--shadow);
+}
+
+.delivery-pillar + .delivery-pillar {
+  margin-top: 22px;
+}
+
+.delivery-pillar-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: flex-start;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+.delivery-letter {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: #090b0d;
+  background: var(--accent);
+  border-radius: 17px;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+}
+
+.delivery-pillar-head > div:last-child > span {
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.delivery-pillar-head h3 {
+  margin-top: 7px;
+  max-width: 800px;
+  font-size: clamp(1.5rem, 5vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.delivery-pillar-head p {
+  max-width: 760px;
+  margin-top: 12px;
+  color: var(--text-soft);
+  font-size: 0.91rem;
+}
+
+.delivery-groups {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.delivery-group {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.delivery-group > span {
+  color: var(--accent);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.delivery-group ul {
+  display: grid;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.delivery-group li {
+  position: relative;
+  padding-left: 15px;
+  color: var(--text-soft);
+  font-size: 0.86rem;
+}
+
+.delivery-group li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.commercial-capabilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.commercial-capabilities span {
+  padding: 9px 12px;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  border: 1px solid rgba(213, 255, 63, 0.14);
+  border-radius: 999px;
+  background: rgba(213, 255, 63, 0.045);
+}
+
+.delivery-insight {
+  margin-top: 24px;
+  padding: 18px;
+  color: var(--text-soft);
+  font-size: 1rem;
+  border-left: 2px solid var(--accent);
+  border-radius: 0 16px 16px 0;
+  background: var(--accent-soft-2);
+}
+
+.delivery-insight strong {
+  color: var(--text);
+}
+
+/* ======================================================
+   EXECUÇÃO POR PRIORIDADE / VISUAL BREAK
+====================================================== */
 
 .visual-break {
   padding: 90px 0;
@@ -443,16 +724,20 @@ textarea {
 }
 
 .visual-break-copy p {
-  margin-top: 22px;
   max-width: 620px;
+  margin-top: 20px;
   color: var(--text-soft);
+}
+
+.visual-break-copy p strong {
+  color: var(--text);
 }
 
 .visual-break-image {
   position: relative;
-  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
   background: var(--bg-card);
   box-shadow: var(--shadow);
 }
@@ -470,115 +755,270 @@ textarea {
   background:
     linear-gradient(
       180deg,
-      transparent 60%,
-      rgba(7, 9, 12, 0.55)
+      transparent 62%,
+      rgba(7, 9, 12, 0.52)
     );
   pointer-events: none;
 }
 
-/* =========================================
-   PACT
-========================================= */
+/* ======================================================
+   CENÁRIOS / DIAGNÓSTICO ANTES DA PRESCRIÇÃO
+====================================================== */
 
-.pact-section {
-  position: relative;
+.scenario-section {
+  padding: 100px 0;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.scenario-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.scenario-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.01)
+    ),
+    var(--bg-card);
+}
+
+.scenario-number {
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.scenario-card h3 {
+  margin-top: 26px;
+  font-size: 1.32rem;
+  line-height: 1.16;
+  letter-spacing: -0.03em;
+}
+
+.scenario-problem {
+  margin-top: 16px;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+}
+
+.scenario-problem strong {
+  color: var(--accent);
+}
+
+.scenario-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.scenario-flow span {
+  padding: 7px 10px;
+  color: var(--text-soft);
+  font-size: 0.72rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.scenario-flow i {
+  color: var(--accent);
+  font-style: normal;
+  font-size: 0.8rem;
+}
+
+.scenario-conclusion {
+  margin-top: 32px;
+  padding: 28px;
+  text-align: center;
+  border: 1px solid rgba(213, 255, 63, 0.14);
+  border-radius: var(--radius-md);
+  background: var(--accent-soft-2);
+}
+
+.scenario-conclusion span {
+  display: block;
+  color: var(--text-soft);
+}
+
+.scenario-conclusion strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--accent);
+  font-size: clamp(1.8rem, 7vw, 3.3rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+/* ======================================================
+   COMO APLICAMOS O MÉTODO
+====================================================== */
+
+.steps-section {
   padding: 100px 0;
 }
 
-.pact-system-visual {
-  margin-bottom: 42px;
-  border-radius: var(--radius-lg);
+.method-steps {
+  display: grid;
+  gap: 12px;
+}
+
+.method-steps article {
+  position: relative;
+  min-height: 200px;
+  padding: 22px;
   overflow: hidden;
   border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+}
+
+.method-steps article::before {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  top: -65px;
+  right: -55px;
+  border-radius: 50%;
+  background: rgba(213, 255, 63, 0.06);
+  filter: blur(15px);
+}
+
+.method-steps article > span {
+  position: relative;
+  z-index: 2;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.method-steps h3 {
+  position: relative;
+  z-index: 2;
+  margin-top: 38px;
+  font-size: 1.3rem;
+}
+
+.method-steps p {
+  position: relative;
+  z-index: 2;
+  margin-top: 8px;
+  color: var(--text-soft);
+  font-size: 0.87rem;
+}
+
+/* ======================================================
+   PROJETO PACT
+====================================================== */
+
+.application-section {
+  padding: 100px 0;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.implementation-visual {
+  margin-bottom: 42px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
   background: var(--bg-card);
   box-shadow: var(--shadow);
 }
 
-.pact-system-visual img {
+.implementation-visual img {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
 }
 
-.pact-grid {
+.project-intro {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.project-intro h3 {
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.project-intro p {
+  margin-top: 14px;
+  color: var(--text-soft);
+}
+
+.project-combinations {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
-.pact-card {
-  position: relative;
-  min-height: 300px;
-  padding: 26px;
+.project-combination {
+  padding: 20px;
   border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background:
-    radial-gradient(
-      circle at top right,
-      rgba(213, 255, 63, 0.06),
-      transparent 40%
-    ),
-    var(--bg-card);
-  overflow: hidden;
+  border-radius: 18px;
+  background: var(--bg-card);
 }
 
-.pact-letter {
-  font-size: 5rem;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.08em;
-  color: var(--accent);
-}
-
-.pact-card > span {
+.project-combination span {
   display: block;
-  margin-top: 18px;
-  color: var(--text-muted);
-  font-size: 0.7rem;
+  color: var(--accent);
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
   font-weight: 800;
-  letter-spacing: 0.13em;
-}
-
-.pact-card h3 {
-  margin-top: 14px;
-  font-size: 1.35rem;
-  line-height: 1.15;
-  letter-spacing: -0.035em;
-}
-
-.pact-card p {
-  margin-top: 14px;
-  color: var(--text-soft);
-  font-size: 0.9rem;
-}
-
-.pact-conclusion {
-  margin-top: 36px;
-  padding: 28px;
-  text-align: center;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.025);
-}
-
-.pact-conclusion p {
-  color: var(--text-soft);
-}
-
-.pact-conclusion strong {
-  display: block;
-  margin-top: 4px;
-  color: var(--accent);
-  font-size: clamp(1.8rem, 7vw, 3.8rem);
+  line-height: 1;
   letter-spacing: -0.05em;
 }
 
-/* =========================================
+.project-combination small {
+  display: block;
+  margin-top: 8px;
+  color: var(--text-soft);
+  font-size: 0.76rem;
+}
+
+.project-combination.featured {
+  border-color: rgba(213, 255, 63, 0.25);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(213, 255, 63, 0.12),
+      transparent 45%
+    ),
+    var(--bg-card);
+}
+
+.project-note {
+  margin-top: 24px;
+  padding: 22px;
+  text-align: center;
+  border: 1px solid rgba(213, 255, 63, 0.14);
+  border-radius: var(--radius-md);
+  background: var(--accent-soft-2);
+}
+
+.project-note strong {
+  color: var(--text);
+  font-size: 0.98rem;
+}
+
+/* ======================================================
    DIAGNÓSTICO
-========================================= */
+====================================================== */
 
 .diagnostic-section {
   padding: 100px 0;
-  background: var(--bg-soft);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -601,21 +1041,19 @@ textarea {
 }
 
 .diagnostic-intro > p {
-  color: var(--text-soft);
-  font-size: 1.05rem;
   max-width: 600px;
+  color: var(--text-soft);
+  font-size: 1.02rem;
 }
-
-/* PRODUTO DIAGNÓSTICO */
 
 .diagnostic-product-preview {
   display: grid;
   gap: 28px;
   align-items: center;
-  margin-bottom: 42px;
+  margin-bottom: 70px;
   padding: 24px;
-  border-radius: var(--radius-lg);
   border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
   background:
     radial-gradient(
       circle at bottom right,
@@ -624,6 +1062,14 @@ textarea {
     ),
     var(--bg-card);
   box-shadow: var(--shadow);
+}
+
+.panel-label,
+.dashboard-kicker {
+  color: var(--accent);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
 }
 
 .diagnostic-product-copy h3 {
@@ -639,15 +1085,15 @@ textarea {
 }
 
 .diagnostic-product-copy p {
+  max-width: 560px;
   margin-top: 16px;
   color: var(--text-soft);
-  max-width: 560px;
 }
 
 .diagnostic-product-image {
   overflow: hidden;
-  border-radius: 22px;
   border: 1px solid var(--line);
+  border-radius: 22px;
   background: #080a0d;
 }
 
@@ -655,6 +1101,53 @@ textarea {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
+}
+
+/* VALOR */
+
+.diagnostic-value {
+  margin-top: 70px;
+  margin-bottom: 64px;
+}
+
+.diagnostic-value-heading {
+  max-width: 750px;
+}
+
+.diagnostic-value-heading h2 {
+  font-size: clamp(2.3rem, 7vw, 4.3rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.diagnostic-value-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+.diagnostic-value-grid article {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--bg-card);
+}
+
+.diagnostic-value-grid article > span {
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.diagnostic-value-grid h3 {
+  margin-top: 26px;
+  font-size: 1.15rem;
+}
+
+.diagnostic-value-grid p {
+  margin-top: 6px;
+  color: var(--text-soft);
+  font-size: 0.83rem;
 }
 
 /* DASHBOARD */
@@ -680,14 +1173,6 @@ textarea {
   justify-content: space-between;
   gap: 20px;
   border-bottom: 1px solid var(--line);
-}
-
-.dashboard-kicker,
-.panel-label {
-  color: var(--accent);
-  font-size: 0.66rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
 }
 
 .dashboard-header h3 {
@@ -722,7 +1207,7 @@ textarea {
   border-top: 1px solid var(--line);
 }
 
-/* PILARES */
+/* PILLAR RESULTS */
 
 .pillar-result {
   margin-top: 24px;
@@ -730,8 +1215,8 @@ textarea {
 
 .pillar-result-top {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 9px;
 }
 
@@ -747,16 +1232,16 @@ textarea {
   height: 34px;
   display: grid;
   place-items: center;
-  border-radius: 10px;
   color: var(--accent);
+  border-radius: 10px;
   background: var(--accent-soft);
 }
 
 .result-bar {
   width: 100%;
   height: 7px;
-  border-radius: 999px;
   overflow: hidden;
+  border-radius: 999px;
   background: rgba(255, 255, 255, 0.07);
 }
 
@@ -767,22 +1252,22 @@ textarea {
   background: var(--accent);
 }
 
-/* LEITURA EXECUTIVA */
+/* EXECUTIVE READ */
 
 .diagnosis-status {
   display: inline-flex;
   margin-top: 22px;
   padding: 8px 12px;
+  color: var(--accent);
+  font-size: 0.73rem;
+  font-weight: 700;
   border-radius: 999px;
   background: var(--accent-soft);
-  color: var(--accent);
-  font-size: 0.75rem;
-  font-weight: 700;
 }
 
 .diagnosis-panel h3 {
   margin-top: 22px;
-  font-size: 1.45rem;
+  font-size: 1.42rem;
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
@@ -790,10 +1275,10 @@ textarea {
 .diagnosis-panel p {
   margin-top: 14px;
   color: var(--text-soft);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 
-/* PRIORIDADE */
+/* PRIORITY */
 
 .priority-block {
   padding: 26px;
@@ -809,9 +1294,9 @@ textarea {
   height: 58px;
   display: grid;
   place-items: center;
-  border-radius: 16px;
-  background: var(--accent);
   color: #090b0d;
+  background: var(--accent);
+  border-radius: 16px;
   font-size: 2rem;
   font-weight: 900;
 }
@@ -824,7 +1309,7 @@ textarea {
 .priority-block p {
   margin-top: 6px;
   color: var(--text-soft);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
 /* ACTION PLAN */
@@ -857,21 +1342,21 @@ textarea {
 
 .action-items article > span {
   color: var(--accent);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 800;
 }
 
 .action-items strong {
-  font-size: 0.95rem;
+  font-size: 0.93rem;
 }
 
 .action-items p {
   margin-top: 4px;
   color: var(--text-soft);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
 }
 
-/* RECOMENDAÇÃO */
+/* RECOMMENDATION */
 
 .implementation-recommendation {
   padding: 28px;
@@ -896,7 +1381,7 @@ textarea {
 .implementation-recommendation p {
   margin-top: 10px;
   color: var(--text-soft);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
 }
 
 .implementation-tags {
@@ -908,64 +1393,18 @@ textarea {
 
 .implementation-tags span {
   padding: 8px 11px;
+  color: var(--text-soft);
+  font-size: 0.72rem;
   border: 1px solid rgba(213, 255, 63, 0.17);
   border-radius: 999px;
   background: rgba(213, 255, 63, 0.06);
-  color: var(--text-soft);
-  font-size: 0.74rem;
 }
 
-/* VALOR DO DIAGNÓSTICO */
-
-.diagnostic-value {
-  margin-top: 90px;
-}
-
-.diagnostic-value-heading {
-  max-width: 750px;
-}
-
-.diagnostic-value-heading h2 {
-  font-size: clamp(2.3rem, 7vw, 4.3rem);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
-}
-
-.diagnostic-value-grid {
-  display: grid;
-  gap: 12px;
-  margin-top: 38px;
-}
-
-.diagnostic-value-grid article {
-  padding: 22px;
-  border-radius: 20px;
-  border: 1px solid var(--line);
-  background: var(--bg-card);
-}
-
-.diagnostic-value-grid article > span {
-  color: var(--accent);
-  font-size: 0.7rem;
-  font-weight: 800;
-}
-
-.diagnostic-value-grid h3 {
-  margin-top: 26px;
-  font-size: 1.15rem;
-}
-
-.diagnostic-value-grid p {
-  margin-top: 6px;
-  color: var(--text-soft);
-  font-size: 0.84rem;
-}
-
-/* CTA DIAGNÓSTICO */
+/* CTA DIAGNOSTIC */
 
 .diagnostic-main-cta {
   max-width: 900px;
-  margin: 100px auto 0;
+  margin: 90px auto 0;
   text-align: center;
 }
 
@@ -990,50 +1429,12 @@ textarea {
   display: block;
   margin-top: 15px;
   color: var(--text-muted);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
 }
 
-/* =========================================
-   COMO FUNCIONA
-========================================= */
-
-.steps-section {
-  padding: 100px 0;
-}
-
-.steps-grid {
-  display: grid;
-  gap: 14px;
-}
-
-.steps-grid article {
-  min-height: 210px;
-  padding: 24px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--line);
-  background: var(--bg-card);
-}
-
-.steps-grid article > span {
-  color: var(--accent);
-  font-size: 0.75rem;
-  font-weight: 800;
-}
-
-.steps-grid h3 {
-  margin-top: 42px;
-  font-size: 1.35rem;
-}
-
-.steps-grid p {
-  margin-top: 8px;
-  color: var(--text-soft);
-  font-size: 0.9rem;
-}
-
-/* =========================================
+/* ======================================================
    SOBRE DIEGO
-========================================= */
+====================================================== */
 
 .about-section {
   padding: 100px 0;
@@ -1050,8 +1451,8 @@ textarea {
 
 .about-image {
   overflow: hidden;
-  border-radius: var(--radius-lg);
   border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
   background: var(--bg-card);
   box-shadow: var(--shadow);
 }
@@ -1066,7 +1467,7 @@ textarea {
 .about-content h3 {
   margin-top: 14px;
   color: var(--text-soft);
-  font-size: 1.12rem;
+  font-size: 1.1rem;
   font-weight: 500;
 }
 
@@ -1078,17 +1479,17 @@ textarea {
 .about-content blockquote {
   margin-top: 28px;
   padding: 22px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.45;
   border-left: 2px solid var(--accent);
   border-radius: 0 18px 18px 0;
   background: var(--accent-soft);
-  font-size: 1.12rem;
-  font-weight: 600;
-  line-height: 1.45;
 }
 
-/* =========================================
-   FILOSOFIA / STRATEGY
-========================================= */
+/* ======================================================
+   FILOSOFIA
+====================================================== */
 
 .philosophy-section {
   padding: 100px 0;
@@ -1099,6 +1500,7 @@ textarea {
 }
 
 .philosophy-heading h2 span {
+  display: block;
   color: var(--text-soft);
 }
 
@@ -1162,78 +1564,76 @@ textarea {
 
 .principle span {
   color: var(--accent);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 800;
 }
 
 .principle strong {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   line-height: 1.2;
 }
 
-/* =========================================
-   APPLICATION / IMPLEMENTATION
-========================================= */
+/* ======================================================
+   FAQ
+====================================================== */
 
-.application-section {
+.faq-section {
   padding: 100px 0;
   background: var(--bg-soft);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 
-.implementation-visual {
-  margin-bottom: 42px;
+.faq-list {
+  display: grid;
+  gap: 10px;
+  max-width: 900px;
+}
+
+.faq-item {
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--bg-card);
-  box-shadow: var(--shadow);
-}
-
-.implementation-visual img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-}
-
-.application-grid {
-  display: grid;
-  gap: 14px;
-}
-
-.application-grid article {
-  padding: 24px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
+  border-radius: 18px;
   background: var(--bg-card);
 }
 
-.application-grid article > strong {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 13px;
-  background: var(--accent-soft);
+.faq-item summary {
+  position: relative;
+  padding: 20px 50px 20px 20px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.96rem;
+  font-weight: 650;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
   color: var(--accent);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
-.application-grid h3 {
-  margin-top: 28px;
-  font-size: 1.25rem;
+.faq-item[open] summary::after {
+  content: "−";
 }
 
-.application-grid p {
-  margin-top: 10px;
+.faq-item p {
+  padding: 0 20px 20px;
   color: var(--text-soft);
   font-size: 0.88rem;
 }
 
-/* =========================================
+/* ======================================================
    FINAL CTA
-========================================= */
+====================================================== */
 
 .final-cta {
   position: relative;
@@ -1244,13 +1644,13 @@ textarea {
 .final-cta::before {
   content: "";
   position: absolute;
-  width: 550px;
-  height: 550px;
-  right: -250px;
-  bottom: -300px;
+  width: 560px;
+  height: 560px;
+  right: -260px;
+  bottom: -320px;
   border-radius: 50%;
   background: rgba(213, 255, 63, 0.14);
-  filter: blur(130px);
+  filter: blur(135px);
 }
 
 .final-cta-grid {
@@ -1275,10 +1675,26 @@ textarea {
   margin-bottom: 28px;
 }
 
+.final-signature {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+}
+
+.final-signature strong {
+  font-size: 0.95rem;
+}
+
+.final-signature span {
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+}
+
 .final-cta-image {
   overflow: hidden;
-  border-radius: var(--radius-lg);
   border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
   background: var(--bg-card);
   box-shadow: var(--shadow);
 }
@@ -1290,9 +1706,9 @@ textarea {
   object-position: center;
 }
 
-/* =========================================
-   WARNING
-========================================= */
+/* ======================================================
+   WARNING TEMPORÁRIO
+====================================================== */
 
 .diagnostic-warning {
   padding: 0 0 100px;
@@ -1300,15 +1716,15 @@ textarea {
 
 .warning-box {
   padding: 26px;
+  text-align: center;
   border: 1px dashed rgba(213, 255, 63, 0.25);
   border-radius: var(--radius-md);
   background: var(--accent-soft);
-  text-align: center;
 }
 
 .warning-box > span {
   color: var(--accent);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.13em;
 }
@@ -1321,16 +1737,16 @@ textarea {
 .warning-box p {
   margin-top: 8px;
   color: var(--text-soft);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
 }
 
-/* =========================================
+/* ======================================================
    FOOTER
-========================================= */
+====================================================== */
 
 .footer {
-  border-top: 1px solid var(--line);
   padding: 32px 0;
+  border-top: 1px solid var(--line);
 }
 
 .footer-content {
@@ -1351,12 +1767,12 @@ textarea {
 .footer span,
 .footer p {
   color: var(--text-muted);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
 }
 
-/* =========================================
-   REVEAL ANIMATIONS
-========================================= */
+/* ======================================================
+   ANIMAÇÕES
+====================================================== */
 
 .reveal {
   opacity: 0;
@@ -1371,9 +1787,9 @@ textarea {
   transform: translateY(0);
 }
 
-/* =========================================
+/* ======================================================
    TABLET
-========================================= */
+====================================================== */
 
 @media (min-width: 700px) {
 
@@ -1383,9 +1799,23 @@ textarea {
 
   .problem-grid,
   .pact-grid,
-  .steps-grid,
-  .principles-grid,
-  .application-grid {
+  .principles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .delivery-groups {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .scenario-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .method-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-combinations {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1400,18 +1830,14 @@ textarea {
   }
 }
 
-/* =========================================
+/* ======================================================
    DESKTOP
-========================================= */
+====================================================== */
 
 @media (min-width: 900px) {
 
   .container {
     width: min(100% - 64px, var(--container));
-  }
-
-  .nav {
-    display: flex;
   }
 
   .hero {
@@ -1437,11 +1863,14 @@ textarea {
 
   .problem-section,
   .pact-section,
-  .diagnostic-section,
+  .delivery-section,
+  .scenario-section,
   .steps-section,
+  .application-section,
+  .diagnostic-section,
   .about-section,
   .philosophy-section,
-  .application-section {
+  .faq-section {
     padding: 130px 0;
   }
 
@@ -1450,28 +1879,80 @@ textarea {
   }
 
   .visual-break-grid {
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: 56px;
+    grid-template-columns: 0.86fr 1.14fr;
+    gap: 58px;
+  }
+
+  .problem-grid,
+  .pact-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .problem-card {
+    min-height: 260px;
+  }
+
+  .pact-card {
+    min-height: 355px;
   }
 
   .pact-system-visual img {
     aspect-ratio: 16 / 8;
   }
 
-  .problem-grid,
-  .pact-grid,
-  .steps-grid,
-  .principles-grid,
-  .application-grid {
+  .delivery-pillar {
+    padding: 34px;
+  }
+
+  .delivery-pillar-head {
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+  }
+
+  .delivery-letter {
+    width: 70px;
+    height: 70px;
+    font-size: 2.35rem;
+  }
+
+  .delivery-groups {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .pact-card {
-    min-height: 360px;
+  .delivery-group {
+    min-height: 260px;
   }
 
-  .problem-card {
-    min-height: 260px;
+  .scenario-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .scenario-card {
+    min-height: 250px;
+    padding: 28px;
+  }
+
+  .method-steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .method-steps article {
+    min-height: 225px;
+  }
+
+  .implementation-visual img {
+    aspect-ratio: 16 / 8;
+  }
+
+  .project-combinations {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .project-combination {
+    min-height: 135px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .diagnostic-intro {
@@ -1480,12 +1961,16 @@ textarea {
   }
 
   .diagnostic-product-preview {
-    grid-template-columns: 0.75fr 1.25fr;
+    grid-template-columns: 0.76fr 1.24fr;
     padding: 34px;
   }
 
   .diagnostic-product-image img {
     aspect-ratio: 16 / 9;
+  }
+
+  .diagnostic-value-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .dashboard-grid {
@@ -1513,17 +1998,9 @@ textarea {
     justify-content: flex-end;
   }
 
-  .diagnostic-value-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .about-grid {
     grid-template-columns: 0.95fr 1.05fr;
     gap: 64px;
-  }
-
-  .about-photo {
-    aspect-ratio: 4 / 5;
   }
 
   .strategy-feature {
@@ -1537,8 +2014,12 @@ textarea {
     min-height: 440px;
   }
 
-  .implementation-visual img {
-    aspect-ratio: 16 / 8;
+  .principles-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .faq-list {
+    max-width: 920px;
   }
 
   .final-cta {
@@ -1546,7 +2027,7 @@ textarea {
   }
 
   .final-cta-grid {
-    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-columns: 0.86fr 1.14fr;
     gap: 64px;
   }
 
@@ -1555,11 +2036,22 @@ textarea {
   }
 }
 
-/* =========================================
-   SMALL MOBILE
-========================================= */
+/* ======================================================
+   NAV DESKTOP MAIOR
+====================================================== */
 
-@media (max-width: 520px) {
+@media (min-width: 1120px) {
+
+  .nav {
+    display: flex;
+  }
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 699px) {
 
   .header .btn-small {
     display: none;
@@ -1582,17 +2074,47 @@ textarea {
     object-position: 60% center;
   }
 
+  .problem-card,
+  .pact-card,
+  .delivery-pillar,
+  .scenario-card,
+  .method-steps article,
+  .diagnostic-value-grid article {
+    padding: 20px;
+  }
+
+  .delivery-pillar-head {
+    grid-template-columns: 1fr;
+  }
+
+  .delivery-letter {
+    width: 52px;
+    height: 52px;
+    font-size: 1.8rem;
+  }
+
+  .commercial-capabilities {
+    gap: 6px;
+  }
+
+  .commercial-capabilities span {
+    padding: 7px 9px;
+    font-size: 0.7rem;
+  }
+
+  .scenario-flow {
+    gap: 5px;
+  }
+
+  .scenario-flow span {
+    font-size: 0.67rem;
+    padding: 6px 8px;
+  }
+
   .visual-break-copy h2,
   .diagnostic-intro h2,
   .diagnostic-main-cta h2 {
     font-size: 2.55rem;
-  }
-
-  .problem-card,
-  .pact-card,
-  .steps-grid article,
-  .application-grid article {
-    padding: 20px;
   }
 
   .pact-system-visual img,
@@ -1611,7 +2133,7 @@ textarea {
   }
 
   .dashboard-score strong {
-    font-size: 3.2rem;
+    font-size: 3.15rem;
   }
 
   .diagnostic-product-preview {
@@ -1626,14 +2148,49 @@ textarea {
     aspect-ratio: 4 / 3;
   }
 
+  .principle {
+    min-height: 130px;
+  }
+
   .final-cta-image img {
     aspect-ratio: 4 / 3;
   }
 }
 
-/* =========================================
+/* ======================================================
+   SMALL MOBILE
+====================================================== */
+
+@media (max-width: 390px) {
+
+  .container {
+    width: min(100% - 28px, var(--container));
+  }
+
+  .hero h1 {
+    font-size: 2.75rem;
+  }
+
+  .section-heading h2,
+  .problem-section h2,
+  .about-content h2,
+  .philosophy-heading h2,
+  .final-cta h2 {
+    font-size: 2.2rem;
+  }
+
+  .delivery-pillar-head h3 {
+    font-size: 1.55rem;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+  }
+}
+
+/* ======================================================
    ACCESSIBILITY
-========================================= */
+====================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1645,6 +2202,10 @@ textarea {
   .reveal.visible {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+
+  .btn {
     transition: none;
   }
 }
