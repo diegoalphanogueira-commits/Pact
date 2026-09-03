@@ -911,3 +911,41 @@ textarea {
   }
 
 }
+
+/* =========================================================
+   MOBILE HERO — FINAL OVERRIDE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .hero {
+    height: auto !important;
+    min-height: auto !important;
+
+    display: block;
+
+    padding: 0;
+  }
+
+  .hero-container {
+    width: calc(100% - 32px);
+
+    margin: 0 auto;
+
+    padding-top: 360px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .hero-pact {
+    display: none !important;
+  }
+
+  .scroll-indicator {
+    display: none !important;
+  }
+}
