@@ -32,7 +32,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -890,7 +890,10 @@ textarea {
   }
 
 }
-
+.hero-video,
+.hero-content {
+  will-change: transform, opacity;
+}
 
 /* =========================================================
    ACCESSIBILITY
