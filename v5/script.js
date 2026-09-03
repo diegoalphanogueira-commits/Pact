@@ -2620,6 +2620,687 @@ mm.add("(max-width: 640px)", () => {
   };
 
 });
+
+/* ======================================================
+   SCREEN 06 — STRATEGIC REASONING STORY
+====================================================== */
+
+const reasoningBranches =
+  gsap.utils.toArray(
+    ".reasoning-branch"
+  );
+
+
+const reasoningTrunk =
+  document.querySelector(
+    ".reasoning-trunk"
+  );
+
+
+const reasoningConclusion =
+  document.querySelector(
+    ".reasoning-conclusion"
+  );
+
+
+
+/* ======================================================
+   HELPERS
+====================================================== */
+
+function resetReasoningBranches() {
+
+  reasoningBranches.forEach(
+    (branch) => {
+
+      branch.classList.remove(
+        "is-active",
+        "is-muted"
+      );
+
+    }
+  );
+
+}
+
+
+function activateReasoningBranch(index) {
+
+  reasoningBranches.forEach(
+    (branch, branchIndex) => {
+
+      branch.classList.toggle(
+        "is-active",
+        branchIndex === index
+      );
+
+
+      branch.classList.toggle(
+        "is-muted",
+        branchIndex !== index
+      );
+
+    }
+  );
+
+}
+
+
+function muteAllReasoningBranches() {
+
+  reasoningBranches.forEach(
+    (branch) => {
+
+      branch.classList.remove(
+        "is-active"
+      );
+
+      branch.classList.add(
+        "is-muted"
+      );
+
+    }
+  );
+
+}
+
+
+
+/* ======================================================
+   DESKTOP
+====================================================== */
+
+mm.add("(min-width: 641px)", () => {
+
+  /*
+    linha central nasce verticalmente
+  */
+
+  gsap.set(
+    reasoningTrunk,
+    {
+      scaleY: 0,
+      transformOrigin: "top center"
+    }
+  );
+
+
+  /*
+    linha horizontal nasce do centro
+  */
+
+  gsap.set(
+    ".reasoning-system",
+    {
+      "--reasoning-line-progress": 0
+    }
+  );
+
+
+  /*
+    ramos entram discretamente
+  */
+
+  gsap.set(
+    reasoningBranches,
+    {
+      autoAlpha: 0.34,
+      y: 24
+    }
+  );
+
+
+  const reasoningDesktopTimeline =
+    gsap.timeline({
+
+      scrollTrigger: {
+
+        trigger:
+          ".reasoning-system",
+
+        start:
+          "top 12%",
+
+        end:
+          "+=230%",
+
+        pin: true,
+
+        scrub: 0.8,
+
+        anticipatePin: 1,
+
+        invalidateOnRefresh: true,
+
+
+        onEnter: () => {
+
+          resetReasoningBranches();
+
+        },
+
+
+        onEnterBack: () => {
+
+          resetReasoningBranches();
+
+        },
+
+
+        onUpdate: (self) => {
+
+          const progress =
+            self.progress;
+
+
+          /*
+            0 → 22%
+            sistema se formando
+          */
+
+          if (progress < 0.22) {
+
+            resetReasoningBranches();
+
+          }
+
+
+          /*
+            22 → 42%
+            AQUISIÇÃO
+          */
+
+          else if (progress < 0.42) {
+
+            activateReasoningBranch(0);
+
+          }
+
+
+          /*
+            42 → 62%
+            COMERCIAL
+          */
+
+          else if (progress < 0.62) {
+
+            activateReasoningBranch(1);
+
+          }
+
+
+          /*
+            62 → 82%
+            TECNOLOGIA
+          */
+
+          else if (progress < 0.82) {
+
+            activateReasoningBranch(2);
+
+          }
+
+
+          /*
+            final:
+            nenhum deles é "a resposta automática"
+          */
+
+          else {
+
+            muteAllReasoningBranches();
+
+          }
+
+        },
+
+
+        onLeave: () => {
+
+          muteAllReasoningBranches();
+
+        },
+
+
+        onLeaveBack: () => {
+
+          resetReasoningBranches();
+
+        }
+
+      }
+
+    });
+
+
+
+  reasoningDesktopTimeline
+
+    /* linha desce da frase */
+
+    .to(
+      reasoningTrunk,
+      {
+        scaleY: 1,
+
+        duration: 0.34,
+
+        ease: "none"
+      }
+    )
+
+
+    /* três caminhos entram */
+
+    .to(
+      reasoningBranches,
+      {
+        autoAlpha: 1,
+
+        y: 0,
+
+        duration: 0.55,
+
+        stagger: 0.09,
+
+        ease: "power3.out"
+      },
+      "-=0.10"
+    )
+
+
+    /*
+      tempo destinado ao A
+    */
+
+    .to(
+      {},
+      {
+        duration: 0.78
+      }
+    )
+
+
+    /*
+      tempo destinado ao C
+    */
+
+    .to(
+      {},
+      {
+        duration: 0.78
+      }
+    )
+
+
+    /*
+      tempo destinado ao T
+    */
+
+    .to(
+      {},
+      {
+        duration: 0.78
+      }
+    )
+
+
+    /*
+      os três caminhos recuam
+      antes da conclusão
+    */
+
+    .to(
+      reasoningBranches,
+      {
+        autoAlpha: 0.28,
+
+        scale: 0.985,
+
+        duration: 0.48,
+
+        ease: "power2.out"
+      }
+    )
+
+
+    /*
+      respiro
+    */
+
+    .to(
+      {},
+      {
+        duration: 0.30
+      }
+    );
+
+
+  return () => {
+
+    resetReasoningBranches();
+
+  };
+
+});
+
+
+
+/* ======================================================
+   CONCLUSION — DESKTOP
+====================================================== */
+
+mm.add("(min-width: 641px)", () => {
+
+  const conclusionLine =
+    document.querySelector(
+      ".reasoning-conclusion-line"
+    );
+
+
+  const conclusionFirst =
+    document.querySelector(
+      ".reasoning-conclusion p"
+    );
+
+
+  const conclusionStrong =
+    document.querySelector(
+      ".reasoning-conclusion > strong"
+    );
+
+
+  const conclusionSmall =
+    document.querySelector(
+      ".reasoning-conclusion > small"
+    );
+
+
+  const conclusionTimeline =
+    gsap.timeline({
+
+      scrollTrigger: {
+
+        trigger:
+          ".reasoning-conclusion",
+
+        start:
+          "top 80%",
+
+        end:
+          "top 32%",
+
+        scrub: 0.75,
+
+        invalidateOnRefresh: true
+
+      }
+
+    });
+
+
+  conclusionTimeline
+
+    .from(
+      conclusionLine,
+      {
+        scaleY: 0,
+
+        transformOrigin:
+          "top center",
+
+        duration: 0.28
+      }
+    )
+
+
+    .from(
+      conclusionFirst,
+      {
+        autoAlpha: 0,
+
+        y: 28,
+
+        duration: 0.42
+      }
+    )
+
+
+    .from(
+      conclusionStrong,
+      {
+        autoAlpha: 0,
+
+        y: 34,
+
+        duration: 0.55
+      },
+      "-=0.16"
+    )
+
+
+    .from(
+      conclusionSmall,
+      {
+        autoAlpha: 0,
+
+        y: 18,
+
+        duration: 0.36
+      },
+      "-=0.20"
+    );
+
+});
+
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+mm.add("(max-width: 640px)", () => {
+
+  /*
+    Cada ramo ganha protagonismo
+    quando atravessa o centro da tela.
+  */
+
+  reasoningBranches.forEach(
+    (branch, index) => {
+
+      ScrollTrigger.create({
+
+        trigger: branch,
+
+        start:
+          "top 62%",
+
+        end:
+          "bottom 38%",
+
+        onEnter: () => {
+
+          activateReasoningBranch(index);
+
+        },
+
+
+        onEnterBack: () => {
+
+          activateReasoningBranch(index);
+
+        },
+
+
+        onLeave: () => {
+
+          branch.classList.remove(
+            "is-active"
+          );
+
+        },
+
+
+        onLeaveBack: () => {
+
+          branch.classList.remove(
+            "is-active"
+          );
+
+        }
+
+      });
+
+
+
+      /*
+        conteúdo sobe suavemente
+      */
+
+      gsap.from(
+        branch.querySelector(
+          ".reasoning-branch-head"
+        ),
+        {
+          autoAlpha: 0,
+
+          y: 24,
+
+          scrollTrigger: {
+
+            trigger: branch,
+
+            start:
+              "top 78%",
+
+            end:
+              "top 48%",
+
+            scrub: 0.65
+
+          }
+        }
+      );
+
+
+      gsap.from(
+        branch.querySelector(
+          ".reasoning-branch-body"
+        ),
+        {
+          autoAlpha: 0,
+
+          y: 28,
+
+          scrollTrigger: {
+
+            trigger: branch,
+
+            start:
+              "top 60%",
+
+            end:
+              "center 36%",
+
+            scrub: 0.7
+
+          }
+        }
+      );
+
+    }
+  );
+
+
+
+  /* ====================================================
+     MOBILE CONCLUSION
+  ==================================================== */
+
+  const mobileConclusion =
+    gsap.timeline({
+
+      scrollTrigger: {
+
+        trigger:
+          ".reasoning-conclusion",
+
+        start:
+          "top 76%",
+
+        end:
+          "top 30%",
+
+        scrub: 0.7,
+
+        invalidateOnRefresh: true
+
+      }
+
+    });
+
+
+  mobileConclusion
+
+    .from(
+      ".reasoning-conclusion-line",
+      {
+        scaleY: 0,
+
+        transformOrigin:
+          "top center",
+
+        duration: 0.25
+      }
+    )
+
+
+    .from(
+      ".reasoning-conclusion p",
+      {
+        autoAlpha: 0,
+
+        y: 24,
+
+        duration: 0.38
+      }
+    )
+
+
+    .from(
+      ".reasoning-conclusion > strong",
+      {
+        autoAlpha: 0,
+
+        y: 30,
+
+        duration: 0.50
+      },
+      "-=0.15"
+    )
+
+
+    .from(
+      ".reasoning-conclusion > small",
+      {
+        autoAlpha: 0,
+
+        y: 16,
+
+        duration: 0.32
+      },
+      "-=0.18"
+    );
+
+
+  return () => {
+
+    resetReasoningBranches();
+
+  };
+
+});
   
   /* ======================================================
      REFRESH
