@@ -5268,3 +5268,64 @@ textarea {
   }
 
 }
+
+/* =========================================================
+   SCREEN 05 — DIAGNOSTIC MOTION STATES
+========================================================= */
+
+.priority-origin-core,
+.priority-path-signal,
+.priority-diagnosis-item,
+.priority-prescription-top,
+.priority-prescription-main,
+.priority-prescription-actions,
+.priority-prescription-result {
+  will-change: transform, opacity;
+}
+
+
+.priority-diagnosis-item {
+  transition:
+    opacity 260ms ease,
+    background 260ms ease;
+}
+
+
+.priority-diagnosis-item > span {
+  transition:
+    color 260ms ease,
+    background 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    transform 260ms ease;
+}
+
+
+.priority-diagnosis-item strong,
+.priority-diagnosis-item small {
+  transition:
+    color 260ms ease;
+}
+
+
+/* estado momentâneo durante a análise */
+
+.priority-diagnosis-item.scanning {
+  opacity: 0.88;
+}
+
+
+.priority-diagnosis-item.scanning > span {
+  color: #d5ff3f;
+
+  border-color:
+    rgba(213, 255, 63, 0.55);
+
+  background:
+    rgba(213, 255, 63, 0.045);
+
+  box-shadow:
+    0 0 24px rgba(213, 255, 63, 0.08);
+
+  transform: scale(1.06);
+}
