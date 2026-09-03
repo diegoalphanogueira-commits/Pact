@@ -1899,6 +1899,727 @@ implementationTabs.forEach((tab) => {
   );
 
 });
+
+/* ======================================================
+   SCREEN 05 — PRIORITY / DIAGNOSTIC STORY
+====================================================== */
+
+const priorityItems =
+  gsap.utils.toArray(
+    ".priority-diagnosis-item"
+  );
+
+
+const prioritySignal =
+  document.querySelector(
+    ".priority-path-signal"
+  );
+
+
+const priorityOriginCore =
+  document.querySelector(
+    ".priority-origin-core"
+  );
+
+
+const priorityPrescriptionTop =
+  document.querySelector(
+    ".priority-prescription-top"
+  );
+
+
+const priorityPrescriptionMain =
+  document.querySelector(
+    ".priority-prescription-main"
+  );
+
+
+const priorityPrescriptionActions =
+  document.querySelector(
+    ".priority-prescription-actions"
+  );
+
+
+const priorityPrescriptionResult =
+  document.querySelector(
+    ".priority-prescription-result"
+  );
+
+
+
+/* ======================================================
+   HELPERS
+====================================================== */
+
+function clearPriorityState() {
+
+  priorityItems.forEach((item) => {
+
+    item.classList.remove(
+      "active",
+      "scanning"
+    );
+
+  });
+
+}
+
+
+function scanPriorityPillar(index) {
+
+  clearPriorityState();
+
+
+  if (priorityItems[index]) {
+
+    priorityItems[index].classList.add(
+      "scanning"
+    );
+
+  }
+
+}
+
+
+function resolvePriority() {
+
+  clearPriorityState();
+
+
+  const acquisition =
+    document.querySelector(
+      '.priority-diagnosis-item[data-priority="a"]'
+    );
+
+
+  if (acquisition) {
+
+    acquisition.classList.add(
+      "active"
+    );
+
+  }
+
+}
+
+
+function restorePriorityDefault() {
+
+  resolvePriority();
+
+}
+
+
+
+/* ======================================================
+   DESKTOP
+====================================================== */
+
+mm.add("(min-width: 641px)", () => {
+
+
+  /*
+    Prescrição existe visualmente,
+    mas o conteúdo começa escondido.
+  */
+
+  gsap.set(
+    [
+      priorityPrescriptionTop,
+      priorityPrescriptionMain,
+      priorityPrescriptionActions,
+      priorityPrescriptionResult
+    ],
+    {
+      autoAlpha: 0
+    }
+  );
+
+
+  gsap.set(
+    priorityPrescriptionMain,
+    {
+      y: 28
+    }
+  );
+
+
+  gsap.set(
+    priorityPrescriptionActions,
+    {
+      y: 18
+    }
+  );
+
+
+  gsap.set(
+    priorityPrescriptionResult,
+    {
+      y: 14
+    }
+  );
+
+
+  const priorityDesktopTimeline =
+    gsap.timeline({
+
+      scrollTrigger: {
+
+        trigger: ".priority-flow",
+
+        start: "top 14%",
+
+        end: "+=210%",
+
+        pin: true,
+
+        scrub: 0.75,
+
+        anticipatePin: 1,
+
+        invalidateOnRefresh: true,
+
+
+        onEnter: () => {
+
+          clearPriorityState();
+
+        },
+
+
+        onEnterBack: () => {
+
+          clearPriorityState();
+
+        },
+
+
+        onUpdate: (self) => {
+
+          const progress =
+            self.progress;
+
+
+          /*
+            0 → 14%
+            sistema entrando
+          */
+
+          if (progress < 0.14) {
+
+            clearPriorityState();
+
+          }
+
+
+          /*
+            14 → 24%
+            analisa P
+          */
+
+          else if (progress < 0.24) {
+
+            scanPriorityPillar(0);
+
+          }
+
+
+          /*
+            24 → 34%
+            analisa A
+          */
+
+          else if (progress < 0.34) {
+
+            scanPriorityPillar(1);
+
+          }
+
+
+          /*
+            34 → 44%
+            analisa C
+          */
+
+          else if (progress < 0.44) {
+
+            scanPriorityPillar(2);
+
+          }
+
+
+          /*
+            44 → 54%
+            analisa T
+          */
+
+          else if (progress < 0.54) {
+
+            scanPriorityPillar(3);
+
+          }
+
+
+          /*
+            54%+
+            diagnóstico resolvido:
+            volta para A
+          */
+
+          else {
+
+            resolvePriority();
+
+          }
+
+        },
+
+
+        onLeave: () => {
+
+          resolvePriority();
+
+        },
+
+
+        onLeaveBack: () => {
+
+          restorePriorityDefault();
+
+        }
+
+      }
+
+    });
+
+
+
+  /* ====================================================
+     ORIGIN — OBJETIVO
+  ==================================================== */
+
+  priorityDesktopTimeline
+
+    .fromTo(
+      priorityOriginCore,
+      {
+        scale: 0.92
+      },
+      {
+        scale: 1.05,
+
+        duration: 0.34,
+
+        ease: "power2.out"
+      }
+    )
+
+
+    .to(
+      priorityOriginCore,
+      {
+        scale: 1,
+
+        duration: 0.24
+      }
+    )
+
+
+
+    /* ==================================================
+       SINAL PERCORRE O CAMINHO
+    ================================================== */
+
+    .fromTo(
+      prioritySignal,
+      {
+        left: "8%",
+
+        autoAlpha: 0.25
+      },
+      {
+        left: "82%",
+
+        autoAlpha: 1,
+
+        duration: 1.25,
+
+        ease: "none"
+      },
+      "-=0.20"
+    )
+
+
+
+    /* ==================================================
+       TEMPO DE ANÁLISE P / A / C / T
+    ================================================== */
+
+    .to(
+      {},
+      {
+        duration: 1.25
+      }
+    )
+
+
+
+    /* ==================================================
+       A É ISOLADO COMO PRIORIDADE
+    ================================================== */
+
+    .fromTo(
+      '.priority-diagnosis-item[data-priority="a"] > span',
+      {
+        scale: 0.86
+      },
+      {
+        scale: 1,
+
+        duration: 0.42,
+
+        ease: "back.out(1.7)"
+      }
+    )
+
+
+
+    /* ==================================================
+       PRESCRIÇÃO SURGE
+    ================================================== */
+
+    .to(
+      priorityPrescriptionTop,
+      {
+        autoAlpha: 1,
+
+        duration: 0.28
+      }
+    )
+
+
+    .to(
+      priorityPrescriptionMain,
+      {
+        autoAlpha: 1,
+
+        y: 0,
+
+        duration: 0.52,
+
+        ease: "power3.out"
+      },
+      "-=0.08"
+    )
+
+
+    .to(
+      priorityPrescriptionActions,
+      {
+        autoAlpha: 1,
+
+        y: 0,
+
+        duration: 0.38,
+
+        ease: "power3.out"
+      },
+      "-=0.20"
+    )
+
+
+    .to(
+      priorityPrescriptionResult,
+      {
+        autoAlpha: 1,
+
+        y: 0,
+
+        duration: 0.38,
+
+        ease: "power3.out"
+      },
+      "-=0.18"
+    )
+
+
+    /* respiro final */
+
+    .to(
+      {},
+      {
+        duration: 0.45
+      }
+    );
+
+
+  return () => {
+
+    restorePriorityDefault();
+
+  };
+
+});
+
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+mm.add("(max-width: 640px)", () => {
+
+
+  /*
+    No mobile NÃO prendemos toda a seção.
+    O fluxo acompanha a rolagem natural.
+  */
+
+
+  /* objetivo pulsa ao chegar */
+
+  gsap.fromTo(
+    priorityOriginCore,
+    {
+      scale: 0.91
+    },
+    {
+      scale: 1,
+
+      scrollTrigger: {
+
+        trigger:
+          ".priority-origin",
+
+        start:
+          "top 72%",
+
+        end:
+          "center 45%",
+
+        scrub: 0.7
+
+      }
+    }
+  );
+
+
+
+  /* ====================================================
+     CAMINHO VERTICAL
+  ==================================================== */
+
+  gsap.fromTo(
+    prioritySignal,
+    {
+      top: "8%",
+
+      height: 20,
+
+      autoAlpha: 0.3
+    },
+    {
+      top: "72%",
+
+      height: 32,
+
+      autoAlpha: 1,
+
+      ease: "none",
+
+      scrollTrigger: {
+
+        trigger:
+          ".priority-path",
+
+        start:
+          "top 78%",
+
+        end:
+          "bottom 38%",
+
+        scrub: 0.65
+
+      }
+    }
+  );
+
+
+
+  /* ====================================================
+     ANÁLISE P → A → C → T → A
+  ==================================================== */
+
+  ScrollTrigger.create({
+
+    trigger:
+      ".priority-diagnosis",
+
+    start:
+      "top 68%",
+
+    end:
+      "bottom 32%",
+
+    scrub: true,
+
+
+    onEnter: () => {
+
+      clearPriorityState();
+
+    },
+
+
+    onEnterBack: () => {
+
+      clearPriorityState();
+
+    },
+
+
+    onUpdate: (self) => {
+
+      const progress =
+        self.progress;
+
+
+      if (progress < 0.18) {
+
+        scanPriorityPillar(0);
+
+      }
+
+      else if (progress < 0.36) {
+
+        scanPriorityPillar(1);
+
+      }
+
+      else if (progress < 0.54) {
+
+        scanPriorityPillar(2);
+
+      }
+
+      else if (progress < 0.72) {
+
+        scanPriorityPillar(3);
+
+      }
+
+      else {
+
+        resolvePriority();
+
+      }
+
+    },
+
+
+    onLeave: () => {
+
+      resolvePriority();
+
+    },
+
+
+    onLeaveBack: () => {
+
+      restorePriorityDefault();
+
+    }
+
+  });
+
+
+
+  /* ====================================================
+     PRESCRIÇÃO MOBILE
+  ==================================================== */
+
+  const mobilePrescriptionTimeline =
+    gsap.timeline({
+
+      scrollTrigger: {
+
+        trigger:
+          ".priority-prescription",
+
+        start:
+          "top 74%",
+
+        end:
+          "top 26%",
+
+        scrub: 0.7,
+
+        invalidateOnRefresh: true
+
+      }
+
+    });
+
+
+  mobilePrescriptionTimeline
+
+    .from(
+      priorityPrescriptionTop,
+      {
+        autoAlpha: 0,
+
+        y: 12,
+
+        duration: 0.25
+      }
+    )
+
+
+    .from(
+      priorityPrescriptionMain,
+      {
+        autoAlpha: 0,
+
+        y: 28,
+
+        duration: 0.48
+      }
+    )
+
+
+    .from(
+      priorityPrescriptionActions,
+      {
+        autoAlpha: 0,
+
+        y: 18,
+
+        duration: 0.34
+      },
+      "-=0.18"
+    )
+
+
+    .from(
+      priorityPrescriptionResult,
+      {
+        autoAlpha: 0,
+
+        y: 14,
+
+        duration: 0.32
+      },
+      "-=0.16"
+    );
+
+
+  return () => {
+
+    restorePriorityDefault();
+
+  };
+
+});
   
   /* ======================================================
      REFRESH
