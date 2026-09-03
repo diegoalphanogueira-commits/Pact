@@ -3989,3 +3989,1282 @@ textarea {
   }
 
 }
+
+/* =========================================================
+   SCREEN 05 — PRIORITY
+========================================================= */
+
+.priority-section {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 67% 48%,
+      rgba(213, 255, 63, 0.045),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #050709 0%,
+      #070a0d 52%,
+      #050709 100%
+    );
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.055);
+}
+
+
+/* subtle architecture */
+
+.priority-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    80px 80px;
+
+  opacity: 0.33;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 14%,
+      black 86%,
+      transparent
+    );
+}
+
+
+.priority-stage {
+  position: relative;
+  z-index: 1;
+
+  width:
+    min(1280px, calc(100% - 80px));
+
+  margin:
+    0 auto;
+
+  padding:
+    140px 0 112px;
+}
+
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.priority-intro {
+  max-width: 960px;
+}
+
+
+.priority-kicker {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 12px;
+
+  color: #d5ff3f;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+
+.priority-kicker::before {
+  content: "";
+
+  width: 38px;
+  height: 1px;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 16px rgba(213, 255, 63, 0.32);
+}
+
+
+.priority-title {
+  max-width: 960px;
+
+  margin:
+    24px 0 0;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(3.5rem, 5.8vw, 5.35rem);
+
+  line-height: 0.98;
+
+  letter-spacing: -0.06em;
+
+  font-weight: 500;
+}
+
+
+.priority-title span {
+  color:
+    rgba(246, 247, 248, 0.38);
+}
+
+
+.priority-title strong {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #d5ff3f;
+
+  font-weight: 500;
+}
+
+
+
+/* =========================================================
+   FLOW
+========================================================= */
+
+.priority-flow {
+  position: relative;
+
+  margin-top: 110px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(190px, 0.72fr)
+    90px
+    minmax(280px, 0.95fr)
+    minmax(350px, 1.18fr);
+
+  align-items: stretch;
+
+  min-height: 620px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.075);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.075);
+}
+
+
+
+/* =========================================================
+   ORIGIN
+========================================================= */
+
+.priority-origin {
+  position: relative;
+
+  padding:
+    54px 34px 48px 0;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+
+.priority-origin-label {
+  position: absolute;
+
+  left: 0;
+  top: 34px;
+
+  color:
+    rgba(246, 247, 248, 0.27);
+
+  font-size: 0.61rem;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+
+.priority-origin-core {
+  position: relative;
+
+  width: 174px;
+  height: 174px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.09);
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(213, 255, 63, 0.08),
+      rgba(10, 13, 16, 0.76) 55%,
+      rgba(5, 7, 9, 0.9)
+    );
+
+  box-shadow:
+    0 0 60px rgba(213, 255, 63, 0.035);
+}
+
+
+.priority-origin-core::before,
+.priority-origin-core::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.priority-origin-core::before {
+  width: 126px;
+  height: 126px;
+
+  border:
+    1px solid rgba(213, 255, 63, 0.14);
+}
+
+
+.priority-origin-core::after {
+  width: 204px;
+  height: 204px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.035);
+}
+
+
+.priority-origin-core span {
+  color: #f6f7f8;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+
+.priority-origin p {
+  max-width: 205px;
+
+  margin-top: 38px;
+
+  color:
+    rgba(246, 247, 248, 0.42);
+
+  font-size: 0.82rem;
+
+  line-height: 1.65;
+}
+
+
+
+/* =========================================================
+   PATH
+========================================================= */
+
+.priority-path {
+  position: relative;
+
+  min-height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.priority-path-line {
+  position: absolute;
+
+  top: 50%;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(213, 255, 63, 0.3),
+      rgba(255, 255, 255, 0.07)
+    );
+}
+
+
+.priority-path-point {
+  position: absolute;
+
+  top: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  margin-top: -2px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(213, 255, 63, 0.46);
+}
+
+
+.priority-path-point-1 {
+  left: 12%;
+}
+
+
+.priority-path-point-2 {
+  left: 48%;
+}
+
+
+.priority-path-point-3 {
+  right: 9%;
+}
+
+
+.priority-path-signal {
+  position: absolute;
+
+  left: 10%;
+  top: 50%;
+
+  width: 20px;
+  height: 1px;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 12px rgba(213, 255, 63, 0.55);
+}
+
+
+
+/* =========================================================
+   DIAGNOSIS
+========================================================= */
+
+.priority-diagnosis {
+  position: relative;
+
+  padding:
+    54px 42px;
+
+  border-left:
+    1px solid rgba(255, 255, 255, 0.06);
+
+  border-right:
+    1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.priority-diagnosis-label {
+  color: #d5ff3f;
+
+  font-size: 0.61rem;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
+
+.priority-diagnosis h3 {
+  max-width: 300px;
+
+  margin:
+    30px 0 42px;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(1.85rem, 2.4vw, 2.5rem);
+
+  line-height: 1.07;
+
+  letter-spacing: -0.045em;
+
+  font-weight: 500;
+}
+
+
+.priority-diagnosis h3 strong {
+  display: block;
+
+  color: #d5ff3f;
+
+  font-weight: 500;
+}
+
+
+
+/* =========================================================
+   DIAGNOSIS OPTIONS
+========================================================= */
+
+.priority-diagnosis-options {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.priority-diagnosis-item {
+  position: relative;
+
+  min-height: 76px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding:
+    13px 8px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.055);
+
+  opacity: 0.48;
+}
+
+
+.priority-diagnosis-item:last-child {
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.055);
+}
+
+
+.priority-diagnosis-item > span {
+  width: 38px;
+  height: 38px;
+
+  flex:
+    0 0 38px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  color:
+    rgba(246, 247, 248, 0.58);
+
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+
+.priority-diagnosis-item > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.priority-diagnosis-item strong {
+  color:
+    rgba(246, 247, 248, 0.75);
+
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+
+.priority-diagnosis-item small {
+  color:
+    rgba(246, 247, 248, 0.34);
+
+  font-size: 0.64rem;
+
+  line-height: 1.45;
+}
+
+
+
+/* ACTIVE DIAGNOSIS */
+
+.priority-diagnosis-item.active {
+  opacity: 1;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(213, 255, 63, 0.055),
+      transparent
+    );
+}
+
+
+.priority-diagnosis-item.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 18%;
+
+  width: 2px;
+  height: 64%;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 14px rgba(213, 255, 63, 0.4);
+}
+
+
+.priority-diagnosis-item.active > span {
+  color: #050709;
+
+  border-color: #d5ff3f;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 24px rgba(213, 255, 63, 0.12);
+}
+
+
+.priority-diagnosis-item.active strong {
+  color: #f6f7f8;
+}
+
+
+.priority-diagnosis-item.active small {
+  color:
+    rgba(246, 247, 248, 0.52);
+}
+
+
+
+/* =========================================================
+   PRESCRIPTION
+========================================================= */
+
+.priority-prescription {
+  position: relative;
+
+  padding:
+    54px 0 0 52px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(213, 255, 63, 0.025),
+      transparent 48%
+    );
+}
+
+
+.priority-prescription::before {
+  content: "";
+
+  position: absolute;
+
+  right: -120px;
+  top: 120px;
+
+  width: 320px;
+  height: 320px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(213, 255, 63, 0.035);
+
+  filter: blur(65px);
+
+  pointer-events: none;
+}
+
+
+.priority-prescription-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-right: 12px;
+}
+
+
+.priority-prescription-top span {
+  color:
+    rgba(246, 247, 248, 0.28);
+
+  font-size: 0.57rem;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+}
+
+
+.priority-prescription-top strong {
+  color: #d5ff3f;
+
+  font-size: 0.62rem;
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+}
+
+
+
+/* =========================================================
+   PRESCRIPTION MAIN
+========================================================= */
+
+.priority-prescription-main {
+  position: relative;
+
+  margin-top: 90px;
+
+  padding-right: 28px;
+}
+
+
+.priority-prescription-index {
+  display: block;
+
+  margin-bottom: 19px;
+
+  color:
+    rgba(213, 255, 63, 0.48);
+
+  font-size: 0.64rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+
+.priority-prescription-main h3 {
+  max-width: 470px;
+
+  margin: 0;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(2.55rem, 3.8vw, 3.7rem);
+
+  line-height: 1.02;
+
+  letter-spacing: -0.052em;
+
+  font-weight: 500;
+}
+
+
+.priority-prescription-main h3 strong {
+  display: block;
+
+  color: #d5ff3f;
+
+  font-weight: 500;
+}
+
+
+.priority-prescription-main p {
+  max-width: 430px;
+
+  margin-top: 28px;
+
+  color:
+    rgba(246, 247, 248, 0.48);
+
+  font-size: 0.86rem;
+
+  line-height: 1.7;
+}
+
+
+
+/* =========================================================
+   PRESCRIPTION ACTIONS
+========================================================= */
+
+.priority-prescription-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-top: 34px;
+
+  padding-right: 20px;
+}
+
+
+.priority-prescription-actions span {
+  padding:
+    8px 11px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.075);
+
+  color:
+    rgba(246, 247, 248, 0.5);
+
+  background:
+    rgba(255, 255, 255, 0.018);
+
+  font-size: 0.66rem;
+  font-weight: 500;
+}
+
+
+
+/* =========================================================
+   NEXT STEP
+========================================================= */
+
+.priority-prescription-result {
+  margin-top: auto;
+
+  min-height: 98px;
+
+  padding:
+    20px 30px 20px 0;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 5px;
+}
+
+
+.priority-prescription-result span {
+  color:
+    rgba(246, 247, 248, 0.25);
+
+  font-size: 0.54rem;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+}
+
+
+.priority-prescription-result strong {
+  max-width: 450px;
+
+  color:
+    rgba(246, 247, 248, 0.82);
+
+  font-size: 0.78rem;
+  font-weight: 500;
+
+  line-height: 1.55;
+}
+
+
+
+/* =========================================================
+   PRINCIPLE
+========================================================= */
+
+.priority-principle {
+  max-width: 980px;
+
+  margin:
+    120px auto 0;
+
+  text-align: center;
+}
+
+
+.priority-principle p {
+  margin: 0;
+
+  color:
+    rgba(246, 247, 248, 0.35);
+
+  font-size:
+    clamp(1.7rem, 2.7vw, 2.6rem);
+
+  line-height: 1.25;
+
+  letter-spacing: -0.035em;
+}
+
+
+.priority-principle strong {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(2rem, 3.4vw, 3.25rem);
+
+  line-height: 1.17;
+
+  letter-spacing: -0.045em;
+
+  font-weight: 500;
+}
+
+
+.priority-principle strong::after {
+  content: "";
+
+  display: block;
+
+  width: 54px;
+  height: 1px;
+
+  margin:
+    34px auto 0;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 18px rgba(213, 255, 63, 0.3);
+}
+
+
+
+/* =========================================================
+   SCREEN NUMBER
+========================================================= */
+
+.priority-screen-index {
+  position: absolute;
+
+  right: -15px;
+  bottom: 24px;
+
+  z-index: -1;
+
+  color:
+    rgba(255, 255, 255, 0.016);
+
+  font-size: 11rem;
+
+  line-height: 0.8;
+
+  font-weight: 500;
+
+  letter-spacing: -0.08em;
+
+  user-select: none;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .priority-stage {
+    width:
+      min(920px, calc(100% - 48px));
+  }
+
+
+  .priority-flow {
+    grid-template-columns:
+      220px 70px 1fr;
+
+    min-height: auto;
+  }
+
+
+  .priority-prescription {
+    grid-column:
+      1 / -1;
+
+    min-height: 520px;
+
+    padding:
+      52px;
+
+    border-top:
+      1px solid rgba(255, 255, 255, 0.07);
+  }
+
+
+  .priority-prescription-main {
+    margin-top: 68px;
+  }
+
+
+  .priority-prescription-result {
+    margin-top: 70px;
+  }
+
+}
+
+
+
+/* =========================================================
+   SCREEN 05 — MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .priority-stage {
+    width:
+      calc(100% - 32px);
+
+    padding:
+      94px 0 76px;
+  }
+
+
+
+  /* INTRO */
+
+  .priority-kicker {
+    font-size: 0.59rem;
+  }
+
+
+  .priority-kicker::before {
+    width: 26px;
+  }
+
+
+  .priority-title {
+    margin-top: 18px;
+
+    font-size:
+      clamp(2.7rem, 12.7vw, 3.45rem);
+
+    line-height: 0.99;
+  }
+
+
+  .priority-title strong {
+    margin-top: 8px;
+  }
+
+
+
+  /* FLOW */
+
+  .priority-flow {
+    margin-top: 76px;
+
+    display: block;
+
+    min-height: 0;
+
+    border-bottom: 0;
+  }
+
+
+
+  /* ORIGIN */
+
+  .priority-origin {
+    min-height: 390px;
+
+    padding:
+      76px 0 58px;
+
+    align-items: center;
+
+    text-align: center;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.065);
+  }
+
+
+  .priority-origin-label {
+    top: 28px;
+    left: 0;
+
+    width: 100%;
+
+    text-align: left;
+  }
+
+
+  .priority-origin-core {
+    width: 150px;
+    height: 150px;
+  }
+
+
+  .priority-origin-core::before {
+    width: 110px;
+    height: 110px;
+  }
+
+
+  .priority-origin-core::after {
+    width: 180px;
+    height: 180px;
+  }
+
+
+  .priority-origin p {
+    max-width: 280px;
+
+    margin-top: 42px;
+
+    font-size: 0.78rem;
+  }
+
+
+
+  /* PATH BECOMES VERTICAL */
+
+  .priority-path {
+    min-height: 110px;
+  }
+
+
+  .priority-path-line {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+
+    width: 1px;
+    height: 100%;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(213, 255, 63, 0.32),
+        rgba(255, 255, 255, 0.06)
+      );
+  }
+
+
+  .priority-path-point {
+    left: 50% !important;
+    right: auto !important;
+    top: auto;
+
+    margin:
+      0 0 0 -2px;
+  }
+
+
+  .priority-path-point-1 {
+    top: 12px;
+  }
+
+
+  .priority-path-point-2 {
+    top: 50%;
+  }
+
+
+  .priority-path-point-3 {
+    bottom: 12px;
+  }
+
+
+  .priority-path-signal {
+    left: 50%;
+    top: 12px;
+
+    width: 1px;
+    height: 26px;
+
+    margin-left: 0;
+  }
+
+
+
+  /* DIAGNOSIS */
+
+  .priority-diagnosis {
+    padding:
+      42px 0 48px;
+
+    border-left: 0;
+    border-right: 0;
+
+    border-top:
+      1px solid rgba(255, 255, 255, 0.065);
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.065);
+  }
+
+
+  .priority-diagnosis h3 {
+    max-width: 300px;
+
+    margin:
+      25px 0 35px;
+
+    font-size:
+      clamp(2rem, 9.5vw, 2.55rem);
+  }
+
+
+  .priority-diagnosis-item {
+    min-height: 72px;
+
+    padding:
+      12px 6px;
+  }
+
+
+
+  /* PRESCRIPTION */
+
+  .priority-prescription {
+    min-height: 0;
+
+    padding:
+      48px 0 0;
+
+    border-top: 0;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(213, 255, 63, 0.025),
+        transparent 45%
+      );
+  }
+
+
+  .priority-prescription-top {
+    align-items: flex-start;
+  }
+
+
+  .priority-prescription-top span,
+  .priority-prescription-top strong {
+    font-size: 0.53rem;
+  }
+
+
+  .priority-prescription-main {
+    margin-top: 62px;
+
+    padding-right: 0;
+  }
+
+
+  .priority-prescription-main h3 {
+    font-size:
+      clamp(2.45rem, 11vw, 3rem);
+  }
+
+
+  .priority-prescription-main p {
+    max-width: 340px;
+
+    margin-top: 22px;
+
+    font-size: 0.83rem;
+  }
+
+
+  .priority-prescription-actions {
+    margin-top: 30px;
+
+    padding-right: 0;
+  }
+
+
+  .priority-prescription-result {
+    min-height: 112px;
+
+    margin-top: 58px;
+
+    padding:
+      22px 0;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.065);
+  }
+
+
+
+  /* PRINCIPLE */
+
+  .priority-principle {
+    margin-top: 86px;
+
+    text-align: left;
+  }
+
+
+  .priority-principle p {
+    font-size:
+      clamp(1.45rem, 7vw, 1.9rem);
+  }
+
+
+  .priority-principle strong {
+    margin-top: 10px;
+
+    font-size:
+      clamp(1.85rem, 8vw, 2.25rem);
+  }
+
+
+  .priority-principle strong::after {
+    margin:
+      30px 0 0;
+  }
+
+
+  .priority-screen-index {
+    right: -7px;
+
+    font-size: 7rem;
+  }
+
+}
