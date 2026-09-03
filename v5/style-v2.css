@@ -2878,3 +2878,82 @@ textarea {
   }
 
 }
+/* =========================================================
+   SCREEN 03 — INTERACTIVE STATES
+========================================================= */
+
+/* conexão ativa */
+
+.pact-connection {
+  transition:
+    opacity 320ms ease,
+    background 320ms ease,
+    box-shadow 320ms ease;
+}
+
+.pact-connection.active {
+  opacity: 1;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 8px rgba(213, 255, 63, 0.45),
+    0 0 24px rgba(213, 255, 63, 0.18);
+}
+
+
+/* deixa os pilares não selecionados um pouco mais discretos */
+
+.pact-node:not(.active) {
+  opacity: 0.72;
+}
+
+.pact-node:not(.active):hover {
+  opacity: 1;
+}
+
+
+/* selecionado */
+
+.pact-node.active {
+  opacity: 1;
+}
+
+
+/* acessibilidade + sensação de botão */
+
+.pact-node:focus-visible {
+  outline: none;
+}
+
+.pact-node:focus-visible .pact-node-letter {
+  outline: 2px solid rgba(213, 255, 63, 0.65);
+  outline-offset: 5px;
+}
+
+
+/* painel preparado para transições */
+
+.pact-panel-content {
+  will-change: transform, opacity;
+}
+
+.pact-core-inner,
+.pact-core-ring {
+  will-change: transform, opacity;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+
+  .pact-node:not(.active) {
+    opacity: 0.62;
+  }
+
+  .pact-node.active {
+    opacity: 1;
+  }
+
+}
