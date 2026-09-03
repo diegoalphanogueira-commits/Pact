@@ -273,7 +273,26 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.set(toolWords, {
     autoAlpha: 0.22
   });
+/* SCROLL CUE INITIAL STATE */
 
+gsap.set(".tools-scroll-cue", {
+  autoAlpha: 1,
+  scale: 1
+});
+
+gsap.set(".tools-scroll-progress i", {
+  scaleX: 0
+});
+
+gsap.set(".tools-orbit-ring-1", {
+  scale: 1,
+  autoAlpha: 0.8
+});
+
+gsap.set(".tools-orbit-ring-2", {
+  scale: 1,
+  autoAlpha: 0.45
+});
 
 
   /* ======================================================
@@ -331,49 +350,153 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toolsTimeline
 
-      /* ferramentas respiram primeiro */
+  /* usuário entende que existe algo para explorar */
 
-      .to(toolWords, {
-        autoAlpha: 0.34,
-        duration: 0.35,
-        stagger: 0.025
-      })
-
-
-      /* kicker */
-
-      .to(".tools-kicker", {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.35
-      })
+  .to(".tools-scroll-progress i", {
+    scaleX: 0.35,
+    duration: 0.35,
+    ease: "none"
+  })
 
 
-      /* primeira linha */
+  /* núcleo começa a crescer */
 
-      .to(titleParts[0], {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.48
-      })
-
-
-      /* segunda linha */
-
-      .to(titleParts[1], {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.48
-      }, "-=0.12")
+  .to(
+    ".tools-orbit-ring-1",
+    {
+      scale: 1.7,
+      autoAlpha: 0.5,
+      duration: 0.42,
+      ease: "none"
+    },
+    "<"
+  )
 
 
-      /* verde */
+  .to(
+    ".tools-orbit-ring-2",
+    {
+      scale: 2.1,
+      autoAlpha: 0.22,
+      duration: 0.42,
+      ease: "none"
+    },
+    "<"
+  )
 
-      .to(titleParts[2], {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.52
-      }, "-=0.12")
+
+  /* ferramentas ganham presença */
+
+  .to(
+    toolWords,
+    {
+      autoAlpha: 0.46,
+      duration: 0.34,
+      stagger: 0.025
+    },
+    "-=0.14"
+  )
+
+
+  /* progresso continua */
+
+  .to(".tools-scroll-progress i", {
+    scaleX: 0.72,
+    duration: 0.30,
+    ease: "none"
+  })
+
+
+  /* anéis crescem mais */
+
+  .to(
+    ".tools-orbit-ring-1",
+    {
+      scale: 2.5,
+      autoAlpha: 0.22,
+      duration: 0.30,
+      ease: "none"
+    },
+    "<"
+  )
+
+
+  .to(
+    ".tools-orbit-ring-2",
+    {
+      scale: 3.1,
+      autoAlpha: 0.08,
+      duration: 0.30,
+      ease: "none"
+    },
+    "<"
+  )
+
+
+  /* progresso completa */
+
+  .to(".tools-scroll-progress i", {
+    scaleX: 1,
+    duration: 0.28,
+    ease: "none"
+  })
+
+
+  /* cue sai */
+
+  .to(
+    ".tools-scroll-cue",
+    {
+      autoAlpha: 0,
+      scale: 1.08,
+      duration: 0.28
+    },
+    "-=0.08"
+  )
+
+
+  /* kicker */
+
+  .to(".tools-kicker", {
+    autoAlpha: 1,
+    y: 0,
+    duration: 0.35
+  })
+
+
+  /* primeira linha */
+
+  .to(titleParts[0], {
+    autoAlpha: 1,
+    y: 0,
+    duration: 0.48
+  })
+
+
+  /* segunda linha */
+
+  .to(
+    titleParts[1],
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.48
+    },
+    "-=0.12"
+  )
+
+
+  /* verde */
+
+  .to(
+    titleParts[2],
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.52
+    },
+    "-=0.12"
+  )
 
 
       /* ferramentas se afastam */
@@ -478,11 +601,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toolsMobileTimeline
 
-      .to(mobileWords, {
-        autoAlpha: 0.28,
-        duration: 0.3,
-        stagger: 0.025
-      })
+      .to(".tools-scroll-progress i", {
+  scaleX: 0.4,
+  duration: 0.28,
+  ease: "none"
+})
+
+.to(
+  ".tools-orbit-ring-1",
+  {
+    scale: 1.7,
+    autoAlpha: 0.45,
+    duration: 0.28
+  },
+  "<"
+)
+
+.to(
+  ".tools-orbit-ring-2",
+  {
+    scale: 2.1,
+    autoAlpha: 0.18,
+    duration: 0.28
+  },
+  "<"
+)
+
+.to(mobileWords, {
+  autoAlpha: 0.40,
+  duration: 0.30,
+  stagger: 0.025
+})
+
+.to(".tools-scroll-progress i", {
+  scaleX: 1,
+  duration: 0.38,
+  ease: "none"
+})
+
+.to(
+  ".tools-orbit-ring-1",
+  {
+    scale: 2.8,
+    autoAlpha: 0.08,
+    duration: 0.38
+  },
+  "<"
+)
+
+.to(
+  ".tools-orbit-ring-2",
+  {
+    scale: 3.4,
+    autoAlpha: 0,
+    duration: 0.38
+  },
+  "<"
+)
+
+.to(
+  ".tools-scroll-cue",
+  {
+    autoAlpha: 0,
+    scale: 1.05,
+    duration: 0.24
+  },
+  "-=0.12"
+)
 
 
       .to(".tools-kicker", {
