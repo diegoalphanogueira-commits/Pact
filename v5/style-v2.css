@@ -1603,16 +1603,16 @@ textarea {
 /* TOOL WORDS — MORE LEGIBLE */
 
 .tool-word {
-  color: rgba(245, 246, 247, 0.28);
+  color: rgba(245, 246, 247, 0.42);
 }
 
 .tool-word-4 {
-  color: rgba(245, 246, 247, 0.32);
+  color: rgba(245, 246, 247, 0.48);
 }
 
 .tool-word-7,
 .tool-word-8 {
-  color: rgba(245, 246, 247, 0.20);
+  color: rgba(245, 246, 247, 0.32);
 }
 
 
@@ -1656,4 +1656,62 @@ textarea {
 
 .tools-scroll-progress {
   width: 130px;
+
+   /* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .tools-scroll-cue {
+    top: auto;
+    bottom: 52px;
+    left: 28px;
+    right: auto;
+
+    transform: none;
+
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+
+  .tools-orbit {
+    width: 58px;
+    height: 58px;
+  }
+
+  .tools-orbit-ring-1 {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tools-orbit-ring-2 {
+    width: 56px;
+    height: 56px;
+  }
+
+  .tools-scroll-label {
+    font-size: 0.55rem;
+  }
+
+  .tools-scroll-progress {
+    width: 130px;
+  }
+
+
+  /* PALAVRAS MAIS VISÍVEIS NO MOBILE */
+
+  .tool-word {
+    color: rgba(245, 246, 247, 0.36);
+
+    text-shadow:
+      0 0 16px rgba(255, 255, 255, 0.025);
+  }
+
+  .tool-word-4 {
+    color: rgba(245, 246, 247, 0.44);
+  }
+
+}
 }
