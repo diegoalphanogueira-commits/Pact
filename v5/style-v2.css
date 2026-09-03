@@ -3883,3 +3883,51 @@ textarea {
   }
 
 }
+
+/* =========================================================
+   SCREEN 04 — DESKTOP COMPOSITION REFINEMENT
+========================================================= */
+
+@media (min-width: 1001px) {
+
+  .implementation-selector {
+    margin-top: 72px;
+  }
+
+  .implementation-view {
+    min-height: 560px;
+    margin-top: 48px;
+  }
+
+  .implementation-letter {
+    min-height: 560px;
+
+    font-size:
+      clamp(16rem, 27vw, 24rem);
+  }
+
+  .implementation-panel.active {
+    min-height: 560px;
+
+    padding:
+      48px 0 42px 56px;
+  }
+
+  .implementation-panel-copy {
+    margin-top: 58px;
+  }
+
+  .implementation-panel-copy h3 {
+    font-size:
+      clamp(2.6rem, 3.7vw, 3.75rem);
+  }
+
+  .implementation-capabilities span {
+    min-height: 46px;
+  }
+
+  .implementation-principle {
+    margin-top: 76px;
+  }
+
+}
