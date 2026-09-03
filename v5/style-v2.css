@@ -667,11 +667,11 @@ textarea {
   /* HERO */
 
   .hero {
-    min-height: 100svh;
-    height: 100svh;
+  min-height: 100dvh;
+  height: auto;
 
-    align-items: center;
-  }
+  align-items: flex-end;
+}
 
 
   /* VIDEO */
@@ -725,11 +725,11 @@ textarea {
   /* CONTENT */
 
   .hero-container {
-    width: calc(100% - 32px);
+  width: calc(100% - 32px);
 
-    padding-top: 92px;
-    padding-bottom: 32px;
-  }
+  padding-top: 120px;
+  padding-bottom: 56px;
+}
 
   .hero-content {
     width: 100%;
@@ -844,9 +844,9 @@ textarea {
 @media (max-width: 640px) and (max-height: 760px) {
 
   .hero-container {
-    padding-top: 78px;
-    padding-bottom: 20px;
-  }
+  padding-top: 96px;
+  padding-bottom: 32px;
+}
 
   .hero-eyebrow {
     margin-bottom: 14px;
