@@ -952,3 +952,515 @@ textarea {
     display: none !important;
   }
 }
+/* =========================================================
+   PACT V5 — SCREEN 02
+   MAIS FERRAMENTAS ≠ MAIS ESTRUTURA
+========================================================= */
+
+.tools-section {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #050709;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tools-stage {
+  position: relative;
+
+  min-height: 100svh;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   ATMOSPHERE
+========================================================= */
+
+.tools-stage::before {
+  content: "";
+
+  position: absolute;
+
+  width: 760px;
+  height: 760px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(213, 255, 63, 0.055) 0%,
+      rgba(213, 255, 63, 0.015) 38%,
+      transparent 72%
+    );
+
+  filter: blur(30px);
+
+  pointer-events: none;
+
+  z-index: -3;
+}
+
+.tools-stage::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -4;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 7, 9, 1) 0%,
+      rgba(7, 10, 13, 0.96) 48%,
+      rgba(5, 7, 9, 1) 100%
+    );
+}
+
+
+/* =========================================================
+   FLOATING WORDS
+========================================================= */
+
+.tools-cloud {
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  pointer-events: none;
+}
+
+.tool-word {
+  position: absolute;
+
+  color: rgba(245, 246, 247, 0.17);
+
+  font-size: clamp(0.72rem, 1vw, 0.95rem);
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+
+  white-space: nowrap;
+
+  text-transform: uppercase;
+}
+
+.tool-word::before {
+  content: "";
+
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  left: -14px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  border-radius: 50%;
+
+  background: rgba(213, 255, 63, 0.42);
+}
+
+
+/* positions */
+
+.tool-word-1 {
+  top: 18%;
+  left: 10%;
+}
+
+.tool-word-2 {
+  top: 22%;
+  right: 16%;
+}
+
+.tool-word-3 {
+  top: 48%;
+  left: 6%;
+}
+
+.tool-word-4 {
+  top: 43%;
+  right: 7%;
+
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+
+  color: rgba(245, 246, 247, 0.22);
+}
+
+.tool-word-5 {
+  bottom: 19%;
+  left: 13%;
+}
+
+.tool-word-6 {
+  bottom: 17%;
+  right: 9%;
+}
+
+.tool-word-7 {
+  top: 13%;
+  left: 57%;
+
+  color: rgba(245, 246, 247, 0.11);
+}
+
+.tool-word-8 {
+  bottom: 10%;
+  left: 47%;
+
+  color: rgba(245, 246, 247, 0.12);
+}
+
+
+/* =========================================================
+   CENTRAL MESSAGE
+========================================================= */
+
+.tools-content {
+  position: relative;
+
+  z-index: 3;
+
+  width: min(calc(100% - 64px), 900px);
+
+  margin: 0 auto;
+
+  padding: 130px 0;
+
+  text-align: center;
+}
+
+.tools-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 26px;
+
+  color: rgba(245, 246, 247, 0.44);
+
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+.tools-kicker::before {
+  content: "";
+
+  width: 22px;
+  height: 1px;
+
+  background: var(--accent);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.tools-title {
+  margin: 0 auto;
+
+  max-width: 860px;
+
+  font-size: clamp(3.5rem, 5.2vw, 4.5rem);
+  font-weight: 500;
+
+  line-height: 0.99;
+
+  letter-spacing: -0.055em;
+}
+
+.tools-title span,
+.tools-title strong {
+  display: block;
+}
+
+.tools-title span {
+  color: rgba(245, 246, 247, 0.94);
+}
+
+.tools-title strong {
+  color: var(--accent);
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   SECONDARY REVEAL
+========================================================= */
+
+.tools-reveal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  margin-top: 38px;
+}
+
+.tools-line {
+  width: 46px;
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background: rgba(213, 255, 63, 0.62);
+}
+
+.tools-reveal p {
+  color: rgba(245, 246, 247, 0.52);
+
+  font-size: 1rem;
+  font-weight: 400;
+
+  line-height: 1.6;
+}
+
+.tools-reveal p strong {
+  color: rgba(245, 246, 247, 0.92);
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   SCREEN INDEX
+========================================================= */
+
+.tools-index {
+  position: absolute;
+
+  right: 4%;
+  bottom: 3%;
+
+  z-index: 0;
+
+  color: rgba(245, 246, 247, 0.025);
+
+  font-size: clamp(7rem, 14vw, 12rem);
+  font-weight: 700;
+
+  line-height: 0.8;
+
+  letter-spacing: -0.08em;
+
+  user-select: none;
+}
+
+
+/* =========================================================
+   PLACEHOLDER AFTER SCREEN 02
+========================================================= */
+
+.v5-placeholder {
+  min-height: 60vh;
+
+  display: grid;
+  place-items: center;
+
+  background: #050709;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.v5-placeholder p {
+  color: rgba(245, 246, 247, 0.12);
+
+  font-size: 0.65rem;
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .tools-content {
+    width: min(calc(100% - 44px), 820px);
+  }
+
+  .tools-title {
+    font-size: clamp(3rem, 7vw, 4rem);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .tools-stage {
+    min-height: 100svh;
+
+    align-items: center;
+  }
+
+  .tools-stage::before {
+    width: 460px;
+    height: 460px;
+  }
+
+
+  /* WORDS */
+
+  .tool-word {
+    font-size: 0.62rem;
+
+    letter-spacing: 0.12em;
+
+    color: rgba(245, 246, 247, 0.12);
+  }
+
+  .tool-word::before {
+    width: 3px;
+    height: 3px;
+
+    left: -10px;
+  }
+
+  .tool-word-1 {
+    top: 14%;
+    left: 10%;
+  }
+
+  .tool-word-2 {
+    top: 21%;
+    right: 9%;
+  }
+
+  .tool-word-3 {
+    top: 38%;
+    left: 6%;
+  }
+
+  .tool-word-4 {
+    top: 35%;
+    right: 7%;
+
+    font-size: 0.76rem;
+  }
+
+  .tool-word-5 {
+    bottom: 17%;
+    left: 10%;
+  }
+
+  .tool-word-6 {
+    bottom: 12%;
+    right: 6%;
+  }
+
+  .tool-word-7,
+  .tool-word-8 {
+    display: none;
+  }
+
+
+  /* CONTENT */
+
+  .tools-content {
+    width: calc(100% - 32px);
+
+    padding: 110px 0;
+
+    text-align: left;
+  }
+
+  .tools-kicker {
+    justify-content: flex-start;
+
+    margin-bottom: 22px;
+
+    font-size: 0.6rem;
+
+    line-height: 1.5;
+  }
+
+  .tools-title {
+    max-width: 520px;
+
+    margin: 0;
+
+    font-size: clamp(2.45rem, 10vw, 3rem);
+
+    line-height: 1.02;
+
+    letter-spacing: -0.05em;
+  }
+
+  .tools-reveal {
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    margin-top: 30px;
+  }
+
+  .tools-line {
+    width: 30px;
+
+    margin-top: 12px;
+  }
+
+  .tools-reveal p {
+    max-width: 280px;
+
+    font-size: 0.92rem;
+  }
+
+  .tools-index {
+    right: 18px;
+    bottom: 18px;
+
+    font-size: 5.5rem;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .tools-title {
+    font-size: 2.35rem;
+  }
+
+}
