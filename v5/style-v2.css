@@ -1620,45 +1620,8 @@ textarea {
    MOBILE
 ========================================================= */
 
-@media (max-width: 640px) {
-
-  .tools-scroll-cue {
-  top: auto;
-  bottom: 52px;
-  left: 28px;
-  right: auto;
-
-  transform: none;
-
-  align-items: flex-start;
-
-  gap: 12px;
-}
-
-.tools-orbit {
-  width: 58px;
-  height: 58px;
-}
-
-.tools-orbit-ring-1 {
-  width: 32px;
-  height: 32px;
-}
-
-.tools-orbit-ring-2 {
-  width: 56px;
-  height: 56px;
-}
-
-.tools-scroll-label {
-  font-size: 0.55rem;
-}
-
-.tools-scroll-progress {
-  width: 130px;
-
-   /* =========================================================
-   MOBILE
+/* =========================================================
+   SCREEN 02 — SCROLL CUE MOBILE
 ========================================================= */
 
 @media (max-width: 640px) {
@@ -1699,9 +1662,6 @@ textarea {
     width: 130px;
   }
 
-
-  /* PALAVRAS MAIS VISÍVEIS NO MOBILE */
-
   .tool-word {
     color: rgba(245, 246, 247, 0.36);
 
@@ -1713,7 +1673,6 @@ textarea {
     color: rgba(245, 246, 247, 0.44);
   }
 
-}
 }
 
 /* =========================================================
