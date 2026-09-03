@@ -1059,4 +1059,37 @@ textarea {
   .application-grid article {
     padding: 20px;
   }
+} 
+
+/* INTERAÇÕES */
+
+.header.scrolled {
+  background: rgba(7, 9, 12, 0.92);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
