@@ -1482,11 +1482,428 @@ mm.add("(max-width: 640px)", () => {
     );
 
 });
+
+/* ======================================================
+   SCREEN 04 — IMPLEMENTATION INTERACTION
+====================================================== */
+
+const implementationTabs =
+  document.querySelectorAll(
+    ".implementation-tab"
+  );
+
+const implementationPanels =
+  document.querySelectorAll(
+    ".implementation-panel"
+  );
+
+const implementationLetter =
+  document.querySelector(
+    ".implementation-letter"
+  );
+
+
+let activeImplementation = "p";
+let implementationIsChanging = false;
+
+
+
+/* ======================================================
+   INITIAL ARIA STATE
+====================================================== */
+
+implementationTabs.forEach((tab) => {
+
+  const pillar =
+    tab.dataset.implementation;
+
+  const isActive =
+    pillar === activeImplementation;
+
+
+  tab.setAttribute(
+    "aria-selected",
+    isActive
+      ? "true"
+      : "false"
+  );
+
+});
+
+
+
+/* ======================================================
+   CHANGE IMPLEMENTATION
+====================================================== */
+
+function changeImplementation(pillar) {
+
+  if (
+    pillar === activeImplementation ||
+    implementationIsChanging
+  ) {
+    return;
+  }
+
+
+  const currentPanel =
+    document.querySelector(
+      ".implementation-panel.active"
+    );
+
+
+  const nextPanel =
+    document.querySelector(
+      `.implementation-panel[data-implementation-content="${pillar}"]`
+    );
+
+
+  const nextTab =
+    document.querySelector(
+      `.implementation-tab[data-implementation="${pillar}"]`
+    );
+
+
+  if (
+    !currentPanel ||
+    !nextPanel ||
+    !nextTab ||
+    !implementationLetter
+  ) {
+    return;
+  }
+
+
+  implementationIsChanging = true;
+
+
+
+  /* ====================================================
+     TAB ACTIVE STATE
+  ==================================================== */
+
+  implementationTabs.forEach((tab) => {
+
+    const isActive =
+      tab.dataset.implementation === pillar;
+
+
+    tab.classList.toggle(
+      "active",
+      isActive
+    );
+
+
+    tab.setAttribute(
+      "aria-selected",
+      isActive
+        ? "true"
+        : "false"
+    );
+
+  });
+
+
+
+  /* ====================================================
+     TAB FEEDBACK
+  ==================================================== */
+
+  gsap.fromTo(
+    nextTab.querySelector("strong"),
+    {
+      scale: 0.78,
+      autoAlpha: 0.45
+    },
+    {
+      scale: 1,
+      autoAlpha: 1,
+
+      duration: 0.42,
+
+      ease: "back.out(1.7)"
+    }
+  );
+
+
+
+  /* ====================================================
+     GIANT LETTER
+  ==================================================== */
+
+  const letterTimeline =
+    gsap.timeline();
+
+
+  letterTimeline
+
+    .to(
+      implementationLetter,
+      {
+        autoAlpha: 0.08,
+
+        scale: 0.82,
+
+        y: -18,
+
+        duration: 0.20,
+
+        ease: "power2.in",
+
+        onComplete: () => {
+
+          implementationLetter.textContent =
+            pillar.toUpperCase();
+
+        }
+      }
+    )
+
+    .fromTo(
+      implementationLetter,
+      {
+        autoAlpha: 0.025,
+
+        scale: 1.15,
+
+        y: 24
+      },
+      {
+        autoAlpha: 1,
+
+        scale: 1,
+
+        y: 0,
+
+        duration: 0.62,
+
+        ease: "power3.out"
+      }
+    );
+
+
+
+  /* ====================================================
+     CURRENT PANEL OUT
+  ==================================================== */
+
+  gsap.to(
+    currentPanel,
+    {
+      autoAlpha: 0,
+
+      y: -18,
+
+      duration: 0.22,
+
+      ease: "power2.in",
+
+      onComplete: () => {
+
+
+        /* remove painel atual */
+
+        currentPanel.classList.remove(
+          "active"
+        );
+
+
+        gsap.set(
+          currentPanel,
+          {
+            clearProps:
+              "opacity,visibility,transform"
+          }
+        );
+
+
+
+        /* mostra próximo */
+
+        nextPanel.classList.add(
+          "active"
+        );
+
+
+        const nextHead =
+          nextPanel.querySelector(
+            ".implementation-panel-head"
+          );
+
+
+        const nextTitle =
+          nextPanel.querySelector(
+            ".implementation-panel-copy h3"
+          );
+
+
+        const nextDescription =
+          nextPanel.querySelector(
+            ".implementation-panel-copy p"
+          );
+
+
+        const nextCapabilities =
+          nextPanel.querySelectorAll(
+            ".implementation-capabilities span"
+          );
+
+
+
+        /* =================================================
+           NEXT PANEL ENTRANCE
+        ================================================= */
+
+        const implementationTimeline =
+          gsap.timeline({
+
+            defaults: {
+              ease: "power3.out"
+            },
+
+            onComplete: () => {
+
+              implementationIsChanging =
+                false;
+
+            }
+
+          });
+
+
+        implementationTimeline
+
+          /* painel */
+
+          .fromTo(
+            nextPanel,
+            {
+              autoAlpha: 0
+            },
+            {
+              autoAlpha: 1,
+
+              duration: 0.18
+            }
+          )
+
+
+          /* índice + categoria */
+
+          .fromTo(
+            nextHead,
+            {
+              autoAlpha: 0,
+
+              y: 10
+            },
+            {
+              autoAlpha: 1,
+
+              y: 0,
+
+              duration: 0.30
+            },
+            "-=0.08"
+          )
+
+
+          /* headline */
+
+          .fromTo(
+            nextTitle,
+            {
+              autoAlpha: 0,
+
+              y: 28
+            },
+            {
+              autoAlpha: 1,
+
+              y: 0,
+
+              duration: 0.52
+            },
+            "-=0.10"
+          )
+
+
+          /* descrição */
+
+          .fromTo(
+            nextDescription,
+            {
+              autoAlpha: 0,
+
+              y: 18
+            },
+            {
+              autoAlpha: 1,
+
+              y: 0,
+
+              duration: 0.40
+            },
+            "-=0.27"
+          )
+
+
+          /* capacidades */
+
+          .fromTo(
+            nextCapabilities,
+            {
+              autoAlpha: 0,
+
+              y: 12
+            },
+            {
+              autoAlpha: 1,
+
+              y: 0,
+
+              duration: 0.32,
+
+              stagger: 0.045
+            },
+            "-=0.18"
+          );
+
+      }
+
+    }
+  );
+
+
+  activeImplementation = pillar;
+
+}
+
+
+
+/* ======================================================
+   CLICK / TAP
+====================================================== */
+
+implementationTabs.forEach((tab) => {
+
+  tab.addEventListener(
+    "click",
+    () => {
+
+      changeImplementation(
+        tab.dataset.implementation
+      );
+
+    }
+  );
+
+});
   
   /* ======================================================
      REFRESH
   ====================================================== */
-
+  
   window.addEventListener("load", () => {
 
     ScrollTrigger.refresh();
