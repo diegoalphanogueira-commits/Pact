@@ -2730,11 +2730,11 @@ mm.add("(min-width: 641px)", () => {
   */
 
   gsap.set(
-    ".reasoning-system",
-    {
-      "--reasoning-line-progress": 0
-    }
-  );
+  ".reasoning-system",
+  {
+    "--reasoning-line-progress": 0
+  }
+);
 
 
   /*
@@ -2888,7 +2888,31 @@ mm.add("(min-width: 641px)", () => {
         ease: "none"
       }
     )
+.reasoning-system::before {
+  content: "";
 
+  position: absolute;
+
+  left: 16.666%;
+  right: 16.666%;
+  top: 70px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(213, 255, 63, 0.08),
+      rgba(213, 255, 63, 0.36),
+      rgba(213, 255, 63, 0.08)
+    );
+
+  transform: scaleX(var(--reasoning-line-progress, 1));
+
+  transform-origin: center;
+
+  transition: transform 300ms ease;
+}
 
     /* três caminhos entram */
 
