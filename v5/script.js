@@ -749,7 +749,424 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
+/* ======================================================
+   SCREEN 03 — PACT INTERACTION
+====================================================== */
 
+const pactNodes =
+  document.querySelectorAll(".pact-node");
+
+const pactPanels =
+  document.querySelectorAll(".pact-panel-content");
+
+const pactConnections =
+  document.querySelectorAll(".pact-connection");
+
+
+let activePillar = "p";
+let pactIsChanging = false;
+
+
+
+/* ======================================================
+   INITIAL STATE
+====================================================== */
+
+pactNodes.forEach((node) => {
+
+  const pillar =
+    node.dataset.pillar;
+
+  node.setAttribute(
+    "aria-pressed",
+    pillar === activePillar
+      ? "true"
+      : "false"
+  );
+
+});
+
+
+const initialConnection =
+  document.querySelector(
+    `.pact-connection-${activePillar}`
+  );
+
+
+if (initialConnection) {
+  initialConnection.classList.add("active");
+}
+
+
+
+/* ======================================================
+   CHANGE PILLAR
+====================================================== */
+
+function changePactPillar(pillar) {
+
+  /*
+    não faz nada se clicar
+    novamente no pilar atual
+  */
+
+  if (
+    pillar === activePillar ||
+    pactIsChanging
+  ) {
+    return;
+  }
+
+
+  const currentPanel =
+    document.querySelector(
+      ".pact-panel-content.active"
+    );
+
+
+  const nextPanel =
+    document.querySelector(
+      `.pact-panel-content[data-content="${pillar}"]`
+    );
+
+
+  const nextNode =
+    document.querySelector(
+      `.pact-node[data-pillar="${pillar}"]`
+    );
+
+
+  const nextConnection =
+    document.querySelector(
+      `.pact-connection-${pillar}`
+    );
+
+
+  if (
+    !currentPanel ||
+    !nextPanel ||
+    !nextNode
+  ) {
+    return;
+  }
+
+
+  pactIsChanging = true;
+
+
+
+  /* ====================================================
+     BUTTON ACTIVE STATE
+  ==================================================== */
+
+  pactNodes.forEach((node) => {
+
+    const isActive =
+      node.dataset.pillar === pillar;
+
+
+    node.classList.toggle(
+      "active",
+      isActive
+    );
+
+
+    node.setAttribute(
+      "aria-pressed",
+      isActive
+        ? "true"
+        : "false"
+    );
+
+  });
+
+
+
+  /* ====================================================
+     CONNECTION ACTIVE STATE
+  ==================================================== */
+
+  pactConnections.forEach(
+    (connection) => {
+
+      connection.classList.remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  if (nextConnection) {
+
+    nextConnection.classList.add(
+      "active"
+    );
+
+  }
+
+
+
+  /* ====================================================
+     NODE CLICK FEEDBACK
+  ==================================================== */
+
+  gsap.fromTo(
+    nextNode.querySelector(
+      ".pact-node-letter"
+    ),
+    {
+      scale: 0.86
+    },
+    {
+      scale: 1,
+      duration: 0.46,
+      ease: "back.out(1.8)"
+    }
+  );
+
+
+
+  /* ====================================================
+     CORE REACTION
+  ==================================================== */
+
+  gsap.fromTo(
+    ".pact-core-inner",
+    {
+      scale: 0.94
+    },
+    {
+      scale: 1,
+      duration: 0.52,
+      ease: "back.out(1.5)"
+    }
+  );
+
+
+  gsap.fromTo(
+    ".pact-core-ring-1",
+    {
+      scale: 0.93,
+      autoAlpha: 0.5
+    },
+    {
+      scale: 1,
+      autoAlpha: 1,
+      duration: 0.65,
+      ease: "power3.out"
+    }
+  );
+
+
+  gsap.fromTo(
+    ".pact-core-ring-2",
+    {
+      scale: 1.08,
+      autoAlpha: 0.35
+    },
+    {
+      scale: 1,
+      autoAlpha: 1,
+      duration: 0.62,
+      ease: "power3.out"
+    }
+  );
+
+
+
+  /* ====================================================
+     OLD PANEL OUT
+  ==================================================== */
+
+  gsap.to(
+    currentPanel,
+    {
+      autoAlpha: 0,
+      y: -14,
+
+      duration: 0.22,
+
+      ease: "power2.in",
+
+      onComplete: () => {
+
+
+        /* remove antigo */
+
+        currentPanel.classList.remove(
+          "active"
+        );
+
+
+        gsap.set(
+          currentPanel,
+          {
+            clearProps:
+              "opacity,visibility,transform"
+          }
+        );
+
+
+
+        /* ativa novo */
+
+        nextPanel.classList.add(
+          "active"
+        );
+
+
+        const nextTitle =
+          nextPanel.querySelector(
+            ".pact-panel-main h3"
+          );
+
+
+        const nextDescription =
+          nextPanel.querySelector(
+            ".pact-panel-main p"
+          );
+
+
+        const nextIndex =
+          nextPanel.querySelector(
+            ".pact-panel-index"
+          );
+
+
+        const nextTags =
+          nextPanel.querySelectorAll(
+            ".pact-panel-tags span"
+          );
+
+
+
+        /* =================================================
+           NEW PANEL ENTRANCE
+        ================================================= */
+
+        const panelTimeline =
+          gsap.timeline({
+
+            defaults: {
+              ease: "power3.out"
+            },
+
+            onComplete: () => {
+
+              pactIsChanging = false;
+
+            }
+
+          });
+
+
+        panelTimeline
+
+          .fromTo(
+            nextPanel,
+            {
+              autoAlpha: 0
+            },
+            {
+              autoAlpha: 1,
+              duration: 0.18
+            }
+          )
+
+
+          .fromTo(
+            nextIndex,
+            {
+              autoAlpha: 0,
+              x: -10
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              duration: 0.30
+            },
+            "-=0.08"
+          )
+
+
+          .fromTo(
+            nextTitle,
+            {
+              autoAlpha: 0,
+              y: 24
+            },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.46
+            },
+            "-=0.12"
+          )
+
+
+          .fromTo(
+            nextDescription,
+            {
+              autoAlpha: 0,
+              y: 16
+            },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.38
+            },
+            "-=0.25"
+          )
+
+
+          .fromTo(
+            nextTags,
+            {
+              autoAlpha: 0,
+              y: 10
+            },
+            {
+              autoAlpha: 1,
+              y: 0,
+
+              duration: 0.32,
+
+              stagger: 0.045
+            },
+            "-=0.18"
+          );
+
+      }
+
+    }
+  );
+
+
+  activePillar = pillar;
+
+}
+
+
+
+/* ======================================================
+   CLICK / TAP
+====================================================== */
+
+pactNodes.forEach((node) => {
+
+  node.addEventListener(
+    "click",
+    () => {
+
+      changePactPillar(
+        node.dataset.pillar
+      );
+
+    }
+  );
+
+});
 
   /* ======================================================
      REFRESH
