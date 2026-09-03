@@ -1715,3 +1715,1206 @@ textarea {
 
 }
 }
+/* =========================================================
+   SCREEN 03 — PACT SYSTEM
+========================================================= */
+
+.pact-system-section {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 34% 48%,
+      rgba(213, 255, 63, 0.045),
+      transparent 26%
+    ),
+    linear-gradient(
+      180deg,
+      #050709 0%,
+      #070a0d 50%,
+      #050709 100%
+    );
+
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+
+.pact-system-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    );
+
+  background-size: 72px 72px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 18%,
+      black 82%,
+      transparent
+    );
+
+  opacity: 0.45;
+}
+
+
+.pact-system-stage {
+  position: relative;
+  z-index: 1;
+
+  width: min(1380px, calc(100% - 80px));
+
+  margin: 0 auto;
+
+  min-height: 100vh;
+
+  padding: 130px 0 100px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(390px, 0.72fr);
+
+  column-gap: clamp(60px, 7vw, 130px);
+
+  align-items: center;
+}
+
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.pact-system-intro {
+  grid-column: 1 / -1;
+
+  max-width: 780px;
+
+  margin-bottom: 80px;
+}
+
+
+.pact-system-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #d5ff3f;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+
+.pact-system-kicker::before {
+  content: "";
+
+  width: 38px;
+  height: 1px;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 16px rgba(213, 255, 63, 0.32);
+}
+
+
+.pact-system-title {
+  margin: 22px 0 20px;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(3.15rem, 5vw, 4.9rem);
+
+  line-height: 0.98;
+
+  letter-spacing: -0.055em;
+
+  font-weight: 500;
+}
+
+
+.pact-system-title span {
+  display: block;
+
+  color: #d5ff3f;
+}
+
+
+.pact-system-description {
+  max-width: 600px;
+
+  margin: 0;
+
+  color: rgba(246, 247, 248, 0.58);
+
+  font-size: 1.05rem;
+
+  line-height: 1.7;
+}
+
+
+
+/* =========================================================
+   SYSTEM INTERFACE
+========================================================= */
+
+.pact-system-interface {
+  position: relative;
+
+  width: 100%;
+  min-height: 610px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  isolation: isolate;
+}
+
+
+
+/* ambient glow */
+
+.pact-system-interface::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(213, 255, 63, 0.07) 0%,
+      rgba(213, 255, 63, 0.025) 34%,
+      transparent 70%
+    );
+
+  filter: blur(8px);
+
+  pointer-events: none;
+}
+
+
+
+/* =========================================================
+   CORE
+========================================================= */
+
+.pact-core {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 210px;
+  height: 210px;
+
+  transform: translate(-50%, -50%);
+
+  display: grid;
+  place-items: center;
+
+  z-index: 4;
+}
+
+
+.pact-core-ring {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.pact-core-ring-1 {
+  width: 100%;
+  height: 100%;
+
+  border:
+    1px solid rgba(213, 255, 63, 0.26);
+
+  box-shadow:
+    0 0 42px rgba(213, 255, 63, 0.035);
+}
+
+
+.pact-core-ring-2 {
+  width: 155px;
+  height: 155px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.pact-core-inner {
+  position: relative;
+
+  width: 128px;
+  height: 128px;
+
+  border-radius: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 32%,
+      rgba(213, 255, 63, 0.12),
+      rgba(11, 15, 18, 0.96) 58%
+    );
+
+  border:
+    1px solid rgba(213, 255, 63, 0.3);
+
+  box-shadow:
+    0 0 45px rgba(213, 255, 63, 0.08),
+    inset 0 0 35px rgba(213, 255, 63, 0.025);
+}
+
+
+.pact-core-label {
+  color:
+    rgba(246, 247, 248, 0.38);
+
+  font-size: 0.54rem;
+
+  letter-spacing: 0.18em;
+
+  font-weight: 600;
+}
+
+
+.pact-core-inner strong {
+  margin: 5px 0 7px;
+
+  color: #f6f7f8;
+
+  font-size: 2.15rem;
+
+  line-height: 1;
+
+  letter-spacing: -0.06em;
+
+  font-weight: 600;
+}
+
+
+.pact-core-status {
+  max-width: 88px;
+
+  color: #d5ff3f;
+
+  font-size: 0.46rem;
+
+  line-height: 1.35;
+
+  letter-spacing: 0.1em;
+
+  font-weight: 700;
+}
+
+
+
+/* =========================================================
+   CONNECTIONS
+========================================================= */
+
+.pact-connection {
+  position: absolute;
+
+  z-index: 1;
+
+  display: block;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(213, 255, 63, 0.05),
+      rgba(213, 255, 63, 0.32),
+      rgba(213, 255, 63, 0.05)
+    );
+
+  opacity: 0.55;
+
+  pointer-events: none;
+}
+
+
+.pact-connection-p,
+.pact-connection-t {
+  width: 1px;
+  height: 105px;
+
+  left: 50%;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(213, 255, 63, 0.05),
+      rgba(213, 255, 63, 0.35),
+      rgba(213, 255, 63, 0.05)
+    );
+}
+
+
+.pact-connection-p {
+  top: calc(50% - 206px);
+}
+
+
+.pact-connection-t {
+  top: calc(50% + 102px);
+}
+
+
+.pact-connection-a,
+.pact-connection-c {
+  width: 125px;
+  height: 1px;
+
+  top: 50%;
+}
+
+
+.pact-connection-a {
+  left: calc(50% - 228px);
+}
+
+
+.pact-connection-c {
+  left: calc(50% + 103px);
+}
+
+
+
+/* =========================================================
+   PACT NODES
+========================================================= */
+
+.pact-node {
+  position: absolute;
+  z-index: 5;
+
+  border: 0;
+
+  padding: 0;
+
+  background: transparent;
+
+  color: inherit;
+
+  font: inherit;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  text-align: left;
+
+  transition:
+    opacity 280ms ease,
+    transform 280ms ease;
+}
+
+
+.pact-node-letter {
+  width: 56px;
+  height: 56px;
+
+  flex: 0 0 56px;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  color:
+    rgba(246, 247, 248, 0.56);
+
+  font-size: 1.1rem;
+
+  font-weight: 600;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.11);
+
+  background:
+    rgba(11, 14, 17, 0.88);
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    color 280ms ease,
+    border-color 280ms ease,
+    background 280ms ease,
+    box-shadow 280ms ease,
+    transform 280ms ease;
+}
+
+
+.pact-node-copy {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.pact-node-copy strong {
+  color:
+    rgba(246, 247, 248, 0.76);
+
+  font-size: 0.88rem;
+
+  font-weight: 600;
+
+  letter-spacing: -0.015em;
+
+  transition: color 280ms ease;
+}
+
+
+.pact-node-copy small {
+  color:
+    rgba(246, 247, 248, 0.34);
+
+  font-size: 0.7rem;
+
+  font-weight: 400;
+}
+
+
+
+/* positions */
+
+.pact-node-p {
+  left: 50%;
+  top: 26px;
+
+  transform:
+    translateX(-28px);
+
+  flex-direction: column;
+
+  text-align: center;
+}
+
+
+.pact-node-p .pact-node-copy {
+  align-items: center;
+}
+
+
+.pact-node-a {
+  left: 20px;
+  top: 50%;
+
+  transform:
+    translateY(-28px);
+}
+
+
+.pact-node-c {
+  right: 8px;
+  top: 50%;
+
+  transform:
+    translateY(-28px);
+}
+
+
+.pact-node-c .pact-node-letter {
+  order: 2;
+}
+
+
+.pact-node-c .pact-node-copy {
+  text-align: right;
+}
+
+
+.pact-node-t {
+  left: 50%;
+  bottom: 24px;
+
+  transform:
+    translateX(-28px);
+
+  flex-direction: column-reverse;
+
+  text-align: center;
+}
+
+
+.pact-node-t .pact-node-copy {
+  align-items: center;
+}
+
+
+
+/* ACTIVE */
+
+.pact-node.active .pact-node-letter {
+  color: #07090c;
+
+  background: #d5ff3f;
+
+  border-color: #d5ff3f;
+
+  box-shadow:
+    0 0 0 7px rgba(213, 255, 63, 0.05),
+    0 0 34px rgba(213, 255, 63, 0.16);
+}
+
+
+.pact-node.active .pact-node-copy strong {
+  color: #f6f7f8;
+}
+
+
+.pact-node:hover .pact-node-letter {
+  border-color:
+    rgba(213, 255, 63, 0.5);
+
+  color: #d5ff3f;
+}
+
+
+.pact-node.active:hover .pact-node-letter {
+  color: #07090c;
+}
+
+
+
+/* =========================================================
+   CONTENT PANEL
+========================================================= */
+
+.pact-panel {
+  position: relative;
+
+  min-height: 520px;
+
+  padding:
+    54px 50px 48px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.075);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18, 22, 26, 0.78),
+      rgba(10, 13, 16, 0.52)
+    );
+
+  backdrop-filter: blur(18px);
+
+  overflow: hidden;
+}
+
+
+.pact-panel::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 92px;
+  height: 1px;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 18px rgba(213, 255, 63, 0.24);
+}
+
+
+.pact-panel::after {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  right: -100px;
+  bottom: -120px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(213, 255, 63, 0.035);
+
+  filter: blur(40px);
+
+  pointer-events: none;
+}
+
+
+.pact-panel-content {
+  display: none;
+}
+
+
+.pact-panel-content.active {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 415px;
+}
+
+
+.pact-panel-index {
+  display: block;
+
+  margin-bottom: auto;
+
+  color: #d5ff3f;
+
+  font-size: 0.68rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+
+.pact-panel-main {
+  margin-top: 85px;
+}
+
+
+.pact-panel-main h3 {
+  max-width: 480px;
+
+  margin: 0;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(2rem, 2.75vw, 2.75rem);
+
+  line-height: 1.06;
+
+  letter-spacing: -0.045em;
+
+  font-weight: 500;
+}
+
+
+.pact-panel-main p {
+  max-width: 470px;
+
+  margin:
+    22px 0 0;
+
+  color:
+    rgba(246, 247, 248, 0.50);
+
+  font-size: 0.96rem;
+
+  line-height: 1.7;
+}
+
+
+
+/* =========================================================
+   TAGS
+========================================================= */
+
+.pact-panel-tags {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 36px;
+}
+
+
+.pact-panel-tags span {
+  padding:
+    8px 11px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.075);
+
+  background:
+    rgba(255, 255, 255, 0.022);
+
+  color:
+    rgba(246, 247, 248, 0.48);
+
+  font-size: 0.68rem;
+
+  font-weight: 500;
+
+  letter-spacing: 0.015em;
+}
+
+
+
+/* =========================================================
+   SYSTEM FOOTER
+========================================================= */
+
+.pact-system-footer {
+  grid-column: 1 / -1;
+
+  margin-top: 88px;
+
+  padding-top: 26px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  color:
+    rgba(246, 247, 248, 0.32);
+
+  font-size: 0.62rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.11em;
+}
+
+
+.pact-system-footer i {
+  color:
+    rgba(213, 255, 63, 0.45);
+
+  font-style: normal;
+}
+
+
+.pact-system-footer strong {
+  margin-left: auto;
+
+  color: #d5ff3f;
+
+  font-size: 0.68rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+}
+
+
+
+/* SCREEN NUMBER */
+
+.pact-system-index {
+  position: absolute;
+
+  right: -12px;
+  bottom: 40px;
+
+  z-index: -1;
+
+  color:
+    rgba(255, 255, 255, 0.018);
+
+  font-size: 11rem;
+
+  line-height: 0.8;
+
+  font-weight: 500;
+
+  letter-spacing: -0.08em;
+
+  pointer-events: none;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .pact-system-stage {
+    width:
+      min(920px, calc(100% - 48px));
+
+    grid-template-columns: 1fr;
+
+    row-gap: 60px;
+  }
+
+
+  .pact-system-interface {
+    min-height: 620px;
+  }
+
+
+  .pact-panel {
+    min-height: auto;
+  }
+
+
+  .pact-panel-content.active {
+    min-height: 390px;
+  }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .pact-system-stage {
+    width:
+      calc(100% - 32px);
+
+    min-height: auto;
+
+    padding:
+      92px 0 72px;
+
+    display: block;
+  }
+
+
+  /* INTRO */
+
+  .pact-system-intro {
+    margin-bottom: 58px;
+  }
+
+
+  .pact-system-kicker {
+    font-size: 0.64rem;
+  }
+
+
+  .pact-system-kicker::before {
+    width: 28px;
+  }
+
+
+  .pact-system-title {
+    margin-top: 18px;
+
+    font-size:
+      clamp(2.65rem, 13vw, 3.45rem);
+
+    line-height: 0.98;
+  }
+
+
+  .pact-system-description {
+    max-width: 340px;
+
+    font-size: 0.94rem;
+
+    line-height: 1.65;
+  }
+
+
+
+  /* =======================================================
+     MOBILE SYSTEM
+  ======================================================= */
+
+  .pact-system-interface {
+    min-height: auto;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(4, 1fr);
+
+    column-gap: 7px;
+    row-gap: 34px;
+
+    padding: 0;
+  }
+
+
+  .pact-system-interface::before {
+    width: 250px;
+    height: 250px;
+
+    top: 90px;
+  }
+
+
+  /* hide desktop connections */
+
+  .pact-connection {
+    display: none;
+  }
+
+
+
+  /* CORE */
+
+  .pact-core {
+    position: relative;
+
+    left: auto;
+    top: auto;
+
+    grid-column: 1 / -1;
+
+    width: 166px;
+    height: 166px;
+
+    margin:
+      0 auto 10px;
+
+    transform: none;
+  }
+
+
+  .pact-core-ring-2 {
+    width: 122px;
+    height: 122px;
+  }
+
+
+  .pact-core-inner {
+    width: 104px;
+    height: 104px;
+  }
+
+
+  .pact-core-inner strong {
+    font-size: 1.78rem;
+  }
+
+
+  .pact-core-label {
+    font-size: 0.45rem;
+  }
+
+
+  .pact-core-status {
+    font-size: 0.4rem;
+  }
+
+
+
+  /* MOBILE NODES */
+
+  .pact-node,
+  .pact-node-p,
+  .pact-node-a,
+  .pact-node-c,
+  .pact-node-t {
+    position: relative;
+
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+
+    transform: none;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 8px;
+
+    text-align: center;
+  }
+
+
+  .pact-node-letter {
+    width: 52px;
+    height: 52px;
+
+    flex-basis: 52px;
+
+    font-size: 1rem;
+  }
+
+
+  .pact-node-copy {
+    align-items: center;
+  }
+
+
+  .pact-node-copy strong {
+    font-size: 0.62rem;
+  }
+
+
+  .pact-node-copy small {
+    display: none;
+  }
+
+
+  .pact-node-c .pact-node-letter {
+    order: initial;
+  }
+
+
+  .pact-node-c .pact-node-copy {
+    text-align: center;
+  }
+
+
+
+  /* =======================================================
+     MOBILE PANEL
+  ======================================================= */
+
+  .pact-panel {
+    min-height: 0;
+
+    margin-top: 48px;
+
+    padding:
+      32px 24px 28px;
+  }
+
+
+  .pact-panel-content.active {
+    min-height: 0;
+  }
+
+
+  .pact-panel-index {
+    margin-bottom: 54px;
+
+    font-size: 0.62rem;
+  }
+
+
+  .pact-panel-main {
+    margin-top: 0;
+  }
+
+
+  .pact-panel-main h3 {
+    font-size:
+      clamp(2rem, 9.2vw, 2.55rem);
+
+    line-height: 1.04;
+  }
+
+
+  .pact-panel-main p {
+    margin-top: 18px;
+
+    font-size: 0.9rem;
+  }
+
+
+  .pact-panel-tags {
+    margin-top: 28px;
+
+    gap: 6px;
+  }
+
+
+  .pact-panel-tags span {
+    padding:
+      7px 9px;
+
+    font-size: 0.62rem;
+  }
+
+
+
+  /* FOOTER */
+
+  .pact-system-footer {
+    margin-top: 52px;
+
+    padding-top: 22px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 9px 11px;
+
+    font-size: 0.53rem;
+
+    line-height: 1.6;
+  }
+
+
+  .pact-system-footer strong {
+    flex-basis: 100%;
+
+    margin:
+      8px 0 0;
+
+    font-size: 0.58rem;
+  }
+
+
+  .pact-system-index {
+    right: -8px;
+    bottom: 18px;
+
+    font-size: 7rem;
+  }
+
+}
