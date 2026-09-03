@@ -1168,6 +1168,321 @@ pactNodes.forEach((node) => {
 
 });
 
+/* ======================================================
+   SCREEN 03 — CINEMATIC ENTRANCE
+====================================================== */
+
+mm.add("(min-width: 641px)", () => {
+
+  const pactIntroTimeline = gsap.timeline({
+
+    scrollTrigger: {
+      trigger: ".pact-system-section",
+      start: "top 72%",
+      end: "top 8%",
+      scrub: 0.9,
+      invalidateOnRefresh: true
+    }
+
+  });
+
+
+  /* estado inicial */
+
+  gsap.set(".pact-system-kicker", {
+    autoAlpha: 0,
+    y: 18
+  });
+
+  gsap.set(".pact-system-title", {
+    autoAlpha: 0,
+    y: 34
+  });
+
+  gsap.set(".pact-system-description", {
+    autoAlpha: 0,
+    y: 22
+  });
+
+  gsap.set(".pact-core-inner", {
+    autoAlpha: 0,
+    scale: 0.72
+  });
+
+  gsap.set(".pact-core-ring-1", {
+    autoAlpha: 0,
+    scale: 0.55
+  });
+
+  gsap.set(".pact-core-ring-2", {
+    autoAlpha: 0,
+    scale: 0.68
+  });
+
+  gsap.set(".pact-connection", {
+    autoAlpha: 0,
+    scale: 0
+  });
+
+  gsap.set(".pact-node", {
+    autoAlpha: 0,
+    scale: 0.84
+  });
+
+  gsap.set(".pact-panel", {
+    autoAlpha: 0,
+    x: 42
+  });
+
+  gsap.set(".pact-system-footer", {
+    autoAlpha: 0,
+    y: 18
+  });
+
+
+  /* construção */
+
+  pactIntroTimeline
+
+    .to(".pact-system-kicker", {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.32
+    })
+
+    .to(".pact-system-title", {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.55
+    })
+
+    .to(
+      ".pact-system-description",
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.38
+      },
+      "-=0.22"
+    )
+
+
+    /* núcleo */
+
+    .to(
+      ".pact-core-inner",
+      {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 0.58,
+        ease: "back.out(1.45)"
+      }
+    )
+
+
+    /* anéis */
+
+    .to(
+      ".pact-core-ring-2",
+      {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 0.48
+      },
+      "-=0.30"
+    )
+
+    .to(
+      ".pact-core-ring-1",
+      {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 0.55
+      },
+      "-=0.34"
+    )
+
+
+    /* conexões */
+
+    .to(
+      ".pact-connection",
+      {
+        autoAlpha: 0.55,
+        scale: 1,
+        duration: 0.46,
+        stagger: 0.07,
+        ease: "power2.out"
+      },
+      "-=0.18"
+    )
+
+
+    /* quatro pilares */
+
+    .to(
+      ".pact-node",
+      {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 0.42,
+        stagger: 0.09,
+        ease: "back.out(1.4)"
+      },
+      "-=0.24"
+    )
+
+
+    /* painel estratégico */
+
+    .to(
+      ".pact-panel",
+      {
+        autoAlpha: 1,
+        x: 0,
+        duration: 0.58,
+        ease: "power3.out"
+      },
+      "-=0.15"
+    )
+
+
+    /* fechamento */
+
+    .to(
+      ".pact-system-footer",
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.34
+      },
+      "-=0.14"
+    );
+
+});
+
+/* ======================================================
+   SCREEN 03 — MOBILE ENTRANCE
+====================================================== */
+
+mm.add("(max-width: 640px)", () => {
+
+  gsap.set(".pact-system-kicker", {
+    autoAlpha: 0,
+    y: 14
+  });
+
+  gsap.set(".pact-system-title", {
+    autoAlpha: 0,
+    y: 28
+  });
+
+  gsap.set(".pact-system-description", {
+    autoAlpha: 0,
+    y: 18
+  });
+
+  gsap.set(".pact-core", {
+    autoAlpha: 0,
+    scale: 0.78
+  });
+
+  gsap.set(".pact-node", {
+    autoAlpha: 0,
+    y: 16
+  });
+
+  gsap.set(".pact-panel", {
+    autoAlpha: 0,
+    y: 28
+  });
+
+  gsap.set(".pact-system-footer", {
+    autoAlpha: 0,
+    y: 16
+  });
+
+
+  const pactMobileEntrance = gsap.timeline({
+
+    scrollTrigger: {
+      trigger: ".pact-system-section",
+      start: "top 78%",
+      end: "top 18%",
+      scrub: 0.75,
+      invalidateOnRefresh: true
+    }
+
+  });
+
+
+  pactMobileEntrance
+
+    .to(".pact-system-kicker", {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.28
+    })
+
+    .to(".pact-system-title", {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.48
+    })
+
+    .to(
+      ".pact-system-description",
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.34
+      },
+      "-=0.20"
+    )
+
+    .to(
+      ".pact-core",
+      {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 0.52,
+        ease: "back.out(1.4)"
+      }
+    )
+
+    .to(
+      ".pact-node",
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.34,
+        stagger: 0.07
+      },
+      "-=0.18"
+    )
+
+    .to(
+      ".pact-panel",
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.46
+      },
+      "-=0.10"
+    )
+
+    .to(
+      ".pact-system-footer",
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.30
+      },
+      "-=0.10"
+    );
+
+});
+  
   /* ======================================================
      REFRESH
   ====================================================== */
