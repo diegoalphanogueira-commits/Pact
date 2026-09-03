@@ -1623,38 +1623,37 @@ textarea {
 @media (max-width: 640px) {
 
   .tools-scroll-cue {
-    top: 42%;
-  }
+  top: auto;
+  bottom: 52px;
+  left: 28px;
+  right: auto;
 
-  .tools-orbit {
-    width: 72px;
-    height: 72px;
-  }
+  transform: none;
 
-  .tools-orbit-ring-1 {
-    width: 38px;
-    height: 38px;
-  }
+  align-items: flex-start;
 
-  .tools-orbit-ring-2 {
-    width: 68px;
-    height: 68px;
-  }
+  gap: 12px;
+}
 
-  .tools-scroll-label {
-    font-size: 0.56rem;
-  }
+.tools-orbit {
+  width: 58px;
+  height: 58px;
+}
 
-  .tools-scroll-progress {
-    width: 90px;
-  }
+.tools-orbit-ring-1 {
+  width: 32px;
+  height: 32px;
+}
 
-  .tool-word {
-    color: rgba(245, 246, 247, 0.20);
-  }
+.tools-orbit-ring-2 {
+  width: 56px;
+  height: 56px;
+}
 
-  .tool-word-4 {
-    color: rgba(245, 246, 247, 0.26);
-  }
+.tools-scroll-label {
+  font-size: 0.55rem;
+}
 
+.tools-scroll-progress {
+  width: 130px;
 }
