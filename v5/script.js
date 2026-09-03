@@ -12,12 +12,27 @@ document.addEventListener("DOMContentLoaded", () => {
   ====================================================== */
 
   if (reduceMotion) {
+
+    gsap.set([
+      ".hero-eyebrow",
+      ".hero-line",
+      ".hero-description",
+      ".hero-actions",
+      ".hero-pact",
+      ".tools-kicker",
+      ".tools-title > *",
+      ".tools-reveal"
+    ], {
+      clearProps: "all",
+      autoAlpha: 1
+    });
+
     return;
   }
 
 
   /* ======================================================
-     LENIS — SMOOTH SCROLL
+     LENIS
   ====================================================== */
 
   const lenis = new Lenis({
@@ -54,16 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ======================================================
-     HERO VIDEO — ENTRADA CINEMATOGRÁFICA
+     HERO VIDEO INTRO
   ====================================================== */
 
   gsap.fromTo(
     ".hero-video",
-
     {
       scale: 1.08
     },
-
     {
       scale: 1.02,
       duration: 2.6,
@@ -74,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ======================================================
-     HERO CONTENT — INTRO
+     HERO INTRO
   ====================================================== */
 
   const heroIntro = gsap.timeline({
@@ -136,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ======================================================
-     SCROLL INDICATOR
+     HERO SCROLL INDICATOR
   ====================================================== */
 
   gsap.to(".scroll-line i", {
@@ -150,18 +163,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ======================================================
-     DESKTOP SCROLL BEHAVIOUR
+     RESPONSIVE MOTION
   ====================================================== */
 
   const mm = gsap.matchMedia();
 
+
+
+  /* ======================================================
+     HERO — DESKTOP
+  ====================================================== */
 
   mm.add("(min-width: 641px)", () => {
 
     gsap.to(".hero-video", {
       scale: 1.09,
       yPercent: 3,
-
       ease: "none",
 
       scrollTrigger: {
@@ -176,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.to(".hero-content", {
       y: -42,
       autoAlpha: 0.52,
-
       ease: "none",
 
       scrollTrigger: {
@@ -192,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ======================================================
-     MOBILE SCROLL BEHAVIOUR
+     HERO — MOBILE
   ====================================================== */
 
   mm.add("(max-width: 640px)", () => {
@@ -200,7 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.to(".hero-video", {
       scale: 1.075,
       yPercent: 2,
-
       ease: "none",
 
       scrollTrigger: {
@@ -215,7 +230,6 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.to(".hero-content", {
       y: -20,
       autoAlpha: 0.68,
-
       ease: "none",
 
       scrollTrigger: {
@@ -225,6 +239,324 @@ document.addEventListener("DOMContentLoaded", () => {
         scrub: 0.8
       }
     });
+
+  });
+
+
+
+  /* ======================================================
+     SCREEN 02 — INITIAL STATE
+  ====================================================== */
+
+  const toolWords = gsap.utils.toArray(".tool-word");
+  const titleParts = gsap.utils.toArray(".tools-title > *");
+
+
+  gsap.set(".tools-kicker", {
+    autoAlpha: 0,
+    y: 18
+  });
+
+
+  gsap.set(titleParts, {
+    autoAlpha: 0,
+    y: 42
+  });
+
+
+  gsap.set(".tools-reveal", {
+    autoAlpha: 0,
+    y: 24
+  });
+
+
+  gsap.set(toolWords, {
+    autoAlpha: 0.22
+  });
+
+
+
+  /* ======================================================
+     SCREEN 02 — DESKTOP CINEMATIC SCROLL
+  ====================================================== */
+
+  mm.add("(min-width: 641px)", () => {
+
+    const wordX = [
+      -150,
+      130,
+      -120,
+      150,
+      -130,
+      150,
+      90,
+      -80
+    ];
+
+
+    const wordY = [
+      -55,
+      -70,
+      40,
+      20,
+      65,
+      70,
+      -80,
+      80
+    ];
+
+
+    const toolsTimeline = gsap.timeline({
+
+      scrollTrigger: {
+
+        trigger: ".tools-section",
+
+        start: "top top",
+
+        end: "+=180%",
+
+        pin: ".tools-stage",
+
+        scrub: 1,
+
+        anticipatePin: 1,
+
+        invalidateOnRefresh: true
+
+      }
+
+    });
+
+
+    toolsTimeline
+
+      /* ferramentas respiram primeiro */
+
+      .to(toolWords, {
+        autoAlpha: 0.34,
+        duration: 0.35,
+        stagger: 0.025
+      })
+
+
+      /* kicker */
+
+      .to(".tools-kicker", {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.35
+      })
+
+
+      /* primeira linha */
+
+      .to(titleParts[0], {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.48
+      })
+
+
+      /* segunda linha */
+
+      .to(titleParts[1], {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.48
+      }, "-=0.12")
+
+
+      /* verde */
+
+      .to(titleParts[2], {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.52
+      }, "-=0.12")
+
+
+      /* ferramentas se afastam */
+
+      .to(
+        toolWords,
+        {
+          x: (index) => wordX[index] || 0,
+          y: (index) => wordY[index] || 0,
+
+          scale: 1.1,
+
+          autoAlpha: 0.055,
+
+          filter: "blur(7px)",
+
+          duration: 0.95,
+
+          stagger: 0.02
+        },
+        "-=0.3"
+      )
+
+
+      /* frase final */
+
+      .to(
+        ".tools-reveal",
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.48
+        },
+        "-=0.34"
+      )
+
+
+      /* pequeno respiro antes de liberar */
+
+      .to({}, {
+        duration: 0.45
+      });
+
+
+  });
+
+
+
+  /* ======================================================
+     SCREEN 02 — MOBILE CINEMATIC SCROLL
+  ====================================================== */
+
+  mm.add("(max-width: 640px)", () => {
+
+    const wordXMobile = [
+      -50,
+      45,
+      -40,
+      50,
+      -45,
+      45
+    ];
+
+
+    const wordYMobile = [
+      -35,
+      -45,
+      20,
+      15,
+      40,
+      45
+    ];
+
+
+    const mobileWords = toolWords.filter(
+      (word) => getComputedStyle(word).display !== "none"
+    );
+
+
+    const toolsMobileTimeline = gsap.timeline({
+
+      scrollTrigger: {
+
+        trigger: ".tools-section",
+
+        start: "top top",
+
+        end: "+=145%",
+
+        pin: ".tools-stage",
+
+        scrub: 0.85,
+
+        anticipatePin: 1,
+
+        invalidateOnRefresh: true
+
+      }
+
+    });
+
+
+    toolsMobileTimeline
+
+      .to(mobileWords, {
+        autoAlpha: 0.28,
+        duration: 0.3,
+        stagger: 0.025
+      })
+
+
+      .to(".tools-kicker", {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.32
+      })
+
+
+      .to(titleParts[0], {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.42
+      })
+
+
+      .to(titleParts[1], {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.42
+      }, "-=0.1")
+
+
+      .to(titleParts[2], {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.45
+      }, "-=0.1")
+
+
+      .to(
+        mobileWords,
+        {
+          x: (index) => wordXMobile[index] || 0,
+          y: (index) => wordYMobile[index] || 0,
+
+          autoAlpha: 0.05,
+
+          scale: 1.05,
+
+          duration: 0.75,
+
+          stagger: 0.015
+        },
+        "-=0.25"
+      )
+
+
+      .to(
+        ".tools-reveal",
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.42
+        },
+        "-=0.28"
+      )
+
+
+      .to({}, {
+        duration: 0.35
+      });
+
+  });
+
+
+
+  /* ======================================================
+     RECALCULATE
+  ====================================================== */
+
+  window.addEventListener("load", () => {
+
+    ScrollTrigger.refresh();
 
   });
 
