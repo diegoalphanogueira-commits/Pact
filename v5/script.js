@@ -4774,105 +4774,101 @@ if (authorSection) {
    SCREEN 10 — PACT ASSESSMENT ENGINE
 ====================================================== */
 
-const assessmentEntry =
-  document.getElementById(
-    "assessmentEntry"
-  );
-
-const assessmentApp =
-  document.getElementById(
-    "assessmentApp"
-  );
-
-const assessmentResult =
-  document.getElementById(
-    "assessmentResult"
-  );
-
-const assessmentStartButton =
-  document.getElementById(
-    "assessmentStartButton"
-  );
-
-const assessmentCloseButton =
-  document.getElementById(
-    "assessmentCloseButton"
-  );
-
-const assessmentBackButton =
-  document.getElementById(
-    "assessmentBackButton"
-  );
-
-const assessmentNextButton =
-  document.getElementById(
-    "assessmentNextButton"
-  );
-
-const assessmentAnswerArea =
-  document.getElementById(
-    "assessmentAnswerArea"
-  );
-
-const assessmentQuestionEyebrow =
-  document.getElementById(
-    "assessmentQuestionEyebrow"
-  );
-
-const assessmentQuestionTitle =
-  document.getElementById(
-    "assessmentQuestionTitle"
-  );
-
-const assessmentQuestionDescription =
-  document.getElementById(
-    "assessmentQuestionDescription"
-  );
-
-const assessmentProgressText =
-  document.getElementById(
-    "assessmentProgressText"
-  );
-
-const assessmentProgressBar =
-  document.getElementById(
-    "assessmentProgressBar"
-  );
-
-const assessmentPhaseLabel =
-  document.getElementById(
-    "assessmentPhaseLabel"
-  );
-
-const assessmentCurrentQuestion =
-  document.getElementById(
-    "assessmentCurrentQuestion"
-  );
-
-const assessmentTotalQuestions =
-  document.getElementById(
-    "assessmentTotalQuestions"
-  );
-
-
-
-/* ======================================================
-   STATE
-====================================================== */
+const assessmentEntry = document.getElementById("assessmentEntry");
+const assessmentApp = document.getElementById("assessmentApp");
+const assessmentResult = document.getElementById("assessmentResult");
+const assessmentStartButton = document.getElementById("assessmentStartButton");
+const assessmentCloseButton = document.getElementById("assessmentCloseButton");
+const assessmentBackButton = document.getElementById("assessmentBackButton");
+const assessmentNextButton = document.getElementById("assessmentNextButton");
+const assessmentAnswerArea = document.getElementById("assessmentAnswerArea");
+const assessmentQuestionEyebrow = document.getElementById("assessmentQuestionEyebrow");
+const assessmentQuestionTitle = document.getElementById("assessmentQuestionTitle");
+const assessmentQuestionDescription = document.getElementById("assessmentQuestionDescription");
+const assessmentProgressText = document.getElementById("assessmentProgressText");
+const assessmentProgressBar = document.getElementById("assessmentProgressBar");
+const assessmentPhaseLabel = document.getElementById("assessmentPhaseLabel");
+const assessmentCurrentQuestion = document.getElementById("assessmentCurrentQuestion");
+const assessmentTotalQuestions = document.getElementById("assessmentTotalQuestions");
 
 let assessmentIndex = 0;
-
 const assessmentAnswers = {};
 
-  const ASSESSMENT_TOTAL_PLANNED = 20;
+const segmentProfiles = {
+  beauty: {
+    label: "beleza e estética",
+    demand: "serviços como o seu",
+    channels: "Google, avaliações, Instagram, indicação e mídia local"
+  },
+
+  health: {
+    label: "saúde e clínica",
+    demand: "atendimentos como o seu",
+    channels: "Google, avaliações, indicação, conteúdo e presença local"
+  },
+
+  local_service: {
+    label: "serviços locais",
+    demand: "esse tipo de serviço na sua região",
+    channels: "Google, mapas, avaliações, indicação e prospecção"
+  },
+
+  professional: {
+    label: "serviços profissionais",
+    demand: "uma solução como a sua",
+    channels: "Google, autoridade, indicação, conteúdo e relacionamento"
+  },
+
+  b2b: {
+    label: "serviços B2B",
+    demand: "uma solução empresarial como a sua",
+    channels: "prospecção, indicação, LinkedIn, conteúdo e parcerias"
+  },
+
+  retail: {
+    label: "loja ou comércio",
+    demand: "produtos como os seus",
+    channels: "Google, redes sociais, localização, promoções e indicação"
+  },
+
+  ecommerce: {
+    label: "e-commerce",
+    demand: "produtos como os seus",
+    channels: "mídia paga, busca, marketplaces, conteúdo e redes sociais"
+  },
+
+  education: {
+    label: "educação ou treinamento",
+    demand: "uma formação como a sua",
+    channels: "conteúdo, busca, redes sociais, autoridade e indicação"
+  },
+
+  other: {
+    label: "seu segmento",
+    demand: "uma solução como a sua",
+    channels: "os canais onde seus clientes procuram soluções"
+  }
+};
 
 
+const option = (
+  value,
+  label,
+  score,
+  signal
+) => ({
+  value,
+  label,
+  score,
+  signal
+});
 
-/* ======================================================
-   CONTEXT QUESTIONS
-====================================================== */
 
 const assessmentQuestions = [
+
+  /* ====================================================
+     CONTEXTO 01–04
+  ==================================================== */
 
   {
     id: "name",
@@ -4892,7 +4888,8 @@ const assessmentQuestions = [
     placeholder:
       "Digite seu primeiro nome",
 
-    autocomplete: "given-name"
+    autocomplete:
+      "given-name"
   },
 
 
@@ -4914,7 +4911,8 @@ const assessmentQuestions = [
     placeholder:
       "Ex.: Studio Bella",
 
-    autocomplete: "organization"
+    autocomplete:
+      "organization"
   },
 
 
@@ -4935,50 +4933,50 @@ const assessmentQuestions = [
 
     options: [
 
-      {
-        value: "beauty",
-        label: "Beleza e estética"
-      },
+      option(
+        "beauty",
+        "Beleza e estética"
+      ),
 
-      {
-        value: "health",
-        label: "Saúde e clínica"
-      },
+      option(
+        "health",
+        "Saúde e clínica"
+      ),
 
-      {
-        value: "local_service",
-        label: "Serviços locais"
-      },
+      option(
+        "local_service",
+        "Serviços locais"
+      ),
 
-      {
-        value: "professional",
-        label: "Serviços profissionais"
-      },
+      option(
+        "professional",
+        "Serviços profissionais"
+      ),
 
-      {
-        value: "b2b",
-        label: "Serviços B2B"
-      },
+      option(
+        "b2b",
+        "Serviços B2B"
+      ),
 
-      {
-        value: "retail",
-        label: "Loja ou comércio"
-      },
+      option(
+        "retail",
+        "Loja ou comércio"
+      ),
 
-      {
-        value: "ecommerce",
-        label: "E-commerce"
-      },
+      option(
+        "ecommerce",
+        "E-commerce"
+      ),
 
-      {
-        value: "education",
-        label: "Educação ou treinamento"
-      },
+      option(
+        "education",
+        "Educação ou treinamento"
+      ),
 
-      {
-        value: "other",
-        label: "Outro segmento"
-      }
+      option(
+        "other",
+        "Outro segmento"
+      )
 
     ]
   },
@@ -5001,101 +4999,91 @@ const assessmentQuestions = [
 
     options: [
 
-      {
-        value: "more_customers",
-        label:
-          "Atrair mais clientes"
-      },
+      option(
+        "more_customers",
+        "Atrair mais clientes"
+      ),
 
-      {
-        value: "sell_more",
-        label:
-          "Vender mais das oportunidades que já chegam"
-      },
+      option(
+        "sell_more",
+        "Vender mais das oportunidades que já chegam"
+      ),
 
-      {
-        value: "positioning",
-        label:
-          "Melhorar posicionamento e percepção"
-      },
+      option(
+        "positioning",
+        "Melhorar posicionamento e percepção"
+      ),
 
-      {
-        value: "organization",
-        label:
-          "Organizar o comercial"
-      },
+      option(
+        "organization",
+        "Organizar o comercial"
+      ),
 
-      {
-        value: "automation",
-        label:
-          "Automatizar e ganhar eficiência"
-      },
+      option(
+        "automation",
+        "Automatizar e ganhar eficiência"
+      ),
 
-      {
-        value: "scale",
-        label:
-          "Criar estrutura para crescer"
-      }
+      option(
+        "scale",
+        "Criar estrutura para crescer"
+      )
 
     ]
-  }
+  },
 
-];
 
-  /* ======================================================
-   P — POSICIONAMENTO
-====================================================== */
 
-assessmentQuestions.push(
+  /* ====================================================
+     POSICIONAMENTO 05–08
+  ==================================================== */
 
   {
     id: "p_clarity",
 
     phase: "p",
 
-    eyebrow: "POSICIONAMENTO · 01",
+    eyebrow:
+      "POSICIONAMENTO · 01",
 
     title:
       "Quando alguém conhece sua empresa pela primeira vez, entende rapidamente por que deveria escolher vocês?",
 
     description:
-      "Considere a clareza da comunicação, o problema que vocês resolvem e o motivo para escolher sua empresa em vez de outra.",
+      "Considere a clareza da comunicação, o problema resolvido e o motivo para escolher sua empresa.",
 
-    type: "options",
+    type:
+      "options",
 
     options: [
 
-      {
-        value: "very_clear",
-        label:
-          "Sim. Nossa proposta e nossos diferenciais são muito claros.",
-        score: 100,
-        signal: "strong_positioning"
-      },
+      option(
+        "very_clear",
+        "Sim. Nossa proposta e nossos diferenciais são muito claros.",
+        100,
+        "strong_positioning"
+      ),
 
-      {
-        value: "clear_offer_weak_difference",
-        label:
-          "Entendem o que fazemos, mas o diferencial ainda não é tão evidente.",
-        score: 72,
-        signal: "weak_differentiation"
-      },
+      option(
+        "clear_offer_weak_difference",
+        "Entendem o que fazemos, mas o diferencial ainda não é tão evidente.",
+        72,
+        "weak_differentiation"
+      ),
 
-      {
-        value: "needs_explanation",
-        label:
-          "Normalmente precisamos explicar bastante para o cliente perceber o valor.",
-        score: 42,
-        signal: "unclear_value"
-      },
+      option(
+        "needs_explanation",
+        "Precisamos explicar bastante para o cliente perceber o valor.",
+        42,
+        "unclear_value"
+      ),
 
-      {
-        value: "confusing",
-        label:
-          "Nossa comunicação ainda é confusa ou muda muito de um canal para outro.",
-        score: 20,
-        signal: "fragmented_positioning"
-      }
+      option(
+        "confusing",
+        "Nossa comunicação ainda é confusa ou muda muito entre os canais.",
+        20,
+        "fragmented_positioning"
+      )
 
     ]
   },
@@ -5106,7 +5094,8 @@ assessmentQuestions.push(
 
     phase: "p",
 
-    eyebrow: "POSICIONAMENTO · 02",
+    eyebrow:
+      "POSICIONAMENTO · 02",
 
     title:
       "Quão claro está quem é o cliente ideal do seu negócio?",
@@ -5114,41 +5103,38 @@ assessmentQuestions.push(
     description:
       "Quanto mais claro o público, mais fácil construir oferta, comunicação e aquisição eficientes.",
 
-    type: "options",
+    type:
+      "options",
 
     options: [
 
-      {
-        value: "defined",
-        label:
-          "Muito claro. Sabemos exatamente quem queremos atrair e quais problemas resolvemos.",
-        score: 100,
-        signal: "clear_audience"
-      },
+      option(
+        "defined",
+        "Muito claro. Sabemos exatamente quem queremos atrair e quais problemas resolvemos.",
+        100,
+        "clear_audience"
+      ),
 
-      {
-        value: "mostly_defined",
-        label:
-          "Temos uma boa noção, mas ainda atendemos perfis bastante diferentes.",
-        score: 74,
-        signal: "broad_audience"
-      },
+      option(
+        "mostly_defined",
+        "Temos uma boa noção, mas ainda atendemos perfis bastante diferentes.",
+        74,
+        "broad_audience"
+      ),
 
-      {
-        value: "broad",
-        label:
-          "Nosso público é amplo e ainda não temos um perfil prioritário bem definido.",
-        score: 43,
-        signal: "undefined_priority_audience"
-      },
+      option(
+        "broad",
+        "Nosso público é amplo e ainda não temos um perfil prioritário bem definido.",
+        43,
+        "undefined_priority_audience"
+      ),
 
-      {
-        value: "anyone",
-        label:
-          "Hoje tentamos vender para praticamente qualquer pessoa que possa comprar.",
-        score: 18,
-        signal: "no_audience_definition"
-      }
+      option(
+        "anyone",
+        "Hoje tentamos vender para praticamente qualquer pessoa que possa comprar.",
+        18,
+        "no_audience_definition"
+      )
 
     ]
   },
@@ -5159,49 +5145,47 @@ assessmentQuestions.push(
 
     phase: "p",
 
-    eyebrow: "POSICIONAMENTO · 03",
+    eyebrow:
+      "POSICIONAMENTO · 03",
 
     title:
       "Se um potencial cliente pesquisar sua empresa antes de entrar em contato, o que ele encontra?",
 
     description:
-      "Considere site, Google, redes sociais, avaliações, cases, trabalhos realizados e outras provas de confiança.",
+      "Considere site, Google, redes sociais, avaliações, cases e outras provas de confiança.",
 
-    type: "options",
+    type:
+      "options",
 
     options: [
 
-      {
-        value: "strong_presence",
-        label:
-          "Uma presença profissional, coerente e com boas provas de confiança.",
-        score: 100,
-        signal: "strong_trust"
-      },
+      option(
+        "strong_presence",
+        "Uma presença profissional, coerente e com boas provas de confiança.",
+        100,
+        "strong_trust"
+      ),
 
-      {
-        value: "basic_presence",
-        label:
-          "Encontra informações boas, mas nossa autoridade e provas ainda poderiam ser mais fortes.",
-        score: 72,
-        signal: "weak_social_proof"
-      },
+      option(
+        "basic_presence",
+        "Encontra informações boas, mas nossa autoridade e provas poderiam ser mais fortes.",
+        72,
+        "weak_social_proof"
+      ),
 
-      {
-        value: "fragmented_presence",
-        label:
-          "Encontra algumas coisas, mas a presença é incompleta ou pouco organizada.",
-        score: 42,
-        signal: "fragmented_presence"
-      },
+      option(
+        "fragmented_presence",
+        "Encontra algumas coisas, mas a presença é incompleta ou pouco organizada.",
+        42,
+        "fragmented_presence"
+      ),
 
-      {
-        value: "weak_presence",
-        label:
-          "Encontra pouco conteúdo ou quase nada que ajude a confiar na empresa.",
-        score: 18,
-        signal: "low_digital_trust"
-      }
+      option(
+        "weak_presence",
+        "Encontra pouco conteúdo ou quase nada que ajude a confiar na empresa.",
+        18,
+        "low_digital_trust"
+      )
 
     ]
   },
@@ -5212,120 +5196,119 @@ assessmentQuestions.push(
 
     phase: "p",
 
-    eyebrow: "POSICIONAMENTO · 04",
+    eyebrow:
+      "POSICIONAMENTO · 04",
 
     title:
       "Hoje sua principal oferta é fácil de entender e de comprar?",
 
     description:
-      "Pense se o cliente entende o que recebe, qual transformação ou benefício existe e qual é o próximo passo.",
+      "Pense se o cliente entende o que recebe, qual benefício existe e qual é o próximo passo.",
 
-    type: "options",
+    type:
+      "options",
 
     options: [
 
-      {
-        value: "structured_offer",
-        label:
-          "Sim. Temos uma oferta clara, bem apresentada e com próximo passo definido.",
-        score: 100,
-        signal: "strong_offer"
-      },
+      option(
+        "structured_offer",
+        "Sim. Temos uma oferta clara, bem apresentada e com próximo passo definido.",
+        100,
+        "strong_offer"
+      ),
 
-      {
-        value: "clear_service",
-        label:
-          "O serviço é claro, mas ainda pode ser melhor estruturado como oferta.",
-        score: 73,
-        signal: "offer_needs_structure"
-      },
+      option(
+        "clear_service",
+        "O serviço é claro, mas ainda pode ser melhor estruturado como oferta.",
+        73,
+        "offer_needs_structure"
+      ),
 
-      {
-        value: "custom_every_time",
-        label:
-          "Cada venda acaba sendo explicada ou montada praticamente do zero.",
-        score: 40,
-        signal: "unstructured_offer"
-      },
+      option(
+        "custom_every_time",
+        "Cada venda acaba sendo explicada ou montada praticamente do zero.",
+        40,
+        "unstructured_offer"
+      ),
 
-      {
-        value: "confusing_offer",
-        label:
-          "O cliente muitas vezes não entende exatamente o que oferecemos ou qual caminho seguir.",
-        score: 17,
-        signal: "unclear_offer"
-      }
+      option(
+        "confusing_offer",
+        "O cliente muitas vezes não entende exatamente o que oferecemos ou qual caminho seguir.",
+        17,
+        "unclear_offer"
+      )
 
     ]
-  }
+  },
 
-);
 
-  /* ======================================================
-   A — AQUISIÇÃO
-====================================================== */
 
-assessmentQuestions.push(
+  /* ====================================================
+     AQUISIÇÃO 09–12
+  ==================================================== */
 
   {
-    id: "a_predictability",
+    id:
+      "a_predictability",
 
-    phase: "a",
+    phase:
+      "a",
 
-    eyebrow: "AQUISIÇÃO · 01",
+    eyebrow:
+      "AQUISIÇÃO · 01",
 
     title:
       "Hoje novas oportunidades entram no seu negócio de forma previsível?",
 
     description:
-      "Não estamos perguntando se clientes aparecem. Queremos entender se existe um mecanismo capaz de gerar novas oportunidades com consistência.",
+      "Queremos entender se existe um mecanismo capaz de gerar novas oportunidades com consistência.",
 
-    type: "options",
+    type:
+      "options",
 
     options: [
 
-      {
-        value: "predictable",
-        label:
-          "Sim. Temos canais que geram oportunidades de forma consistente.",
-        score: 100,
-        signal: "predictable_acquisition"
-      },
+      option(
+        "predictable",
+        "Sim. Temos canais que geram oportunidades de forma consistente.",
+        100,
+        "predictable_acquisition"
+      ),
 
-      {
-        value: "somewhat_predictable",
-        label:
-          "Existe alguma consistência, mas o volume oscila bastante.",
-        score: 72,
-        signal: "unstable_acquisition"
-      },
+      option(
+        "somewhat_predictable",
+        "Existe alguma consistência, mas o volume oscila bastante.",
+        72,
+        "unstable_acquisition"
+      ),
 
-      {
-        value: "dependent",
-        label:
-          "Dependemos muito de indicação, períodos específicos ou ações pontuais.",
-        score: 40,
-        signal: "channel_dependency"
-      },
+      option(
+        "dependent",
+        "Dependemos muito de indicação, períodos específicos ou ações pontuais.",
+        40,
+        "channel_dependency"
+      ),
 
-      {
-        value: "random",
-        label:
-          "Não. As oportunidades chegam de forma bastante imprevisível.",
-        score: 15,
-        signal: "no_predictable_acquisition"
-      }
+      option(
+        "random",
+        "Não. As oportunidades chegam de forma bastante imprevisível.",
+        15,
+        "no_predictable_acquisition"
+      )
 
     ]
   },
 
 
   {
-    id: "a_volume",
+    id:
+      "a_volume",
 
-    phase: "a",
+    phase:
+      "a",
 
-    eyebrow: "AQUISIÇÃO · 02",
+    eyebrow:
+      "AQUISIÇÃO · 02",
 
     title:
       "Considerando a meta atual da empresa, entram oportunidades suficientes para crescer?",
@@ -5333,551 +5316,889 @@ assessmentQuestions.push(
     description:
       "Pense na quantidade de novas pessoas ou empresas que demonstram interesse real em comprar.",
 
-    type: "options",
+    type:
+      "options",
 
     options: [
 
-      {
-        value: "enough",
-        label:
-          "Sim. Temos volume suficiente para sustentar nossa meta.",
-        score: 100,
-        signal: "healthy_demand_volume"
-      },
+      option(
+        "enough",
+        "Sim. Temos volume suficiente para sustentar nossa meta.",
+        100,
+        "healthy_demand_volume"
+      ),
 
-      {
-        value: "almost",
-        label:
-          "Estamos próximos, mas ainda existem períodos com pouca demanda.",
-        score: 74,
-        signal: "moderate_demand_gap"
-      },
+      option(
+        "almost",
+        "Estamos próximos, mas ainda existem períodos com pouca demanda.",
+        74,
+        "moderate_demand_gap"
+      ),
 
-      {
-        value: "below",
-        label:
-          "Não. Precisaríamos de mais oportunidades entrando para crescer.",
-        score: 38,
-        signal: "low_demand_volume"
-      },
+      option(
+        "below",
+        "Não. Precisaríamos de mais oportunidades entrando para crescer.",
+        38,
+        "low_demand_volume"
+      ),
 
-      {
-        value: "very_low",
-        label:
-          "O volume é muito baixo ou não conseguimos gerar demanda com consistência.",
-        score: 14,
-        signal: "critical_demand_gap"
-      }
+      option(
+        "very_low",
+        "O volume é muito baixo ou não conseguimos gerar demanda com consistência.",
+        14,
+        "critical_demand_gap"
+      )
 
     ]
   },
 
 
   {
-    id: "a_presence",
+    id:
+      "a_presence",
 
-    phase: "a",
+    phase:
+      "a",
 
-    eyebrow: "AQUISIÇÃO · 03",
+    eyebrow:
+      "AQUISIÇÃO · 03",
 
     title: () => {
 
-      const segment =
+      const s =
         getAssessmentSegmentProfile();
 
-      return `Quando alguém procura ${segment.demand}, sua empresa aparece com força nos canais certos?`;
+      return `Quando alguém procura ${s.demand}, sua empresa aparece com força nos canais certos?`;
 
     },
 
     description: () => {
 
-      const segment =
+      const s =
         getAssessmentSegmentProfile();
 
-      return `Para negócios de ${segment.label}, alguns canais relevantes costumam envolver ${segment.channels}. Considere sua presença onde existe intenção real de compra.`;
+      return `Para negócios de ${s.label}, canais relevantes costumam envolver ${s.channels}.`;
 
     },
 
-    type: "options",
+    type:
+      "options",
 
     options: [
 
-      {
-        value: "strong",
-        label:
-          "Sim. Estamos bem presentes nos canais que realmente geram oportunidades.",
-        score: 100,
-        signal: "strong_channel_presence"
-      },
+      option(
+        "strong",
+        "Sim. Estamos bem presentes nos canais que realmente geram oportunidades.",
+        100,
+        "strong_channel_presence"
+      ),
 
-      {
-        value: "partial",
-        label:
-          "Estamos presentes em alguns canais, mas ainda existem oportunidades importantes pouco exploradas.",
-        score: 72,
-        signal: "channel_opportunity"
-      },
+      option(
+        "partial",
+        "Estamos presentes em alguns canais, mas ainda existem oportunidades importantes pouco exploradas.",
+        72,
+        "channel_opportunity"
+      ),
 
-      {
-        value: "weak",
-        label:
-          "Nossa presença existe, mas gera poucas oportunidades comerciais.",
-        score: 40,
-        signal: "weak_channel_performance"
-      },
+      option(
+        "weak",
+        "Nossa presença existe, mas gera poucas oportunidades comerciais.",
+        40,
+        "weak_channel_performance"
+      ),
 
-      {
-        value: "absent",
-        label:
-          "Ainda não temos uma estratégia clara para aparecer onde o cliente procura.",
-        score: 15,
-        signal: "low_demand_capture"
-      }
+      option(
+        "absent",
+        "Ainda não temos uma estratégia clara para aparecer onde o cliente procura.",
+        15,
+        "low_demand_capture"
+      )
 
     ]
   },
 
 
   {
-    id: "a_measurement",
+    id:
+      "a_measurement",
 
-    phase: "a",
+    phase:
+      "a",
 
-    eyebrow: "AQUISIÇÃO · 04",
+    eyebrow:
+      "AQUISIÇÃO · 04",
 
     title:
       "Você consegue identificar quais canais realmente trazem oportunidades e vendas?",
 
     description:
-      "Uma operação de aquisição madura sabe de onde as oportunidades vêm e consegue decidir onde vale colocar mais energia ou investimento.",
+      "Uma aquisição madura sabe de onde as oportunidades vêm e quais canais merecem mais investimento.",
 
-    type: "options",
+    type:
+      "options",
 
     options: [
 
-      {
-        value: "measured",
-        label:
-          "Sim. Acompanhamos origem, volume e resultado dos principais canais.",
-        score: 100,
-        signal: "measured_acquisition"
-      },
+      option(
+        "measured",
+        "Sim. Acompanhamos origem, volume e resultado dos principais canais.",
+        100,
+        "measured_acquisition"
+      ),
 
-      {
-        value: "partial_measurement",
-        label:
-          "Sabemos os principais canais, mas ainda não medimos tudo de forma organizada.",
-        score: 72,
-        signal: "partial_acquisition_measurement"
-      },
+      option(
+        "partial_measurement",
+        "Sabemos os principais canais, mas ainda não medimos tudo de forma organizada.",
+        72,
+        "partial_acquisition_measurement"
+      ),
 
-      {
-        value: "perception",
-        label:
-          "Temos apenas uma percepção de onde os clientes costumam vir.",
-        score: 38,
-        signal: "acquisition_based_on_perception"
-      },
+      option(
+        "perception",
+        "Temos apenas uma percepção de onde os clientes costumam vir.",
+        38,
+        "acquisition_based_on_perception"
+      ),
 
-      {
-        value: "no_measurement",
-        label:
-          "Não acompanhamos de onde vêm as oportunidades ou quais canais funcionam melhor.",
-        score: 14,
-        signal: "no_acquisition_measurement"
-      }
+      option(
+        "no_measurement",
+        "Não acompanhamos de onde vêm as oportunidades ou quais canais funcionam melhor.",
+        14,
+        "no_acquisition_measurement"
+      )
+
+    ]
+  },
+
+
+
+  /* ====================================================
+     COMERCIAL 13–16
+  ==================================================== */
+
+  {
+    id:
+      "c_response",
+
+    phase:
+      "c",
+
+    eyebrow:
+      "COMERCIAL · 01",
+
+    title:
+      "Quando uma nova oportunidade entra, o atendimento acontece com velocidade e padrão?",
+
+    description:
+      "O primeiro contato influencia diretamente a chance de conversão.",
+
+    type:
+      "options",
+
+    options: [
+
+      option(
+        "fast_structured",
+        "Sim. Respondemos rápido e existe um padrão claro de atendimento.",
+        100,
+        "strong_first_response"
+      ),
+
+      option(
+        "usually_fast",
+        "Normalmente respondemos bem, mas ainda depende de quem atende ou do momento.",
+        72,
+        "inconsistent_response"
+      ),
+
+      option(
+        "slow",
+        "Às vezes demoramos e algumas oportunidades esfriam antes do atendimento.",
+        40,
+        "slow_response"
+      ),
+
+      option(
+        "unstructured",
+        "Não existe um padrão e frequentemente perdemos oportunidades no primeiro contato.",
+        15,
+        "critical_first_contact"
+      )
+
+    ]
+  },
+
+
+  {
+    id:
+      "c_process",
+
+    phase:
+      "c",
+
+    eyebrow:
+      "COMERCIAL · 02",
+
+    title:
+      "Existe um processo comercial claro entre a entrada da oportunidade e a venda?",
+
+    description:
+      "Queremos entender se existe uma sequência para atender, qualificar, apresentar, acompanhar e fechar.",
+
+    type:
+      "options",
+
+    options: [
+
+      option(
+        "structured",
+        "Sim. Temos etapas claras e sabemos em que momento cada oportunidade está.",
+        100,
+        "structured_sales_process"
+      ),
+
+      option(
+        "partial",
+        "Existe um processo, mas nem sempre ele é seguido ou acompanhado.",
+        72,
+        "partial_sales_process"
+      ),
+
+      option(
+        "informal",
+        "Existe uma forma de vender, mas ela está mais na cabeça das pessoas do que estruturada.",
+        40,
+        "informal_sales_process"
+      ),
+
+      option(
+        "none",
+        "Não. Cada oportunidade acaba sendo conduzida de uma forma diferente.",
+        15,
+        "no_sales_process"
+      )
+
+    ]
+  },
+
+
+  {
+    id:
+      "c_followup",
+
+    phase:
+      "c",
+
+    eyebrow:
+      "COMERCIAL · 03",
+
+    title:
+      "O que acontece quando o cliente demonstra interesse, mas não compra no primeiro contato?",
+
+    description:
+      "Aqui analisamos a capacidade de continuar a conversa sem perder oportunidades.",
+
+    type:
+      "options",
+
+    options: [
+
+      option(
+        "structured_followup",
+        "Existe uma sequência de follow-up e acompanhamos até existir uma definição.",
+        100,
+        "strong_followup"
+      ),
+
+      option(
+        "manual_followup",
+        "Fazemos retornos, mas de forma manual e nem sempre com consistência.",
+        72,
+        "manual_followup"
+      ),
+
+      option(
+        "depends",
+        "Depende de quem atendeu ou de lembrarmos daquela oportunidade.",
+        38,
+        "inconsistent_followup"
+      ),
+
+      option(
+        "lost",
+        "Na maioria das vezes, se não comprar no primeiro contato, a oportunidade se perde.",
+        12,
+        "lost_followup_opportunities"
+      )
+
+    ]
+  },
+
+
+  {
+    id:
+      "c_conversion",
+
+    phase:
+      "c",
+
+    eyebrow:
+      "COMERCIAL · 04",
+
+    title:
+      "Você sabe quantas oportunidades entram e quantas realmente se transformam em vendas?",
+
+    description:
+      "Sem acompanhar conversão, fica difícil saber se o problema está na demanda ou na capacidade de vender.",
+
+    type:
+      "options",
+
+    options: [
+
+      option(
+        "measured",
+        "Sim. Acompanhamos volume, etapas e taxa de conversão.",
+        100,
+        "measured_conversion"
+      ),
+
+      option(
+        "basic",
+        "Temos alguns números, mas ainda não acompanhamos o processo comercial inteiro.",
+        72,
+        "partial_conversion_measurement"
+      ),
+
+      option(
+        "perception",
+        "Sabemos mais ou menos como vendemos, mas não temos indicadores confiáveis.",
+        38,
+        "conversion_by_perception"
+      ),
+
+      option(
+        "unknown",
+        "Não sabemos quantas oportunidades são perdidas nem nossa taxa de conversão.",
+        12,
+        "no_conversion_measurement"
+      )
+
+    ]
+  },
+
+
+
+  /* ====================================================
+     TECNOLOGIA 17–20
+  ==================================================== */
+
+  {
+    id:
+      "t_organization",
+
+    phase:
+      "t",
+
+    eyebrow:
+      "TECNOLOGIA · 01",
+
+    title:
+      "As informações de clientes e oportunidades ficam organizadas em algum sistema?",
+
+    description:
+      "O importante é recuperar histórico, estágio e próximos passos sem depender da memória.",
+
+    type:
+      "options",
+
+    options: [
+
+      option(
+        "organized",
+        "Sim. Temos uma estrutura centralizada e atualizada.",
+        100,
+        "organized_customer_data"
+      ),
+
+      option(
+        "partial",
+        "Temos ferramentas, mas parte das informações ainda fica espalhada.",
+        72,
+        "fragmented_customer_data"
+      ),
+
+      option(
+        "spreadsheets",
+        "Usamos planilhas, WhatsApp ou controles manuais e frequentemente precisamos procurar informações.",
+        40,
+        "manual_information_management"
+      ),
+
+      option(
+        "none",
+        "Não existe uma estrutura central para acompanhar clientes e oportunidades.",
+        15,
+        "no_customer_data_structure"
+      )
+
+    ]
+  },
+
+
+  {
+    id:
+      "t_automation",
+
+    phase:
+      "t",
+
+    eyebrow:
+      "TECNOLOGIA · 02",
+
+    title:
+      "Quanto trabalho repetitivo ainda depende de alguém lembrar e executar manualmente?",
+
+    description:
+      "Pense em follow-up, confirmações, organização de dados, agendamento e atualização de status.",
+
+    type:
+      "options",
+
+    options: [
+
+      option(
+        "optimized",
+        "Pouco. Automatizamos o que faz sentido e mantemos controle sobre a experiência.",
+        100,
+        "healthy_automation"
+      ),
+
+      option(
+        "some_manual",
+        "Ainda existem tarefas manuais, mas a operação funciona relativamente bem.",
+        74,
+        "automation_opportunity"
+      ),
+
+      option(
+        "very_manual",
+        "Grande parte da rotina depende de ações manuais e isso consome bastante tempo.",
+        40,
+        "manual_operation"
+      ),
+
+      option(
+        "chaotic",
+        "A operação depende muito de memória, mensagens soltas e ações manuais.",
+        15,
+        "operational_fragility"
+      )
+
+    ]
+  },
+
+
+  {
+    id:
+      "t_capacity",
+
+    phase:
+      "t",
+
+    eyebrow:
+      "TECNOLOGIA · 03",
+
+    title:
+      "Se o volume de oportunidades dobrasse no próximo mês, sua operação conseguiria atender bem?",
+
+    description:
+      "Isso identifica se a estrutura atual suporta crescimento sem perder velocidade, controle ou qualidade.",
+
+    type:
+      "options",
+
+    options: [
+
+      option(
+        "ready",
+        "Sim. Temos estrutura e capacidade para absorver esse crescimento.",
+        100,
+        "scalable_operation"
+      ),
+
+      option(
+        "some_pressure",
+        "Provavelmente, mas precisaríamos ajustar alguns processos.",
+        72,
+        "moderate_capacity_limit"
+      ),
+
+      option(
+        "difficult",
+        "Seria difícil manter o padrão atual com o dobro de volume.",
+        38,
+        "capacity_bottleneck"
+      ),
+
+      option(
+        "collapse",
+        "Não. A operação provavelmente perderia controle ou qualidade.",
+        12,
+        "critical_capacity_limit"
+      )
+
+    ]
+  },
+
+
+  {
+    id:
+      "t_data",
+
+    phase:
+      "t",
+
+    eyebrow:
+      "TECNOLOGIA · 04",
+
+    title:
+      "Você consegue olhar para os números da operação e entender rapidamente o que precisa melhorar?",
+
+    description:
+      "Dados precisam ajudar a tomar decisões sobre aquisição, vendas, atendimento e capacidade.",
+
+    type:
+      "options",
+
+    options: [
+
+      option(
+        "clear_data",
+        "Sim. Temos indicadores claros e usamos os dados para tomar decisões.",
+        100,
+        "data_driven_operation"
+      ),
+
+      option(
+        "some_data",
+        "Temos alguns indicadores, mas ainda existem decisões baseadas mais em percepção.",
+        72,
+        "partial_data_visibility"
+      ),
+
+      option(
+        "little_data",
+        "Temos poucos números organizados e normalmente precisamos levantar informações manualmente.",
+        38,
+        "low_data_visibility"
+      ),
+
+      option(
+        "no_data",
+        "Não temos indicadores confiáveis para entender o desempenho da operação.",
+        12,
+        "no_operational_visibility"
+      )
 
     ]
   }
 
-);
-
-/* ======================================================
-   PHASE TRANSITION
-====================================================== */
-
-function showAssessmentTransition(
-  label,
-  title,
-  buttonLabel,
-  letter = ""
-) {
-
-  assessmentAnswerArea.innerHTML =
-    `
-      <div class="assessment-phase-complete">
-
-        ${
-          letter
-            ? `
-              <div class="assessment-phase-complete-mark">
-                ${letter}
-              </div>
-            `
-            : ""
-        }
-
-        <div>
-
-          <span>
-            ${label}
-          </span>
-
-          <strong>
-            ${escapePACTHTML(
-              title
-            )}
-          </strong>
-
-          <small>
-            O resultado completo será apresentado
-            ao final do Diagnóstico PACT.
-          </small>
-
-          <button
-            type="button"
-            class="assessment-transition-button"
-            id="assessmentContinuePhase"
-          >
-
-            <span>
-              ${buttonLabel}
-            </span>
-
-            <span aria-hidden="true">
-              →
-            </span>
-
-          </button>
-
-        </div>
-
-      </div>
-    `;
+];
 
 
-  assessmentNextButton.disabled =
-    true;
+const phaseNames = {
+  context:
+    "CONTEXTO",
+
+  p:
+    "POSICIONAMENTO",
+
+  a:
+    "AQUISIÇÃO",
+
+  c:
+    "COMERCIAL",
+
+  t:
+    "TECNOLOGIA"
+};
 
 
-  const button =
-    document.getElementById(
-      "assessmentContinuePhase"
-    );
+const phaseFullNames = {
+  p:
+    "Posicionamento",
+
+  a:
+    "Aquisição",
+
+  c:
+    "Comercial",
+
+  t:
+    "Tecnologia"
+};
 
 
-  button.addEventListener(
-    "click",
-    () => {
+const goalNames = {
 
-      assessmentIndex += 1;
+  more_customers:
+    "atrair mais clientes",
+
+  sell_more:
+    "converter melhor as oportunidades existentes",
+
+  positioning:
+    "fortalecer posicionamento e percepção",
+
+  organization:
+    "organizar o processo comercial",
+
+  automation:
+    "ganhar eficiência com tecnologia",
+
+  scale:
+    "criar estrutura para crescer"
+
+};
 
 
-      gsap.to(
-        "#assessmentQuestion",
-        {
-          autoAlpha: 0,
-          y: -20,
 
-          duration: 0.22,
+function getAssessmentQuestion() {
 
-          ease:
-            "power2.in",
-
-          onComplete:
-            renderAssessmentQuestion
-        }
-      );
-
-    }
+  return (
+    assessmentQuestions[
+      assessmentIndex
+    ] || null
   );
 
 }
 
-/* ======================================================
-   SEGMENT INTELLIGENCE
-====================================================== */
-
-const assessmentSegmentProfiles = {
-
-  beauty: {
-    label: "beleza e estética",
-    demand:
-      "serviços como o seu",
-    channels:
-      "Google, avaliações, Instagram, indicação e mídia local"
-  },
-
-  health: {
-    label: "saúde e clínica",
-    demand:
-      "atendimentos como o seu",
-    channels:
-      "Google, avaliações, indicação, conteúdo e presença local"
-  },
-
-  local_service: {
-    label: "serviços locais",
-    demand:
-      "esse tipo de serviço na sua região",
-    channels:
-      "Google, mapas, avaliações, indicação e prospecção"
-  },
-
-  professional: {
-    label: "serviços profissionais",
-    demand:
-      "uma solução como a sua",
-    channels:
-      "Google, autoridade, indicação, conteúdo e relacionamento"
-  },
-
-  b2b: {
-    label: "serviços B2B",
-    demand:
-      "uma solução empresarial como a sua",
-    channels:
-      "prospecção, indicação, LinkedIn, conteúdo e parcerias"
-  },
-
-  retail: {
-    label: "loja ou comércio",
-    demand:
-      "produtos como os seus",
-    channels:
-      "Google, redes sociais, localização, promoções e indicação"
-  },
-
-  ecommerce: {
-    label: "e-commerce",
-    demand:
-      "produtos como os seus",
-    channels:
-      "mídia paga, busca, marketplaces, conteúdo e redes sociais"
-  },
-
-  education: {
-    label: "educação ou treinamento",
-    demand:
-      "uma formação como a sua",
-    channels:
-      "conteúdo, busca, redes sociais, autoridade e indicação"
-  },
-
-  other: {
-    label: "seu segmento",
-    demand:
-      "uma solução como a sua",
-    channels:
-      "os principais canais onde seus clientes procuram soluções"
-  }
-
-};
 
 
 function getAssessmentSegmentProfile() {
 
   return (
-    assessmentSegmentProfiles[
+    segmentProfiles[
       assessmentAnswers.segment
     ] ||
-    assessmentSegmentProfiles.other
+    segmentProfiles.other
   );
 
 }
 
-/* ======================================================
-   HELPERS
-====================================================== */
 
-function getAssessmentQuestion() {
 
-  return assessmentQuestions[
-    assessmentIndex
-  ];
+function escapePACTHTML(
+  value
+) {
+
+  return String(
+    value || ""
+  )
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
 }
 
-  /* ======================================================
-   SCORE ENGINE
-====================================================== */
 
-function getAssessmentOptionData(
+
+function getOptionData(
   question,
   value
 ) {
 
-  if (
-    !question ||
-    !question.options
-  ) {
-    return null;
-  }
-
-
-  return question.options.find(
-    (option) =>
-      option.value === value
-  ) || null;
+  return (
+    question?.options?.find(
+      (item) =>
+        item.value === value
+    ) || null
+  );
 
 }
 
 
 
-function calculateAssessmentPhaseScore(
+function calculatePhaseScore(
   phase
 ) {
 
-  const phaseQuestions =
+  const questions =
     assessmentQuestions.filter(
       (question) =>
         question.phase === phase &&
-        question.options
+        question.options?.some(
+          (item) =>
+            typeof item.score ===
+            "number"
+        )
     );
 
 
-  let totalScore = 0;
-  let answered = 0;
+  const scores =
+    questions
+      .map(
+        (question) =>
+          getOptionData(
+            question,
+            assessmentAnswers[
+              question.id
+            ]
+          )?.score
+      )
+      .filter(
+        (score) =>
+          typeof score ===
+          "number"
+      );
 
 
-  phaseQuestions.forEach(
-    (question) => {
-
-      const answer =
-        assessmentAnswers[
-          question.id
-        ];
-
-
-      const option =
-        getAssessmentOptionData(
-          question,
-          answer
-        );
-
-
-      if (
-        option &&
-        typeof option.score === "number"
-      ) {
-
-        totalScore +=
-          option.score;
-
-        answered += 1;
-
-      }
-
-    }
-  );
-
-
-  if (!answered) {
+  if (!scores.length) {
     return 0;
   }
 
 
   return Math.round(
-    totalScore / answered
+
+    scores.reduce(
+      (total, score) =>
+        total + score,
+      0
+    ) / scores.length
+
   );
 
 }
 
 
 
-function getAssessmentPhaseSignals(
+function getPhaseSignals(
   phase
 ) {
 
-  const signals = [];
+  return assessmentQuestions
 
-
-  assessmentQuestions
     .filter(
       (question) =>
         question.phase === phase
     )
-    .forEach(
-      (question) => {
 
-        const option =
-          getAssessmentOptionData(
-            question,
-            assessmentAnswers[
-              question.id
-            ]
-          );
+    .map(
+      (question) =>
+        getOptionData(
+          question,
+          assessmentAnswers[
+            question.id
+          ]
+        )?.signal
+    )
+
+    .filter(Boolean);
+
+}
 
 
-        if (
-          option &&
-          option.signal
-        ) {
 
-          signals.push(
-            option.signal
-          );
+function savePhase(
+  phase
+) {
 
-        }
-
-      }
+  assessmentAnswers[
+    `${phase}_score`
+  ] =
+    calculatePhaseScore(
+      phase
     );
 
 
-  return signals;
+  assessmentAnswers[
+    `${phase}_signals`
+  ] =
+    getPhaseSignals(
+      phase
+    );
 
 }
+
+
 
 function updateAssessmentProgress() {
 
   const total =
-  ASSESSMENT_TOTAL_PLANNED;
+    assessmentQuestions.length;
+
 
   const current =
-    assessmentIndex + 1;
+    Math.min(
+      assessmentIndex + 1,
+      total
+    );
+
 
   const progress =
     current / total;
 
 
-  assessmentCurrentQuestion.textContent =
-    String(current).padStart(
-      2,
-      "0"
-    );
+  assessmentCurrentQuestion
+    .textContent =
+      String(current)
+        .padStart(
+          2,
+          "0"
+        );
 
 
-  assessmentTotalQuestions.textContent =
-    String(total).padStart(
-      2,
-      "0"
-    );
+  assessmentTotalQuestions
+    .textContent =
+      String(total)
+        .padStart(
+          2,
+          "0"
+        );
 
 
-  assessmentProgressText.textContent =
-    `${Math.round(
-      progress * 100
-    )}%`;
+  assessmentProgressText
+    .textContent =
+      `${Math.round(
+        progress * 100
+      )}%`;
 
 
   gsap.to(
     assessmentProgressBar,
     {
-      scaleX: progress,
+      scaleX:
+        progress,
 
-      duration: 0.45,
+      duration:
+        0.4,
 
-      ease: "power3.out"
+      ease:
+        "power3.out"
     }
   );
 
 }
 
 
-
-/* ======================================================
-   PHASE
-====================================================== */
 
 function updateAssessmentPhase(
   phase
@@ -5892,44 +6213,22 @@ function updateAssessmentPhase(
 
         item.classList.toggle(
           "active",
-          item.dataset.phase === phase
+          item.dataset.phase ===
+            phase
         );
 
       }
     );
 
 
-  const phaseNames = {
-
-    context:
-      "CONTEXTO",
-
-    p:
-      "POSICIONAMENTO",
-
-    a:
-      "AQUISIÇÃO",
-
-    c:
-      "COMERCIAL",
-
-    t:
-      "TECNOLOGIA"
-
-  };
-
-
-  assessmentPhaseLabel.textContent =
-    phaseNames[phase] ||
-    "DIAGNÓSTICO";
+  assessmentPhaseLabel
+    .textContent =
+      phaseNames[phase] ||
+      "DIAGNÓSTICO";
 
 }
 
 
-
-/* ======================================================
-   OPTION SELECT
-====================================================== */
 
 function selectAssessmentOption(
   button,
@@ -5941,9 +6240,9 @@ function selectAssessmentOption(
       ".assessment-option"
     )
     .forEach(
-      (option) => {
+      (item) => {
 
-        option.classList.remove(
+        item.classList.remove(
           "selected"
         );
 
@@ -5960,27 +6259,34 @@ function selectAssessmentOption(
     getAssessmentQuestion();
 
 
+  if (!question) {
+    return;
+  }
+
+
   assessmentAnswers[
     question.id
-  ] = value;
+  ] =
+    value;
 
 
-  assessmentNextButton.disabled =
-    false;
+  assessmentNextButton
+    .disabled =
+      false;
 
-
-
-  /* feedback visual */
 
   gsap.fromTo(
     button,
     {
-      scale: 0.985
+      scale:
+        0.985
     },
     {
-      scale: 1,
+      scale:
+        1,
 
-      duration: 0.32,
+      duration:
+        0.3,
 
       ease:
         "back.out(1.5)"
@@ -5991,10 +6297,6 @@ function selectAssessmentOption(
 
 
 
-/* ======================================================
-   RENDER QUESTION
-====================================================== */
-
 function renderAssessmentQuestion() {
 
   const question =
@@ -6002,7 +6304,51 @@ function renderAssessmentQuestion() {
 
 
   if (!question) {
+
+    console.error(
+      "PACT: pergunta inexistente",
+      assessmentIndex,
+      assessmentQuestions.length
+    );
+
+
+    assessmentIndex =
+      Math.max(
+        0,
+        Math.min(
+          assessmentIndex,
+          assessmentQuestions.length - 1
+        )
+      );
+
+
     return;
+
+  }
+
+
+  let title =
+    typeof question.title ===
+      "function"
+      ? question.title()
+      : question.title;
+
+
+  const description =
+    typeof question.description ===
+      "function"
+      ? question.description()
+      : question.description;
+
+
+  if (
+    question.id === "company" &&
+    assessmentAnswers.name
+  ) {
+
+    title =
+      `${assessmentAnswers.name}, qual é o nome do seu negócio?`;
+
   }
 
 
@@ -6011,69 +6357,43 @@ function renderAssessmentQuestion() {
       question.eyebrow;
 
 
-  /*
-    personalização depois
-    da primeira resposta
-  */
-
- let renderedTitle =
-  typeof question.title === "function"
-    ? question.title()
-    : question.title;
+  assessmentQuestionTitle
+    .textContent =
+      title;
 
 
-let renderedDescription =
-  typeof question.description === "function"
-    ? question.description()
-    : question.description;
+  assessmentQuestionDescription
+    .textContent =
+      description;
 
 
-if (
-  question.id === "company" &&
-  assessmentAnswers.name
-) {
-
-  renderedTitle =
-    `${assessmentAnswers.name}, qual é o nome do seu negócio?`;
-
-}
-
-
-assessmentQuestionTitle
-  .textContent =
-    renderedTitle;
-
-
-assessmentQuestionDescription
-  .textContent =
-    renderedDescription;
-
-
-  assessmentAnswerArea.innerHTML =
-    "";
+  assessmentAnswerArea
+    .innerHTML =
+      "";
 
 
   updateAssessmentProgress();
+
 
   updateAssessmentPhase(
     question.phase
   );
 
 
-  assessmentBackButton.disabled =
-    assessmentIndex === 0;
+  assessmentBackButton
+    .disabled =
+      assessmentIndex === 0;
 
 
-  assessmentNextButton.disabled =
-    !assessmentAnswers[
-      question.id
-    ];
+  assessmentNextButton
+    .disabled =
+      !assessmentAnswers[
+        question.id
+      ];
 
 
 
-  /* ====================================================
-     TEXT
-  ==================================================== */
+  /* TEXT */
 
   if (
     question.type === "text"
@@ -6085,7 +6405,9 @@ assessmentQuestionDescription
       );
 
 
-    input.type = "text";
+    input.type =
+      "text";
+
 
     input.className =
       "assessment-field";
@@ -6107,9 +6429,10 @@ assessmentQuestionDescription
       ] || "";
 
 
-    assessmentAnswerArea.appendChild(
-      input
-    );
+    assessmentAnswerArea
+      .appendChild(
+        input
+      );
 
 
     input.addEventListener(
@@ -6122,11 +6445,13 @@ assessmentQuestionDescription
 
         assessmentAnswers[
           question.id
-        ] = value;
+        ] =
+          value;
 
 
-        assessmentNextButton.disabled =
-          value.length < 2;
+        assessmentNextButton
+          .disabled =
+            value.length < 2;
 
       }
     );
@@ -6138,7 +6463,8 @@ assessmentQuestionDescription
 
         if (
           event.key === "Enter" &&
-          !assessmentNextButton.disabled
+          !assessmentNextButton
+            .disabled
         ) {
 
           goToNextAssessmentQuestion();
@@ -6150,17 +6476,16 @@ assessmentQuestionDescription
 
 
     setTimeout(
-      () => input.focus(),
-      260
+      () =>
+        input.focus(),
+      220
     );
 
   }
 
 
 
-  /* ====================================================
-     OPTIONS
-  ==================================================== */
+  /* OPTIONS */
 
   if (
     question.type === "options"
@@ -6176,66 +6501,70 @@ assessmentQuestionDescription
       "assessment-option-grid";
 
 
-    question.options.forEach(
-      (option) => {
+    question.options
+      .forEach(
+        (item) => {
 
-        const button =
-          document.createElement(
-            "button"
-          );
-
-
-        button.type =
-          "button";
+          const button =
+            document.createElement(
+              "button"
+            );
 
 
-        button.className =
-          "assessment-option";
+          button.type =
+            "button";
 
 
-        button.innerHTML = `
-          <span>
-            ${option.label}
-          </span>
-
-          <small>
-            →
-          </small>
-        `;
+          button.className =
+            "assessment-option";
 
 
-        if (
-          assessmentAnswers[
-            question.id
-          ] === option.value
-        ) {
+          button.innerHTML =
+            `
+              <span>
+                ${escapePACTHTML(
+                  item.label
+                )}
+              </span>
 
-          button.classList.add(
-            "selected"
-          );
+              <small>
+                →
+              </small>
+            `;
 
-        }
 
+          if (
+            assessmentAnswers[
+              question.id
+            ] === item.value
+          ) {
 
-        button.addEventListener(
-          "click",
-          () => {
-
-            selectAssessmentOption(
-              button,
-              option.value
+            button.classList.add(
+              "selected"
             );
 
           }
-        );
 
 
-        grid.appendChild(
-          button
-        );
+          button.addEventListener(
+            "click",
+            () => {
 
-      }
-    );
+              selectAssessmentOption(
+                button,
+                item.value
+              );
+
+            }
+          );
+
+
+          grid.appendChild(
+            button
+          );
+
+        }
+      );
 
 
     assessmentAnswerArea
@@ -6246,22 +6575,24 @@ assessmentQuestionDescription
   }
 
 
-
-  /* entrance */
-
   gsap.fromTo(
     "#assessmentQuestion",
     {
-      autoAlpha: 0,
+      autoAlpha:
+        0,
 
-      y: 28
+      y:
+        26
     },
     {
-      autoAlpha: 1,
+      autoAlpha:
+        1,
 
-      y: 0,
+      y:
+        0,
 
-      duration: 0.48,
+      duration:
+        0.45,
 
       ease:
         "power3.out"
@@ -6272,16 +6603,1043 @@ assessmentQuestionDescription
 
 
 
-/* ======================================================
-   NEXT
-====================================================== */
+function showAssessmentTransition(
+  label,
+  title,
+  buttonLabel,
+  letter = ""
+) {
+
+  assessmentAnswerArea
+    .innerHTML =
+      `
+        <div class="assessment-phase-complete">
+
+          ${
+            letter
+              ? `
+                <div class="assessment-phase-complete-mark">
+                  ${letter}
+                </div>
+              `
+              : ""
+          }
+
+          <div>
+
+            <span>
+              ${escapePACTHTML(
+                label
+              )}
+            </span>
+
+            <strong>
+              ${escapePACTHTML(
+                title
+              )}
+            </strong>
+
+            <small>
+              O resultado completo será apresentado
+              ao final do Diagnóstico PACT.
+            </small>
+
+            <button
+              type="button"
+              class="assessment-transition-button"
+              id="assessmentContinuePhase"
+            >
+
+              <span>
+                ${escapePACTHTML(
+                  buttonLabel
+                )}
+              </span>
+
+              <span aria-hidden="true">
+                →
+              </span>
+
+            </button>
+
+          </div>
+
+        </div>
+      `;
+
+
+  assessmentNextButton
+    .disabled =
+      true;
+
+
+  document
+    .getElementById(
+      "assessmentContinuePhase"
+    )
+    ?.addEventListener(
+      "click",
+      () => {
+
+        assessmentIndex += 1;
+
+
+        gsap.to(
+          "#assessmentQuestion",
+          {
+            autoAlpha:
+              0,
+
+            y:
+              -20,
+
+            duration:
+              0.2,
+
+            ease:
+              "power2.in",
+
+            onComplete:
+              renderAssessmentQuestion
+          }
+        );
+
+      }
+    );
+
+}
+
+
+
+function getMaturity(
+  score
+) {
+
+  if (score >= 80) {
+    return "Estrutura madura";
+  }
+
+
+  if (score >= 65) {
+    return "Estrutura em consolidação";
+  }
+
+
+  if (score >= 50) {
+    return "Estrutura em desenvolvimento";
+  }
+
+
+  if (score >= 35) {
+    return "Estrutura frágil";
+  }
+
+
+  return "Estrutura crítica";
+
+}
+
+
+
+function getSegmentAcquisitionMove() {
+
+  const moves = {
+
+    beauty:
+      "Fortalecer Google, avaliações e presença visual para capturar pessoas que já procuram serviços de beleza e estética.",
+
+    health:
+      "Fortalecer busca local, Google, avaliações e autoridade para captar pacientes com intenção.",
+
+    local_service:
+      "Construir presença forte no Google e mecanismos locais de geração de demanda.",
+
+    professional:
+      "Criar aquisição baseada em autoridade, busca, conteúdo, indicação estruturada e relacionamento.",
+
+    b2b:
+      "Estruturar prospecção ativa, parcerias e autoridade para gerar conversas com empresas do perfil ideal.",
+
+    retail:
+      "Combinar presença local, Google e redes sociais com ofertas capazes de gerar visita e recorrência.",
+
+    ecommerce:
+      "Organizar aquisição através de mídia, busca, conteúdo e canais capazes de gerar vendas mensuráveis.",
+
+    education:
+      "Construir demanda através de autoridade, conteúdo, busca e distribuição.",
+
+    other:
+      "Definir os canais com maior intenção de compra e construir um mecanismo previsível de geração de oportunidades."
+
+  };
+
+
+  return (
+    moves[
+      assessmentAnswers.segment
+    ] ||
+    moves.other
+  );
+
+}
+
+
+
+function buildAssessmentReport() {
+
+  const scores = {
+
+    p:
+      Number(
+        assessmentAnswers.p_score ||
+        0
+      ),
+
+    a:
+      Number(
+        assessmentAnswers.a_score ||
+        0
+      ),
+
+    c:
+      Number(
+        assessmentAnswers.c_score ||
+        0
+      ),
+
+    t:
+      Number(
+        assessmentAnswers.t_score ||
+        0
+      )
+
+  };
+
+
+  const entries =
+    Object.entries(
+      scores
+    );
+
+
+  const bottleneck =
+    entries.reduce(
+      (
+        low,
+        current
+      ) =>
+        current[1] <
+        low[1]
+          ? current
+          : low
+    );
+
+
+  const strongest =
+    entries.reduce(
+      (
+        high,
+        current
+      ) =>
+        current[1] >
+        high[1]
+          ? current
+          : high
+    );
+
+
+  const overallScore =
+    Math.round(
+      (
+        scores.p +
+        scores.a +
+        scores.c +
+        scores.t
+      ) / 4
+    );
+
+
+  const key =
+    bottleneck[0];
+
+
+  const segment =
+    getAssessmentSegmentProfile();
+
+
+  const objective =
+    goalNames[
+      assessmentAnswers.goal
+    ] ||
+    "crescer com mais estrutura";
+
+
+  const report = {
+
+    scores,
+
+    overallScore,
+
+    maturity:
+      getMaturity(
+        overallScore
+      ),
+
+    bottleneck:
+      key,
+
+    bottleneckName:
+      phaseFullNames[
+        key
+      ],
+
+    bottleneckScore:
+      bottleneck[1],
+
+    strongest:
+      strongest[0],
+
+    strongestName:
+      phaseFullNames[
+        strongest[0]
+      ],
+
+    strongestScore:
+      strongest[1],
+
+    segment:
+      segment.label,
+
+    objective,
+
+    diagnosis:
+      "",
+
+    priority:
+      "",
+
+    recommendations:
+      [],
+
+    avoid:
+      ""
+
+  };
+
+
+  if (
+    key === "p"
+  ) {
+
+    report.priority =
+      "Fortalecer posicionamento, oferta e percepção de valor.";
+
+
+    report.diagnosis =
+      `Hoje o maior limitador aparece em Posicionamento. Para um negócio de ${segment.label}, isso indica espaço para tornar mais claro para quem a empresa é, qual problema resolve e por que deveria ser escolhida.`;
+
+
+    report.recommendations = [
+
+      "Definir um público prioritário e uma proposta de valor mais clara.",
+
+      "Estruturar a principal oferta para tornar benefício, diferenciação e próximo passo fáceis de entender.",
+
+      "Fortalecer presença, reputação e provas de confiança nos canais onde o cliente valida a empresa."
+
+    ];
+
+
+    report.avoid =
+      "Aumentar muito o investimento em aquisição antes de corrigir mensagem, oferta e percepção.";
+
+  }
+
+
+  else if (
+    key === "a"
+  ) {
+
+    report.priority =
+      "Construir geração previsível de oportunidades.";
+
+
+    report.diagnosis =
+      `O principal gargalo está em Aquisição. A entrada de oportunidades ainda não sustenta com previsibilidade o objetivo de ${objective}, mesmo que outros pilares estejam relativamente mais estruturados.`;
+
+
+    report.recommendations = [
+
+      getSegmentAcquisitionMove(),
+
+      "Reduzir dependência de um único canal e construir uma segunda fonte relevante de oportunidades.",
+
+      "Medir origem, volume e resultado para saber quais canais realmente merecem investimento."
+
+    ];
+
+
+    report.avoid =
+      "Adicionar automações ou complexidade operacional sem antes melhorar o fluxo de oportunidades.";
+
+  }
+
+
+  else if (
+    key === "c"
+  ) {
+
+    report.priority =
+      "Estruturar processo comercial e aumentar conversão.";
+
+
+    report.diagnosis =
+      "O maior desperdício está acontecendo depois que a oportunidade chega. Parte da demanda existente pode estar sendo perdida em atendimento, condução, follow-up ou falta de acompanhamento da conversão.";
+
+
+    report.recommendations = [
+
+      "Definir etapas claras entre entrada da oportunidade, qualificação, proposta e fechamento.",
+
+      "Padronizar atendimento e criar uma rotina consistente de follow-up.",
+
+      "Acompanhar taxa de conversão e motivos de perda para corrigir os maiores desperdícios."
+
+    ];
+
+
+    report.avoid =
+      "Aumentar agressivamente a aquisição sem antes reduzir a perda de oportunidades no processo comercial.";
+
+  }
+
+
+  else {
+
+    report.priority =
+      "Construir capacidade operacional para sustentar crescimento.";
+
+
+    report.diagnosis =
+      "O gargalo principal está em Tecnologia e estrutura operacional. Processos manuais, informações espalhadas ou baixa visibilidade começam a limitar velocidade, controle e capacidade de crescer sem perder qualidade.";
+
+
+    report.recommendations = [
+
+      "Centralizar informações de clientes, oportunidades e próximos passos em uma estrutura confiável.",
+
+      "Automatizar tarefas repetitivas somente depois que o processo estiver claramente definido.",
+
+      "Criar indicadores simples para acompanhar volume, atendimento, conversão e capacidade operacional."
+
+    ];
+
+
+    report.avoid =
+      "Aumentar significativamente o volume sem preparar a operação para absorver esse crescimento.";
+
+  }
+
+
+  return report;
+
+}
+
+
+
+function renderAssessmentResult() {
+
+  const report =
+    buildAssessmentReport();
+
+
+  const company =
+    escapePACTHTML(
+      assessmentAnswers.company ||
+      "Seu negócio"
+    );
+
+
+  const name =
+    escapePACTHTML(
+      assessmentAnswers.name ||
+      ""
+    );
+
+
+  assessmentResult
+    .innerHTML =
+      `
+        <div class="assessment-result-header">
+
+          <span class="assessment-result-kicker">
+            DIAGNÓSTICO CONCLUÍDO
+          </span>
+
+
+          <div class="assessment-result-heading">
+
+            <div>
+
+              <h2>
+                ${company}
+              </h2>
+
+              <p>
+                ${
+                  name
+                    ? `${name}, esta é a leitura atual do seu negócio.`
+                    : "Esta é a leitura atual do seu negócio."
+                }
+              </p>
+
+            </div>
+
+
+            <div class="assessment-result-score">
+
+              <span>
+                SCORE PACT
+              </span>
+
+              <strong>
+                ${report.overallScore}
+              </strong>
+
+              <small>
+                / 100
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="assessment-result-maturity">
+
+            <span>
+              MATURIDADE
+            </span>
+
+            <strong>
+              ${report.maturity}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="assessment-result-pillars">
+
+          ${
+            [
+              [
+                "p",
+                "P",
+                "POSICIONAMENTO"
+              ],
+              [
+                "a",
+                "A",
+                "AQUISIÇÃO"
+              ],
+              [
+                "c",
+                "C",
+                "COMERCIAL"
+              ],
+              [
+                "t",
+                "T",
+                "TECNOLOGIA"
+              ]
+            ]
+              .map(
+                (
+                  [
+                    key,
+                    letter,
+                    label
+                  ]
+                ) =>
+                  `
+                    <div
+                      class="assessment-result-pillar ${
+                        report.bottleneck === key
+                          ? "is-bottleneck"
+                          : ""
+                      }"
+                    >
+
+                      <div class="assessment-result-pillar-head">
+
+                        <span>
+                          ${letter}
+                        </span>
+
+                        <strong>
+                          ${label}
+                        </strong>
+
+                        <b>
+                          ${report.scores[key]}
+                        </b>
+
+                      </div>
+
+                      <div class="assessment-result-bar">
+
+                        <i
+                          data-result-score="${report.scores[key]}"
+                        ></i>
+
+                      </div>
+
+                    </div>
+                  `
+              )
+              .join("")
+          }
+
+        </div>
+
+
+
+        <div class="assessment-result-bottleneck">
+
+          <div class="assessment-result-bottleneck-mark">
+
+            <span>
+              GARGALO PRINCIPAL
+            </span>
+
+            <strong>
+              ${report.bottleneck.toUpperCase()}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span class="assessment-result-area">
+              ${report.bottleneckName.toUpperCase()}
+            </span>
+
+            <h3>
+              ${report.priority}
+            </h3>
+
+            <p>
+              ${report.diagnosis}
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="assessment-result-reading">
+
+          <span>
+            LEITURA ESTRATÉGICA
+          </span>
+
+          <p>
+
+            Seu melhor pilar neste momento é
+
+            <strong>
+              ${report.strongestName}
+              (${report.strongestScore}/100)
+            </strong>,
+
+            enquanto
+
+            <strong>
+              ${report.bottleneckName}
+              (${report.bottleneckScore}/100)
+            </strong>
+
+            aparece como o principal limitador.
+
+          </p>
+
+        </div>
+
+
+
+        <div class="assessment-result-actions">
+
+          <span>
+            3 MOVIMENTOS RECOMENDADOS
+          </span>
+
+
+          <div class="assessment-result-action-grid">
+
+            ${
+              report.recommendations
+                .map(
+                  (
+                    text,
+                    index
+                  ) =>
+                    `
+                      <div class="assessment-result-action">
+
+                        <span>
+                          0${index + 1}
+                        </span>
+
+                        <strong>
+                          ${escapePACTHTML(
+                            text
+                          )}
+                        </strong>
+
+                      </div>
+                    `
+                )
+                .join("")
+            }
+
+          </div>
+
+        </div>
+
+
+
+        <div class="assessment-result-avoid">
+
+          <span>
+            O QUE NÃO PRIORIZAR AGORA
+          </span>
+
+          <strong>
+            ${escapePACTHTML(
+              report.avoid
+            )}
+          </strong>
+
+        </div>
+
+
+
+        <div class="assessment-result-cta">
+
+          <div>
+
+            <span>
+              PRÓXIMO PASSO
+            </span>
+
+            <h3>
+              Transforme esse diagnóstico
+              em um plano de ação.
+            </h3>
+
+            <p>
+              Podemos analisar esse resultado juntos
+              e entender como essa prioridade pode
+              virar um Projeto PACT.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="assessment-result-contact"
+            id="assessmentResultContact"
+          >
+
+            <span>
+              Analisar diagnóstico com Diego
+            </span>
+
+            <span aria-hidden="true">
+              →
+            </span>
+
+          </button>
+
+        </div>
+
+
+
+        <button
+          type="button"
+          class="assessment-result-restart"
+          id="assessmentRestart"
+        >
+          Refazer diagnóstico
+        </button>
+      `;
+
+
+
+  gsap.utils
+    .toArray(
+      ".assessment-result-bar i"
+    )
+    .forEach(
+      (bar) => {
+
+        const score =
+          Number(
+            bar.dataset.resultScore ||
+            0
+          );
+
+
+        gsap.fromTo(
+          bar,
+          {
+            scaleX:
+              0
+          },
+          {
+            scaleX:
+              score / 100,
+
+            duration:
+              0.9,
+
+            ease:
+              "power3.out"
+          }
+        );
+
+      }
+    );
+
+
+
+  document
+    .getElementById(
+      "assessmentResultContact"
+    )
+    ?.addEventListener(
+      "click",
+      () => {
+
+        const message =
+`Olá, Diego. Concluí meu Diagnóstico PACT.
+
+Empresa: ${assessmentAnswers.company || ""}
+Segmento: ${report.segment}
+Objetivo: ${report.objective}
+
+Score PACT: ${report.overallScore}/100
+P — ${report.scores.p}
+A — ${report.scores.a}
+C — ${report.scores.c}
+T — ${report.scores.t}
+
+Gargalo principal: ${report.bottleneckName}
+Prioridade: ${report.priority}
+
+Quero analisar esse diagnóstico com você.`;
+
+
+        window.open(
+          `https://wa.me/?text=${
+            encodeURIComponent(
+              message
+            )
+          }`,
+          "_blank"
+        );
+
+      }
+    );
+
+
+
+  document
+    .getElementById(
+      "assessmentRestart"
+    )
+    ?.addEventListener(
+      "click",
+      () => {
+
+        Object.keys(
+          assessmentAnswers
+        )
+          .forEach(
+            (key) => {
+
+              delete assessmentAnswers[
+                key
+              ];
+
+            }
+          );
+
+
+        assessmentIndex =
+          0;
+
+
+        assessmentResult.hidden =
+          true;
+
+
+        assessmentApp.hidden =
+          false;
+
+
+        renderAssessmentQuestion();
+
+
+        assessmentApp
+          .scrollIntoView({
+            behavior:
+              "smooth",
+
+            block:
+              "start"
+          });
+
+      }
+    );
+
+}
+
+
+
+function finishAssessment() {
+
+  savePhase(
+    "t"
+  );
+
+
+  assessmentQuestionEyebrow
+    .textContent =
+      "DIAGNÓSTICO CONCLUÍDO";
+
+
+  assessmentQuestionTitle
+    .textContent =
+      "Estamos cruzando os quatro pilares do seu negócio.";
+
+
+  assessmentQuestionDescription
+    .textContent =
+      "Posicionamento, Aquisição, Comercial e Tecnologia serão comparados para identificar o principal gargalo e a prioridade recomendada.";
+
+
+  assessmentAnswerArea
+    .innerHTML =
+      `
+        <div class="assessment-processing">
+
+          <span class="assessment-processing-ring"></span>
+
+          <strong>
+            GERANDO DIAGNÓSTICO PACT
+          </strong>
+
+          <small>
+            analisando estrutura e prioridades...
+          </small>
+
+        </div>
+      `;
+
+
+  assessmentNextButton
+    .disabled =
+      true;
+
+
+  setTimeout(
+    () => {
+
+      gsap.to(
+        assessmentApp,
+        {
+          autoAlpha:
+            0,
+
+          y:
+            -20,
+
+          duration:
+            0.4,
+
+          onComplete:
+            () => {
+
+              assessmentApp.hidden =
+                true;
+
+
+              assessmentResult.hidden =
+                false;
+
+
+              renderAssessmentResult();
+
+
+              gsap.fromTo(
+                assessmentResult,
+                {
+                  autoAlpha:
+                    0,
+
+                  y:
+                    30
+                },
+                {
+                  autoAlpha:
+                    1,
+
+                  y:
+                    0,
+
+                  duration:
+                    0.6,
+
+                  ease:
+                    "power3.out"
+                }
+              );
+
+
+              assessmentResult
+                .scrollIntoView({
+                  behavior:
+                    "smooth",
+
+                  block:
+                    "start"
+                });
+
+            }
+        }
+      );
+
+    },
+    900
+  );
+
+}
+
+
 
 function goToNextAssessmentQuestion() {
 
-  function goToNextAssessmentQuestion() {
-
   if (
-    assessmentNextButton.disabled
+    assessmentNextButton
+      .disabled
   ) {
     return;
   }
@@ -6297,12 +7655,11 @@ function goToNextAssessmentQuestion() {
 
 
 
-  /* ====================================================
-     CONTEXTO → POSICIONAMENTO
-  ==================================================== */
+  /* CONTEXTO */
 
   if (
-    currentQuestion.id === "goal"
+    currentQuestion.id ===
+    "goal"
   ) {
 
     assessmentQuestionEyebrow
@@ -6321,77 +7678,14 @@ function goToNextAssessmentQuestion() {
 
     assessmentQuestionDescription
       .textContent =
-        "A partir daqui, cada resposta começa a alimentar o seu diagnóstico PACT.";
+        "A partir daqui, cada resposta começa a alimentar o seu Diagnóstico PACT.";
 
 
-    assessmentAnswerArea.innerHTML =
-      `
-        <div class="assessment-context-complete">
-
-          <span>
-            CONTEXTO IDENTIFICADO
-          </span>
-
-          <strong>
-            ${
-              assessmentAnswers.company ||
-              "Seu negócio"
-            }
-          </strong>
-
-          <button
-            type="button"
-            class="assessment-transition-button"
-            id="assessmentStartPositioning"
-          >
-
-            <span>
-              Analisar Posicionamento
-            </span>
-
-            <span aria-hidden="true">
-              →
-            </span>
-
-          </button>
-
-        </div>
-      `;
-
-
-    assessmentNextButton.disabled =
-      true;
-
-
-    const startPositioningButton =
-      document.getElementById(
-        "assessmentStartPositioning"
-      );
-
-
-    startPositioningButton.addEventListener(
-      "click",
-      () => {
-
-        assessmentIndex += 1;
-
-
-        gsap.to(
-          "#assessmentQuestion",
-          {
-            autoAlpha: 0,
-            y: -20,
-
-            duration: 0.22,
-
-            ease: "power2.in",
-
-            onComplete:
-              renderAssessmentQuestion
-          }
-        );
-
-      }
+    showAssessmentTransition(
+      "CONTEXTO IDENTIFICADO",
+      assessmentAnswers.company ||
+        "Seu negócio",
+      "Analisar Posicionamento"
     );
 
 
@@ -6401,32 +7695,16 @@ function goToNextAssessmentQuestion() {
 
 
 
-  /* ====================================================
-     POSICIONAMENTO CONCLUÍDO
-  ==================================================== */
+  /* P */
 
   if (
-    currentQuestion.id === "p_offer"
+    currentQuestion.id ===
+    "p_offer"
   ) {
 
-    const positioningScore =
-      calculateAssessmentPhaseScore(
-        "p"
-      );
-
-
-    const positioningSignals =
-      getAssessmentPhaseSignals(
-        "p"
-      );
-
-
-    assessmentAnswers.p_score =
-      positioningScore;
-
-
-    assessmentAnswers.p_signals =
-      positioningSignals;
+    savePhase(
+      "p"
+    );
 
 
     assessmentQuestionEyebrow
@@ -6436,92 +7714,19 @@ function goToNextAssessmentQuestion() {
 
     assessmentQuestionTitle
       .textContent =
-        "O primeiro pilar do seu diagnóstico está concluído.";
+        "Já entendemos como o mercado percebe o seu negócio.";
 
 
     assessmentQuestionDescription
       .textContent =
-        "Já identificamos sinais sobre clareza, público, confiança e estrutura da sua oferta. Agora precisamos entender como novas oportunidades chegam até o negócio.";
+        "Agora precisamos descobrir como novas oportunidades chegam até a empresa.";
 
 
-    assessmentAnswerArea.innerHTML =
-      `
-        <div class="assessment-phase-complete">
-
-          <div class="assessment-phase-complete-mark">
-            P
-          </div>
-
-          <div>
-
-            <span>
-              POSICIONAMENTO
-            </span>
-
-            <strong>
-              Leitura registrada
-            </strong>
-
-            <small>
-              O resultado completo será apresentado
-              ao final do Diagnóstico PACT.
-            </small>
-
-            <button
-              type="button"
-              class="assessment-transition-button"
-              id="assessmentStartAcquisition"
-            >
-
-              <span>
-                Analisar Aquisição
-              </span>
-
-              <span aria-hidden="true">
-                →
-              </span>
-
-            </button>
-
-          </div>
-
-        </div>
-      `;
-
-
-    assessmentNextButton.disabled =
-      true;
-
-
-    const startAcquisitionButton =
-      document.getElementById(
-        "assessmentStartAcquisition"
-      );
-
-
-    startAcquisitionButton.addEventListener(
-      "click",
-      () => {
-
-        assessmentIndex += 1;
-
-
-        gsap.to(
-          "#assessmentQuestion",
-          {
-            autoAlpha: 0,
-            y: -20,
-
-            duration: 0.22,
-
-            ease: "power2.in",
-
-            onComplete:
-              renderAssessmentQuestion
-          }
-        );
-
-      }
+    showAssessmentTransition(
+      "P · POSICIONAMENTO",
+      "Leitura registrada",
+      "Analisar Aquisição",
+      "P"
     );
 
 
@@ -6531,32 +7736,16 @@ function goToNextAssessmentQuestion() {
 
 
 
-  /* ====================================================
-     AQUISIÇÃO CONCLUÍDA
-  ==================================================== */
+  /* A */
 
   if (
-    currentQuestion.id === "a_measurement"
+    currentQuestion.id ===
+    "a_measurement"
   ) {
 
-    const acquisitionScore =
-      calculateAssessmentPhaseScore(
-        "a"
-      );
-
-
-    const acquisitionSignals =
-      getAssessmentPhaseSignals(
-        "a"
-      );
-
-
-    assessmentAnswers.a_score =
-      acquisitionScore;
-
-
-    assessmentAnswers.a_signals =
-      acquisitionSignals;
+    savePhase(
+      "a"
+    );
 
 
     assessmentQuestionEyebrow
@@ -6571,51 +7760,14 @@ function goToNextAssessmentQuestion() {
 
     assessmentQuestionDescription
       .textContent =
-        "O PACT já analisou previsibilidade, volume, presença nos canais e capacidade de medir sua aquisição. O próximo passo é entender o que acontece depois que uma oportunidade chega.";
+        "O próximo passo é entender o que acontece depois que essas oportunidades entram.";
 
 
-    assessmentAnswerArea.innerHTML =
-      `
-        <div class="assessment-phase-complete">
-
-          <div class="assessment-phase-complete-mark">
-            A
-          </div>
-
-          <div>
-
-            <span>
-              AQUISIÇÃO
-            </span>
-
-            <strong>
-              Leitura registrada
-            </strong>
-
-            <small>
-              Seus sinais de geração de demanda
-              já foram incorporados ao diagnóstico.
-            </small>
-
-          </div>
-
-        </div>
-      `;
-
-
-    assessmentNextButton.disabled =
-      true;
-
-
-    console.log(
-      "PACT ACQUISITION SCORE:",
-      acquisitionScore
-    );
-
-
-    console.log(
-      "PACT ACQUISITION SIGNALS:",
-      acquisitionSignals
+    showAssessmentTransition(
+      "A · AQUISIÇÃO",
+      "Leitura registrada",
+      "Analisar Comercial",
+      "A"
     );
 
 
@@ -6625,389 +7777,96 @@ function goToNextAssessmentQuestion() {
 
 
 
-  /* ====================================================
-     AVANÇO NORMAL
-  ==================================================== */
+  /* C */
 
-  assessmentIndex += 1;
+  if (
+    currentQuestion.id ===
+    "c_conversion"
+  ) {
 
-
-  gsap.to(
-    "#assessmentQuestion",
-    {
-      autoAlpha: 0,
-      y: -20,
-
-      duration: 0.2,
-
-      ease: "power2.in",
-
-      onComplete:
-        renderAssessmentQuestion
-    }
-  );
-
-}
-
-
-  /*
-    por enquanto estamos
-    terminando apenas CONTEXTO
-  */
-
-  /* ====================================================
-   CONTEXTO → POSICIONAMENTO
-==================================================== */
-
-const currentQuestion =
-  getAssessmentQuestion();
-
-
-if (
-  currentQuestion &&
-  currentQuestion.id === "goal"
-) {
-
-  assessmentQuestionEyebrow
-    .textContent =
-      "CONTEXTO CONCLUÍDO";
-
-
-  assessmentQuestionTitle
-    .textContent =
-      `Perfeito${
-        assessmentAnswers.name
-          ? `, ${assessmentAnswers.name}`
-          : ""
-      }. Agora vamos analisar seu Posicionamento.`;
-
-
-  assessmentQuestionDescription
-    .textContent =
-      "A partir daqui, cada resposta começa a alimentar o seu diagnóstico PACT.";
-
-
-  assessmentAnswerArea.innerHTML =
-    `
-      <div class="assessment-context-complete">
-
-        <span>
-          CONTEXTO IDENTIFICADO
-        </span>
-
-        <strong>
-          ${
-            assessmentAnswers.company ||
-            "Seu negócio"
-          }
-        </strong>
-
-        <button
-          type="button"
-          class="assessment-transition-button"
-          id="assessmentStartPositioning"
-        >
-
-          <span>
-            Analisar Posicionamento
-          </span>
-
-          <span aria-hidden="true">
-            →
-          </span>
-
-        </button>
-
-      </div>
-    `;
-
-
-  assessmentNextButton.disabled =
-    true;
-
-
-  const startPositioningButton =
-    document.getElementById(
-      "assessmentStartPositioning"
+    savePhase(
+      "c"
     );
 
 
-  startPositioningButton
-    .addEventListener(
-      "click",
-      () => {
-/* ====================================================
-   AQUISIÇÃO CONCLUÍDA
-==================================================== */
+    assessmentQuestionEyebrow
+      .textContent =
+        "COMERCIAL ANALISADO";
 
-if (
-  currentQuestion &&
-  currentQuestion.id === "a_measurement"
-) {
 
-  const acquisitionScore =
-    calculateAssessmentPhaseScore(
-      "a"
+    assessmentQuestionTitle
+      .textContent =
+        "Já conseguimos enxergar como suas oportunidades são conduzidas até a venda.";
+
+
+    assessmentQuestionDescription
+      .textContent =
+        "Falta entender se a operação possui tecnologia e estrutura para sustentar crescimento.";
+
+
+    showAssessmentTransition(
+      "C · COMERCIAL",
+      "Leitura registrada",
+      "Analisar Tecnologia",
+      "C"
     );
 
 
-  const acquisitionSignals =
-    getAssessmentPhaseSignals(
-      "a"
-    );
-
-
-  assessmentAnswers.a_score =
-    acquisitionScore;
-
-
-  assessmentAnswers.a_signals =
-    acquisitionSignals;
-
-
-  assessmentQuestionEyebrow
-    .textContent =
-      "AQUISIÇÃO ANALISADA";
-
-
-  assessmentQuestionTitle
-    .textContent =
-      "Agora sabemos como as oportunidades chegam até o seu negócio.";
-
-
-  assessmentQuestionDescription
-    .textContent =
-      "O PACT já consegue avaliar previsibilidade, volume, presença nos canais e capacidade de medir sua aquisição. O próximo passo é entender o que acontece depois que a oportunidade chega.";
-
-
-  assessmentAnswerArea.innerHTML =
-    `
-      <div class="assessment-phase-complete">
-
-        <div class="assessment-phase-complete-mark">
-          A
-        </div>
-
-        <div>
-
-          <span>
-            AQUISIÇÃO
-          </span>
-
-          <strong>
-            Leitura registrada
-          </strong>
-
-          <small>
-            Seus sinais de geração de demanda
-            já foram incorporados ao diagnóstico.
-          </small>
-
-        </div>
-
-      </div>
-    `;
-
-
-  assessmentNextButton.disabled =
-    true;
-
-
-  console.log(
-    "PACT ACQUISITION SCORE:",
-    acquisitionScore
-  );
-
-
-  console.log(
-    "PACT ACQUISITION SIGNALS:",
-    acquisitionSignals
-  );
-
-
-  return;
-
-}
-        assessmentIndex += 1;
-
-        gsap.to(
-          "#assessmentQuestion",
-          {
-            autoAlpha: 0,
-            y: -20,
-
-            duration: 0.22,
-
-            ease:
-              "power2.in",
-
-            onComplete:
-              renderAssessmentQuestion
-          }
-        );
-
-      }
-    );
-
-
-  return;
+    return;
 
   }
 
-  /* ====================================================
-   POSICIONAMENTO CONCLUÍDO
-==================================================== */
-
-if (
-  currentQuestion &&
-  currentQuestion.id === "p_offer"
-) {
-
-  const positioningScore =
-    calculateAssessmentPhaseScore(
-      "p"
-    );
 
 
-  const positioningSignals =
-    getAssessmentPhaseSignals(
-      "p"
-    );
+  /* T */
+
+  if (
+    currentQuestion.id ===
+    "t_data"
+  ) {
+
+    finishAssessment();
+
+    return;
+
+  }
 
 
-  assessmentAnswers.p_score =
-    positioningScore;
+
+  /* NORMAL */
+
+  assessmentIndex +=
+    1;
 
 
-  assessmentAnswers.p_signals =
-    positioningSignals;
+  if (
+    assessmentIndex >=
+    assessmentQuestions.length
+  ) {
+
+    assessmentIndex =
+      assessmentQuestions.length - 1;
 
 
-  assessmentQuestionEyebrow
-    .textContent =
-      "POSICIONAMENTO ANALISADO";
+    return;
 
-
-  assessmentQuestionTitle
-    .textContent =
-      "O primeiro pilar do seu diagnóstico está concluído.";
-
-
-  assessmentQuestionDescription
-    .textContent =
-      "Já identificamos sinais sobre clareza, público, confiança e estrutura da sua oferta. Agora precisamos entender como novas oportunidades chegam até o negócio.";
-
-
-  assessmentAnswerArea.innerHTML =
-    `
-      <div class="assessment-phase-complete">
-
-        <div class="assessment-phase-complete-mark">
-          P
-        </div>
-
-        <div>
-
-          <span>
-            POSICIONAMENTO
-          </span>
-
-          <strong>
-            Leitura registrada
-          </strong>
-
-          <small>
-            O resultado completo será apresentado
-            ao final do Diagnóstico PACT.
-          </small>
-<button
-  type="button"
-  class="assessment-transition-button"
-  id="assessmentStartAcquisition"
->
-
-  <span>
-    Analisar Aquisição
-  </span>
-
-  <span aria-hidden="true">
-    →
-  </span>
-
-</button>
-
-        </div>
-
-      </div>
-    `;
-
-
-  assessmentNextButton.disabled =
-    true;
-  const startAcquisitionButton =
-  document.getElementById(
-    "assessmentStartAcquisition"
-  );
-
-
-startAcquisitionButton
-  .addEventListener(
-    "click",
-    () => {
-
-      assessmentIndex += 1;
-
-
-      gsap.to(
-        "#assessmentQuestion",
-        {
-          autoAlpha: 0,
-          y: -20,
-
-          duration: 0.22,
-
-          ease:
-            "power2.in",
-
-          onComplete:
-            renderAssessmentQuestion
-        }
-      );
-
-    }
-  );
-
-
-  console.log(
-    "PACT POSITIONING SCORE:",
-    positioningScore
-  );
-
-
-  console.log(
-    "PACT POSITIONING SIGNALS:",
-    positioningSignals
-  );
-
-
-  return;
-
-}
-
-
-  assessmentIndex += 1;
+  }
 
 
   gsap.to(
     "#assessmentQuestion",
     {
-      autoAlpha: 0,
+      autoAlpha:
+        0,
 
-      y: -20,
+      y:
+        -20,
 
-      duration: 0.2,
+      duration:
+        0.2,
 
-      ease: "power2.in",
+      ease:
+        "power2.in",
 
       onComplete:
         renderAssessmentQuestion
@@ -7017,10 +7876,6 @@ startAcquisitionButton
 }
 
 
-
-/* ======================================================
-   BACK
-====================================================== */
 
 function goToPreviousAssessmentQuestion() {
 
@@ -7031,19 +7886,24 @@ function goToPreviousAssessmentQuestion() {
   }
 
 
-  assessmentIndex -= 1;
+  assessmentIndex -=
+    1;
 
 
   gsap.to(
     "#assessmentQuestion",
     {
-      autoAlpha: 0,
+      autoAlpha:
+        0,
 
-      y: 20,
+      y:
+        20,
 
-      duration: 0.2,
+      duration:
+        0.2,
 
-      ease: "power2.in",
+      ease:
+        "power2.in",
 
       onComplete:
         renderAssessmentQuestion
@@ -7054,123 +7914,133 @@ function goToPreviousAssessmentQuestion() {
 
 
 
-/* ======================================================
-   OPEN APP
-====================================================== */
-
 function openAssessment() {
 
-  assessmentIndex = 0;
+  assessmentIndex =
+    0;
 
 
   gsap.to(
     assessmentEntry,
     {
-      autoAlpha: 0,
+      autoAlpha:
+        0,
 
-      y: -26,
+      y:
+        -26,
 
-      duration: 0.36,
+      duration:
+        0.36,
 
-      ease: "power2.in",
+      ease:
+        "power2.in",
 
-      onComplete: () => {
+      onComplete:
+        () => {
 
-        assessmentEntry.hidden =
-          true;
-
-
-        assessmentApp.hidden =
-          false;
-
-
-        gsap.fromTo(
-          assessmentApp,
-          {
-            autoAlpha: 0,
-
-            y: 28
-          },
-          {
-            autoAlpha: 1,
-
-            y: 0,
-
-            duration: 0.55,
-
-            ease:
-              "power3.out"
-          }
-        );
+          assessmentEntry.hidden =
+            true;
 
 
-        renderAssessmentQuestion();
+          assessmentApp.hidden =
+            false;
 
 
-        assessmentApp
-          .scrollIntoView({
-            behavior:
-              "smooth",
+          gsap.fromTo(
+            assessmentApp,
+            {
+              autoAlpha:
+                0,
 
-            block:
-              "start"
-          });
+              y:
+                28
+            },
+            {
+              autoAlpha:
+                1,
 
-      }
+              y:
+                0,
 
+              duration:
+                0.55,
+
+              ease:
+                "power3.out"
+            }
+          );
+
+
+          renderAssessmentQuestion();
+
+
+          assessmentApp
+            .scrollIntoView({
+              behavior:
+                "smooth",
+
+              block:
+                "start"
+            });
+
+        }
     }
   );
 
 }
 
 
-
-/* ======================================================
-   CLOSE APP
-====================================================== */
 
 function closeAssessment() {
 
   gsap.to(
     assessmentApp,
     {
-      autoAlpha: 0,
+      autoAlpha:
+        0,
 
-      y: 22,
+      y:
+        22,
 
-      duration: 0.3,
+      duration:
+        0.3,
 
-      onComplete: () => {
+      onComplete:
+        () => {
 
-        assessmentApp.hidden =
-          true;
-
-
-        assessmentEntry.hidden =
-          false;
+          assessmentApp.hidden =
+            true;
 
 
-        gsap.fromTo(
-          assessmentEntry,
-          {
-            autoAlpha: 0,
+          assessmentEntry.hidden =
+            false;
 
-            y: 20
-          },
-          {
-            autoAlpha: 1,
 
-            y: 0,
+          gsap.fromTo(
+            assessmentEntry,
+            {
+              autoAlpha:
+                0,
 
-            duration: 0.46,
+              y:
+                20
+            },
+            {
+              autoAlpha:
+                1,
 
-            ease:
-              "power3.out"
-          }
-        );
+              y:
+                0,
 
-      }
+              duration:
+                0.46,
 
+              ease:
+                "power3.out"
+            }
+          );
+
+        }
     }
   );
 
@@ -7178,60 +8048,32 @@ function closeAssessment() {
 
 
 
-/* ======================================================
-   EVENTS
-====================================================== */
-
-if (
-  assessmentStartButton
-) {
-
-  assessmentStartButton
-    .addEventListener(
-      "click",
-      openAssessment
-    );
-
-}
+assessmentStartButton
+  ?.addEventListener(
+    "click",
+    openAssessment
+  );
 
 
-if (
-  assessmentNextButton
-) {
-
-  assessmentNextButton
-    .addEventListener(
-      "click",
-      goToNextAssessmentQuestion
-    );
-
-}
+assessmentNextButton
+  ?.addEventListener(
+    "click",
+    goToNextAssessmentQuestion
+  );
 
 
-if (
-  assessmentBackButton
-) {
-
-  assessmentBackButton
-    .addEventListener(
-      "click",
-      goToPreviousAssessmentQuestion
-    );
-
-}
+assessmentBackButton
+  ?.addEventListener(
+    "click",
+    goToPreviousAssessmentQuestion
+  );
 
 
-if (
-  assessmentCloseButton
-) {
-
-  assessmentCloseButton
-    .addEventListener(
-      "click",
-      closeAssessment
-    );
-
-}
+assessmentCloseButton
+  ?.addEventListener(
+    "click",
+    closeAssessment
+  );
   
   /* ======================================================
      REFRESH
