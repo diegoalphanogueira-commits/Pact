@@ -7730,16 +7730,16 @@ function showPactTyping() {
 
 async function appendDiegoMessage(
   text,
-  minimumTypingTime = 900
+  minimumTypingTime = 1200
 ) {
 
   /*
-    Pequena pausa antes de começar
-    a "digitar".
+    Pequeno silêncio antes de começar
+    a digitar.
   */
 
   await pactConversationWait(
-    320
+    520
   );
 
 
@@ -7748,16 +7748,16 @@ async function appendDiegoMessage(
 
 
   /*
-    Mensagens maiores levam um pouco
-    mais de tempo para aparecer.
+    Quanto maior a mensagem,
+    um pouco maior o tempo de digitação.
   */
 
   const calculatedTypingTime =
     Math.min(
-      2300,
+      3200,
       Math.max(
         minimumTypingTime,
-        650 + text.length * 10
+        900 + text.length * 14
       )
     );
 
@@ -7777,11 +7777,11 @@ async function appendDiegoMessage(
 
 
   /*
-    Respiro depois da mensagem.
+    Respiro depois de cada mensagem.
   */
 
   await pactConversationWait(
-    520
+    850
   );
 
 }
@@ -7940,7 +7940,667 @@ function getCriticalConversationMetric(
 
 }
 
+/* ======================================================
+   PACT CONVERSATION — IMPACT
+====================================================== */
 
+async function showPactImpactQuestion(
+  report
+) {
+
+  const state =
+    getPactConversationState();
+
+
+  const status =
+    document.getElementById(
+      "pactConversationStage"
+    );
+
+
+  if (status) {
+
+    status.textContent =
+      "ENTENDENDO IMPACTO";
+
+  }
+
+
+  await appendDiegoMessage(
+    "Agora quero entender uma coisa mais importante."
+  );
+
+
+  await appendDiegoMessage(
+    "Quando esse problema acontece, qual consequência mais pesa hoje no negócio?"
+  );
+
+
+  renderPactConversationOptions(
+    [
+      {
+        value: "lost_sales",
+        label: "Acabamos perdendo vendas"
+      },
+
+      {
+        value: "blocked_growth",
+        label: "Isso trava nosso crescimento"
+      },
+
+      {
+        value: "time",
+        label: "Consome tempo demais"
+      },
+
+      {
+        value: "unpredictability",
+        label: "Falta previsibilidade"
+      },
+
+      {
+        value: "not_urgent",
+        label: "Ainda não é uma urgência"
+      }
+    ],
+
+    async (
+      selected
+    ) => {
+
+      state.impact =
+        selected.value;
+
+
+      state.impact_label =
+        selected.label;
+
+
+      if (
+        selected.value ===
+        "lost_sales"
+      ) {
+
+        await appendDiegoMessage(
+          "Entendi. Então já existe um impacto financeiro claro, não é apenas uma questão de organização."
+        );
+
+      }
+
+
+      else if (
+        selected.value ===
+        "blocked_growth"
+      ) {
+
+        await appendDiegoMessage(
+          "Entendi. Nesse caso o problema já está funcionando como um limite para o próximo nível do negócio."
+        );
+
+      }
+
+
+      else if (
+        selected.value ===
+        "time"
+      ) {
+
+        await appendDiegoMessage(
+          "Faz sentido. Quando a estrutura começa a consumir tempo demais, normalmente o crescimento passa a depender cada vez mais das pessoas."
+        );
+
+      }
+
+
+      else if (
+        selected.value ===
+        "unpredictability"
+      ) {
+
+        await appendDiegoMessage(
+          "Esse ponto é importante. Crescer sem previsibilidade deixa qualquer decisão de investimento muito mais difícil."
+        );
+
+      }
+
+
+      else {
+
+        await appendDiegoMessage(
+          "Perfeito. É importante saber disso também. Nem todo gargalo precisa virar prioridade imediatamente."
+        );
+
+      }
+
+
+      await showPactTimingQuestion(
+        report
+      );
+
+    }
+  );
+
+}
+
+/* ======================================================
+   PACT CONVERSATION — TIMING
+====================================================== */
+
+async function showPactTimingQuestion(
+  report
+) {
+
+  const state =
+    getPactConversationState();
+
+
+  const status =
+    document.getElementById(
+      "pactConversationStage"
+    );
+
+
+  if (status) {
+
+    status.textContent =
+      "ENTENDENDO MOMENTO";
+
+  }
+
+
+  await appendDiegoMessage(
+    "E olhando para esse cenário agora..."
+  );
+
+
+  await appendDiegoMessage(
+    "Se existisse uma sequência clara para corrigir essa estrutura, em que momento você gostaria de atacar isso?"
+  );
+
+
+  renderPactConversationOptions(
+    [
+      {
+        value: "now",
+        label: "Quero resolver agora"
+      },
+
+      {
+        value: "30_days",
+        label: "Nos próximos 30 dias"
+      },
+
+      {
+        value: "months",
+        label: "Nos próximos meses"
+      },
+
+      {
+        value: "exploring",
+        label: "Só estou entendendo o cenário"
+      }
+    ],
+
+    async (
+      selected
+    ) => {
+
+      state.timing =
+        selected.value;
+
+
+      state.timing_label =
+        selected.label;
+
+
+      if (
+        selected.value ===
+        "now"
+      ) {
+
+        state.temperature =
+          "hot";
+
+
+        await appendDiegoMessage(
+          "Perfeito. Então faz sentido tratar isso como prioridade."
+        );
+
+      }
+
+
+      else if (
+        selected.value ===
+        "30_days"
+      ) {
+
+        state.temperature =
+          "hot";
+
+
+        await appendDiegoMessage(
+          "Ótimo. Trinta dias é um horizonte bom para organizar uma sequência sem sair implementando coisa aleatória."
+        );
+
+      }
+
+
+      else if (
+        selected.value ===
+        "months"
+      ) {
+
+        state.temperature =
+          "warm";
+
+
+        await appendDiegoMessage(
+          "Entendi. Então o mais importante agora é você sair daqui sabendo qual estrutura precisa estar pronta quando chegar esse momento."
+        );
+
+      }
+
+
+      else {
+
+        state.temperature =
+          "nurture";
+
+
+        await appendDiegoMessage(
+          "Perfeito. Então não quero transformar essa conversa em uma venda. Vamos usar o diagnóstico para te dar clareza."
+        );
+
+      }
+
+
+      await showPactPrescription(
+        report
+      );
+
+    }
+  );
+
+}
+
+/* ======================================================
+   PACT CONVERSATION — PRESCRIPTION
+====================================================== */
+
+async function showPactPrescription(
+  report
+) {
+
+  const state =
+    getPactConversationState();
+
+
+  const status =
+    document.getElementById(
+      "pactConversationStage"
+    );
+
+
+  if (status) {
+
+    status.textContent =
+      "LEITURA ESTRATÉGICA";
+
+  }
+
+
+  await appendDiegoMessage(
+    "Beleza. Agora consigo juntar o diagnóstico com o que você acabou de me contar."
+  );
+
+
+  await appendDiegoMessage(
+    `Hoje o PACT encontrou ${report.bottleneckName} como seu principal gargalo.`
+  );
+
+
+  if (
+    state.reality_label
+  ) {
+
+    await appendDiegoMessage(
+      `E na prática você confirmou que "${state.reality_label.toLowerCase()}" é algo que aparece dentro da operação.`
+    );
+
+  }
+
+
+  if (
+    state.impact_label
+  ) {
+
+    await appendDiegoMessage(
+      `O impacto que mais pesa para você hoje é: ${state.impact_label.toLowerCase()}.`
+    );
+
+  }
+
+
+  await appendDiegoMessage(
+    "Então eu não tentaria resolver dez coisas ao mesmo tempo."
+  );
+
+
+  await appendDiegoMessage(
+    `Eu começaria por uma prioridade: ${report.priority}`
+  );
+
+
+  /*
+    PRIMEIRO MOVIMENTO
+  */
+
+  if (
+    report.recommendations[0]
+  ) {
+
+    await appendDiegoMessage(
+      `Primeiro: ${report.recommendations[0]}`
+    );
+
+  }
+
+
+  /*
+    SEGUNDO MOVIMENTO
+  */
+
+  if (
+    report.recommendations[1]
+  ) {
+
+    await appendDiegoMessage(
+      `Depois: ${report.recommendations[1]}`
+    );
+
+  }
+
+
+  /*
+    O QUE NÃO FAZER
+  */
+
+  await appendDiegoMessage(
+    `E tem uma coisa que eu evitaria agora: ${report.avoid}`
+  );
+
+
+  await pactConversationWait(
+    500
+  );
+
+
+  await showPactNextStep(
+    report
+  );
+
+}
+/* ======================================================
+   PACT CONVERSATION — NEXT STEP
+====================================================== */
+
+async function showPactNextStep(
+  report
+) {
+
+  const state =
+    getPactConversationState();
+
+
+  const status =
+    document.getElementById(
+      "pactConversationStage"
+    );
+
+
+  if (status) {
+
+    status.textContent =
+      "PRÓXIMO PASSO";
+
+  }
+
+
+  /*
+    LEAD QUENTE / MORNO
+  */
+
+  if (
+    state.temperature === "hot" ||
+    state.temperature === "warm"
+  ) {
+
+    await appendDiegoMessage(
+      "Pelo que você me mostrou, acho que existe material suficiente para a gente conversar de forma mais estratégica."
+    );
+
+
+    await appendDiegoMessage(
+      "E você não vai precisar começar a reunião me explicando tudo do zero. Eu já tenho seu diagnóstico e todo esse contexto."
+    );
+
+
+    await appendDiegoMessage(
+      "Quer que eu te mostre os próximos horários disponíveis?"
+    );
+
+
+    renderPactConversationOptions(
+      [
+        {
+          value: "schedule",
+          label: "Sim, quero ver os horários"
+        },
+
+        {
+          value: "whatsapp",
+          label: "Prefiro falar pelo WhatsApp"
+        },
+
+        {
+          value: "later",
+          label: "Quero pensar um pouco antes"
+        }
+      ],
+
+      async (
+        selected
+      ) => {
+
+        state.next_step =
+          selected.value;
+
+
+        state.next_step_label =
+          selected.label;
+
+
+        if (
+          selected.value ===
+          "schedule"
+        ) {
+
+          await appendDiegoMessage(
+            "Perfeito."
+          );
+
+
+          await appendDiegoMessage(
+            "Vou abrir a etapa de agenda para você escolher um horário."
+          );
+
+
+          if (status) {
+
+            status.textContent =
+              "PRONTO PARA AGENDAR";
+
+          }
+
+
+          /*
+            Na próxima missão:
+            horários reais da agenda.
+          */
+
+          return;
+
+        }
+
+
+        if (
+          selected.value ===
+          "whatsapp"
+        ) {
+
+          await appendDiegoMessage(
+            "Claro. Vou te deixar um botão para continuar essa conversa comigo no WhatsApp."
+          );
+
+
+          renderPactConversationOptions(
+            [
+              {
+                value: "open_whatsapp",
+                label: "Continuar no WhatsApp ↗"
+              }
+            ],
+
+            async () => {
+
+              const message =
+`Olá, Diego. Acabei de concluir o Diagnóstico PACT.
+
+Empresa: ${assessmentAnswers.company || ""}
+Score: ${report.overallScore}/100
+Gargalo: ${report.bottleneckName}
+Prioridade: ${report.priority}
+
+Quero continuar nossa conversa por aqui.`;
+
+
+              window.open(
+                `https://wa.me/5511970349654?text=${
+                  encodeURIComponent(
+                    message
+                  )
+                }`,
+                "_blank"
+              );
+
+            }
+          );
+
+
+          return;
+
+        }
+
+
+        await appendDiegoMessage(
+          "Sem problema. O diagnóstico continua válido e você já sabe qual ponto merece mais atenção quando decidir avançar."
+        );
+
+
+        if (status) {
+
+          status.textContent =
+            "ANÁLISE CONCLUÍDA";
+
+        }
+
+      }
+    );
+
+
+    return;
+
+  }
+
+
+  /*
+    LEAD EM NUTRIÇÃO
+  */
+
+  await appendDiegoMessage(
+    "Como você está mais no momento de entender o cenário, eu não acho que faça sentido te empurrar para uma reunião agora."
+  );
+
+
+  await appendDiegoMessage(
+    "O mais importante é guardar essa prioridade e evitar começar justamente pelo que o diagnóstico mostrou que não deveria vir primeiro."
+  );
+
+
+  renderPactConversationOptions(
+    [
+      {
+        value: "whatsapp",
+        label: "Quero guardar isso no WhatsApp"
+      },
+
+      {
+        value: "finish",
+        label: "Perfeito, ficou claro"
+      }
+    ],
+
+    async (
+      selected
+    ) => {
+
+      if (
+        selected.value ===
+        "whatsapp"
+      ) {
+
+        const message =
+`Olá, Diego. Fiz meu Diagnóstico PACT.
+
+Empresa: ${assessmentAnswers.company || ""}
+Score: ${report.overallScore}/100
+Gargalo: ${report.bottleneckName}
+Prioridade: ${report.priority}
+
+Estou guardando meu diagnóstico para acompanhar depois.`;
+
+
+        window.open(
+          `https://wa.me/5511970349654?text=${
+            encodeURIComponent(
+              message
+            )
+          }`,
+          "_blank"
+        );
+
+
+        return;
+
+      }
+
+
+      await appendDiegoMessage(
+        "Boa. Então cumprimos o objetivo daqui: clareza antes de qualquer decisão."
+      );
+
+
+      if (status) {
+
+        status.textContent =
+          "ANÁLISE CONCLUÍDA";
+
+      }
+
+    }
+  );
+
+}
 
 async function showPactRealityQuestion(
   report,
@@ -7992,6 +8652,10 @@ async function showPactRealityQuestion(
       await appendDiegoMessage(
         "Na próxima etapa eu quero entender o impacto real disso no negócio — porque é isso que define o que deve ou não virar prioridade."
       );
+
+      await showPactImpactQuestion(
+  report
+);
 
 
       const status =
