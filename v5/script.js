@@ -3844,6 +3844,473 @@ mm.add("(max-width: 640px)", () => {
   };
 
 });
+
+/* ======================================================
+   SCREEN 08 — DIAGNÓSTICO PACT
+====================================================== */
+
+const diagnosticPillars =
+  gsap.utils.toArray(
+    ".diagnostic-pillar"
+  );
+
+const diagnosticBars =
+  gsap.utils.toArray(
+    ".diagnostic-bar-fill"
+  );
+
+const diagnosticScoreNumber =
+  document.querySelector(
+    ".diagnostic-score-core strong"
+  );
+
+const diagnosticBottleneck =
+  document.querySelector(
+    ".diagnostic-bottleneck"
+  );
+
+
+
+/* ======================================================
+   HELPERS
+====================================================== */
+
+function clearDiagnosticPillars() {
+
+  diagnosticPillars.forEach(
+    (pillar) => {
+
+      pillar.classList.remove(
+        "diagnostic-pillar-critical"
+      );
+
+    }
+  );
+
+}
+
+
+function activateDiagnosticPillar(index) {
+
+  clearDiagnosticPillars();
+
+
+  if (diagnosticPillars[index]) {
+
+    diagnosticPillars[index].classList.add(
+      "diagnostic-pillar-critical"
+    );
+
+  }
+
+}
+
+
+function resolveDiagnostic() {
+
+  /*
+    resultado final do exemplo:
+    AQUISIÇÃO
+  */
+
+  activateDiagnosticPillar(1);
+
+}
+
+
+
+/* ======================================================
+   INITIAL STATE
+====================================================== */
+
+if (
+  diagnosticPillars.length &&
+  diagnosticBars.length &&
+  diagnosticScoreNumber
+) {
+
+  clearDiagnosticPillars();
+
+
+  diagnosticBars.forEach(
+    (bar) => {
+
+      gsap.set(
+        bar,
+        {
+          scaleX: 0,
+          transformOrigin:
+            "left center"
+        }
+      );
+
+    }
+  );
+
+
+  diagnosticScoreNumber.textContent =
+    "0";
+
+
+  gsap.set(
+    diagnosticBottleneck,
+    {
+      autoAlpha: 0,
+      y: 24
+    }
+  );
+
+
+
+  /* ====================================================
+     DIAGNOSTIC STORY
+  ==================================================== */
+
+  const scoreState = {
+    value: 0
+  };
+
+
+  const diagnosticTimeline =
+    gsap.timeline({
+
+      scrollTrigger: {
+
+        trigger:
+          ".diagnostic-interface",
+
+        start:
+          "top 72%",
+
+        end:
+          "bottom 26%",
+
+        scrub: 0.8,
+
+        invalidateOnRefresh: true,
+
+
+        onUpdate: (self) => {
+
+          const progress =
+            self.progress;
+
+
+          /*
+            sistema iniciando
+          */
+
+          if (progress < 0.12) {
+
+            clearDiagnosticPillars();
+
+          }
+
+
+          /*
+            P — POSICIONAMENTO
+          */
+
+          else if (progress < 0.28) {
+
+            activateDiagnosticPillar(0);
+
+          }
+
+
+          /*
+            A — AQUISIÇÃO
+          */
+
+          else if (progress < 0.44) {
+
+            activateDiagnosticPillar(1);
+
+          }
+
+
+          /*
+            C — COMERCIAL
+          */
+
+          else if (progress < 0.60) {
+
+            activateDiagnosticPillar(2);
+
+          }
+
+
+          /*
+            T — TECNOLOGIA
+          */
+
+          else if (progress < 0.76) {
+
+            activateDiagnosticPillar(3);
+
+          }
+
+
+          /*
+            RESULTADO:
+            AQUISIÇÃO é isolada
+          */
+
+          else {
+
+            resolveDiagnostic();
+
+          }
+
+        },
+
+
+        onLeave: () => {
+
+          resolveDiagnostic();
+
+        },
+
+
+        onLeaveBack: () => {
+
+          clearDiagnosticPillars();
+
+        }
+
+      }
+
+    });
+
+
+
+  /* ====================================================
+     SCORE NASCE
+  ==================================================== */
+
+  diagnosticTimeline
+
+    .fromTo(
+      ".diagnostic-score-orbit",
+      {
+        autoAlpha: 0.35,
+        scale: 0.86
+      },
+      {
+        autoAlpha: 1,
+        scale: 1,
+
+        duration: 0.55,
+
+        ease: "power3.out"
+      }
+    )
+
+
+    .to(
+      scoreState,
+      {
+        value: 59,
+
+        duration: 1.15,
+
+        ease: "none",
+
+        onUpdate: () => {
+
+          diagnosticScoreNumber.textContent =
+            Math.round(
+              scoreState.value
+            );
+
+        }
+      },
+      "-=0.25"
+    );
+
+
+
+  /* ====================================================
+     P — 68
+  ==================================================== */
+
+  diagnosticTimeline.to(
+    diagnosticBars[0],
+    {
+      scaleX: 0.68,
+
+      duration: 0.52,
+
+      ease: "none"
+    },
+    "-=0.72"
+  );
+
+
+
+  /* ====================================================
+     A — 34
+  ==================================================== */
+
+  diagnosticTimeline.to(
+    diagnosticBars[1],
+    {
+      scaleX: 0.34,
+
+      duration: 0.52,
+
+      ease: "none"
+    }
+  );
+
+
+
+  /* ====================================================
+     C — 61
+  ==================================================== */
+
+  diagnosticTimeline.to(
+    diagnosticBars[2],
+    {
+      scaleX: 0.61,
+
+      duration: 0.52,
+
+      ease: "none"
+    }
+  );
+
+
+
+  /* ====================================================
+     T — 74
+  ==================================================== */
+
+  diagnosticTimeline.to(
+    diagnosticBars[3],
+    {
+      scaleX: 0.74,
+
+      duration: 0.52,
+
+      ease: "none"
+    }
+  );
+
+
+
+  /* ====================================================
+     GARGALO É REVELADO
+  ==================================================== */
+
+  diagnosticTimeline.to(
+    diagnosticBottleneck,
+    {
+      autoAlpha: 1,
+      y: 0,
+
+      duration: 0.58,
+
+      ease: "power3.out"
+    }
+  );
+
+
+  diagnosticTimeline.to(
+    {},
+    {
+      duration: 0.28
+    }
+  );
+
+}
+
+
+
+/* ======================================================
+   DELIVERY — ENTRANCE
+====================================================== */
+
+gsap.from(
+  ".diagnostic-delivery-item",
+  {
+    autoAlpha: 0,
+    y: 28,
+
+    stagger: 0.09,
+
+    scrollTrigger: {
+
+      trigger:
+        ".diagnostic-delivery",
+
+      start:
+        "top 76%",
+
+      end:
+        "top 38%",
+
+      scrub: 0.7
+
+    }
+
+  }
+);
+
+
+
+/* ======================================================
+   CTA — ENTRANCE
+====================================================== */
+
+gsap.from(
+  ".diagnostic-cta > div",
+  {
+    autoAlpha: 0,
+    y: 28,
+
+    scrollTrigger: {
+
+      trigger:
+        ".diagnostic-cta",
+
+      start:
+        "top 78%",
+
+      end:
+        "top 46%",
+
+      scrub: 0.7
+
+    }
+
+  }
+);
+
+
+gsap.from(
+  ".diagnostic-cta-button",
+  {
+    autoAlpha: 0,
+    x: 34,
+
+    scrollTrigger: {
+
+      trigger:
+        ".diagnostic-cta",
+
+      start:
+        "top 72%",
+
+      end:
+        "top 42%",
+
+      scrub: 0.7
+
+    }
+
+  }
+);
   
   /* ======================================================
      REFRESH
