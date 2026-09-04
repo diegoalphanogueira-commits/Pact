@@ -7561,26 +7561,99 @@ function appendPactConversationMessage(
     message,
     {
       autoAlpha: 0,
-      y: 16
+      y: 12,
+      scale: 0.985
     },
     {
       autoAlpha: 1,
       y: 0,
+      scale: 1,
 
-      duration: 0.38,
+      duration: 0.36,
 
       ease: "power3.out"
     }
   );
 
 
-  message.scrollIntoView({
-    behavior: "smooth",
-    block: "nearest"
-  });
+  setTimeout(
+    () => {
+
+      messages.scrollTo({
+        top: messages.scrollHeight,
+        behavior: "smooth"
+      });
+
+    },
+    80
+  );
 
 
   return message;
+
+}
+
+function appendPactConversationEvent(
+  text
+) {
+
+  const messages =
+    document.getElementById(
+      "pactConversationMessages"
+    );
+
+
+  if (!messages) {
+    return;
+  }
+
+
+  const event =
+    document.createElement(
+      "div"
+    );
+
+
+  event.className =
+    "pact-chat-event";
+
+
+  event.innerHTML =
+    `
+      <span></span>
+
+      <small>
+        ${escapePACTHTML(text)}
+      </small>
+    `;
+
+
+  messages.appendChild(
+    event
+  );
+
+
+  gsap.fromTo(
+    event,
+    {
+      autoAlpha: 0,
+      y: 8
+    },
+    {
+      autoAlpha: 1,
+      y: 0,
+
+      duration: 0.4,
+
+      ease: "power3.out"
+    }
+  );
+
+
+  messages.scrollTo({
+    top: messages.scrollHeight,
+    behavior: "smooth"
+  });
 
 }
 
@@ -7606,14 +7679,20 @@ function showPactTyping() {
 
 
   typing.className =
-    "pact-chat-typing";
+    "pact-chat-typing-wrap";
 
 
   typing.innerHTML =
     `
-      <span></span>
-      <span></span>
-      <span></span>
+      <div class="pact-chat-typing">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <small>
+        Diego está digitando...
+      </small>
     `;
 
 
@@ -7622,9 +7701,24 @@ function showPactTyping() {
   );
 
 
-  typing.scrollIntoView({
-    behavior: "smooth",
-    block: "nearest"
+  gsap.fromTo(
+    typing,
+    {
+      autoAlpha: 0,
+      y: 7
+    },
+    {
+      autoAlpha: 1,
+      y: 0,
+
+      duration: 0.25
+    }
+  );
+
+
+  messages.scrollTo({
+    top: messages.scrollHeight,
+    behavior: "smooth"
   });
 
 
@@ -7636,15 +7730,40 @@ function showPactTyping() {
 
 async function appendDiegoMessage(
   text,
-  delay = 650
+  minimumTypingTime = 900
 ) {
+
+  /*
+    Pequena pausa antes de começar
+    a "digitar".
+  */
+
+  await pactConversationWait(
+    320
+  );
+
 
   const typing =
     showPactTyping();
 
 
+  /*
+    Mensagens maiores levam um pouco
+    mais de tempo para aparecer.
+  */
+
+  const calculatedTypingTime =
+    Math.min(
+      2300,
+      Math.max(
+        minimumTypingTime,
+        650 + text.length * 10
+      )
+    );
+
+
   await pactConversationWait(
-    delay
+    calculatedTypingTime
   );
 
 
@@ -7654,6 +7773,15 @@ async function appendDiegoMessage(
   appendPactConversationMessage(
     text,
     "diego"
+  );
+
+
+  /*
+    Respiro depois da mensagem.
+  */
+
+  await pactConversationWait(
+    520
   );
 
 }
@@ -7739,6 +7867,30 @@ function renderPactConversationOptions(
 
     }
   );
+
+  const optionButtons =
+  container.querySelectorAll(
+    ".pact-chat-option"
+  );
+
+
+gsap.fromTo(
+  optionButtons,
+  {
+    autoAlpha: 0,
+    y: 10
+  },
+  {
+    autoAlpha: 1,
+    y: 0,
+
+    duration: 0.34,
+
+    stagger: 0.07,
+
+    ease: "power3.out"
+  }
+);
 
 }
 
@@ -8050,57 +8202,92 @@ async function startPactConversation(
     );
 
 
-  await pactConversationWait(
-    350
-  );
+await pactConversationWait(
+  500
+);
 
+
+/* Diego entra */
+
+appendPactConversationEvent(
+  "Diego entrou na conversa"
+);
+
+
+await pactConversationWait(
+  950
+);
+
+
+/* Saudação */
+
+await appendDiegoMessage(
+  name
+    ? `Opa, ${name}. Tudo bem?`
+    : "Opa! Tudo bem?",
+  850
+);
+
+
+/* Contexto */
+
+await appendDiegoMessage(
+  "Acabei de olhar com calma o resultado do seu Diagnóstico PACT.",
+  1050
+);
+
+
+/* Primeiro gancho */
+
+await appendDiegoMessage(
+  "E tem uma coisa aqui que me chamou atenção.",
+  900
+);
+
+
+/* Gargalo */
+
+await appendDiegoMessage(
+  pactConversationPillarCopy[
+    report.bottleneck
+  ],
+  1250
+);
+
+
+/* Microindicador */
+
+if (criticalMetric) {
 
   await appendDiegoMessage(
     `${
-      name
-        ? `${name}, terminei`
-        : "Terminei"
-    } de cruzar seu diagnóstico.`
+      pactConversationMetricCopy[
+        criticalMetric.id
+      ] ||
+      `Dentro de ${report.bottleneckName}, o indicador que mais merece atenção é ${criticalMetric.label}.`
+    }`,
+    1350
   );
 
 
   await appendDiegoMessage(
-    "Tem um ponto que merece atenção antes de qualquer outra decisão."
+    `${criticalMetric.label.toUpperCase()} · ${criticalMetric.score}/100`,
+    850
   );
 
-
-  await appendDiegoMessage(
-    pactConversationPillarCopy[
-      report.bottleneck
-    ],
-    800
-  );
+}
 
 
-  if (criticalMetric) {
+/* Pergunta */
 
-    await appendDiegoMessage(
-      `${
-        pactConversationMetricCopy[
-          criticalMetric.id
-        ] ||
-        `Dentro de ${report.bottleneckName}, o indicador mais baixo foi ${criticalMetric.label}.`
-      }\n\n${criticalMetric.label.toUpperCase()} · ${criticalMetric.score}/100`,
-      850
-    );
-
-  }
+await appendDiegoMessage(
+  "Mas antes de eu continuar, quero validar isso com você."
+);
 
 
-  await appendDiegoMessage(
-    "Quero validar uma coisa com você."
-  );
-
-
-  await appendDiegoMessage(
-    "Essa leitura bate com o que você sente hoje dentro da empresa?"
-  );
-
+await appendDiegoMessage(
+  "Essa leitura bate com o que você sente hoje dentro do negócio?"
+);
 
   renderPactConversationOptions(
     [
