@@ -3552,9 +3552,9 @@ gsap.set(
     y:
       -rowShift *
       cameraProgress *
-      0.62
+      0.60
   }
-);;
+);
 
 
 
