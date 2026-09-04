@@ -7435,3 +7435,1331 @@ min-height: 620px;
   }
 
 }
+
+/* =========================================================
+   SCREEN 08 — DIAGNÓSTICO PACT
+========================================================= */
+
+.diagnostic-section {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 73% 42%,
+      rgba(213, 255, 63, 0.04),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #050709 0%,
+      #070a0d 50%,
+      #050709 100%
+    );
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.055);
+}
+
+
+/* GRID AMBIENTE */
+
+.diagnostic-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.016) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.016) 1px,
+      transparent 1px
+    );
+
+  background-size: 82px 82px;
+
+  opacity: 0.3;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
+}
+
+
+.diagnostic-stage {
+  position: relative;
+  z-index: 1;
+
+  width:
+    min(1280px, calc(100% - 80px));
+
+  margin: 0 auto;
+
+  padding:
+    140px 0 112px;
+}
+
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.diagnostic-intro {
+  max-width: 930px;
+}
+
+
+.diagnostic-kicker {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 12px;
+
+  color: #d5ff3f;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+
+.diagnostic-kicker::before {
+  content: "";
+
+  width: 38px;
+  height: 1px;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 16px rgba(213, 255, 63, 0.32);
+}
+
+
+.diagnostic-title {
+  max-width: 930px;
+
+  margin-top: 24px;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(3.4rem, 5.6vw, 5.2rem);
+
+  line-height: 0.98;
+
+  letter-spacing: -0.058em;
+
+  font-weight: 500;
+}
+
+
+.diagnostic-title span {
+  display: block;
+
+  color: #d5ff3f;
+}
+
+
+.diagnostic-description {
+  max-width: 610px;
+
+  margin-top: 28px;
+
+  color:
+    rgba(246, 247, 248, 0.5);
+
+  font-size: 0.98rem;
+
+  line-height: 1.72;
+}
+
+
+
+/* =========================================================
+   INTERFACE
+========================================================= */
+
+.diagnostic-interface {
+  margin-top: 104px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(320px, 0.78fr)
+    minmax(0, 1.22fr);
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  min-height: 720px;
+}
+
+
+
+/* =========================================================
+   OVERVIEW
+========================================================= */
+
+.diagnostic-overview {
+  position: relative;
+
+  padding:
+    46px 50px 48px 0;
+
+  border-right:
+    1px solid rgba(255, 255, 255, 0.065);
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+.diagnostic-overview::before {
+  content: "";
+
+  position: absolute;
+
+  width: 360px;
+  height: 360px;
+
+  left: -110px;
+  top: 170px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(213, 255, 63, 0.035);
+
+  filter: blur(80px);
+
+  pointer-events: none;
+}
+
+
+.diagnostic-overview-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.diagnostic-overview-top > span {
+  color:
+    rgba(246, 247, 248, 0.42);
+
+  font-size: 0.59rem;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+
+.diagnostic-overview-top > small {
+  color:
+    rgba(246, 247, 248, 0.22);
+
+  font-size: 0.53rem;
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+}
+
+
+
+/* =========================================================
+   SCORE
+========================================================= */
+
+.diagnostic-score {
+  margin-top: auto;
+  margin-bottom: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+.diagnostic-score-orbit {
+  position: relative;
+
+  width: 260px;
+  height: 260px;
+
+  display: grid;
+  place-items: center;
+}
+
+
+.diagnostic-score-ring {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+}
+
+
+.diagnostic-score-ring-1 {
+  width: 100%;
+  height: 100%;
+
+  border:
+    1px solid rgba(213, 255, 63, 0.18);
+}
+
+
+.diagnostic-score-ring-2 {
+  width: 190px;
+  height: 190px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.065);
+}
+
+
+.diagnostic-score-core {
+  position: relative;
+
+  width: 142px;
+  height: 142px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 50% 32%,
+      rgba(213, 255, 63, 0.1),
+      rgba(8, 11, 14, 0.96) 62%
+    );
+
+  border:
+    1px solid rgba(213, 255, 63, 0.26);
+
+  box-shadow:
+    0 0 45px rgba(213, 255, 63, 0.06);
+}
+
+
+.diagnostic-score-core > span {
+  color:
+    rgba(246, 247, 248, 0.36);
+
+  font-size: 0.5rem;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+
+.diagnostic-score-core strong {
+  margin-top: 5px;
+
+  color: #d5ff3f;
+
+  font-size: 3.5rem;
+
+  line-height: 1;
+
+  letter-spacing: -0.07em;
+
+  font-weight: 500;
+}
+
+
+.diagnostic-score-core small {
+  margin-top: 3px;
+
+  color:
+    rgba(246, 247, 248, 0.34);
+
+  font-size: 0.58rem;
+}
+
+
+.diagnostic-score > p {
+  max-width: 320px;
+
+  margin-top: 36px;
+
+  color:
+    rgba(246, 247, 248, 0.42);
+
+  font-size: 0.8rem;
+
+  line-height: 1.68;
+}
+
+
+
+/* =========================================================
+   MATURITY
+========================================================= */
+
+.diagnostic-status {
+  padding-top: 28px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.065);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+
+.diagnostic-status span {
+  color:
+    rgba(246, 247, 248, 0.24);
+
+  font-size: 0.53rem;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+}
+
+
+.diagnostic-status strong {
+  color:
+    rgba(246, 247, 248, 0.76);
+
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+
+
+/* =========================================================
+   ANALYSIS
+========================================================= */
+
+.diagnostic-analysis {
+  padding:
+    46px 0 46px 56px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+.diagnostic-analysis-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-right: 4px;
+}
+
+
+.diagnostic-analysis-head > span {
+  color:
+    rgba(246, 247, 248, 0.42);
+
+  font-size: 0.59rem;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+
+.diagnostic-analysis-head > small {
+  color:
+    rgba(213, 255, 63, 0.55);
+
+  font-size: 0.55rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+
+
+/* =========================================================
+   PILLARS
+========================================================= */
+
+.diagnostic-pillar {
+  padding:
+    25px 0 24px;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.06);
+
+  opacity: 0.68;
+
+  transition:
+    opacity 280ms ease,
+    background 280ms ease;
+}
+
+
+.diagnostic-pillar:first-of-type {
+  margin-top: 30px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.diagnostic-pillar-head {
+  display: grid;
+
+  grid-template-columns:
+    48px minmax(0, 1fr) auto;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+
+.diagnostic-pillar-letter {
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  color:
+    rgba(246, 247, 248, 0.55);
+
+  font-size: 0.76rem;
+  font-weight: 700;
+
+  transition:
+    color 280ms ease,
+    border-color 280ms ease,
+    background 280ms ease,
+    box-shadow 280ms ease;
+}
+
+
+.diagnostic-pillar-head > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.diagnostic-pillar-head small {
+  color:
+    rgba(246, 247, 248, 0.28);
+
+  font-size: 0.52rem;
+  font-weight: 600;
+
+  letter-spacing: 0.13em;
+}
+
+
+.diagnostic-pillar-head strong {
+  color:
+    rgba(246, 247, 248, 0.75);
+
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+
+.diagnostic-pillar-score {
+  color:
+    rgba(246, 247, 248, 0.34);
+
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+
+
+/* =========================================================
+   SCORE BAR
+========================================================= */
+
+.diagnostic-bar {
+  position: relative;
+
+  height: 2px;
+
+  margin:
+    18px 0 0 64px;
+
+  overflow: hidden;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+}
+
+
+.diagnostic-bar-fill {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+    rgba(246, 247, 248, 0.26);
+
+  transform:
+    scaleX(0);
+
+  transform-origin:
+    left center;
+
+  transition:
+    background 280ms ease;
+}
+
+
+
+/* CRITICAL */
+
+.diagnostic-pillar-critical {
+  opacity: 1;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(213, 255, 63, 0.045),
+      transparent 58%
+    );
+}
+
+
+.diagnostic-pillar-critical .diagnostic-pillar-letter {
+  color: #050709;
+
+  background: #d5ff3f;
+
+  border-color: #d5ff3f;
+
+  box-shadow:
+    0 0 0 7px rgba(213, 255, 63, 0.04),
+    0 0 25px rgba(213, 255, 63, 0.16);
+}
+
+
+.diagnostic-pillar-critical
+.diagnostic-pillar-head small {
+  color:
+    rgba(213, 255, 63, 0.68);
+}
+
+
+.diagnostic-pillar-critical
+.diagnostic-pillar-head strong {
+  color: #f6f7f8;
+}
+
+
+.diagnostic-pillar-critical
+.diagnostic-pillar-score {
+  color: #d5ff3f;
+}
+
+
+.diagnostic-pillar-critical
+.diagnostic-bar-fill {
+  background: #d5ff3f;
+}
+
+
+
+/* =========================================================
+   BOTTLENECK
+========================================================= */
+
+.diagnostic-bottleneck {
+  margin-top: auto;
+
+  padding-top: 34px;
+
+  display: grid;
+
+  grid-template-columns:
+    116px minmax(0, 1fr);
+
+  gap: 28px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.diagnostic-bottleneck-signal {
+  min-height: 142px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border-right:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.diagnostic-bottleneck-signal span {
+  max-width: 84px;
+
+  color:
+    rgba(246, 247, 248, 0.26);
+
+  font-size: 0.48rem;
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  letter-spacing: 0.12em;
+
+  text-align: center;
+}
+
+
+.diagnostic-bottleneck-signal strong {
+  margin-top: 10px;
+
+  color: #d5ff3f;
+
+  font-size: 3.8rem;
+
+  line-height: 1;
+
+  font-weight: 500;
+}
+
+
+.diagnostic-bottleneck-copy > span {
+  color: #d5ff3f;
+
+  font-size: 0.57rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+
+.diagnostic-bottleneck-copy h3 {
+  max-width: 570px;
+
+  margin-top: 11px;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(1.6rem, 2.4vw, 2.3rem);
+
+  line-height: 1.08;
+
+  letter-spacing: -0.04em;
+
+  font-weight: 500;
+}
+
+
+.diagnostic-bottleneck-copy p {
+  max-width: 520px;
+
+  margin-top: 16px;
+
+  color:
+    rgba(246, 247, 248, 0.42);
+
+  font-size: 0.76rem;
+
+  line-height: 1.65;
+}
+
+
+
+/* =========================================================
+   DELIVERY
+========================================================= */
+
+.diagnostic-delivery {
+  margin-top: 118px;
+
+  padding-top: 54px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.diagnostic-delivery-head span {
+  color:
+    rgba(213, 255, 63, 0.7);
+
+  font-size: 0.61rem;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
+
+.diagnostic-delivery-grid {
+  margin-top: 42px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.065);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.065);
+}
+
+
+.diagnostic-delivery-item {
+  min-height: 150px;
+
+  padding:
+    30px 26px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  border-right:
+    1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.diagnostic-delivery-item:last-child {
+  border-right: 0;
+}
+
+
+.diagnostic-delivery-item span {
+  color:
+    rgba(213, 255, 63, 0.5);
+
+  font-size: 0.62rem;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+}
+
+
+.diagnostic-delivery-item strong {
+  max-width: 230px;
+
+  color:
+    rgba(246, 247, 248, 0.78);
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  line-height: 1.5;
+}
+
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.diagnostic-cta {
+  margin-top: 112px;
+
+  padding:
+    52px 0;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 60px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.diagnostic-cta > div {
+  max-width: 690px;
+}
+
+
+.diagnostic-cta > div > span {
+  color:
+    rgba(213, 255, 63, 0.68);
+
+  font-size: 0.59rem;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
+
+.diagnostic-cta h3 {
+  margin-top: 18px;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(2.3rem, 3.7vw, 3.7rem);
+
+  line-height: 1.05;
+
+  letter-spacing: -0.05em;
+
+  font-weight: 500;
+}
+
+
+.diagnostic-cta-button {
+  min-height: 58px;
+
+  flex-shrink: 0;
+
+  padding:
+    0 24px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+
+  border-radius: 999px;
+
+  background: #d5ff3f;
+
+  color: #050709;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease;
+}
+
+
+.diagnostic-cta-button:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 14px 42px rgba(213, 255, 63, 0.16);
+}
+
+
+
+/* =========================================================
+   SCREEN NUMBER
+========================================================= */
+
+.diagnostic-screen-index {
+  position: absolute;
+
+  right: -16px;
+  bottom: 20px;
+
+  z-index: -1;
+
+  color:
+    rgba(255, 255, 255, 0.016);
+
+  font-size: 11rem;
+
+  line-height: 0.8;
+
+  letter-spacing: -0.08em;
+
+  font-weight: 500;
+
+  user-select: none;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .diagnostic-stage {
+    width:
+      min(920px, calc(100% - 48px));
+  }
+
+
+  .diagnostic-interface {
+    grid-template-columns: 1fr;
+  }
+
+
+  .diagnostic-overview {
+    min-height: 560px;
+
+    padding:
+      46px 0;
+
+    border-right: 0;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.065);
+  }
+
+
+  .diagnostic-analysis {
+    padding:
+      46px 0;
+  }
+
+
+  .diagnostic-delivery-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .diagnostic-delivery-item:nth-child(2) {
+    border-right: 0;
+  }
+
+
+  .diagnostic-delivery-item:nth-child(-n+2) {
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.06);
+  }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .diagnostic-stage {
+    width:
+      calc(100% - 32px);
+
+    padding:
+      94px 0 76px;
+  }
+
+
+  .diagnostic-kicker {
+    font-size: 0.59rem;
+  }
+
+
+  .diagnostic-kicker::before {
+    width: 26px;
+  }
+
+
+  .diagnostic-title {
+    margin-top: 18px;
+
+    font-size:
+      clamp(2.7rem, 12.7vw, 3.45rem);
+
+    line-height: 0.99;
+  }
+
+
+  .diagnostic-description {
+    max-width: 340px;
+
+    margin-top: 22px;
+
+    font-size: 0.89rem;
+
+    line-height: 1.65;
+  }
+
+
+
+  /* INTERFACE */
+
+  .diagnostic-interface {
+    margin-top: 76px;
+
+    min-height: 0;
+
+    display: block;
+  }
+
+
+
+  /* OVERVIEW */
+
+  .diagnostic-overview {
+    min-height: 520px;
+
+    padding:
+      34px 0 40px;
+  }
+
+
+  .diagnostic-overview-top {
+    align-items: flex-start;
+  }
+
+
+  .diagnostic-overview-top > small {
+    max-width: 115px;
+
+    text-align: right;
+
+    line-height: 1.5;
+  }
+
+
+  .diagnostic-score-orbit {
+    width: 220px;
+    height: 220px;
+  }
+
+
+  .diagnostic-score-ring-2 {
+    width: 158px;
+    height: 158px;
+  }
+
+
+  .diagnostic-score-core {
+    width: 124px;
+    height: 124px;
+  }
+
+
+  .diagnostic-score-core strong {
+    font-size: 3rem;
+  }
+
+
+  .diagnostic-score > p {
+    max-width: 295px;
+
+    margin-top: 30px;
+
+    font-size: 0.76rem;
+  }
+
+
+
+  /* ANALYSIS */
+
+  .diagnostic-analysis {
+    padding:
+      38px 0 0;
+  }
+
+
+  .diagnostic-pillar {
+    padding:
+      23px 0;
+  }
+
+
+  .diagnostic-pillar-head {
+    grid-template-columns:
+      44px minmax(0, 1fr) auto;
+
+    gap: 13px;
+  }
+
+
+  .diagnostic-pillar-letter {
+    width: 42px;
+    height: 42px;
+  }
+
+
+  .diagnostic-pillar-head strong {
+    font-size: 0.74rem;
+  }
+
+
+  .diagnostic-bar {
+    margin-left: 57px;
+  }
+
+
+
+  /* BOTTLENECK */
+
+  .diagnostic-bottleneck {
+    margin-top: 44px;
+
+    padding-top: 34px;
+
+    display: block;
+  }
+
+
+  .diagnostic-bottleneck-signal {
+    width: 100%;
+
+    min-height: 0;
+
+    padding-bottom: 26px;
+
+    flex-direction: row;
+
+    justify-content: flex-start;
+
+    gap: 18px;
+
+    border-right: 0;
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.065);
+  }
+
+
+  .diagnostic-bottleneck-signal span {
+    max-width: none;
+
+    text-align: left;
+  }
+
+
+  .diagnostic-bottleneck-signal strong {
+    margin-top: 0;
+
+    font-size: 2.7rem;
+  }
+
+
+  .diagnostic-bottleneck-copy {
+    padding-top: 30px;
+  }
+
+
+  .diagnostic-bottleneck-copy h3 {
+    font-size:
+      clamp(1.75rem, 8vw, 2.2rem);
+  }
+
+
+
+  /* DELIVERY */
+
+  .diagnostic-delivery {
+    margin-top: 86px;
+
+    padding-top: 42px;
+  }
+
+
+  .diagnostic-delivery-grid {
+    margin-top: 34px;
+
+    display: block;
+  }
+
+
+  .diagnostic-delivery-item {
+    min-height: 112px;
+
+    padding:
+      24px 0;
+
+    border-right: 0;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.06);
+  }
+
+
+  .diagnostic-delivery-item:last-child {
+    border-bottom: 0;
+  }
+
+
+
+  /* CTA */
+
+  .diagnostic-cta {
+    margin-top: 82px;
+
+    padding:
+      42px 0;
+
+    display: block;
+  }
+
+
+  .diagnostic-cta h3 {
+    margin-top: 16px;
+
+    font-size:
+      clamp(2.1rem, 9.5vw, 2.7rem);
+  }
+
+
+  .diagnostic-cta-button {
+    width: 100%;
+
+    min-height: 58px;
+
+    margin-top: 34px;
+  }
+
+
+  .diagnostic-screen-index {
+    right: -8px;
+
+    font-size: 7rem;
+  }
+
+}
