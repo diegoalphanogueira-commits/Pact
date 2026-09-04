@@ -7312,7 +7312,877 @@ function buildAssessmentReport() {
 
 }
 
+/* ======================================================
+   PACT CONVERSATION ENGINE — V1
+====================================================== */
 
+const pactConversationPillarCopy = {
+
+  p:
+    "Seu diagnóstico sugere que o principal limitador não está simplesmente em divulgar mais. Antes disso, existe uma questão de clareza, percepção ou estrutura da oferta que pode estar reduzindo o valor percebido pelo mercado.",
+
+  a:
+    "Seu diagnóstico não indica simplesmente que você precisa de mais tráfego. O ponto mais sensível está na capacidade de gerar novas oportunidades com consistência e entender quais canais realmente sustentam o crescimento.",
+
+  c:
+    "Tem uma coisa importante aqui: o problema não parece estar apenas em trazer mais pessoas. Parte do crescimento pode estar escapando depois que a oportunidade já entrou no negócio.",
+
+  t:
+    "Seu diagnóstico mostra que a operação pode estar começando a exigir mais da estrutura atual do que ela consegue absorver com controle, velocidade e previsibilidade."
+
+};
+
+
+
+const pactConversationMetricCopy = {
+
+  p_clarity:
+    "O ponto que mais chamou minha atenção foi Clareza. Isso indica que o cliente pode até entender o que você faz, mas nem sempre percebe rapidamente por que deveria escolher sua empresa.",
+
+  p_audience:
+    "O ponto que mais chamou minha atenção foi Público. Quando não existe um perfil prioritário muito claro, comunicação, oferta e aquisição acabam ficando mais dispersas.",
+
+  p_trust:
+    "O ponto que mais chamou minha atenção foi Confiança. Existe espaço para aumentar a percepção de segurança, autoridade e prova antes mesmo do cliente entrar em contato.",
+
+  p_offer:
+    "O ponto que mais chamou minha atenção foi Oferta. Isso costuma acontecer quando o serviço existe, mas ainda não está estruturado de uma forma simples de entender, comparar e comprar.",
+
+
+  a_predictability:
+    "O ponto que mais chamou minha atenção foi Previsibilidade. Isso significa que novas oportunidades podem até chegar, mas ainda é difícil controlar quando e em qual volume elas vão aparecer.",
+
+  a_volume:
+    "O ponto que mais chamou minha atenção foi Volume. Hoje a quantidade de novas oportunidades parece estar abaixo do necessário para sustentar o crescimento que você busca.",
+
+  a_presence:
+    "O ponto que mais chamou minha atenção foi Presença nos canais. Existe demanda, mas sua empresa ainda pode não estar aparecendo com força suficiente exatamente onde o cliente procura.",
+
+  a_measurement:
+    "O ponto que mais chamou minha atenção foi Mensuração. Você pode até gerar oportunidades, mas hoje é difícil saber com segurança quais canais realmente trazem clientes e quais apenas consomem esforço.",
+
+
+  c_response:
+    "O ponto que mais chamou minha atenção foi Velocidade de atendimento. Quando o primeiro contato oscila ou demora, parte da intenção de compra pode morrer antes da conversa comercial começar de verdade.",
+
+  c_process:
+    "O ponto que mais chamou minha atenção foi Processo. Existe venda acontecendo, mas a condução das oportunidades ainda pode depender demais de cada pessoa ou situação.",
+
+  c_followup:
+    "O ponto que mais chamou minha atenção foi Follow-up. Isso normalmente significa que oportunidades interessadas podem estar desaparecendo simplesmente porque ninguém continua a conversa no momento certo.",
+
+  c_conversion:
+    "O ponto que mais chamou minha atenção foi Conversão. Sem enxergar claramente quantas oportunidades avançam ou se perdem, fica difícil saber onde o comercial realmente está vazando.",
+
+
+  t_organization:
+    "O ponto que mais chamou minha atenção foi Organização. Informações espalhadas aumentam dependência de memória, mensagens e controles manuais.",
+
+  t_automation:
+    "O ponto que mais chamou minha atenção foi Automação. Existe trabalho repetitivo consumindo tempo que poderia estar sendo usado em atividades de maior valor.",
+
+  t_capacity:
+    "O ponto que mais chamou minha atenção foi Capacidade. Se a demanda aumentasse rapidamente, a estrutura atual provavelmente sentiria bastante esse crescimento.",
+
+  t_data:
+    "O ponto que mais chamou minha atenção foi Dados. Sem visibilidade operacional, muitas decisões acabam sendo tomadas por percepção em vez de evidência."
+
+};
+
+
+
+const pactConversationRealityOptions = {
+
+  p: [
+    {
+      value: "difference",
+      label: "É difícil explicar nosso diferencial"
+    },
+    {
+      value: "audience",
+      label: "Atendemos públicos muito diferentes"
+    },
+    {
+      value: "trust",
+      label: "Falta autoridade e confiança"
+    },
+    {
+      value: "offer",
+      label: "Nossa oferta ainda é confusa"
+    }
+  ],
+
+  a: [
+    {
+      value: "referral",
+      label: "Dependemos muito de indicação"
+    },
+    {
+      value: "low_volume",
+      label: "Entram poucos contatos"
+    },
+    {
+      value: "unstable",
+      label: "Fazemos ações, mas tudo oscila"
+    },
+    {
+      value: "unknown_channel",
+      label: "Não sabemos qual canal funciona"
+    }
+  ],
+
+  c: [
+    {
+      value: "response",
+      label: "Demoramos para responder"
+    },
+    {
+      value: "process",
+      label: "Falta um processo claro"
+    },
+    {
+      value: "followup",
+      label: "Perdemos follow-ups"
+    },
+    {
+      value: "conversion",
+      label: "Não sabemos nossa conversão"
+    }
+  ],
+
+  t: [
+    {
+      value: "scattered",
+      label: "Informações ficam espalhadas"
+    },
+    {
+      value: "manual",
+      label: "Existe muito trabalho manual"
+    },
+    {
+      value: "capacity",
+      label: "A equipe já está no limite"
+    },
+    {
+      value: "visibility",
+      label: "Faltam indicadores e controle"
+    }
+  ]
+
+};
+
+
+
+function getPactConversationState() {
+
+  if (
+    !assessmentAnswers.pact_conversation
+  ) {
+
+    assessmentAnswers.pact_conversation =
+      {};
+
+  }
+
+
+  return assessmentAnswers
+    .pact_conversation;
+
+}
+
+
+
+function pactConversationWait(
+  milliseconds
+) {
+
+  return new Promise(
+    (resolve) => {
+
+      setTimeout(
+        resolve,
+        milliseconds
+      );
+
+    }
+  );
+
+}
+
+
+
+function appendPactConversationMessage(
+  text,
+  role = "diego"
+) {
+
+  const messages =
+    document.getElementById(
+      "pactConversationMessages"
+    );
+
+
+  if (!messages) {
+    return null;
+  }
+
+
+  const message =
+    document.createElement(
+      "div"
+    );
+
+
+  message.className =
+    `pact-chat-message pact-chat-message-${role}`;
+
+
+  message.innerHTML =
+    `
+      <div class="pact-chat-bubble">
+        ${
+          escapePACTHTML(
+            text
+          ).replaceAll(
+            "\n",
+            "<br>"
+          )
+        }
+      </div>
+    `;
+
+
+  messages.appendChild(
+    message
+  );
+
+
+  gsap.fromTo(
+    message,
+    {
+      autoAlpha: 0,
+      y: 16
+    },
+    {
+      autoAlpha: 1,
+      y: 0,
+
+      duration: 0.38,
+
+      ease: "power3.out"
+    }
+  );
+
+
+  message.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+
+
+  return message;
+
+}
+
+
+
+function showPactTyping() {
+
+  const messages =
+    document.getElementById(
+      "pactConversationMessages"
+    );
+
+
+  if (!messages) {
+    return null;
+  }
+
+
+  const typing =
+    document.createElement(
+      "div"
+    );
+
+
+  typing.className =
+    "pact-chat-typing";
+
+
+  typing.innerHTML =
+    `
+      <span></span>
+      <span></span>
+      <span></span>
+    `;
+
+
+  messages.appendChild(
+    typing
+  );
+
+
+  typing.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+
+
+  return typing;
+
+}
+
+
+
+async function appendDiegoMessage(
+  text,
+  delay = 650
+) {
+
+  const typing =
+    showPactTyping();
+
+
+  await pactConversationWait(
+    delay
+  );
+
+
+  typing?.remove();
+
+
+  appendPactConversationMessage(
+    text,
+    "diego"
+  );
+
+}
+
+
+
+function renderPactConversationOptions(
+  options,
+  onSelect
+) {
+
+  const container =
+    document.getElementById(
+      "pactConversationOptions"
+    );
+
+
+  if (!container) {
+    return;
+  }
+
+
+  container.innerHTML =
+    "";
+
+
+  options.forEach(
+    (optionItem) => {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.type =
+        "button";
+
+
+      button.className =
+        "pact-chat-option";
+
+
+      button.innerHTML =
+        `
+          <span>
+            ${escapePACTHTML(
+              optionItem.label
+            )}
+          </span>
+
+          <small aria-hidden="true">
+            →
+          </small>
+        `;
+
+
+      button.addEventListener(
+        "click",
+        async () => {
+
+          container.innerHTML =
+            "";
+
+
+          appendPactConversationMessage(
+            optionItem.label,
+            "lead"
+          );
+
+
+          await onSelect(
+            optionItem
+          );
+
+        }
+      );
+
+
+      container.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+
+
+function getCriticalConversationMetric(
+  report
+) {
+
+  const metrics =
+    pactMetricMap[
+      report.bottleneck
+    ] || [];
+
+
+  let lowestMetric =
+    null;
+
+
+  metrics.forEach(
+    (metric) => {
+
+      const score =
+        getAssessmentMetricScore(
+          metric.id
+        );
+
+
+      if (
+        !lowestMetric ||
+        score <
+        lowestMetric.score
+      ) {
+
+        lowestMetric = {
+          ...metric,
+          score
+        };
+
+      }
+
+    }
+  );
+
+
+  return lowestMetric;
+
+}
+
+
+
+async function showPactRealityQuestion(
+  report,
+  phase = report.bottleneck
+) {
+
+  const state =
+    getPactConversationState();
+
+
+  await appendDiegoMessage(
+    "Quero entender onde isso aparece com mais força na prática."
+  );
+
+
+  const options =
+    pactConversationRealityOptions[
+      phase
+    ] ||
+    pactConversationRealityOptions[
+      report.bottleneck
+    ];
+
+
+  renderPactConversationOptions(
+    options,
+    async (
+      selected
+    ) => {
+
+      state.reality =
+        selected.value;
+
+
+      state.reality_label =
+        selected.label;
+
+
+      await appendDiegoMessage(
+        "Entendi. Isso adiciona uma camada importante ao diagnóstico."
+      );
+
+
+      await appendDiegoMessage(
+        "Agora eu consigo comparar o que o PACT encontrou com aquilo que você está sentindo dentro da operação."
+      );
+
+
+      await appendDiegoMessage(
+        "Na próxima etapa eu quero entender o impacto real disso no negócio — porque é isso que define o que deve ou não virar prioridade."
+      );
+
+
+      const status =
+        document.getElementById(
+          "pactConversationStage"
+        );
+
+
+      if (status) {
+
+        status.textContent =
+          "LEITURA VALIDADA";
+
+      }
+
+    }
+  );
+
+}
+
+
+
+async function showPactPerceivedPillarQuestion(
+  report
+) {
+
+  const state =
+    getPactConversationState();
+
+
+  await appendDiegoMessage(
+    "Então quero comparar sua percepção com o que apareceu estruturalmente no diagnóstico."
+  );
+
+
+  await appendDiegoMessage(
+    "Qual área você sente que mais limita o negócio hoje?"
+  );
+
+
+  renderPactConversationOptions(
+    [
+      {
+        value: "p",
+        label: "Posicionamento"
+      },
+      {
+        value: "a",
+        label: "Aquisição"
+      },
+      {
+        value: "c",
+        label: "Comercial"
+      },
+      {
+        value: "t",
+        label: "Tecnologia"
+      }
+    ],
+    async (
+      selected
+    ) => {
+
+      state.perceived_pillar =
+        selected.value;
+
+
+      state.perceived_pillar_label =
+        selected.label;
+
+
+      if (
+        selected.value ===
+        report.bottleneck
+      ) {
+
+        await appendDiegoMessage(
+          `Interessante. Sua percepção e o diagnóstico apontaram para a mesma área: ${report.bottleneckName}.`
+        );
+
+      }
+
+      else {
+
+        await appendDiegoMessage(
+          `Interessante. Você percebe ${selected.label} como o principal problema, enquanto o diagnóstico encontrou ${report.bottleneckName} como o maior gargalo estrutural.`
+        );
+
+
+        await appendDiegoMessage(
+          "Essa diferença não significa que uma das leituras esteja errada. Na verdade, é justamente o tipo de coisa que eu gosto de investigar antes de prescrever qualquer solução."
+        );
+
+      }
+
+
+      await showPactRealityQuestion(
+        report,
+        selected.value
+      );
+
+    }
+  );
+
+}
+
+
+
+async function startPactConversation(
+  report
+) {
+
+  const conversation =
+    document.getElementById(
+      "pactConversation"
+    );
+
+
+  const startButton =
+    document.getElementById(
+      "pactConversationStart"
+    );
+
+
+  const messages =
+    document.getElementById(
+      "pactConversationMessages"
+    );
+
+
+  const state =
+    getPactConversationState();
+
+
+  if (
+    !conversation ||
+    !messages
+  ) {
+    return;
+  }
+
+
+  if (
+    state.started
+  ) {
+
+    conversation.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+    return;
+
+  }
+
+
+  state.started =
+    true;
+
+
+  conversation.hidden =
+    false;
+
+
+  if (startButton) {
+
+    startButton.disabled =
+      true;
+
+    startButton.classList.add(
+      "is-started"
+    );
+
+  }
+
+
+  gsap.fromTo(
+    conversation,
+    {
+      autoAlpha: 0,
+      y: 28
+    },
+    {
+      autoAlpha: 1,
+      y: 0,
+
+      duration: 0.55,
+
+      ease: "power3.out"
+    }
+  );
+
+
+  conversation.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+
+  const name =
+    assessmentAnswers.name ||
+    "";
+
+
+  const criticalMetric =
+    getCriticalConversationMetric(
+      report
+    );
+
+
+  await pactConversationWait(
+    350
+  );
+
+
+  await appendDiegoMessage(
+    `${
+      name
+        ? `${name}, terminei`
+        : "Terminei"
+    } de cruzar seu diagnóstico.`
+  );
+
+
+  await appendDiegoMessage(
+    "Tem um ponto que merece atenção antes de qualquer outra decisão."
+  );
+
+
+  await appendDiegoMessage(
+    pactConversationPillarCopy[
+      report.bottleneck
+    ],
+    800
+  );
+
+
+  if (criticalMetric) {
+
+    await appendDiegoMessage(
+      `${
+        pactConversationMetricCopy[
+          criticalMetric.id
+        ] ||
+        `Dentro de ${report.bottleneckName}, o indicador mais baixo foi ${criticalMetric.label}.`
+      }\n\n${criticalMetric.label.toUpperCase()} · ${criticalMetric.score}/100`,
+      850
+    );
+
+  }
+
+
+  await appendDiegoMessage(
+    "Quero validar uma coisa com você."
+  );
+
+
+  await appendDiegoMessage(
+    "Essa leitura bate com o que você sente hoje dentro da empresa?"
+  );
+
+
+  renderPactConversationOptions(
+    [
+      {
+        value: "yes",
+        label: "Sim, bastante"
+      },
+
+      {
+        value: "partly",
+        label: "Em parte"
+      },
+
+      {
+        value: "different",
+        label: "Eu imaginava outro problema"
+      }
+    ],
+
+    async (
+      selected
+    ) => {
+
+      state.validation =
+        selected.value;
+
+
+      state.validation_label =
+        selected.label;
+
+
+      if (
+        selected.value ===
+        "yes"
+      ) {
+
+        await appendDiegoMessage(
+          "Faz sentido. Então quero sair do diagnóstico e entender onde isso realmente aparece na rotina."
+        );
+
+
+        await showPactRealityQuestion(
+          report
+        );
+
+        return;
+
+      }
+
+
+      if (
+        selected.value ===
+        "partly"
+      ) {
+
+        await appendDiegoMessage(
+          "Interessante. Às vezes o problema percebido e o gargalo estrutural não são exatamente a mesma coisa."
+        );
+
+
+        await showPactPerceivedPillarQuestion(
+          report
+        );
+
+        return;
+
+      }
+
+
+      await appendDiegoMessage(
+        "Isso é importante. O diagnóstico é uma leitura estrutural, mas a sua percepção de quem vive a operação também precisa entrar na análise."
+      );
+
+
+      await showPactPerceivedPillarQuestion(
+        report
+      );
+
+    }
+  );
+
+}
 
 function renderAssessmentResult() {
 
@@ -7947,43 +8817,120 @@ const pactMetricGroups =
 
         <div class="assessment-result-cta">
 
-          <div>
+          <div class="assessment-result-cta pact-conversation-entry">
 
-            <span>
-              PRÓXIMO PASSO
-            </span>
+  <div>
 
-            <h3>
-              Transforme esse diagnóstico
-              em um plano de ação.
-            </h3>
+    <span>
+      SUA ANÁLISE CONTINUA
+    </span>
 
-            <p>
-              Podemos analisar esse resultado juntos
-              e entender como essa prioridade pode
-              virar um Projeto PACT.
-            </p>
+    <h3>
+      O score mostra onde olhar.<br>
+      Agora vamos entender o porquê.
+    </h3>
 
-          </div>
+    <p>
+      Quero cruzar o que apareceu no seu
+      Diagnóstico PACT com aquilo que você
+      realmente percebe dentro da operação.
+    </p>
+
+  </div>
 
 
-          <button
-            type="button"
-            class="assessment-result-contact"
-            id="assessmentResultContact"
-          >
+  <div class="pact-conversation-entry-actions">
 
-            <span>
-              Analisar diagnóstico com Diego
-            </span>
+    <button
+      type="button"
+      class="assessment-result-contact"
+      id="pactConversationStart"
+    >
 
-            <span aria-hidden="true">
-              →
-            </span>
+      <span>
+        Continuar análise comigo
+      </span>
 
-          </button>
+      <span aria-hidden="true">
+        →
+      </span>
 
-        </div>
+    </button>
+
+
+    <button
+      type="button"
+      class="pact-report-whatsapp"
+      id="assessmentResultContact"
+    >
+      Prefiro falar no WhatsApp
+      <span aria-hidden="true">
+        ↗
+      </span>
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<div
+  class="pact-conversation"
+  id="pactConversation"
+  hidden
+>
+
+  <div class="pact-conversation-header">
+
+    <div class="pact-conversation-identity">
+
+      <div class="pact-conversation-avatar">
+        DN
+      </div>
+
+      <div>
+
+        <strong>
+          Diego Nogueira
+        </strong>
+
+        <span>
+          Método PACT
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="pact-conversation-stage">
+
+      <span></span>
+
+      <small
+        id="pactConversationStage"
+      >
+        ANÁLISE EM ANDAMENTO
+      </small>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="pact-conversation-messages"
+    id="pactConversationMessages"
+  ></div>
+
+
+  <div
+    class="pact-conversation-options"
+    id="pactConversationOptions"
+  ></div>
+
+</div>
 
 
 
