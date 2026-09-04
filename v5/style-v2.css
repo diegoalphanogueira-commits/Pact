@@ -7308,3 +7308,61 @@ transform: scaleX(var(--reasoning-line-progress, 1));
   }
 
 }
+/* =========================================================
+   SCREEN 07 — JOURNEY MOTION
+========================================================= */
+
+.project-step {
+  transition:
+    opacity 320ms ease,
+    transform 320ms ease;
+}
+
+.project-step.completed {
+  opacity: 0.68;
+}
+
+.project-step.completed .project-step-marker {
+  border-color:
+    rgba(213, 255, 63, 0.32);
+}
+
+.project-step.completed .project-step-marker span {
+  color:
+    rgba(213, 255, 63, 0.72);
+}
+
+.project-step.completed .project-step-label {
+  color:
+    rgba(213, 255, 63, 0.48);
+}
+
+
+/* sinal poderá viajar fora da linha */
+
+.project-progress {
+  overflow: visible;
+}
+
+.project-progress-signal {
+  left: 0;
+  top: 0;
+
+  will-change: transform;
+}
+
+.project-progress-active {
+  will-change: transform;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+
+  .project-progress-signal {
+    left: 50%;
+    top: 0;
+  }
+
+}
