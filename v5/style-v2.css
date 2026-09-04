@@ -7366,3 +7366,44 @@ transform: scaleX(var(--reasoning-line-progress, 1));
   }
 
 }
+/* =========================================================
+   SCREEN 07 — CINEMATIC JOURNEY VIEWPORT
+========================================================= */
+
+@media (min-width: 1001px) {
+
+  .project-journey-viewport {
+    position: relative;
+
+    height:
+      min(620px, calc(100vh - 110px));
+
+    min-height: 500px;
+
+    margin-top: 108px;
+
+    overflow: hidden;
+  }
+
+
+  .project-journey-viewport
+  .project-journey {
+    margin-top: 0;
+  }
+
+}
+
+
+/* MOBILE / TABLET — NATURAL FLOW */
+
+@media (max-width: 1000px) {
+
+  .project-journey-viewport {
+    height: auto;
+
+    margin-top: 0;
+
+    overflow: visible;
+  }
+
+}
