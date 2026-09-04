@@ -4311,6 +4311,465 @@ gsap.from(
 
   }
 );
+
+  /* ======================================================
+   SCREEN 09 — AUTHOR / DIEGO
+====================================================== */
+
+const authorSection =
+  document.querySelector(
+    ".author-section"
+  );
+
+if (authorSection) {
+
+
+  /* ====================================================
+     DESKTOP
+  ==================================================== */
+
+  mm.add("(min-width: 641px)", () => {
+
+
+    /* FOTO */
+
+    gsap.fromTo(
+      ".author-image",
+      {
+        scale: 1.08,
+        autoAlpha: 0.55
+      },
+      {
+        scale: 1.015,
+        autoAlpha: 1,
+
+        ease: "none",
+
+        scrollTrigger: {
+
+          trigger:
+            ".author-composition",
+
+          start:
+            "top 82%",
+
+          end:
+            "center 38%",
+
+          scrub: 0.8,
+
+          invalidateOnRefresh: true
+
+        }
+
+      }
+    );
+
+
+
+    /* CAPTION DA FOTO */
+
+    gsap.from(
+      ".author-visual-caption",
+      {
+        autoAlpha: 0,
+        y: 22,
+
+        scrollTrigger: {
+
+          trigger:
+            ".author-visual",
+
+          start:
+            "top 62%",
+
+          end:
+            "center 40%",
+
+          scrub: 0.7
+
+        }
+
+      }
+    );
+
+
+
+    /* MANIFESTO */
+
+    const authorManifestoItems =
+      gsap.utils.toArray(
+        ".author-manifesto p"
+      );
+
+
+    gsap.from(
+      ".author-manifesto-index",
+      {
+        autoAlpha: 0,
+        x: -14,
+
+        scrollTrigger: {
+
+          trigger:
+            ".author-manifesto",
+
+          start:
+            "top 78%",
+
+          end:
+            "top 56%",
+
+          scrub: 0.65
+
+        }
+
+      }
+    );
+
+
+    authorManifestoItems.forEach(
+      (item, index) => {
+
+        gsap.from(
+          item,
+          {
+            autoAlpha: 0,
+            y: 34,
+
+            scrollTrigger: {
+
+              trigger: item,
+
+              start:
+                index === 0
+                  ? "top 78%"
+                  : "top 74%",
+
+              end:
+                "top 48%",
+
+              scrub: 0.7
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+
+    /* BODY COPY */
+
+    gsap.from(
+      ".author-copy p",
+      {
+        autoAlpha: 0,
+        y: 22,
+
+        stagger: 0.08,
+
+        scrollTrigger: {
+
+          trigger:
+            ".author-copy",
+
+          start:
+            "top 78%",
+
+          end:
+            "center 48%",
+
+          scrub: 0.7
+
+        }
+
+      }
+    );
+
+
+
+    /* SIGNATURE */
+
+    gsap.from(
+      ".author-signature",
+      {
+        autoAlpha: 0,
+        y: 20,
+
+        scrollTrigger: {
+
+          trigger:
+            ".author-signature",
+
+          start:
+            "top 82%",
+
+          end:
+            "top 58%",
+
+          scrub: 0.65
+
+        }
+
+      }
+    );
+
+
+
+    /* PRINCÍPIOS */
+
+    gsap.from(
+      ".author-principle",
+      {
+        autoAlpha: 0,
+        y: 32,
+
+        stagger: 0.12,
+
+        scrollTrigger: {
+
+          trigger:
+            ".author-principles",
+
+          start:
+            "top 78%",
+
+          end:
+            "top 40%",
+
+          scrub: 0.75
+
+        }
+
+      }
+    );
+
+
+
+    /* FECHAMENTO */
+
+    gsap.from(
+      ".author-closing > span",
+      {
+        autoAlpha: 0,
+        y: 14,
+
+        scrollTrigger: {
+
+          trigger:
+            ".author-closing",
+
+          start:
+            "top 78%",
+
+          end:
+            "top 60%",
+
+          scrub: 0.65
+
+        }
+
+      }
+    );
+
+
+    gsap.from(
+      ".author-closing p",
+      {
+        autoAlpha: 0,
+        y: 32,
+
+        scrollTrigger: {
+
+          trigger:
+            ".author-closing",
+
+          start:
+            "top 70%",
+
+          end:
+            "top 38%",
+
+          scrub: 0.75
+
+        }
+
+      }
+    );
+
+  });
+
+
+
+  /* ====================================================
+     MOBILE
+  ==================================================== */
+
+  mm.add("(max-width: 640px)", () => {
+
+
+    /* FOTO */
+
+    gsap.fromTo(
+      ".author-image",
+      {
+        scale: 1.08
+      },
+      {
+        scale: 1.015,
+
+        ease: "none",
+
+        scrollTrigger: {
+
+          trigger:
+            ".author-visual",
+
+          start:
+            "top 82%",
+
+          end:
+            "bottom 34%",
+
+          scrub: 0.75
+
+        }
+
+      }
+    );
+
+
+
+    /* MANIFESTO */
+
+    gsap.from(
+      ".author-manifesto p",
+      {
+        autoAlpha: 0,
+        y: 28,
+
+        stagger: 0.1,
+
+        scrollTrigger: {
+
+          trigger:
+            ".author-manifesto",
+
+          start:
+            "top 80%",
+
+          end:
+            "center 46%",
+
+          scrub: 0.7
+
+        }
+
+      }
+    );
+
+
+
+    /* TEXTO */
+
+    gsap.from(
+      ".author-copy p",
+      {
+        autoAlpha: 0,
+        y: 22,
+
+        stagger: 0.08,
+
+        scrollTrigger: {
+
+          trigger:
+            ".author-copy",
+
+          start:
+            "top 80%",
+
+          end:
+            "center 48%",
+
+          scrub: 0.7
+
+        }
+
+      }
+    );
+
+
+
+    /* PRINCÍPIOS */
+
+    gsap.utils
+      .toArray(
+        ".author-principle"
+      )
+      .forEach(
+        (principle) => {
+
+          gsap.from(
+            principle,
+            {
+              autoAlpha: 0,
+              y: 24,
+
+              scrollTrigger: {
+
+                trigger:
+                  principle,
+
+                start:
+                  "top 82%",
+
+                end:
+                  "top 58%",
+
+                scrub: 0.65
+
+              }
+
+            }
+          );
+
+        }
+      );
+
+
+
+    /* CLOSING */
+
+    gsap.from(
+      ".author-closing",
+      {
+        autoAlpha: 0,
+        y: 30,
+
+        scrollTrigger: {
+
+          trigger:
+            ".author-closing",
+
+          start:
+            "top 82%",
+
+          end:
+            "top 48%",
+
+          scrub: 0.7
+
+        }
+
+      }
+    );
+
+  });
+
+}
   
   /* ======================================================
      REFRESH
