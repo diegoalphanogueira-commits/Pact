@@ -8602,13 +8602,571 @@ Quero analisar esse diagnóstico com você.`;
 
 }
 
+/* ======================================================
+   PACT — LEAD CAPTURE
+====================================================== */
 
+function normalizeAssessmentPhone(
+  value
+) {
+
+  return String(
+    value || ""
+  ).replace(
+    /\D/g,
+    ""
+  );
+
+}
+
+
+
+function formatAssessmentPhone(
+  value
+) {
+
+  const digits =
+    normalizeAssessmentPhone(
+      value
+    ).slice(
+      0,
+      11
+    );
+
+
+  if (
+    digits.length <= 2
+  ) {
+
+    return digits
+      ? `(${digits}`
+      : "";
+
+  }
+
+
+  if (
+    digits.length <= 7
+  ) {
+
+    return `(${digits.slice(
+      0,
+      2
+    )}) ${digits.slice(
+      2
+    )}`;
+
+  }
+
+
+  if (
+    digits.length <= 10
+  ) {
+
+    return `(${digits.slice(
+      0,
+      2
+    )}) ${digits.slice(
+      2,
+      6
+    )}-${digits.slice(
+      6
+    )}`;
+
+  }
+
+
+  return `(${digits.slice(
+    0,
+    2
+  )}) ${digits.slice(
+    2,
+    7
+  )}-${digits.slice(
+    7
+  )}`;
+
+}
+
+
+
+function isValidAssessmentPhone(
+  value
+) {
+
+  const digits =
+    normalizeAssessmentPhone(
+      value
+    );
+
+
+  return (
+    digits.length === 10 ||
+    digits.length === 11
+  );
+
+}
+
+
+
+/* ======================================================
+   CONTACT GATE
+====================================================== */
+
+function showAssessmentLeadCapture() {
+
+  assessmentQuestionEyebrow
+    .textContent =
+      "DIAGNÓSTICO CONCLUÍDO";
+
+
+  assessmentQuestionTitle
+    .textContent =
+      `${
+        assessmentAnswers.name
+          ? `${assessmentAnswers.name}, `
+          : ""
+      }seu Diagnóstico PACT está pronto.`;
+
+
+  assessmentQuestionDescription
+    .textContent =
+      "Antes de revelar sua leitura estratégica, identifique o relatório para que possamos relacionar o resultado ao seu negócio.";
+
+
+  assessmentAnswerArea
+    .innerHTML =
+      `
+        <div class="assessment-lead-capture">
+
+          <div class="assessment-lead-status">
+
+            <span class="assessment-lead-status-dot"></span>
+
+            <span>
+              ANÁLISE DOS 4 PILARES CONCLUÍDA
+            </span>
+
+          </div>
+
+
+          <div class="assessment-lead-heading">
+
+            <span>
+              RELATÓRIO PRONTO
+            </span>
+
+            <strong>
+              ${
+                escapePACTHTML(
+                  assessmentAnswers.company ||
+                  "Seu negócio"
+                )
+              }
+            </strong>
+
+            <p>
+              Informe seu WhatsApp para identificar
+              este diagnóstico.
+            </p>
+
+          </div>
+
+
+          <div class="assessment-lead-field">
+
+            <label
+              for="assessmentLeadPhone"
+            >
+              WHATSAPP
+            </label>
+
+            <input
+              type="tel"
+              id="assessmentLeadPhone"
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="(11) 99999-9999"
+              maxlength="15"
+            >
+
+          </div>
+
+
+          <div class="assessment-lead-field">
+
+            <label
+              for="assessmentLeadEmail"
+            >
+              E-MAIL
+              <small>
+                opcional
+              </small>
+            </label>
+
+            <input
+              type="email"
+              id="assessmentLeadEmail"
+              autocomplete="email"
+              placeholder="voce@empresa.com"
+            >
+
+          </div>
+
+
+          <div
+            class="assessment-lead-feedback"
+            id="assessmentLeadFeedback"
+            aria-live="polite"
+          ></div>
+
+
+          <button
+            type="button"
+            class="assessment-lead-submit"
+            id="assessmentLeadSubmit"
+            disabled
+          >
+
+            <span>
+              Revelar meu diagnóstico
+            </span>
+
+            <span aria-hidden="true">
+              →
+            </span>
+
+          </button>
+
+
+          <small class="assessment-lead-privacy">
+            Seus dados serão utilizados apenas
+            para identificar este diagnóstico
+            e permitir contato relacionado à análise.
+          </small>
+
+        </div>
+      `;
+
+
+  assessmentNextButton
+    .disabled =
+      true;
+
+
+  const phoneInput =
+    document.getElementById(
+      "assessmentLeadPhone"
+    );
+
+
+  const emailInput =
+    document.getElementById(
+      "assessmentLeadEmail"
+    );
+
+
+  const submitButton =
+    document.getElementById(
+      "assessmentLeadSubmit"
+    );
+
+
+  const feedback =
+    document.getElementById(
+      "assessmentLeadFeedback"
+    );
+
+
+
+  if (
+    assessmentAnswers.phone &&
+    phoneInput
+  ) {
+
+    phoneInput.value =
+      formatAssessmentPhone(
+        assessmentAnswers.phone
+      );
+
+  }
+
+
+  if (
+    assessmentAnswers.email &&
+    emailInput
+  ) {
+
+    emailInput.value =
+      assessmentAnswers.email;
+
+  }
+
+
+
+  function updateLeadCaptureState() {
+
+    if (
+      !phoneInput ||
+      !submitButton
+    ) {
+      return;
+    }
+
+
+    const isValid =
+      isValidAssessmentPhone(
+        phoneInput.value
+      );
+
+
+    submitButton.disabled =
+      !isValid;
+
+
+    if (
+      feedback
+    ) {
+
+      feedback.textContent =
+        phoneInput.value &&
+        !isValid
+          ? "Digite um WhatsApp válido com DDD."
+          : "";
+
+    }
+
+  }
+
+
+
+  phoneInput
+    ?.addEventListener(
+      "input",
+      () => {
+
+        const cursorEnd =
+          phoneInput
+            .selectionStart ===
+          phoneInput.value.length;
+
+
+        phoneInput.value =
+          formatAssessmentPhone(
+            phoneInput.value
+          );
+
+
+        if (
+          cursorEnd
+        ) {
+
+          phoneInput.setSelectionRange(
+            phoneInput.value.length,
+            phoneInput.value.length
+          );
+
+        }
+
+
+        updateLeadCaptureState();
+
+      }
+    );
+
+
+
+  submitButton
+    ?.addEventListener(
+      "click",
+      () => {
+
+        if (
+          !phoneInput ||
+          !isValidAssessmentPhone(
+            phoneInput.value
+          )
+        ) {
+          return;
+        }
+
+
+        assessmentAnswers.phone =
+          normalizeAssessmentPhone(
+            phoneInput.value
+          );
+
+
+        assessmentAnswers.email =
+          emailInput?.value
+            .trim()
+            .toLowerCase() ||
+          "";
+
+
+        gsap.to(
+          ".assessment-lead-capture",
+          {
+            autoAlpha:
+              0,
+
+            y:
+              -16,
+
+            duration:
+              0.28,
+
+            ease:
+              "power2.in",
+
+            onComplete:
+              processAssessmentResult
+          }
+        );
+
+      }
+    );
+
+
+  updateLeadCaptureState();
+
+
+  setTimeout(
+    () =>
+      phoneInput?.focus(),
+    250
+  );
+
+}
 
 function finishAssessment() {
 
   savePhase(
     "t"
   );
+
+
+  showAssessmentLeadCapture();
+
+}
+
+  /* ======================================================
+   PROCESS FINAL DIAGNOSTIC
+====================================================== */
+
+function processAssessmentResult() {
+
+  assessmentQuestionEyebrow
+    .textContent =
+      "PROCESSANDO LEITURA";
+
+
+  assessmentQuestionTitle
+    .textContent =
+      "Estamos cruzando os quatro pilares do seu negócio.";
+
+
+  assessmentQuestionDescription
+    .textContent =
+      "Posicionamento, Aquisição, Comercial e Tecnologia estão sendo comparados para identificar gargalos, desequilíbrios e prioridades.";
+
+
+  assessmentAnswerArea
+    .innerHTML =
+      `
+        <div class="assessment-processing">
+
+          <span
+            class="assessment-processing-ring"
+          ></span>
+
+          <strong>
+            GERANDO DIAGNÓSTICO PACT
+          </strong>
+
+          <small>
+            cruzando indicadores estratégicos...
+          </small>
+
+        </div>
+      `;
+
+
+  setTimeout(
+    () => {
+
+      gsap.to(
+        assessmentApp,
+        {
+          autoAlpha:
+            0,
+
+          y:
+            -20,
+
+          duration:
+            0.42,
+
+          ease:
+            "power2.in",
+
+          onComplete:
+            () => {
+
+              assessmentApp.hidden =
+                true;
+
+
+              assessmentResult.hidden =
+                false;
+
+
+              renderAssessmentResult();
+
+
+              gsap.fromTo(
+                assessmentResult,
+                {
+                  autoAlpha:
+                    0,
+
+                  y:
+                    30
+                },
+                {
+                  autoAlpha:
+                    1,
+
+                  y:
+                    0,
+
+                  duration:
+                    0.62,
+
+                  ease:
+                    "power3.out"
+                }
+              );
+
+
+              assessmentResult
+                .scrollIntoView({
+                  behavior:
+                    "smooth",
+
+                  block:
+                    "start"
+                });
+
+            }
+        }
+      );
+
+    },
+    1100
+  );
+
+}
 
 
   assessmentQuestionEyebrow
