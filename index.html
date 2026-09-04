@@ -2,51 +2,82 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
 
-  <title>Método PACT | Estrutura para Crescer</title>
+  <link rel="icon" type="image/svg+xml" href="v5/favicon.svg">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Método PACT | Estrutura para crescer</title>
 
   <meta
     name="description"
-    content="O Método PACT estrutura negócios através de Posicionamento, Aquisição, Comercial e Tecnologia. Diagnóstico antes da prescrição. Execução por prioridade."
-  />
+    content="O Método PACT estrutura negócios através de Posicionamento, Aquisição, Comercial e Tecnologia."
+  >
 
+  <!-- Fonte oficial PACT V5 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
     rel="stylesheet"
-  />
+  >
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="v5/style-v2.css?v=33">
 </head>
 
 
 <body>
 
-  <!-- =====================================================
+  <!-- ==========================================
        HEADER
-  ====================================================== -->
+  =========================================== -->
 
-  <header class="header">
+  <header class="site-header">
 
-    <div class="container header-content">
+    <div class="header-inner">
 
-      <a href="#inicio" class="brand" aria-label="PACT - início">
-        <span class="brand-mark">PACT</span>
+      <a
+        href="#inicio"
+        class="brand"
+        aria-label="PACT"
+      >
+        PACT
       </a>
 
-      <nav class="nav" aria-label="Navegação principal">
-        <a href="#metodo">O Método</a>
-        <a href="#estruturas">Estruturas</a>
-        <a href="#projeto">Projeto PACT</a>
-        <a href="#diagnostico">Diagnóstico</a>
-        <a href="#sobre">Diego</a>
+
+      <nav
+        class="desktop-nav"
+        aria-label="Navegação principal"
+      >
+
+        <a href="#metodo">
+          Método
+        </a>
+
+        <a href="#projeto">
+          Projeto PACT
+        </a>
+
+        <a href="#diagnostico">
+          Diagnóstico
+        </a>
+
+        <a href="#sobre">
+          Diego
+        </a>
+
       </nav>
 
-      <a href="#diagnostico" class="btn btn-small">
+
+      <a
+        href="#diagnostico"
+        class="header-cta"
+      >
         Fazer diagnóstico
       </a>
 
@@ -57,1573 +88,3711 @@
 
   <main>
 
+    <!-- ==========================================
+         HERO V5
+    =========================================== -->
 
-    <!-- =====================================================
-         01 — HERO
-    ====================================================== -->
+    <section
+      class="hero"
+      id="inicio"
+    >
 
-    <section class="hero" id="inicio">
+      <!-- VIDEO -->
+
+      <div class="hero-video-wrap">
+
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-hidden="true"
+        >
+
+          <source
+            src="v5/hero-pact.mp4"
+            type="video/mp4"
+          >
+
+        </video>
+
+      </div>
+
+
+      <!-- CAMADAS VISUAIS -->
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-vignette"></div>
+
+      <div class="hero-grid-effect"></div>
 
       <div class="hero-glow"></div>
 
-      <div class="container hero-grid">
+
+      <!-- CONTEÚDO -->
+
+      <div class="hero-container">
 
         <div class="hero-content">
 
-          <span class="eyebrow">
-            MÉTODO PACT
-          </span>
+          <div class="hero-eyebrow">
 
-          <h1>
-            Estruture seu negócio
-            <span>para crescer.</span>
+            <span class="eyebrow-dot"></span>
+
+            MÉTODO PACT
+
+          </div>
+
+
+          <h1 class="hero-title">
+
+            <span class="hero-line">
+              Estruture o negócio.
+            </span>
+
+            <span class="hero-line hero-line-accent">
+              Depois acelere.
+            </span>
+
           </h1>
 
-          <p class="hero-text">
-            Estratégia, processos e tecnologia conectados
-            para descobrir o que está limitando sua empresa
-            e construir aquilo que realmente precisa vir depois.
+
+          <p class="hero-description">
+
+            Entenda o que está limitando sua empresa
+            e construa a estrutura certa em
+
+            <strong>
+              Posicionamento, Aquisição,
+              Comercial e Tecnologia.
+            </strong>
+
           </p>
+
 
           <div class="hero-actions">
 
-            <a href="#diagnostico" class="btn btn-primary">
-              Fazer meu Diagnóstico PACT
+            <a
+              href="#diagnostico"
+              class="button button-primary"
+            >
+
+              <span>
+                Fazer Diagnóstico PACT
+              </span>
+
+              <span
+  class="button-arrow"
+  aria-hidden="true"
+>
+  <svg
+    viewBox="0 0 24 24"
+    width="16"
+    height="16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M7 17L17 7M9 7H17V15"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</span>
+
             </a>
 
-            <a href="#metodo" class="btn btn-secondary">
-              Entender o método
+
+            <a
+              href="#metodo"
+              class="button button-ghost"
+            >
+
+              Conhecer o método
+
             </a>
 
           </div>
 
-          <div class="hero-meta">
-            <span>Posicionamento</span>
-            <i></i>
-            <span>Aquisição</span>
-            <i></i>
-            <span>Comercial</span>
-            <i></i>
-            <span>Tecnologia</span>
+
+          <!-- PACT SYSTEM LABEL -->
+
+          <div class="hero-pact">
+
+            <span class="hero-pact-label">
+              ESTRUTURA PARA CRESCER
+            </span>
+
+
+            <div class="hero-pact-letters">
+
+              <div class="hero-pact-item">
+                <strong>P</strong>
+                <span>Posicionamento</span>
+              </div>
+
+              <div class="hero-pact-divider"></div>
+
+
+              <div class="hero-pact-item">
+                <strong>A</strong>
+                <span>Aquisição</span>
+              </div>
+
+              <div class="hero-pact-divider"></div>
+
+
+              <div class="hero-pact-item">
+                <strong>C</strong>
+                <span>Comercial</span>
+              </div>
+
+              <div class="hero-pact-divider"></div>
+
+
+              <div class="hero-pact-item">
+                <strong>T</strong>
+                <span>Tecnologia</span>
+              </div>
+
+            </div>
+
           </div>
 
         </div>
 
-
-        <div class="hero-media">
-
-          <img
-            src="images/diego-hero.png"
-            alt="Diego Nogueira, criador do Método PACT"
-            class="hero-image"
-            fetchpriority="high"
-          />
-
-        </div>
-
       </div>
 
-    </section>
 
+      <!-- SCROLL INDICATOR -->
 
-    <!-- =====================================================
-         02 — PROVOCAÇÃO
-    ====================================================== -->
-
-    <section class="statement-section">
-
-      <div class="container statement-wrap">
-
-        <span class="section-label">
-          ANTES DA SOLUÇÃO
-        </span>
-
-        <h2>
-          Seu negócio não precisa
-          de mais ferramentas.
-        </h2>
-
-        <p class="statement-accent">
-          Precisa entender o que está impedindo o próximo nível.
-        </p>
-
-        <p class="statement-copy">
-          Tráfego, CRM, site, conteúdo, automação ou inteligência artificial
-          podem ser ótimas respostas.
-          <strong>Desde que sejam respostas para o problema certo.</strong>
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         03 — O PROBLEMA REAL
-    ====================================================== -->
-
-    <section class="logic-section">
-
-      <div class="container">
-
-        <div class="section-heading section-heading-wide">
-
-          <span class="section-label">
-            CRESCIMENTO É SISTEMA
-          </span>
-
-          <h2>
-            Uma parte do negócio
-            sempre influencia a outra.
-          </h2>
-
-        </div>
-
-
-        <div class="logic-list">
-
-          <article class="logic-item">
-
-            <span>01</span>
-
-            <h3>
-              Você pode ter presença
-              e não gerar demanda.
-            </h3>
-
-          </article>
-
-
-          <article class="logic-item">
-
-            <span>02</span>
-
-            <h3>
-              Pode gerar demanda
-              e perder no comercial.
-            </h3>
-
-          </article>
-
-
-          <article class="logic-item">
-
-            <span>03</span>
-
-            <h3>
-              Pode vender
-              e estar limitado pela operação.
-            </h3>
-
-          </article>
-
-
-          <article class="logic-item">
-
-            <span>04</span>
-
-            <h3>
-              Pode automatizar
-              e apenas acelerar um processo ruim.
-            </h3>
-
-          </article>
-
-        </div>
-
-
-        <div class="logic-conclusion">
-
-          <p>
-            Crescimento não vem de adicionar peças aleatórias.
-          </p>
-
-          <strong>
-            Vem de fazer as peças certas trabalharem juntas.
-          </strong>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         04 — MÉTODO
-    ====================================================== -->
-
-    <section class="method-section" id="metodo">
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <span class="section-label">
-            O MÉTODO
-          </span>
-
-          <h2>
-            Quatro pilares.
-            <span>Um negócio.</span>
-          </h2>
-
-          <p>
-            O PACT organiza a análise da empresa em quatro áreas
-            que sustentam sua capacidade de crescer.
-          </p>
-
-        </div>
-
-
-        <div class="method-visual">
-
-          <img
-            src="images/pact-system.png"
-            alt="Os quatro pilares do Método PACT conectados"
-            loading="lazy"
-            decoding="async"
-          />
-
-        </div>
-
-
-        <div class="pillar-overview">
-
-          <article>
-
-            <strong>P</strong>
-
-            <div>
-              <span>POSICIONAMENTO</span>
-              <p>
-                Como o mercado entende e percebe sua empresa.
-              </p>
-            </div>
-
-          </article>
-
-
-          <article>
-
-            <strong>A</strong>
-
-            <div>
-              <span>AQUISIÇÃO</span>
-              <p>
-                Como novas oportunidades chegam até você.
-              </p>
-            </div>
-
-          </article>
-
-
-          <article>
-
-            <strong>C</strong>
-
-            <div>
-              <span>COMERCIAL</span>
-              <p>
-                O que acontece depois que a oportunidade chega.
-              </p>
-            </div>
-
-          </article>
-
-
-          <article>
-
-            <strong>T</strong>
-
-            <div>
-              <span>TECNOLOGIA</span>
-              <p>
-                Como aumentar capacidade, velocidade e inteligência.
-              </p>
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         05 — PAUSA EDITORIAL
-    ====================================================== -->
-
-    <section class="editorial-break">
-
-      <div class="container editorial-break-content">
+      <div
+        class="scroll-indicator"
+        aria-hidden="true"
+      >
 
         <span>
-          A lógica é simples.
+          EXPLORE
         </span>
 
-        <h2>
-          Primeiro entendemos o negócio.
-          <strong>
-            Depois decidimos o que construir.
-          </strong>
-        </h2>
+        <div class="scroll-line">
+          <i></i>
+        </div>
 
       </div>
 
     </section>
 
 
-    <!-- =====================================================
-         06 — ESTRUTURAS PACT
-    ====================================================== -->
+    <!-- ==========================================
+         ÁREA RESERVADA PARA A PRÓXIMA ETAPA
+    =========================================== -->
 
-    <section class="structures-section" id="estruturas">
+    <!-- ==========================================
+     SCREEN 02 — THE PROBLEM
+=========================================== -->
+
+<section
+  class="tools-section"
+  id="conflito"
+>
+
+  <div class="tools-stage">
+
+    <!-- PALAVRAS / SOLUÇÕES -->
+
+    <div
+      class="tools-cloud"
+      aria-hidden="true"
+    >
+
+      <span class="tool-word tool-word-1">
+        TRÁFEGO
+      </span>
+
+      <span class="tool-word tool-word-2">
+        CRM
+      </span>
+
+      <span class="tool-word tool-word-3">
+        SITE
+      </span>
+
+      <span class="tool-word tool-word-4">
+        IA
+      </span>
+
+      <span class="tool-word tool-word-5">
+        GOOGLE
+      </span>
+
+      <span class="tool-word tool-word-6">
+        CONTEÚDO
+      </span>
+
+      <span class="tool-word tool-word-7">
+        AUTOMAÇÃO
+      </span>
+
+      <span class="tool-word tool-word-8">
+        PROSPECÇÃO
+      </span>
+
+    </div>
+<!-- SCROLL EXPERIENCE CUE -->
+
+<div
+  class="tools-scroll-cue"
+  aria-hidden="true"
+>
+
+  <div class="tools-orbit">
+
+    <span class="tools-orbit-core"></span>
+
+    <i class="tools-orbit-ring tools-orbit-ring-1"></i>
+
+    <i class="tools-orbit-ring tools-orbit-ring-2"></i>
+
+  </div>
+
+
+  <span class="tools-scroll-label">
+    CONTINUE ROLANDO
+  </span>
+
+
+  <div class="tools-scroll-progress">
+    <i></i>
+  </div>
+
+</div>
+
+    <!-- CONTEÚDO CENTRAL -->
+
+    <div class="tools-content">
+
+      <span class="tools-kicker">
+        O PROBLEMA NÃO É TER MAIS SOLUÇÕES
+      </span>
+
+
+      <h2 class="tools-title">
+
+        <span>
+          Mais ferramentas
+        </span>
+
+        <span>
+          não significam
+        </span>
+
+        <strong>
+          mais estrutura.
+        </strong>
+
+      </h2>
+
+
+      <div class="tools-reveal">
+
+        <span class="tools-line"></span>
+
+        <p>
+          O problema é saber
+          <strong>
+            o que precisa vir primeiro.
+          </strong>
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- MARCADOR -->
+
+    <div
+      class="tools-index"
+      aria-hidden="true"
+    >
+      02
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ==========================================
+     NEXT SCREEN PLACEHOLDER
+=========================================== -->
+
+<!-- ==========================================
+     SCREEN 03 — PACT SYSTEM
+=========================================== -->
+
+
+    <section class="pact-system-section" id="metodo">
+
+  <div class="pact-system-stage">
+
+
+    <!-- INTRO -->
+
+    <div class="pact-system-intro">
+
+      <span class="pact-system-kicker">
+        MÉTODO PACT
+      </span>
+
+      <h2 class="pact-system-title">
+        Todo negócio cresce em
+        <span>quatro frentes.</span>
+      </h2>
+
+      <p class="pact-system-description">
+        O PACT organiza o crescimento em quatro pilares
+        que se influenciam. Antes de acelerar, é preciso
+        entender qual deles está limitando o próximo movimento.
+      </p>
+
+    </div>
+
+
+
+    <!-- SISTEMA -->
+
+    <div class="pact-system-interface">
+
+
+      <!-- CONEXÕES -->
+
+      <span
+        class="pact-connection pact-connection-p active"
+        aria-hidden="true"
+      ></span>
+
+      <span
+        class="pact-connection pact-connection-a"
+        aria-hidden="true"
+      ></span>
+
+      <span
+        class="pact-connection pact-connection-c"
+        aria-hidden="true"
+      ></span>
+
+      <span
+        class="pact-connection pact-connection-t"
+        aria-hidden="true"
+      ></span>
+
+
+
+      <!-- NÚCLEO -->
+
+      <div class="pact-core">
+
+        <div
+          class="pact-core-ring pact-core-ring-1"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="pact-core-ring pact-core-ring-2"
+          aria-hidden="true"
+        ></div>
+
+
+        <div class="pact-core-inner">
+
+          <span class="pact-core-label">
+            MÉTODO
+          </span>
+
+          <strong>
+            PACT
+          </strong>
+
+          <span class="pact-core-status">
+            4 PILARES
+          </span>
+
+        </div>
+
+      </div>
+
 
 
       <!-- P -->
 
-      <div class="structure-panel structure-p">
+      <button
+        type="button"
+        class="pact-node pact-node-p active"
+        data-pillar="p"
+        aria-pressed="true"
+      >
 
-        <div class="container structure-grid">
+        <span class="pact-node-letter">
+          P
+        </span>
 
-          <div class="structure-intro">
+        <span class="pact-node-copy">
 
-            <span class="structure-letter">
-              P
-            </span>
+          <strong>
+            Posicionamento
+          </strong>
 
-            <span class="section-label">
-              POSICIONAMENTO
-            </span>
+          <small>
+            Como o mercado percebe
+          </small>
 
-            <h2>
-              Faça o mercado entender
-              por que escolher sua empresa.
-            </h2>
+        </span>
 
-            <p>
-              Antes de gerar mais atenção, sua empresa precisa comunicar
-              com clareza quem é, o que entrega e por que isso importa.
-            </p>
+      </button>
 
-          </div>
-
-
-          <div class="structure-content">
-
-            <article class="capability">
-
-              <span>01</span>
-
-              <h3>
-                Estratégia de marca
-              </h3>
-
-              <p>
-                Posicionamento, diferenciação,
-                proposta de valor, oferta e comunicação.
-              </p>
-
-            </article>
-
-
-            <article class="capability">
-
-              <span>02</span>
-
-              <h3>
-                Presença digital
-              </h3>
-
-              <p>
-                Site, Google Perfil da Empresa,
-                redes sociais e reputação.
-              </p>
-
-            </article>
-
-
-            <article class="capability">
-
-              <span>03</span>
-
-              <h3>
-                Autoridade
-              </h3>
-
-              <p>
-                Conteúdo, identidade,
-                provas, cases e posicionamento.
-              </p>
-
-            </article>
-
-
-            <div class="capability-more">
-              <span>
-                Branding
-              </span>
-              <span>
-                Landing pages
-              </span>
-              <span>
-                Identidade visual
-              </span>
-              <span>
-                Avaliações
-              </span>
-              <span>
-                Portfólio
-              </span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
 
 
       <!-- A -->
 
-      <div class="structure-panel structure-a">
+      <button
+        type="button"
+        class="pact-node pact-node-a"
+        data-pillar="a"
+        aria-pressed="false"
+      >
 
-        <div class="container structure-grid structure-grid-reverse">
+        <span class="pact-node-letter">
+          A
+        </span>
 
-          <div class="structure-intro">
+        <span class="pact-node-copy">
 
-            <span class="structure-letter">
-              A
-            </span>
+          <strong>
+            Aquisição
+          </strong>
 
-            <span class="section-label">
-              AQUISIÇÃO
-            </span>
+          <small>
+            Como oportunidades chegam
+          </small>
 
-            <h2>
-              Crie mais caminhos
-              para oportunidades chegarem.
-            </h2>
+        </span>
 
-            <p>
-              Primeiro entendemos de onde os clientes vêm hoje.
-              Depois identificamos quais canais podem aumentar
-              alcance, consistência e previsibilidade.
-            </p>
+      </button>
 
-          </div>
-
-
-          <div class="structure-content">
-
-            <article class="capability">
-
-              <span>01</span>
-
-              <h3>
-                Ser encontrado
-              </h3>
-
-              <p>
-                Google, SEO,
-                conteúdo e presença orgânica.
-              </p>
-
-            </article>
-
-
-            <article class="capability">
-
-              <span>02</span>
-
-              <h3>
-                Gerar demanda
-              </h3>
-
-              <p>
-                Meta Ads, Google Ads
-                e campanhas de geração de oportunidades.
-              </p>
-
-            </article>
-
-
-            <article class="capability">
-
-              <span>03</span>
-
-              <h3>
-                Ir até o mercado
-              </h3>
-
-              <p>
-                Prospecção ativa, telefone,
-                WhatsApp e social selling.
-              </p>
-
-            </article>
-
-
-            <article class="capability">
-
-              <span>04</span>
-
-              <h3>
-                Multiplicar relacionamento
-              </h3>
-
-              <p>
-                Indicações, networking
-                e parceiros estratégicos.
-              </p>
-
-            </article>
-
-          </div>
-
-        </div>
-
-      </div>
 
 
       <!-- C -->
 
-      <div class="structure-panel structure-c">
+      <button
+        type="button"
+        class="pact-node pact-node-c"
+        data-pillar="c"
+        aria-pressed="false"
+      >
 
-        <div class="container">
+        <span class="pact-node-letter">
+          C
+        </span>
 
-          <div class="structure-centered">
+        <span class="pact-node-copy">
 
-            <span class="structure-letter">
-              C
-            </span>
+          <strong>
+            Comercial
+          </strong>
 
-            <span class="section-label">
-              COMERCIAL
-            </span>
+          <small>
+            Como oportunidades avançam
+          </small>
 
-            <h2>
-              Lead não é venda.
-            </h2>
+        </span>
 
-            <p>
-              Estruturamos o caminho entre a oportunidade entrar
-              e a decisão de compra acontecer.
-            </p>
+      </button>
 
-          </div>
-
-
-          <div class="sales-journey">
-
-            <article>
-
-              <span>01</span>
-
-              <small>ENTRADA</small>
-
-              <h3>
-                Atendimento
-                e qualificação
-              </h3>
-
-            </article>
-
-
-            <div class="journey-arrow">
-              →
-            </div>
-
-
-            <article>
-
-              <span>02</span>
-
-              <small>CONDUÇÃO</small>
-
-              <h3>
-                Processo, CRM
-                e venda condutiva
-              </h3>
-
-            </article>
-
-
-            <div class="journey-arrow">
-              →
-            </div>
-
-
-            <article>
-
-              <span>03</span>
-
-              <small>CONVERSÃO</small>
-
-              <h3>
-                Proposta,
-                follow-up e fechamento
-              </h3>
-
-            </article>
-
-
-            <div class="journey-arrow">
-              →
-            </div>
-
-
-            <article>
-
-              <span>04</span>
-
-              <small>RECUPERAÇÃO</small>
-
-              <h3>
-                Oportunidades
-                que ainda podem voltar
-              </h3>
-
-            </article>
-
-          </div>
-
-
-          <div class="structure-footer-line">
-            <span>Pipeline</span>
-            <span>Scripts</span>
-            <span>Distribuição</span>
-            <span>Métricas</span>
-            <span>Jornada do cliente</span>
-            <span>Organização de leads</span>
-          </div>
-
-        </div>
-
-      </div>
 
 
       <!-- T -->
 
-      <div class="structure-panel structure-t">
+      <button
+        type="button"
+        class="pact-node pact-node-t"
+        data-pillar="t"
+        aria-pressed="false"
+      >
 
-        <div class="container structure-grid">
+        <span class="pact-node-letter">
+          T
+        </span>
 
-          <div class="structure-intro">
+        <span class="pact-node-copy">
 
-            <span class="structure-letter">
-              T
-            </span>
+          <strong>
+            Tecnologia
+          </strong>
 
-            <span class="section-label">
-              TECNOLOGIA
-            </span>
+          <small>
+            Como a operação sustenta
+          </small>
 
-            <h2>
-              Automação não deveria fazer
-              sua empresa parecer um robô.
-            </h2>
+        </span>
 
-            <p>
-              Tecnologia entra para aumentar capacidade
-              depois que entendemos como o processo deveria funcionar.
-            </p>
+      </button>
 
-          </div>
-
-
-          <div class="structure-content">
-
-            <article class="capability">
-
-              <span>01</span>
-
-              <h3>
-                IA treinada para o negócio
-              </h3>
-
-              <p>
-                Atendimento contextual,
-                comunicação e inteligência aplicada à operação.
-              </p>
-
-            </article>
+    </div>
 
 
-            <article class="capability">
 
-              <span>02</span>
+    <!-- PAINEL -->
 
-              <h3>
-                Automação comercial
-              </h3>
-
-              <p>
-                Follow-up, triagem,
-                agendamento e distribuição de oportunidades.
-              </p>
-
-            </article>
+    <div class="pact-panel">
 
 
-            <article class="capability">
+      <!-- POSICIONAMENTO -->
 
-              <span>03</span>
+      <div
+        class="pact-panel-content active"
+        data-content="p"
+      >
 
-              <h3>
-                Operação conectada
-              </h3>
-
-              <p>
-                CRM, integrações,
-                dados, formulários e dashboards.
-              </p>
-
-            </article>
+        <span class="pact-panel-index">
+          01 · POSICIONAMENTO
+        </span>
 
 
-            <blockquote class="technology-quote">
-              Tecnologia deve aumentar capacidade
-              <strong>sem eliminar humanidade.</strong>
-            </blockquote>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         07 — PRIORIDADE
-    ====================================================== -->
-
-    <section class="priority-section">
-
-      <div class="container priority-grid">
-
-        <div class="priority-copy">
-
-          <span class="section-label">
-            EXECUÇÃO POR PRIORIDADE
-          </span>
-
-          <h2>
-            Você não precisa
-            de tudo isso.
-          </h2>
+        <div class="pact-panel-main">
 
           <h3>
-            Precisa daquilo que destrava
-            o próximo passo.
+            Ser escolhido começa antes da venda.
           </h3>
 
           <p>
-            O papel do PACT não é adicionar mais coisas à empresa.
-            É descobrir <strong>onde agir, em que ordem agir
-            e o que vale a pena construir agora.</strong>
+            Posicionamento mostra com que clareza o mercado
+            entende quem você é, para quem existe e por que
+            deveria escolher o seu negócio. Quando isso é fraco,
+            todo o restante precisa trabalhar mais para convencer.
           </p>
 
         </div>
 
 
-        <div class="priority-media">
+        <div class="pact-panel-tags">
 
-          <img
-            src="images/pact-growth.png"
-            alt="Representação de crescimento construído passo a passo"
-            loading="lazy"
-            decoding="async"
-          />
+          <span>Clareza</span>
+          <span>Público</span>
+          <span>Confiança</span>
+          <span>Oferta</span>
 
         </div>
 
       </div>
 
-    </section>
 
 
-    <!-- =====================================================
-         08 — O SINTOMA NÃO É O DIAGNÓSTICO
-    ====================================================== -->
+      <!-- AQUISIÇÃO -->
 
-    <section class="symptom-section">
+      <div
+        class="pact-panel-content"
+        data-content="a"
+      >
 
-      <div class="container">
+        <span class="pact-panel-index">
+          02 · AQUISIÇÃO
+        </span>
 
-        <div class="symptom-heading">
 
-          <span class="section-label">
-            DIAGNÓSTICO ANTES DA PRESCRIÇÃO
-          </span>
+        <div class="pact-panel-main">
+
+          <h3>
+            Crescimento precisa de entrada.
+          </h3>
 
           <p>
-            Uma empresa diz:
+            Aquisição mostra como novas oportunidades chegam
+            ao negócio: se existe volume, previsibilidade,
+            presença nos canais certos e capacidade de entender
+            o que realmente está trazendo resultado.
           </p>
 
-          <h2>
-            “Eu preciso vender mais.”
-          </h2>
+        </div>
 
-          <span class="symptom-question">
-            Mas por quê?
+
+        <div class="pact-panel-tags">
+
+          <span>Previsibilidade</span>
+          <span>Volume</span>
+          <span>Presença</span>
+          <span>Mensuração</span>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- COMERCIAL -->
+
+      <div
+        class="pact-panel-content"
+        data-content="c"
+      >
+
+        <span class="pact-panel-index">
+          03 · COMERCIAL
+        </span>
+
+
+        <div class="pact-panel-main">
+
+          <h3>
+            Oportunidade só vale quando avança.
+          </h3>
+
+          <p>
+            Comercial mostra o que acontece depois que o interesse
+            aparece: a velocidade do atendimento, a condução da
+            oportunidade, o acompanhamento e a capacidade de
+            transformar conversas em vendas.
+          </p>
+
+        </div>
+
+
+        <div class="pact-panel-tags">
+
+          <span>Velocidade</span>
+          <span>Processo</span>
+          <span>Follow-up</span>
+          <span>Conversão</span>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- TECNOLOGIA -->
+
+      <div
+        class="pact-panel-content"
+        data-content="t"
+      >
+
+        <span class="pact-panel-index">
+          04 · TECNOLOGIA
+        </span>
+
+
+        <div class="pact-panel-main">
+
+          <h3>
+            Tecnologia deve sustentar, não complicar.
+          </h3>
+
+          <p>
+            Tecnologia mostra se a operação consegue organizar
+            informação, reduzir trabalho manual, enxergar dados
+            e absorver crescimento sem perder velocidade,
+            controle ou qualidade.
+          </p>
+
+        </div>
+
+
+        <div class="pact-panel-tags">
+
+          <span>Organização</span>
+          <span>Automação</span>
+          <span>Capacidade</span>
+          <span>Dados</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- FECHAMENTO -->
+
+    <div class="pact-system-footer">
+
+      <span>
+        OS QUATRO PILARES SE CONECTAM
+      </span>
+
+      <i aria-hidden="true">
+        →
+      </i>
+
+      <strong>
+        O gargalo de um limita o crescimento dos outros.
+      </strong>
+
+    </div>
+
+
+
+    <div
+      class="pact-system-index"
+      aria-hidden="true"
+    >
+      03
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- NEXT -->
+
+<!-- ==========================================
+     SCREEN 04 — IMPLEMENTATION
+=========================================== -->
+
+<section
+  class="implementation-section"
+  id="projeto"
+>
+
+  <div class="implementation-stage">
+
+
+    <!-- INTRO -->
+
+    <header class="implementation-intro">
+
+      <span class="implementation-kicker">
+        DA ESTRATÉGIA À EXECUÇÃO
+      </span>
+
+      <h2 class="implementation-title">
+        O PACT não termina
+        <span>no diagnóstico.</span>
+
+        <strong>
+          Ele vira implementação.
+        </strong>
+      </h2>
+
+      <p class="implementation-description">
+        Depois de entender o negócio e identificar
+        as prioridades, estruturamos o que realmente
+        precisa mudar.
+      </p>
+
+    </header>
+
+
+
+    <!-- PILLAR SELECTOR -->
+
+    <div class="implementation-selector">
+
+      <span class="implementation-selector-label">
+        EXPLORE AS POSSIBILIDADES
+      </span>
+
+
+      <div
+        class="implementation-tabs"
+        role="tablist"
+        aria-label="Áreas de implementação do Método PACT"
+      >
+
+        <button
+          class="implementation-tab active"
+          type="button"
+          data-implementation="p"
+          aria-selected="true"
+        >
+          <strong>P</strong>
+          <span>Posicionamento</span>
+        </button>
+
+
+        <button
+          class="implementation-tab"
+          type="button"
+          data-implementation="a"
+          aria-selected="false"
+        >
+          <strong>A</strong>
+          <span>Aquisição</span>
+        </button>
+
+
+        <button
+          class="implementation-tab"
+          type="button"
+          data-implementation="c"
+          aria-selected="false"
+        >
+          <strong>C</strong>
+          <span>Comercial</span>
+        </button>
+
+
+        <button
+          class="implementation-tab"
+          type="button"
+          data-implementation="t"
+          aria-selected="false"
+        >
+          <strong>T</strong>
+          <span>Tecnologia</span>
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- IMPLEMENTATION VIEW -->
+
+    <div class="implementation-view">
+
+
+      <!-- VISUAL INDEX -->
+
+      <div
+        class="implementation-letter"
+        aria-hidden="true"
+      >
+        P
+      </div>
+
+
+
+      <!-- P -->
+
+      <article
+        class="implementation-panel active"
+        data-implementation-content="p"
+      >
+
+        <div class="implementation-panel-head">
+
+          <span class="implementation-index">
+            P / 01
+          </span>
+
+          <span class="implementation-category">
+            POSICIONAMENTO
           </span>
 
         </div>
 
 
-        <div class="symptom-options">
+        <div class="implementation-panel-copy">
 
-          <article>
+          <h3>
+            Construir uma presença
+            que faça sentido para o mercado.
+          </h3>
 
-            <span>A</span>
-
-            <h3>
-              Poucas oportunidades chegam.
-            </h3>
-
-            <p>
-              O gargalo pode estar
-              em <strong>Aquisição.</strong>
-            </p>
-
-          </article>
-
-
-          <article>
-
-            <span>C</span>
-
-            <h3>
-              Muitos contatos chegam,
-              mas poucos compram.
-            </h3>
-
-            <p>
-              O gargalo pode estar
-              no <strong>Comercial.</strong>
-            </p>
-
-          </article>
-
-
-          <article>
-
-            <span>T</span>
-
-            <h3>
-              Existe demanda,
-              mas a operação está sobrecarregada.
-            </h3>
-
-            <p>
-              O gargalo pode estar
-              em <strong>Tecnologia.</strong>
-            </p>
-
-          </article>
+          <p>
+            Do posicionamento à forma como a empresa
+            é percebida nos principais pontos de contato.
+          </p>
 
         </div>
 
 
-        <div class="symptom-conclusion">
+        <div class="implementation-capabilities">
+
+          <span>Posicionamento de mercado</span>
+          <span>Proposta de valor</span>
+          <span>Marca e identidade</span>
+          <span>Site e landing pages</span>
+          <span>Google</span>
+          <span>Redes sociais</span>
+          <span>Conteúdo</span>
+          <span>Reputação</span>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- A -->
+
+      <article
+        class="implementation-panel"
+        data-implementation-content="a"
+      >
+
+        <div class="implementation-panel-head">
+
+          <span class="implementation-index">
+            A / 02
+          </span>
+
+          <span class="implementation-category">
+            AQUISIÇÃO
+          </span>
+
+        </div>
+
+
+        <div class="implementation-panel-copy">
+
+          <h3>
+            Criar canais para
+            novas oportunidades chegarem.
+          </h3>
+
+          <p>
+            Escolhemos os mecanismos de aquisição
+            adequados ao momento e à capacidade do negócio.
+          </p>
+
+        </div>
+
+
+        <div class="implementation-capabilities">
+
+          <span>Google e busca orgânica</span>
+          <span>SEO</span>
+          <span>Mídia paga</span>
+          <span>Prospecção ativa</span>
+          <span>Social selling</span>
+          <span>Indicações</span>
+          <span>Parcerias</span>
+          <span>Estratégia de canais</span>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- C -->
+
+      <article
+        class="implementation-panel"
+        data-implementation-content="c"
+      >
+
+        <div class="implementation-panel-head">
+
+          <span class="implementation-index">
+            C / 03
+          </span>
+
+          <span class="implementation-category">
+            COMERCIAL
+          </span>
+
+        </div>
+
+
+        <div class="implementation-panel-copy">
+
+          <h3>
+            Organizar o caminho
+            entre oportunidade e venda.
+          </h3>
+
+          <p>
+            Estruturamos atendimento, processo
+            e acompanhamento para reduzir desperdícios
+            comerciais.
+          </p>
+
+        </div>
+
+
+        <div class="implementation-capabilities">
+
+          <span>Atendimento</span>
+          <span>Qualificação</span>
+          <span>Processo comercial</span>
+          <span>CRM e pipeline</span>
+          <span>Follow-up</span>
+          <span>Propostas</span>
+          <span>Scripts</span>
+          <span>Jornada de conversão</span>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- T -->
+
+      <article
+        class="implementation-panel"
+        data-implementation-content="t"
+      >
+
+        <div class="implementation-panel-head">
+
+          <span class="implementation-index">
+            T / 04
+          </span>
+
+          <span class="implementation-category">
+            TECNOLOGIA
+          </span>
+
+        </div>
+
+
+        <div class="implementation-panel-copy">
+
+          <h3>
+            Aplicar tecnologia
+            onde ela aumenta capacidade.
+          </h3>
+
+          <p>
+            IA e automação entram depois do processo,
+            não no lugar dele.
+          </p>
+
+        </div>
+
+
+        <div class="implementation-capabilities">
+
+          <span>IA para atendimento</span>
+          <span>Automação</span>
+          <span>Follow-up automático</span>
+          <span>Agendamento</span>
+          <span>Integrações</span>
+          <span>CRM</span>
+          <span>Dados</span>
+          <span>Inteligência operacional</span>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+
+
+    <!-- PRINCIPLE -->
+
+    <div class="implementation-principle">
+
+      <span class="implementation-principle-line"></span>
+
+      <p>
+        O projeto não começa perguntando
+        <strong>“o que podemos vender?”</strong>
+      </p>
+
+      <p class="implementation-principle-answer">
+        Começa perguntando
+        <strong>“o que precisa ser resolvido?”</strong>
+      </p>
+
+    </div>
+
+
+
+    <div
+      class="implementation-screen-index"
+      aria-hidden="true"
+    >
+      04
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- ==========================================
+     NEXT SCREEN
+=========================================== -->
+
+<!-- ==========================================
+     SCREEN 05 — PRIORITY
+=========================================== -->
+
+<section
+  class="priority-section"
+  id="prioridade"
+>
+
+  <div class="priority-stage">
+
+
+    <!-- INTRO -->
+
+    <header class="priority-intro">
+
+      <span class="priority-kicker">
+        PRIORIDADE ANTES DE COMPLEXIDADE
+      </span>
+
+      <h2 class="priority-title">
+
+        Você não precisa
+        <span>de tudo.</span>
+
+        <strong>
+          Precisa do que destrava
+          o próximo passo.
+        </strong>
+
+      </h2>
+
+    </header>
+
+
+
+    <!-- STRATEGIC FLOW -->
+
+    <div class="priority-flow">
+
+
+      <!-- LEFT / BUSINESS -->
+
+      <div class="priority-origin">
+
+        <span class="priority-origin-label">
+          O NEGÓCIO
+        </span>
+
+        <div class="priority-origin-core">
 
           <span>
-            O sintoma pode ser o mesmo.
+            CRESCER
+          </span>
+
+        </div>
+
+        <p>
+          O objetivo pode parecer simples.
+          O gargalo nem sempre é.
+        </p>
+
+      </div>
+
+
+
+      <!-- PATH -->
+
+      <div
+        class="priority-path"
+        aria-hidden="true"
+      >
+
+        <span class="priority-path-line"></span>
+
+        <span class="priority-path-point priority-path-point-1"></span>
+        <span class="priority-path-point priority-path-point-2"></span>
+        <span class="priority-path-point priority-path-point-3"></span>
+
+        <span class="priority-path-signal"></span>
+
+      </div>
+
+
+
+      <!-- DIAGNOSIS -->
+
+      <div class="priority-diagnosis">
+
+        <span class="priority-diagnosis-label">
+          DIAGNÓSTICO
+        </span>
+
+        <h3>
+          Onde está o
+          <strong>gargalo real?</strong>
+        </h3>
+
+        <div class="priority-diagnosis-options">
+
+          <div
+            class="priority-diagnosis-item"
+            data-priority="p"
+          >
+            <span>P</span>
+
+            <div>
+              <strong>Posicionamento</strong>
+              <small>
+                O mercado não entende o valor.
+              </small>
+            </div>
+          </div>
+
+
+          <div
+            class="priority-diagnosis-item active"
+            data-priority="a"
+          >
+            <span>A</span>
+
+            <div>
+              <strong>Aquisição</strong>
+              <small>
+                Faltam oportunidades chegando.
+              </small>
+            </div>
+          </div>
+
+
+          <div
+            class="priority-diagnosis-item"
+            data-priority="c"
+          >
+            <span>C</span>
+
+            <div>
+              <strong>Comercial</strong>
+              <small>
+                As oportunidades não estão convertendo.
+              </small>
+            </div>
+          </div>
+
+
+          <div
+            class="priority-diagnosis-item"
+            data-priority="t"
+          >
+            <span>T</span>
+
+            <div>
+              <strong>Tecnologia</strong>
+              <small>
+                O processo não suporta a operação.
+              </small>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- PRESCRIPTION -->
+
+      <div class="priority-prescription">
+
+        <div class="priority-prescription-top">
+
+          <span>
+            PRIORIDADE IDENTIFICADA
           </span>
 
           <strong>
-            A prescrição não.
+            A / AQUISIÇÃO
+          </strong>
+
+        </div>
+
+
+        <div class="priority-prescription-main">
+
+          <span class="priority-prescription-index">
+            01
+          </span>
+
+          <h3>
+            Primeiro,
+            <strong>
+              gerar oportunidades.
+            </strong>
+          </h3>
+
+          <p>
+            Não faz sentido automatizar,
+            trocar o CRM ou reconstruir tudo
+            se o problema principal ainda é
+            falta de demanda.
+          </p>
+
+        </div>
+
+
+        <div class="priority-prescription-actions">
+
+          <span>
+            Google
+          </span>
+
+          <span>
+            Prospecção
+          </span>
+
+          <span>
+            Conteúdo
+          </span>
+
+          <span>
+            Mídia
+          </span>
+
+        </div>
+
+
+        <div class="priority-prescription-result">
+
+          <span>
+            PRÓXIMO PASSO
+          </span>
+
+          <strong>
+            Resolver o gargalo antes de adicionar complexidade.
           </strong>
 
         </div>
 
       </div>
 
-    </section>
+
+    </div>
 
 
-    <!-- =====================================================
-         09 — PROCESSO
-    ====================================================== -->
 
-    <section class="process-section">
+    <!-- PRINCIPLE -->
 
-      <div class="container">
+    <div class="priority-principle">
 
-        <div class="section-heading">
+      <p>
+        Crescimento não acontece
+        quando você adiciona mais coisas.
+      </p>
 
-          <span class="section-label">
-            COMO APLICAMOS
+      <strong>
+        Acontece quando você resolve
+        a coisa certa.
+      </strong>
+
+    </div>
+
+
+
+    <div
+      class="priority-screen-index"
+      aria-hidden="true"
+    >
+      05
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- ==========================================
+     NEXT SCREEN
+=========================================== -->
+
+<!-- ==========================================
+     SCREEN 06 — STRATEGIC REASONING
+=========================================== -->
+
+<section
+  class="reasoning-section"
+  id="raciocinio"
+>
+
+  <div class="reasoning-stage">
+
+
+    <!-- INTRO -->
+
+    <header class="reasoning-intro">
+
+      <span class="reasoning-kicker">
+        DIAGNÓSTICO ANTES DA PRESCRIÇÃO
+      </span>
+
+      <h2 class="reasoning-title">
+        Uma frase.
+        <span>Três problemas possíveis.</span>
+      </h2>
+
+    </header>
+
+
+
+    <!-- BUSINESS SIGNAL -->
+
+    <div class="reasoning-signal">
+
+      <span class="reasoning-signal-label">
+        O EMPRESÁRIO DIZ:
+      </span>
+
+      <blockquote>
+        “Preciso
+        <strong>vender mais.</strong>”
+      </blockquote>
+
+      <span
+        class="reasoning-signal-pulse"
+        aria-hidden="true"
+      ></span>
+
+    </div>
+
+
+
+    <!-- BRANCHING SYSTEM -->
+
+    <div class="reasoning-system">
+
+
+      <!-- CENTRAL LINE -->
+
+      <div
+        class="reasoning-trunk"
+        aria-hidden="true"
+      >
+        <span></span>
+      </div>
+
+
+
+      <!-- AQUISIÇÃO -->
+
+      <article
+        class="reasoning-branch reasoning-branch-a"
+        data-reasoning="a"
+      >
+
+        <div class="reasoning-branch-head">
+
+          <span class="reasoning-letter">
+            A
           </span>
 
-          <h2>
-            Da visão à execução.
-          </h2>
+          <div>
+
+            <span class="reasoning-area">
+              AQUISIÇÃO
+            </span>
+
+            <strong>
+              Poucas oportunidades chegam.
+            </strong>
+
+          </div>
 
         </div>
 
 
-        <div class="process-line">
+        <div class="reasoning-branch-body">
 
-          <article>
-
-            <span>01</span>
-
-            <h3>
-              Entender
-            </h3>
-
-            <p>
-              Negócio, contexto,
-              mercado e objetivos.
-            </p>
-
-          </article>
+          <p>
+            O negócio pode ter uma boa oferta
+            e um bom processo comercial,
+            mas simplesmente não gerar demanda suficiente.
+          </p>
 
 
-          <article>
+          <div class="reasoning-question">
 
-            <span>02</span>
+            <span>
+              PERGUNTA
+            </span>
 
-            <h3>
-              Diagnosticar
-            </h3>
+            <strong>
+              Existem oportunidades suficientes
+              entrando no processo?
+            </strong>
 
-            <p>
-              P, A, C e T.
-            </p>
-
-          </article>
-
-
-          <article>
-
-            <span>03</span>
-
-            <h3>
-              Priorizar
-            </h3>
-
-            <p>
-              Gargalos e oportunidades.
-            </p>
-
-          </article>
+          </div>
 
 
-          <article>
+          <div class="reasoning-answer">
 
-            <span>04</span>
+            <span>
+              POSSÍVEL PRESCRIÇÃO
+            </span>
 
-            <h3>
-              Prescrever
-            </h3>
+            <div>
+              <small>Google</small>
+              <small>Prospecção</small>
+              <small>Conteúdo</small>
+              <small>Mídia</small>
+            </div>
 
-            <p>
-              O que fazer
-              e em qual ordem.
-            </p>
+          </div>
 
-          </article>
+        </div>
 
-
-          <article>
-
-            <span>05</span>
-
-            <h3>
-              Implementar
-            </h3>
-
-            <p>
-              Estratégia vira estrutura.
-            </p>
-
-          </article>
+      </article>
 
 
-          <article>
 
-            <span>06</span>
+      <!-- COMERCIAL -->
 
-            <h3>
-              Evoluir
-            </h3>
+      <article
+        class="reasoning-branch reasoning-branch-c"
+        data-reasoning="c"
+      >
 
-            <p>
-              O próximo movimento.
-            </p>
+        <div class="reasoning-branch-head">
 
-          </article>
+          <span class="reasoning-letter">
+            C
+          </span>
+
+          <div>
+
+            <span class="reasoning-area">
+              COMERCIAL
+            </span>
+
+            <strong>
+              As oportunidades chegam,
+              mas não convertem.
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="reasoning-branch-body">
+
+          <p>
+            A empresa pode gerar demanda,
+            mas perder oportunidades no atendimento,
+            na condução ou no acompanhamento.
+          </p>
+
+
+          <div class="reasoning-question">
+
+            <span>
+              PERGUNTA
+            </span>
+
+            <strong>
+              O processo comercial transforma
+              oportunidade em decisão?
+            </strong>
+
+          </div>
+
+
+          <div class="reasoning-answer">
+
+            <span>
+              POSSÍVEL PRESCRIÇÃO
+            </span>
+
+            <div>
+              <small>Atendimento</small>
+              <small>CRM</small>
+              <small>Follow-up</small>
+              <small>Conversão</small>
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- TECNOLOGIA -->
+
+      <article
+        class="reasoning-branch reasoning-branch-t"
+        data-reasoning="t"
+      >
+
+        <div class="reasoning-branch-head">
+
+          <span class="reasoning-letter">
+            T
+          </span>
+
+          <div>
+
+            <span class="reasoning-area">
+              TECNOLOGIA
+            </span>
+
+            <strong>
+              A operação não suporta
+              o volume.
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="reasoning-branch-body">
+
+          <p>
+            Pode existir demanda e processo,
+            mas a capacidade operacional limitar
+            velocidade, acompanhamento e escala.
+          </p>
+
+
+          <div class="reasoning-question">
+
+            <span>
+              PERGUNTA
+            </span>
+
+            <strong>
+              A estrutura consegue atender
+              o volume sem perder qualidade?
+            </strong>
+
+          </div>
+
+
+          <div class="reasoning-answer">
+
+            <span>
+              POSSÍVEL PRESCRIÇÃO
+            </span>
+
+            <div>
+              <small>IA</small>
+              <small>Automação</small>
+              <small>Integrações</small>
+              <small>Dados</small>
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+
+
+    <!-- CONCLUSION -->
+
+    <div class="reasoning-conclusion">
+
+      <span class="reasoning-conclusion-line"></span>
+
+      <p>
+        O sintoma pode ser
+        <span>o mesmo.</span>
+      </p>
+
+      <strong>
+        A prescrição não.
+      </strong>
+
+      <small>
+        É por isso que o PACT começa entendendo
+        o negócio antes de recomendar a solução.
+      </small>
+
+    </div>
+
+
+
+    <div
+      class="reasoning-screen-index"
+      aria-hidden="true"
+    >
+      06
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- ==========================================
+     NEXT SCREEN
+=========================================== -->
+
+<!-- ==========================================
+     SCREEN 07 — PROJECT PACT
+=========================================== -->
+
+<section
+  class="project-section"
+  id="projeto-pact"
+>
+
+  <div class="project-stage">
+
+
+    <!-- INTRO -->
+
+    <header class="project-intro">
+
+      <span class="project-kicker">
+        PROJETO PACT
+      </span>
+
+      <h2 class="project-title">
+        Do diagnóstico
+        <span>à transformação.</span>
+      </h2>
+
+      <p class="project-description">
+        O Projeto PACT transforma diagnóstico
+        em prioridade, prioridade em plano
+        e plano em implementação.
+      </p>
+
+    </header>
+
+
+
+    <!-- JOURNEY -->
+<div class="project-journey-viewport">
+    <div class="project-journey">
+
+
+      <!-- PROGRESS LINE -->
+
+      <div
+        class="project-progress"
+        aria-hidden="true"
+      >
+
+        <span class="project-progress-base"></span>
+
+        <span class="project-progress-active"></span>
+
+        <span class="project-progress-signal"></span>
+
+      </div>
+
+
+
+      <!-- STEP 01 -->
+
+      <article
+        class="project-step active"
+        data-project-step="1"
+      >
+
+        <div class="project-step-marker">
+
+          <span>
+            01
+          </span>
+
+        </div>
+
+
+        <div class="project-step-content">
+
+          <span class="project-step-label">
+            ENTENDER
+          </span>
+
+          <h3>
+            Primeiro,
+            entendemos o negócio.
+          </h3>
+
+          <p>
+            Momento, objetivos, operação,
+            mercado, estrutura e os desafios
+            que estão limitando o próximo passo.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- STEP 02 -->
+
+      <article
+        class="project-step"
+        data-project-step="2"
+      >
+
+        <div class="project-step-marker">
+
+          <span>
+            02
+          </span>
+
+        </div>
+
+
+        <div class="project-step-content">
+
+          <span class="project-step-label">
+            DIAGNOSTICAR
+          </span>
+
+          <h3>
+            Transformamos percepção
+            em diagnóstico.
+          </h3>
+
+          <p>
+            Analisamos Posicionamento,
+            Aquisição, Comercial e Tecnologia
+            para localizar os gargalos reais.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- STEP 03 -->
+
+      <article
+        class="project-step"
+        data-project-step="3"
+      >
+
+        <div class="project-step-marker">
+
+          <span>
+            03
+          </span>
+
+        </div>
+
+
+        <div class="project-step-content">
+
+          <span class="project-step-label">
+            PRIORIZAR
+          </span>
+
+          <h3>
+            Nem tudo precisa
+            acontecer agora.
+          </h3>
+
+          <p>
+            Definimos o que precisa vir primeiro,
+            o que pode esperar e qual movimento
+            tem maior potencial de destravar crescimento.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- STEP 04 -->
+
+      <article
+        class="project-step"
+        data-project-step="4"
+      >
+
+        <div class="project-step-marker">
+
+          <span>
+            04
+          </span>
+
+        </div>
+
+
+        <div class="project-step-content">
+
+          <span class="project-step-label">
+            PRESCREVER
+          </span>
+
+          <h3>
+            A prioridade vira
+            um plano de ação.
+          </h3>
+
+          <p>
+            Definimos as soluções, iniciativas
+            e estruturas necessárias para atacar
+            o problema identificado.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- STEP 05 -->
+
+      <article
+        class="project-step"
+        data-project-step="5"
+      >
+
+        <div class="project-step-marker">
+
+          <span>
+            05
+          </span>
+
+        </div>
+
+
+        <div class="project-step-content">
+
+          <span class="project-step-label">
+            IMPLEMENTAR
+          </span>
+
+          <h3>
+            Estratégia precisa
+            sair do papel.
+          </h3>
+
+          <p>
+            O projeto entra em execução
+            com as implementações definidas
+            para o momento do negócio.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- STEP 06 -->
+
+      <article
+        class="project-step"
+        data-project-step="6"
+      >
+
+        <div class="project-step-marker">
+
+          <span>
+            06
+          </span>
+
+        </div>
+
+
+        <div class="project-step-content">
+
+          <span class="project-step-label">
+            EVOLUIR
+          </span>
+
+          <h3>
+            Estrutura não é
+            um ponto final.
+          </h3>
+
+          <p>
+            Depois da implementação,
+            observamos o novo cenário e identificamos
+            qual passa a ser o próximo gargalo.
+          </p>
+
+        </div>
+
+      </article>
+
+
+       </div>
+    <!-- fecha .project-journey -->
+
+
+  </div>
+  <!-- fecha .project-journey-viewport -->
+
+
+
+  <!-- PROJECT OUTPUT -->
+
+  <div class="project-output">
+
+
+      <div class="project-output-heading">
+
+        <span>
+          O RESULTADO
+        </span>
+
+        <h3>
+          Um projeto construído
+          para o momento do negócio.
+        </h3>
+
+      </div>
+
+
+      <div class="project-output-system">
+
+        <div class="project-output-item">
+
+          <span>
+            DIAGNÓSTICO
+          </span>
+
+          <strong>
+            O que está acontecendo?
+          </strong>
+
+        </div>
+
+
+        <i aria-hidden="true">
+          →
+        </i>
+
+
+        <div class="project-output-item">
+
+          <span>
+            PRIORIDADE
+          </span>
+
+          <strong>
+            O que vem primeiro?
+          </strong>
+
+        </div>
+
+
+        <i aria-hidden="true">
+          →
+        </i>
+
+
+        <div class="project-output-item">
+
+          <span>
+            PROJETO
+          </span>
+
+          <strong>
+            O que precisa ser feito?
+          </strong>
+
+        </div>
+
+
+        <i aria-hidden="true">
+          →
+        </i>
+
+
+        <div class="project-output-item">
+
+          <span>
+            EXECUÇÃO
+          </span>
+
+          <strong>
+            Fazer acontecer.
+          </strong>
 
         </div>
 
       </div>
 
-    </section>
+    </div>
 
 
-    <!-- =====================================================
-         10 — PROJETO PACT
-    ====================================================== -->
 
-    <section class="project-section" id="projeto">
+    <!-- PRINCIPLE -->
 
-      <div class="container">
+    <div class="project-principle">
 
-        <div class="project-heading">
+      <span class="project-principle-line"></span>
 
-          <span class="section-label">
-            PROJETO PACT
+      <p>
+        O Projeto PACT não parte
+        de um pacote pronto.
+      </p>
+
+      <strong>
+        Ele parte do que o negócio precisa.
+      </strong>
+
+    </div>
+
+
+
+    <div
+      class="project-screen-index"
+      aria-hidden="true"
+    >
+      07
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- ==========================================
+     NEXT SCREEN
+=========================================== -->
+
+<!-- ======================================================
+     SCREEN 08 — DIAGNÓSTICO PACT
+====================================================== -->
+
+<section
+  class="diagnostic-section"
+  id="diagnostico"
+>
+
+  <div class="diagnostic-stage">
+
+
+    <!-- INTRO -->
+
+    <div class="diagnostic-intro">
+
+      <span class="diagnostic-kicker">
+        DIAGNÓSTICO PACT
+      </span>
+
+      <h2 class="diagnostic-title">
+        Antes de acelerar,
+        <span>
+          descubra o que está travando.
+        </span>
+      </h2>
+
+      <p class="diagnostic-description">
+        O diagnóstico analisa o negócio em
+        Posicionamento, Aquisição, Comercial e Tecnologia
+        para identificar onde está o principal gargalo
+        e o que precisa acontecer primeiro.
+      </p>
+
+    </div>
+
+
+
+    <!-- DIAGNOSTIC EXPERIENCE -->
+
+    <div class="diagnostic-interface">
+
+
+      <!-- LEFT / SCORE -->
+
+      <div class="diagnostic-overview">
+
+        <div class="diagnostic-overview-top">
+
+          <span>
+            LEITURA DO NEGÓCIO
           </span>
 
-          <h2>
-            Não existe
-            pacote PACT.
-          </h2>
-
-          <p>
-            Existe o projeto certo
-            para o momento da empresa.
-          </p>
-
-        </div>
-
-
-        <div class="project-media">
-
-          <img
-            src="images/pact-implementation.png"
-            alt="Representação da implementação do Método PACT"
-            loading="lazy"
-            decoding="async"
-          />
-
-        </div>
-
-
-        <div class="project-example">
-
-          <div class="project-stage">
-
-            <span>
-              01
-            </span>
-
-            <small>
-              DIAGNÓSTICO
-            </small>
-
-            <h3>
-              Aquisição
-              <strong>43</strong>
-            </h3>
-
-            <h3>
-              Comercial
-              <strong>51</strong>
-            </h3>
-
-          </div>
-
-
-          <div class="project-arrow">
-            →
-          </div>
-
-
-          <div class="project-stage">
-
-            <span>
-              02
-            </span>
-
-            <small>
-              PRIORIDADE
-            </small>
-
-            <div class="project-pact-code">
-              A + C
-            </div>
-
-          </div>
-
-
-          <div class="project-arrow">
-            →
-          </div>
-
-
-          <div class="project-stage project-stage-featured">
-
-            <span>
-              03
-            </span>
-
-            <small>
-              PROJETO PACT
-            </small>
-
-            <ul>
-              <li>Aquisição</li>
-              <li>Processo comercial</li>
-              <li>CRM</li>
-              <li>Follow-up</li>
-            </ul>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-message">
-          <p>
-            Escopo, prazo e implementação são definidos
-            depois de entender aquilo que o negócio realmente precisa.
-          </p>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         11 — DIAGNÓSTICO
-    ====================================================== -->
-
-    <section class="diagnostic-section" id="diagnostico">
-
-      <div class="container diagnostic-grid">
-
-        <div class="diagnostic-copy">
-
-          <span class="section-label">
-            O PRIMEIRO PASSO
-          </span>
-
-          <h2>
-            Antes de comprar,
-            <span>entenda.</span>
-          </h2>
-
-          <p>
-            O Diagnóstico PACT analisa os quatro pilares
-            da sua empresa e transforma suas respostas
-            em uma direção inicial.
-          </p>
-
-
-          <div class="diagnostic-points">
-
-            <div>
-              <strong>PACT Score</strong>
-              <span>Visão estrutural do negócio</span>
-            </div>
-
-            <div>
-              <strong>Gargalo</strong>
-              <span>Onde pode estar o bloqueio</span>
-            </div>
-
-            <div>
-              <strong>Prioridade</strong>
-              <span>O que merece atenção primeiro</span>
-            </div>
-
-            <div>
-              <strong>Plano</strong>
-              <span>Qual pode ser o próximo movimento</span>
-            </div>
-
-          </div>
-
-
-          <a
-            href="#diagnostico-aviso"
-            class="btn btn-primary btn-large"
-          >
-            Fazer meu Diagnóstico PACT
-          </a>
-
-          <small class="diagnostic-note">
-            Gratuito • poucos minutos • análise personalizada
+          <small>
+            EXEMPLO DE DIAGNÓSTICO
           </small>
 
         </div>
 
 
-        <div class="diagnostic-media">
+        <div class="diagnostic-score">
 
-          <img
-            src="images/pact-diagnostic.png"
-            alt="Exemplo visual do Diagnóstico PACT"
-            loading="lazy"
-            decoding="async"
-          />
+          <div class="diagnostic-score-orbit">
+
+            <span class="diagnostic-score-ring diagnostic-score-ring-1"></span>
+            <span class="diagnostic-score-ring diagnostic-score-ring-2"></span>
+
+            <div class="diagnostic-score-core">
+
+              <span>
+                SCORE PACT
+              </span>
+
+              <strong>
+                59
+              </strong>
+
+              <small>
+                / 100
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <p>
+            A empresa possui estrutura,
+            mas existe um gargalo impedindo
+            o próximo nível de crescimento.
+          </p>
 
         </div>
 
-      </div>
 
-    </section>
+        <div class="diagnostic-status">
 
-
-    <!-- =====================================================
-         12 — SOBRE
-    ====================================================== -->
-
-    <section class="about-section" id="sobre">
-
-      <div class="container about-grid">
-
-        <div class="about-media">
-
-          <img
-            src="images/diego-story.png"
-            alt="Diego Nogueira trabalhando em estratégia de negócios"
-            loading="lazy"
-            decoding="async"
-          />
-
-        </div>
-
-
-        <div class="about-copy">
-
-          <span class="section-label">
-            POR TRÁS DO PACT
+          <span>
+            MATURIDADE
           </span>
 
-          <h2>
-            Diego Nogueira
-          </h2>
-
-          <h3>
-            Estrategista de Negócios
-            e criador do Método PACT.
-          </h3>
-
-          <p>
-            Minha trajetória passou por comunicação, vendas,
-            prospecção, tecnologia, inteligência artificial
-            e construção de operações comerciais.
-          </p>
-
-          <p>
-            Quanto mais problemas eu via por ângulos diferentes,
-            mais percebia que empresas tentavam resolver crescimento
-            contratando soluções isoladas.
-          </p>
-
-          <blockquote>
-            “Quanto mais ferramentas eu conhecia,
-            mais entendia que o problema raramente era a ferramenta.”
-          </blockquote>
-
-          <p>
-            Foi dessa visão que nasceu o PACT:
-            uma forma de entender o negócio antes de decidir o que fazer nele.
-          </p>
+          <strong>
+            Estrutura em desenvolvimento
+          </strong>
 
         </div>
 
       </div>
 
-    </section>
 
 
-    <!-- =====================================================
-         13 — MANIFESTO
-    ====================================================== -->
+      <!-- RIGHT / PILLARS -->
 
-    <section class="manifesto-section">
+      <div class="diagnostic-analysis">
 
-      <div class="container">
 
-        <div class="manifesto-top">
+        <div class="diagnostic-analysis-head">
+
+          <span>
+            ANÁLISE 360°
+          </span>
+
+          <small>
+            P · A · C · T
+          </small>
+
+        </div>
+
+
+
+        <!-- P -->
+
+        <div
+          class="diagnostic-pillar"
+          data-diagnostic-pillar="p"
+        >
+
+          <div class="diagnostic-pillar-head">
+
+            <span class="diagnostic-pillar-letter">
+              P
+            </span>
+
+            <div>
+
+              <small>
+                POSICIONAMENTO
+              </small>
+
+              <strong>
+                Clareza para o mercado
+              </strong>
+
+            </div>
+
+            <span class="diagnostic-pillar-score">
+              68
+            </span>
+
+          </div>
+
+
+          <div class="diagnostic-bar">
+
+            <span
+              class="diagnostic-bar-fill"
+              data-score="68"
+            ></span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- A -->
+
+        <div
+          class="diagnostic-pillar diagnostic-pillar-critical"
+          data-diagnostic-pillar="a"
+        >
+
+          <div class="diagnostic-pillar-head">
+
+            <span class="diagnostic-pillar-letter">
+              A
+            </span>
+
+            <div>
+
+              <small>
+                AQUISIÇÃO
+              </small>
+
+              <strong>
+                Geração de oportunidades
+              </strong>
+
+            </div>
+
+            <span class="diagnostic-pillar-score">
+              34
+            </span>
+
+          </div>
+
+
+          <div class="diagnostic-bar">
+
+            <span
+              class="diagnostic-bar-fill"
+              data-score="34"
+            ></span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- C -->
+
+        <div
+          class="diagnostic-pillar"
+          data-diagnostic-pillar="c"
+        >
+
+          <div class="diagnostic-pillar-head">
+
+            <span class="diagnostic-pillar-letter">
+              C
+            </span>
+
+            <div>
+
+              <small>
+                COMERCIAL
+              </small>
+
+              <strong>
+                Conversão das oportunidades
+              </strong>
+
+            </div>
+
+            <span class="diagnostic-pillar-score">
+              61
+            </span>
+
+          </div>
+
+
+          <div class="diagnostic-bar">
+
+            <span
+              class="diagnostic-bar-fill"
+              data-score="61"
+            ></span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- T -->
+
+        <div
+          class="diagnostic-pillar"
+          data-diagnostic-pillar="t"
+        >
+
+          <div class="diagnostic-pillar-head">
+
+            <span class="diagnostic-pillar-letter">
+              T
+            </span>
+
+            <div>
+
+              <small>
+                TECNOLOGIA
+              </small>
+
+              <strong>
+                Capacidade operacional
+              </strong>
+
+            </div>
+
+            <span class="diagnostic-pillar-score">
+              74
+            </span>
+
+          </div>
+
+
+          <div class="diagnostic-bar">
+
+            <span
+              class="diagnostic-bar-fill"
+              data-score="74"
+            ></span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- BOTTLENECK -->
+
+        <div class="diagnostic-bottleneck">
+
+          <div class="diagnostic-bottleneck-signal">
+
+            <span>
+              GARGALO PRINCIPAL
+            </span>
+
+            <strong>
+              A
+            </strong>
+
+          </div>
+
+
+          <div class="diagnostic-bottleneck-copy">
+
+            <span>
+              AQUISIÇÃO
+            </span>
+
+            <h3>
+              O problema não é estrutura.
+              É falta de oportunidades entrando.
+            </h3>
+
+            <p>
+              A prioridade é aumentar a geração
+              de demanda antes de adicionar
+              mais complexidade à operação.
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+
+    <!-- WHAT YOU RECEIVE -->
+
+    <div class="diagnostic-delivery">
+
+      <div class="diagnostic-delivery-head">
+
+        <span>
+          AO FINAL, VOCÊ ENTENDE
+        </span>
+
+      </div>
+
+
+      <div class="diagnostic-delivery-grid">
+
+
+        <div class="diagnostic-delivery-item">
+
+          <span>
+            01
+          </span>
+
+          <strong>
+            Onde seu negócio está hoje.
+          </strong>
+
+        </div>
+
+
+        <div class="diagnostic-delivery-item">
+
+          <span>
+            02
+          </span>
+
+          <strong>
+            Qual é o principal gargalo.
+          </strong>
+
+        </div>
+
+
+        <div class="diagnostic-delivery-item">
+
+          <span>
+            03
+          </span>
+
+          <strong>
+            O que precisa ser priorizado.
+          </strong>
+
+        </div>
+
+
+        <div class="diagnostic-delivery-item">
+
+          <span>
+            04
+          </span>
+
+          <strong>
+            Qual deve ser o próximo movimento.
+          </strong>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+
+    <!-- CTA -->
+
+    <div class="diagnostic-cta">
+
+      <div>
+
+        <span>
+          COMECE PELO DIAGNÓSTICO
+        </span>
+
+        <h3>
+          Descubra o que está limitando
+          o crescimento do seu negócio.
+        </h3>
+
+      </div>
+
+
+      <a
+        href="#"
+        class="diagnostic-cta-button"
+      >
+
+        <span>
+          Fazer diagnóstico PACT
+        </span>
+
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          aria-hidden="true"
+        >
+
+          <path
+            d="M4 9H14M10 5L14 9L10 13"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+        </svg>
+
+      </a>
+
+    </div>
+
+
+
+    <!-- SCREEN INDEX -->
+
+    <span
+      class="diagnostic-screen-index"
+      aria-hidden="true"
+    >
+      08
+    </span>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     SCREEN 09 — DIEGO / AUTOR DO MÉTODO
+====================================================== -->
+
+<section
+  class="author-section"
+  id="diego"
+>
+
+  <div class="author-stage">
+
+
+    <!-- INTRO -->
+
+    <div class="author-intro">
+
+      <span class="author-kicker">
+        POR TRÁS DO MÉTODO
+      </span>
+
+      <h2 class="author-title">
+        Estratégia começa
+        <span>
+          entendendo o negócio.
+        </span>
+      </h2>
+
+    </div>
+
+
+
+    <!-- MAIN COMPOSITION -->
+
+    <div class="author-composition">
+
+
+      <!-- IMAGE -->
+
+      <div class="author-visual">
+
+        <div class="author-image-wrap">
+
+          <img
+            src="images/diego-strategy.jpg"
+            alt="Diego Nogueira"
+            class="author-image"
+          >
+
+        </div>
+
+
+        <div class="author-visual-caption">
+
+          <span>
+            DIEGO NOGUEIRA
+          </span>
+
+          <strong>
+            Estrategista de Negócios
+          </strong>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- CONTENT -->
+
+      <div class="author-content">
+
+
+        <div class="author-manifesto">
+
+          <span class="author-manifesto-index">
+            01
+          </span>
+
+          <p>
+            Eu não começo perguntando
+            <strong>
+              qual ferramenta usar.
+            </strong>
+          </p>
+
+          <p>
+            Eu começo tentando entender
+            <strong>
+              o que está acontecendo no negócio.
+            </strong>
+          </p>
+
+        </div>
+
+
+
+        <div class="author-copy">
+
+          <p>
+            Meu trabalho é compreender o momento da empresa,
+            identificar o que está impedindo o próximo passo
+            e transformar esse diagnóstico em uma direção clara.
+          </p>
+
+          <p>
+            Às vezes a resposta está no posicionamento.
+            Às vezes na aquisição, no processo comercial
+            ou na tecnologia.
+          </p>
+
+          <p>
+            O ponto é que a solução precisa nascer
+            <strong>
+              do problema real — e não do que é mais fácil vender.
+            </strong>
+          </p>
+
+        </div>
+
+
+
+        <!-- SIGNATURE -->
+
+        <div class="author-signature">
 
           <div>
 
-            <span class="section-label">
-              COMO EU PENSO NEGÓCIOS
-            </span>
+            <strong>
+              Diego Nogueira
+            </strong>
 
-            <h2>
-              Minha especialidade
-              não é vender ferramentas.
-              <span>É entender negócios.</span>
-            </h2>
-
-          </div>
-
-
-          <div class="manifesto-media">
-
-            <img
-              src="images/diego-strategy.png"
-              alt="Diego Nogueira em conversa sobre estratégia"
-              loading="lazy"
-              decoding="async"
-            />
-
-          </div>
-
-        </div>
-
-
-        <div class="manifesto-lines">
-
-          <p>
-            Diagnóstico antes da prescrição.
-          </p>
-
-          <p>
-            Digital é meio.
-            <span>Negócio é o fim.</span>
-          </p>
-
-          <p>
-            Visão 360.
-            <span>Execução por prioridade.</span>
-          </p>
-
-          <p>
-            Tecnologia deve servir ao processo.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         14 — FAQ
-    ====================================================== -->
-
-    <section class="faq-section">
-
-      <div class="container faq-grid">
-
-        <div class="faq-heading">
-
-          <span class="section-label">
-            PERGUNTAS FREQUENTES
-          </span>
-
-          <h2>
-            Algumas respostas
-            antes de começar.
-          </h2>
-
-        </div>
-
-
-        <div class="faq-list">
-
-          <details class="faq-item">
-
-            <summary>
-              O PACT é uma agência?
-            </summary>
-
-            <p>
-              Não. O PACT é um método de estruturação de negócios.
-              Dependendo do diagnóstico, o projeto pode envolver
-              diferentes estratégias, ativos, processos e tecnologias.
-            </p>
-
-          </details>
-
-
-          <details class="faq-item">
-
-            <summary>
-              Preciso contratar os quatro pilares?
-            </summary>
-
-            <p>
-              Não. Os quatro pilares são analisados,
-              mas a execução acontece por prioridade.
-            </p>
-
-          </details>
-
-
-          <details class="faq-item">
-
-            <summary>
-              Vocês realmente implementam?
-            </summary>
-
-            <p>
-              Sim, quando existe aderência entre o problema identificado
-              e nossa capacidade de execução,
-              podemos construir um Projeto PACT para a empresa.
-            </p>
-
-          </details>
-
-
-          <details class="faq-item">
-
-            <summary>
-              O diagnóstico é gratuito?
-            </summary>
-
-            <p>
-              Sim. Ele funciona como o primeiro passo
-              para entender a estrutura atual do negócio.
-            </p>
-
-          </details>
-
-
-          <details class="faq-item">
-
-            <summary>
-              Fazer o diagnóstico me obriga a contratar?
-            </summary>
-
-            <p>
-              Não. O diagnóstico não gera obrigação de contratação.
-            </p>
-
-          </details>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         15 — CTA FINAL
-    ====================================================== -->
-
-    <section class="final-cta">
-
-      <div class="container final-grid">
-
-        <div class="final-copy">
-
-          <span class="section-label">
-            COMECE PELO PACT
-          </span>
-
-          <h2>
-            Toda empresa
-            quer crescer.
             <span>
-              A pergunta é se ela está estruturada para isso.
+              Criador do Método PACT
             </span>
-          </h2>
 
-          <p>
-            Antes de investir na próxima solução,
-            descubra qual deveria ser o próximo movimento.
-          </p>
-
-          <a
-            href="#diagnostico-aviso"
-            class="btn btn-primary btn-large"
-          >
-            Fazer meu Diagnóstico PACT
-          </a>
-
-          <div class="final-signature">
-            <strong>Diego Nogueira</strong>
-            <span>Criador do Método PACT</span>
           </div>
 
-        </div>
-
-
-        <div class="final-media">
-
-          <img
-            src="images/diego-cta.png"
-            alt="Diego Nogueira, criador do Método PACT"
-            loading="lazy"
-            decoding="async"
-          />
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         AVISO TEMPORÁRIO
-    ====================================================== -->
-
-    <section
-      class="diagnostic-warning"
-      id="diagnostico-aviso"
-    >
-
-      <div class="container">
-
-        <div class="warning-box">
-
-          <span>
-            DIAGNÓSTICO PACT
+          <span class="author-signature-mark">
+            PACT
           </span>
 
-          <h2>
-            Estamos preparando essa experiência.
-          </h2>
-
-          <p>
-            Em breve o diagnóstico será conectado aqui
-            para gerar sua análise personalizada.
-          </p>
-
         </div>
 
+
       </div>
 
-    </section>
-
-  </main>
+    </div>
 
 
-  <!-- =====================================================
-       FOOTER
-  ====================================================== -->
 
-  <footer class="footer">
+    <!-- PRINCIPLES -->
 
-    <div class="container footer-content">
+    <div class="author-principles">
 
-      <div>
-        <strong>PACT</strong>
-        <span>Estrutura para crescer.</span>
+
+      <div class="author-principle">
+
+        <span>
+          01
+        </span>
+
+        <strong>
+          Diagnóstico antes
+          da prescrição.
+        </strong>
+
       </div>
+
+
+      <div class="author-principle">
+
+        <span>
+          02
+        </span>
+
+        <strong>
+          Digital é meio.
+          Negócio é o fim.
+        </strong>
+
+      </div>
+
+
+      <div class="author-principle">
+
+        <span>
+          03
+        </span>
+
+        <strong>
+          Crescimento começa
+          com estrutura.
+        </strong>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- CLOSING -->
+
+    <div class="author-closing">
+
+      <span>
+        O MÉTODO PACT
+      </span>
 
       <p>
-        © 2026 Diego Nogueira.
-        Todos os direitos reservados.
+        nasceu para transformar complexidade
+        <strong>
+          em clareza, prioridade e execução.
+        </strong>
       </p>
 
     </div>
 
-  </footer>
 
 
-  <script src="script.js"></script>
+    <!-- SCREEN INDEX -->
 
+    <span
+      class="author-screen-index"
+      aria-hidden="true"
+    >
+      09
+    </span>
+
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     SCREEN 10 — DIAGNÓSTICO PACT / ENTRY
+====================================================== -->
+
+<section
+  class="assessment-section"
+  id="diagnostico-pact"
+>
+
+  <div class="assessment-stage">
+
+
+    <!-- ==================================================
+         ENTRY EXPERIENCE
+    ================================================== -->
+
+    <div
+      class="assessment-entry"
+      id="assessmentEntry"
+    >
+
+
+      <!-- LEFT -->
+
+      <div class="assessment-entry-copy">
+
+
+        <span class="assessment-kicker">
+          DIAGNÓSTICO PACT
+        </span>
+
+
+        <h2 class="assessment-title">
+
+          Entenda seu negócio
+
+          <span>
+            antes de decidir o próximo passo.
+          </span>
+
+        </h2>
+
+
+        <p class="assessment-description">
+
+          Em poucos minutos, analisamos seu negócio
+          em Posicionamento, Aquisição, Comercial
+          e Tecnologia para identificar o principal
+          gargalo e o que deve ser priorizado agora.
+
+        </p>
+
+
+
+        <!-- BENEFITS -->
+
+        <div class="assessment-benefits">
+
+
+          <div class="assessment-benefit">
+
+            <span>
+              01
+            </span>
+
+            <strong>
+              Leitura do momento atual
+            </strong>
+
+          </div>
+
+
+          <div class="assessment-benefit">
+
+            <span>
+              02
+            </span>
+
+            <strong>
+              Score dos quatro pilares
+            </strong>
+
+          </div>
+
+
+          <div class="assessment-benefit">
+
+            <span>
+              03
+            </span>
+
+            <strong>
+              Gargalo principal identificado
+            </strong>
+
+          </div>
+
+
+          <div class="assessment-benefit">
+
+            <span>
+              04
+            </span>
+
+            <strong>
+              Prioridades e próximos movimentos
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- RIGHT / START PANEL -->
+
+      <div class="assessment-start-panel">
+
+
+        <div class="assessment-start-head">
+
+          <div>
+
+            <span>
+              COMEÇAR ANÁLISE
+            </span>
+
+            <small>
+              ETAPA INICIAL
+            </small>
+
+          </div>
+
+
+          <span class="assessment-start-status">
+
+            <i></i>
+
+            SISTEMA PRONTO
+
+          </span>
+
+        </div>
+
+
+
+        <!-- MINI SYSTEM -->
+
+        <div class="assessment-start-system">
+
+
+          <div class="assessment-start-orbit">
+
+
+            <span
+              class="assessment-start-ring
+                     assessment-start-ring-1"
+            ></span>
+
+
+            <span
+              class="assessment-start-ring
+                     assessment-start-ring-2"
+            ></span>
+
+
+            <div class="assessment-start-core">
+
+              <span>
+                MÉTODO
+              </span>
+
+              <strong>
+                PACT
+              </strong>
+
+              <small>
+                Diagnóstico 360°
+              </small>
+
+            </div>
+
+
+            <span
+              class="assessment-start-node
+                     assessment-start-node-p"
+            >
+              P
+            </span>
+
+
+            <span
+              class="assessment-start-node
+                     assessment-start-node-a"
+            >
+              A
+            </span>
+
+
+            <span
+              class="assessment-start-node
+                     assessment-start-node-c"
+            >
+              C
+            </span>
+
+
+            <span
+              class="assessment-start-node
+                     assessment-start-node-t"
+            >
+              T
+            </span>
+
+
+          </div>
+
+        </div>
+
+
+
+        <!-- START COPY -->
+
+        <div class="assessment-start-copy">
+
+          <h3>
+            Vamos entender
+            o momento do seu negócio.
+          </h3>
+
+
+          <p>
+            O diagnóstico leva aproximadamente
+            5 minutos e o resultado é gerado
+            ao final da análise.
+          </p>
+
+        </div>
+
+
+
+        <!-- META -->
+
+        <div class="assessment-start-meta">
+
+
+          <div>
+
+            <span>
+              TEMPO
+            </span>
+
+            <strong>
+              ≈ 5 min
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              RESULTADO
+            </span>
+
+            <strong>
+              Imediato
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              ANÁLISE
+            </span>
+
+            <strong>
+              P · A · C · T
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- START BUTTON -->
+
+        <button
+          type="button"
+          class="assessment-start-button"
+          id="assessmentStartButton"
+        >
+
+          <span>
+            Começar meu diagnóstico
+          </span>
+
+
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            aria-hidden="true"
+          >
+
+            <path
+              d="M4 9H14M10 5L14 9L10 13"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+          </svg>
+
+        </button>
+
+
+
+        <small class="assessment-start-privacy">
+
+          Seus dados serão utilizados apenas
+          para gerar e analisar o seu diagnóstico.
+
+        </small>
+
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         DIAGNOSTIC APP
+         começa escondido
+    ================================================== -->
+
+    <div
+      class="assessment-app"
+      id="assessmentApp"
+      hidden
+    >
+
+
+      <!-- APP HEADER -->
+
+      <div class="assessment-app-header">
+
+
+        <div class="assessment-app-brand">
+
+          <strong>
+            PACT
+          </strong>
+
+          <span>
+            DIAGNÓSTICO
+          </span>
+
+        </div>
+
+
+
+        <div class="assessment-app-progress">
+
+
+          <div class="assessment-progress-copy">
+
+            <span id="assessmentPhaseLabel">
+              CONTEXTO
+            </span>
+
+            <strong id="assessmentProgressText">
+              0%
+            </strong>
+
+          </div>
+
+
+          <div class="assessment-progress-track">
+
+            <span
+              id="assessmentProgressBar"
+            ></span>
+
+          </div>
+
+
+        </div>
+
+
+
+        <button
+          type="button"
+          class="assessment-close"
+          id="assessmentCloseButton"
+          aria-label="Fechar diagnóstico"
+        >
+          ×
+        </button>
+
+
+      </div>
+
+
+
+      <!-- PACT PHASES -->
+
+      <div class="assessment-phases">
+
+
+        <div
+          class="assessment-phase active"
+          data-phase="context"
+        >
+
+          <span></span>
+
+          <strong>
+            CONTEXTO
+          </strong>
+
+        </div>
+
+
+        <div
+          class="assessment-phase"
+          data-phase="p"
+        >
+
+          <span>P</span>
+
+          <strong>
+            POSICIONAMENTO
+          </strong>
+
+        </div>
+
+
+        <div
+          class="assessment-phase"
+          data-phase="a"
+        >
+
+          <span>A</span>
+
+          <strong>
+            AQUISIÇÃO
+          </strong>
+
+        </div>
+
+
+        <div
+          class="assessment-phase"
+          data-phase="c"
+        >
+
+          <span>C</span>
+
+          <strong>
+            COMERCIAL
+          </strong>
+
+        </div>
+
+
+        <div
+          class="assessment-phase"
+          data-phase="t"
+        >
+
+          <span>T</span>
+
+          <strong>
+            TECNOLOGIA
+          </strong>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- QUESTION AREA -->
+
+      <div class="assessment-question-stage">
+
+
+        <div
+          class="assessment-question"
+          id="assessmentQuestion"
+        >
+
+
+          <span
+            class="assessment-question-eyebrow"
+            id="assessmentQuestionEyebrow"
+          >
+            CONTEXTO · 01
+          </span>
+
+
+          <h3
+            id="assessmentQuestionTitle"
+          >
+            Vamos começar entendendo
+            o seu negócio.
+          </h3>
+
+
+          <p
+            id="assessmentQuestionDescription"
+          >
+            Algumas informações iniciais ajudam
+            o PACT a interpretar suas respostas
+            dentro do contexto correto.
+          </p>
+
+
+
+          <!-- respostas serão injetadas pelo JS -->
+
+          <div
+            class="assessment-answer-area"
+            id="assessmentAnswerArea"
+          ></div>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- NAVIGATION -->
+
+      <div class="assessment-navigation">
+
+
+        <button
+          type="button"
+          class="assessment-back-button"
+          id="assessmentBackButton"
+          disabled
+        >
+
+          ←
+
+          <span>
+            Voltar
+          </span>
+
+        </button>
+
+
+        <div class="assessment-navigation-index">
+
+          <span id="assessmentCurrentQuestion">
+            01
+          </span>
+
+          <small>
+            /
+          </small>
+
+          <strong id="assessmentTotalQuestions">
+            —
+          </strong>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="assessment-next-button"
+          id="assessmentNextButton"
+          disabled
+        >
+
+          <span>
+            Continuar
+          </span>
+
+          <svg
+            width="17"
+            height="17"
+            viewBox="0 0 18 18"
+            fill="none"
+            aria-hidden="true"
+          >
+
+            <path
+              d="M4 9H14M10 5L14 9L10 13"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+          </svg>
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- ==================================================
+         RESULT AREA
+         será construída depois
+    ================================================== -->
+
+    <div
+      class="assessment-result"
+      id="assessmentResult"
+      hidden
+    ></div>
+
+
+
+    <!-- SCREEN NUMBER -->
+
+    <span
+      class="assessment-screen-index"
+      aria-hidden="true"
+    >
+      10
+    </span>
+
+
+  </div>
+
+</section>
+
+  </main>
+  <!-- =====================================================
+     FOOTER — PACT
+====================================================== -->
+
+<footer class="pact-footer">
+
+  <div class="pact-footer-shell">
+
+    <div class="pact-footer-top">
+
+      <div class="pact-footer-brand">
+
+        <a
+          href="#"
+          class="pact-footer-logo"
+          aria-label="PACT — voltar ao início"
+        >
+          PACT
+        </a>
+
+        <p class="pact-footer-positioning">
+          Estrutura para crescer.
+        </p>
+
+        <div class="pact-footer-pillars">
+          Posicionamento
+          <i></i>
+          Aquisição
+          <i></i>
+          Comercial
+          <i></i>
+          Tecnologia
+        </div>
+
+      </div>
+
+
+      <div class="pact-footer-manifesto">
+
+        <span>
+          MÉTODO PACT
+        </span>
+
+        <strong>
+          Digital é meio.<br>
+          Negócio é o fim.
+        </strong>
+
+      </div>
+
+
+      <div class="pact-footer-author">
+
+        <span>
+          CRIADO POR
+        </span>
+
+        <strong>
+          Diego Nogueira
+        </strong>
+
+        <p>
+          Estrategista de Negócios e
+          criador do Método PACT.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="pact-footer-divider"></div>
+
+
+    <div class="pact-footer-bottom">
+
+      <div class="pact-footer-copyright">
+
+        <span>
+          © 2026 PACT
+        </span>
+
+        <small>
+          Todos os direitos reservados.
+        </small>
+
+      </div>
+
+
+      <nav
+        class="pact-footer-links"
+        aria-label="Links institucionais"
+      >
+
+        <a
+  href="https://www.instagram.com/diegometaforma/"
+  class="pact-footer-social"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Instagram
+  <span aria-hidden="true">↗</span>
+</a>
+
+        <a
+  href="https://wa.me/5511970349654"
+  class="pact-footer-social"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  WhatsApp
+  <span aria-hidden="true">↗</span>
+</a>
+
+        <span class="pact-footer-link-disabled">
+          Privacidade
+        </span>
+
+        <span class="pact-footer-link-disabled">
+          Termos
+        </span>
+
+      </nav>
+
+
+      <div class="pact-footer-status">
+
+        <span></span>
+
+        <small>
+          DIAGNÓSTICO PACT ONLINE
+        </small>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- GSAP -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+<!-- ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+<!-- Lenis Smooth Scroll -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+
+<!-- PACT V5 -->
+<script src="v5/script.js?v=17"></script>
 </body>
 
 </html>
