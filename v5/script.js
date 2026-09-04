@@ -6198,6 +6198,272 @@ function updateAssessmentProgress() {
 
 }
 
+/* ======================================================
+   PACT REPORT — DEEP METRICS
+====================================================== */
+
+const pactMetricMap = {
+
+  p: [
+    {
+      id: "p_clarity",
+      label: "Clareza"
+    },
+    {
+      id: "p_audience",
+      label: "Público"
+    },
+    {
+      id: "p_trust",
+      label: "Confiança"
+    },
+    {
+      id: "p_offer",
+      label: "Oferta"
+    }
+  ],
+
+  a: [
+    {
+      id: "a_predictability",
+      label: "Previsibilidade"
+    },
+    {
+      id: "a_volume",
+      label: "Volume"
+    },
+    {
+      id: "a_presence",
+      label: "Presença nos canais"
+    },
+    {
+      id: "a_measurement",
+      label: "Mensuração"
+    }
+  ],
+
+  c: [
+    {
+      id: "c_response",
+      label: "Velocidade"
+    },
+    {
+      id: "c_process",
+      label: "Processo"
+    },
+    {
+      id: "c_followup",
+      label: "Follow-up"
+    },
+    {
+      id: "c_conversion",
+      label: "Conversão"
+    }
+  ],
+
+  t: [
+    {
+      id: "t_organization",
+      label: "Organização"
+    },
+    {
+      id: "t_automation",
+      label: "Automação"
+    },
+    {
+      id: "t_capacity",
+      label: "Capacidade"
+    },
+    {
+      id: "t_data",
+      label: "Dados"
+    }
+  ]
+
+};
+
+
+
+function getAssessmentMetricScore(
+  questionId
+) {
+
+  const question =
+    assessmentQuestions.find(
+      (item) =>
+        item.id === questionId
+    );
+
+
+  if (!question) {
+    return 0;
+  }
+
+
+  const selectedOption =
+    getOptionData(
+      question,
+      assessmentAnswers[
+        questionId
+      ]
+    );
+
+
+  return Number(
+    selectedOption?.score || 0
+  );
+
+}
+
+
+
+function getPactMetricRows(
+  phase
+) {
+
+  return (
+    pactMetricMap[phase] || []
+  ).map(
+    (metric) => ({
+      ...metric,
+
+      score:
+        getAssessmentMetricScore(
+          metric.id
+        )
+    })
+  );
+
+}
+
+
+
+function getPactBalance(
+  scores
+) {
+
+  const values =
+    Object.values(
+      scores
+    );
+
+
+  const highest =
+    Math.max(
+      ...values
+    );
+
+
+  const lowest =
+    Math.min(
+      ...values
+    );
+
+
+  return Math.max(
+    0,
+    100 - (
+      highest - lowest
+    )
+  );
+
+}
+
+
+
+function getPactGap(
+  scores
+) {
+
+  const values =
+    Object.values(
+      scores
+    );
+
+
+  return (
+    Math.max(...values) -
+    Math.min(...values)
+  );
+
+}
+
+
+
+function getLowestPactMetric(
+  phase
+) {
+
+  const metrics =
+    getPactMetricRows(
+      phase
+    );
+
+
+  return metrics.reduce(
+    (lowest, current) =>
+
+      current.score <
+      lowest.score
+        ? current
+        : lowest,
+
+    metrics[0]
+  );
+
+}
+
+
+
+function buildPactRadarPoints(
+  scores
+) {
+
+  const center = 140;
+  const radius = 94;
+
+
+  const p =
+    center -
+    radius *
+    (
+      scores.p / 100
+    );
+
+
+  const a =
+    center +
+    radius *
+    (
+      scores.a / 100
+    );
+
+
+  const c =
+    center +
+    radius *
+    (
+      scores.c / 100
+    );
+
+
+  const t =
+    center -
+    radius *
+    (
+      scores.t / 100
+    );
+
+
+  return [
+    `${center},${p}`,
+    `${a},${center}`,
+    `${center},${c}`,
+    `${t},${center}`
+  ].join(" ");
+
+}
+
 
 
 function updateAssessmentPhase(
@@ -7052,7 +7318,53 @@ function renderAssessmentResult() {
 
   const report =
     buildAssessmentReport();
+const pactBalance =
+  getPactBalance(
+    report.scores
+  );
 
+
+const pactGap =
+  getPactGap(
+    report.scores
+  );
+
+
+const pactRadarPoints =
+  buildPactRadarPoints(
+    report.scores
+  );
+
+
+const criticalMetric =
+  getLowestPactMetric(
+    report.bottleneck
+  );
+
+
+const pactMetricGroups =
+  [
+    {
+      key: "p",
+      letter: "P",
+      title: "POSICIONAMENTO"
+    },
+    {
+      key: "a",
+      letter: "A",
+      title: "AQUISIÇÃO"
+    },
+    {
+      key: "c",
+      letter: "C",
+      title: "COMERCIAL"
+    },
+    {
+      key: "t",
+      letter: "T",
+      title: "TECNOLOGIA"
+    }
+  ];
 
   const company =
     escapePACTHTML(
@@ -7130,7 +7442,310 @@ function renderAssessmentResult() {
 
         </div>
 
+<div class="assessment-intelligence">
 
+
+  <!-- RADAR -->
+
+  <div class="assessment-radar-card">
+
+    <div class="assessment-report-block-head">
+
+      <span>
+        MAPA PACT
+      </span>
+
+      <small>
+        EQUILÍBRIO ESTRUTURAL
+      </small>
+
+    </div>
+
+
+    <div class="assessment-radar">
+
+      <svg
+        viewBox="0 0 280 280"
+        role="img"
+        aria-label="Radar dos quatro pilares PACT"
+      >
+
+        <!-- GRID -->
+
+        <polygon
+          points="140,46 234,140 140,234 46,140"
+          class="assessment-radar-grid assessment-radar-grid-outer"
+        />
+
+        <polygon
+          points="140,77 203,140 140,203 77,140"
+          class="assessment-radar-grid"
+        />
+
+        <polygon
+          points="140,108 172,140 140,172 108,140"
+          class="assessment-radar-grid"
+        />
+
+
+        <!-- AXES -->
+
+        <line
+          x1="140"
+          y1="46"
+          x2="140"
+          y2="234"
+          class="assessment-radar-axis"
+        />
+
+        <line
+          x1="46"
+          y1="140"
+          x2="234"
+          y2="140"
+          class="assessment-radar-axis"
+        />
+
+
+        <!-- REAL BUSINESS DATA -->
+
+        <polygon
+          points="${pactRadarPoints}"
+          class="assessment-radar-data"
+        />
+
+      </svg>
+
+
+      <span class="assessment-radar-label assessment-radar-label-p">
+        P
+      </span>
+
+      <span class="assessment-radar-label assessment-radar-label-a">
+        A
+      </span>
+
+      <span class="assessment-radar-label assessment-radar-label-c">
+        C
+      </span>
+
+      <span class="assessment-radar-label assessment-radar-label-t">
+        T
+      </span>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- EXECUTIVE INDICATORS -->
+
+  <div class="assessment-executive-card">
+
+    <div class="assessment-report-block-head">
+
+      <span>
+        INDICADORES EXECUTIVOS
+      </span>
+
+      <small>
+        LEITURA DERIVADA
+      </small>
+
+    </div>
+
+
+    <div class="assessment-executive-grid">
+
+
+      <div class="assessment-executive-metric">
+
+        <span>
+          EQUILÍBRIO PACT
+        </span>
+
+        <strong>
+          ${pactBalance}%
+        </strong>
+
+        <small>
+          ${
+            pactBalance >= 75
+              ? "estrutura equilibrada"
+              : pactBalance >= 55
+                ? "estrutura parcialmente desigual"
+                : "desequilíbrio relevante"
+          }
+        </small>
+
+      </div>
+
+
+      <div class="assessment-executive-metric">
+
+        <span>
+          GAP ESTRUTURAL
+        </span>
+
+        <strong>
+          ${pactGap}
+        </strong>
+
+        <small>
+          pontos entre melhor e pior pilar
+        </small>
+
+      </div>
+
+
+      <div class="assessment-executive-metric">
+
+        <span>
+          PILAR MAIS FORTE
+        </span>
+
+        <strong class="assessment-executive-word">
+          ${report.strongestName}
+        </strong>
+
+        <small>
+          ${report.strongestScore}/100
+        </small>
+
+      </div>
+
+
+      <div class="assessment-executive-metric is-critical">
+
+        <span>
+          MAIOR FRAGILIDADE INTERNA
+        </span>
+
+        <strong class="assessment-executive-word">
+          ${criticalMetric.label}
+        </strong>
+
+        <small>
+          ${criticalMetric.score}/100 · ${report.bottleneckName}
+        </small>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<!-- MICRODIAGNÓSTICO -->
+
+<div class="assessment-microdiagnostic">
+
+  <div class="assessment-report-block-head">
+
+    <span>
+      MICRODIAGNÓSTICO
+    </span>
+
+    <small>
+      COMO CADA SCORE FOI FORMADO
+    </small>
+
+  </div>
+
+
+  <div class="assessment-micro-grid">
+
+    ${
+      pactMetricGroups.map(
+        (group) => {
+
+          const metrics =
+            getPactMetricRows(
+              group.key
+            );
+
+
+          return `
+            <div
+              class="assessment-micro-card ${
+                report.bottleneck === group.key
+                  ? "is-bottleneck"
+                  : ""
+              }"
+            >
+
+              <div class="assessment-micro-card-head">
+
+                <span>
+                  ${group.letter}
+                </span>
+
+                <div>
+
+                  <small>
+                    ${group.title}
+                  </small>
+
+                  <strong>
+                    ${report.scores[group.key]}/100
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <div class="assessment-micro-list">
+
+                ${
+                  metrics.map(
+                    (metric) => `
+                      <div class="assessment-micro-item">
+
+                        <div class="assessment-micro-copy">
+
+                          <span>
+                            ${metric.label}
+                          </span>
+
+                          <strong>
+                            ${metric.score}
+                          </strong>
+
+                        </div>
+
+
+                        <div class="assessment-micro-bar">
+
+                          <i
+                            style="transform:scaleX(${metric.score / 100})"
+                          ></i>
+
+                        </div>
+
+                      </div>
+                    `
+                  ).join("")
+                }
+
+              </div>
+
+            </div>
+          `;
+
+        }
+      ).join("")
+    }
+
+  </div>
+
+</div>
 
         <div class="assessment-result-pillars">
 
