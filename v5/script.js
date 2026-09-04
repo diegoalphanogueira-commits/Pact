@@ -8932,7 +8932,20 @@ const pactMetricGroups =
 
 </div>
 
+document
+  .getElementById(
+    "pactConversationStart"
+  )
+  ?.addEventListener(
+    "click",
+    () => {
 
+      startPactConversation(
+        report
+      );
+
+    }
+  );
 
         <button
           type="button"
