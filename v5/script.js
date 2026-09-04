@@ -9001,9 +9001,6 @@ const pactMetricGroups =
         </div>
 
 
-
-        <div class="assessment-result-cta">
-
           <div class="assessment-result-cta pact-conversation-entry">
 
   <div>
