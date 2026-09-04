@@ -3549,7 +3549,7 @@ const cameraProgress =
 gsap.set(
   ".project-journey",
   {
-    y: -230 * cameraProgress
+    y: -280 * cameraProgress
   }
 );
 
