@@ -6389,3 +6389,922 @@ transform: scaleX(var(--reasoning-line-progress, 1));
   }
 
 }
+/* =========================================================
+   SCREEN 07 — PROJECT PACT
+========================================================= */
+
+.project-section {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 48% 40%,
+      rgba(213, 255, 63, 0.035),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #050709 0%,
+      #070a0d 50%,
+      #050709 100%
+    );
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.055);
+}
+
+
+.project-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.016) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.016) 1px,
+      transparent 1px
+    );
+
+  background-size: 84px 84px;
+
+  opacity: 0.28;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 14%,
+      black 88%,
+      transparent
+    );
+}
+
+
+.project-stage {
+  position: relative;
+  z-index: 1;
+
+  width:
+    min(1280px, calc(100% - 80px));
+
+  margin: 0 auto;
+
+  padding:
+    140px 0 112px;
+}
+
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.project-intro {
+  max-width: 900px;
+}
+
+
+.project-kicker {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 12px;
+
+  color: #d5ff3f;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+
+.project-kicker::before {
+  content: "";
+
+  width: 38px;
+  height: 1px;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 16px rgba(213, 255, 63, 0.32);
+}
+
+
+.project-title {
+  max-width: 900px;
+
+  margin:
+    24px 0 0;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(3.4rem, 5.6vw, 5.2rem);
+
+  line-height: 0.98;
+
+  letter-spacing: -0.058em;
+
+  font-weight: 500;
+}
+
+
+.project-title span {
+  display: block;
+
+  color: #d5ff3f;
+}
+
+
+.project-description {
+  max-width: 570px;
+
+  margin-top: 28px;
+
+  color:
+    rgba(246, 247, 248, 0.5);
+
+  font-size: 0.98rem;
+
+  line-height: 1.72;
+}
+
+
+
+/* =========================================================
+   JOURNEY
+========================================================= */
+
+.project-journey {
+  position: relative;
+
+  margin-top: 108px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap:
+    86px 28px;
+
+  padding:
+    30px 0 10px;
+}
+
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.project-progress {
+  position: absolute;
+
+  left: 8%;
+  right: 8%;
+  top: 87px;
+
+  height: 1px;
+
+  z-index: 0;
+}
+
+
+.project-progress-base {
+  position: absolute;
+  inset: 0;
+
+  background:
+    rgba(255, 255, 255, 0.07);
+}
+
+
+.project-progress-active {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #d5ff3f,
+      rgba(213, 255, 63, 0.45)
+    );
+
+  transform:
+    scaleX(0.18);
+
+  transform-origin:
+    left center;
+
+  box-shadow:
+    0 0 18px rgba(213, 255, 63, 0.22);
+}
+
+
+.project-progress-signal {
+  position: absolute;
+
+  left: 18%;
+  top: 50%;
+
+  width: 9px;
+  height: 9px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 0 7px rgba(213, 255, 63, 0.04),
+    0 0 24px rgba(213, 255, 63, 0.35);
+}
+
+
+
+/* =========================================================
+   STEP
+========================================================= */
+
+.project-step {
+  position: relative;
+
+  z-index: 2;
+
+  min-height: 290px;
+
+  padding:
+    0 26px 26px 0;
+
+  opacity: 0.42;
+}
+
+
+.project-step:nth-of-type(5),
+.project-step:nth-of-type(6),
+.project-step:nth-of-type(7) {
+  transform:
+    translateY(18px);
+}
+
+
+.project-step-marker {
+  position: relative;
+
+  width: 60px;
+  height: 60px;
+
+  margin-bottom: 34px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  background:
+    #090c0f;
+}
+
+
+.project-step-marker span {
+  color:
+    rgba(246, 247, 248, 0.5);
+
+  font-size: 0.68rem;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+}
+
+
+.project-step-content {
+  max-width: 320px;
+}
+
+
+.project-step-label {
+  display: block;
+
+  margin-bottom: 14px;
+
+  color:
+    rgba(246, 247, 248, 0.28);
+
+  font-size: 0.58rem;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
+
+.project-step h3 {
+  margin: 0;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(1.55rem, 2vw, 2rem);
+
+  line-height: 1.08;
+
+  letter-spacing: -0.04em;
+
+  font-weight: 500;
+}
+
+
+.project-step p {
+  max-width: 300px;
+
+  margin-top: 17px;
+
+  color:
+    rgba(246, 247, 248, 0.4);
+
+  font-size: 0.78rem;
+
+  line-height: 1.68;
+}
+
+
+
+/* ACTIVE STEP */
+
+.project-step.active {
+  opacity: 1;
+}
+
+
+.project-step.active .project-step-marker {
+  border-color: #d5ff3f;
+
+  background:
+    #d5ff3f;
+
+  box-shadow:
+    0 0 0 8px rgba(213, 255, 63, 0.04),
+    0 0 30px rgba(213, 255, 63, 0.12);
+}
+
+
+.project-step.active .project-step-marker span {
+  color: #050709;
+}
+
+
+.project-step.active .project-step-label {
+  color: #d5ff3f;
+}
+
+
+
+/* =========================================================
+   SECOND ROW CONNECTION
+========================================================= */
+
+.project-step:nth-of-type(5)::before,
+.project-step:nth-of-type(6)::before,
+.project-step:nth-of-type(7)::before {
+  content: "";
+
+  position: absolute;
+
+  top: -44px;
+  left: 30px;
+
+  width: 1px;
+  height: 36px;
+
+  background:
+    rgba(255, 255, 255, 0.08);
+}
+
+
+
+/* =========================================================
+   OUTPUT
+========================================================= */
+
+.project-output {
+  margin-top: 120px;
+
+  padding-top: 58px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.project-output-heading {
+  max-width: 610px;
+}
+
+
+.project-output-heading > span {
+  color: #d5ff3f;
+
+  font-size: 0.61rem;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
+
+.project-output-heading h3 {
+  margin-top: 18px;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(2.3rem, 3.5vw, 3.6rem);
+
+  line-height: 1.05;
+
+  letter-spacing: -0.05em;
+
+  font-weight: 500;
+}
+
+
+
+/* =========================================================
+   OUTPUT SYSTEM
+========================================================= */
+
+.project-output-system {
+  margin-top: 52px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr auto
+    1fr auto
+    1fr auto
+    1fr;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+
+.project-output-item {
+  min-height: 118px;
+
+  padding:
+    24px 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.project-output-item span {
+  color:
+    rgba(246, 247, 248, 0.27);
+
+  font-size: 0.54rem;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+}
+
+
+.project-output-item strong {
+  margin-top: 9px;
+
+  color:
+    rgba(246, 247, 248, 0.8);
+
+  font-size: 0.82rem;
+  font-weight: 500;
+
+  line-height: 1.5;
+}
+
+
+.project-output-system > i {
+  color:
+    rgba(213, 255, 63, 0.46);
+
+  font-style: normal;
+
+  font-size: 1.1rem;
+}
+
+
+
+/* =========================================================
+   PRINCIPLE
+========================================================= */
+
+.project-principle {
+  position: relative;
+
+  max-width: 900px;
+
+  margin:
+    116px auto 0;
+
+  padding-top: 52px;
+
+  text-align: center;
+}
+
+
+.project-principle-line {
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+
+  width: 1px;
+  height: 30px;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      #d5ff3f
+    );
+}
+
+
+.project-principle p {
+  margin: 0;
+
+  color:
+    rgba(246, 247, 248, 0.38);
+
+  font-size:
+    clamp(1.7rem, 2.7vw, 2.55rem);
+
+  line-height: 1.24;
+
+  letter-spacing: -0.035em;
+}
+
+
+.project-principle strong {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #d5ff3f;
+
+  font-size:
+    clamp(2.2rem, 3.8vw, 3.6rem);
+
+  line-height: 1.1;
+
+  letter-spacing: -0.05em;
+
+  font-weight: 500;
+}
+
+
+
+/* =========================================================
+   SCREEN INDEX
+========================================================= */
+
+.project-screen-index {
+  position: absolute;
+
+  right: -16px;
+  bottom: 24px;
+
+  z-index: -1;
+
+  color:
+    rgba(255, 255, 255, 0.016);
+
+  font-size: 11rem;
+
+  line-height: 0.8;
+
+  letter-spacing: -0.08em;
+
+  font-weight: 500;
+
+  user-select: none;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .project-stage {
+    width:
+      min(920px, calc(100% - 48px));
+  }
+
+
+  .project-journey {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap:
+      70px 40px;
+  }
+
+
+  .project-progress {
+    display: none;
+  }
+
+
+  .project-step:nth-of-type(5),
+  .project-step:nth-of-type(6),
+  .project-step:nth-of-type(7) {
+    transform: none;
+  }
+
+
+  .project-step:nth-of-type(5)::before,
+  .project-step:nth-of-type(6)::before,
+  .project-step:nth-of-type(7)::before {
+    display: none;
+  }
+
+
+  .project-output-system {
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 0;
+  }
+
+
+  .project-output-system > i {
+    display: none;
+  }
+
+}
+
+
+
+/* =========================================================
+   SCREEN 07 — MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .project-stage {
+    width:
+      calc(100% - 32px);
+
+    padding:
+      94px 0 76px;
+  }
+
+
+  /* INTRO */
+
+  .project-kicker {
+    font-size: 0.59rem;
+  }
+
+
+  .project-kicker::before {
+    width: 26px;
+  }
+
+
+  .project-title {
+    margin-top: 18px;
+
+    font-size:
+      clamp(2.7rem, 12.7vw, 3.45rem);
+
+    line-height: 0.99;
+  }
+
+
+  .project-description {
+    max-width: 340px;
+
+    margin-top: 22px;
+
+    font-size: 0.89rem;
+
+    line-height: 1.65;
+  }
+
+
+
+  /* JOURNEY */
+
+  .project-journey {
+    margin-top: 78px;
+
+    padding: 0;
+
+    display: block;
+  }
+
+
+  .project-progress {
+    display: block;
+
+    left: 25px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+
+    width: 1px;
+    height: 100%;
+  }
+
+
+  .project-progress-base,
+  .project-progress-active {
+    width: 1px;
+    height: 100%;
+  }
+
+
+  .project-progress-active {
+    transform:
+      scaleY(0.18);
+
+    transform-origin:
+      top center;
+  }
+
+
+  .project-progress-signal {
+    left: 50%;
+    top: 18%;
+  }
+
+
+
+  /* STEPS */
+
+  .project-step,
+  .project-step:nth-of-type(5),
+  .project-step:nth-of-type(6),
+  .project-step:nth-of-type(7) {
+    min-height: 0;
+
+    padding:
+      0 0 66px 74px;
+
+    transform: none;
+  }
+
+
+  .project-step::before,
+  .project-step:nth-of-type(5)::before,
+  .project-step:nth-of-type(6)::before,
+  .project-step:nth-of-type(7)::before {
+    display: none;
+  }
+
+
+  .project-step-marker {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 52px;
+    height: 52px;
+
+    margin: 0;
+  }
+
+
+  .project-step-content {
+    max-width: 300px;
+  }
+
+
+  .project-step-label {
+    padding-top: 2px;
+
+    font-size: 0.54rem;
+  }
+
+
+  .project-step h3 {
+    font-size:
+      clamp(1.65rem, 7.3vw, 2rem);
+  }
+
+
+  .project-step p {
+    max-width: 290px;
+
+    font-size: 0.76rem;
+  }
+
+
+
+  /* OUTPUT */
+
+  .project-output {
+    margin-top: 50px;
+
+    padding-top: 44px;
+  }
+
+
+  .project-output-heading h3 {
+    font-size:
+      clamp(2.1rem, 9vw, 2.6rem);
+  }
+
+
+  .project-output-system {
+    margin-top: 38px;
+
+    display: block;
+  }
+
+
+  .project-output-item {
+    min-height: 94px;
+
+    padding:
+      20px 0;
+  }
+
+
+
+  /* PRINCIPLE */
+
+  .project-principle {
+    margin-top: 84px;
+
+    padding-top: 44px;
+
+    text-align: left;
+  }
+
+
+  .project-principle-line {
+    left: 0;
+
+    height: 28px;
+  }
+
+
+  .project-principle p {
+    font-size:
+      clamp(1.5rem, 7vw, 1.9rem);
+  }
+
+
+  .project-principle strong {
+    margin-top: 10px;
+
+    font-size:
+      clamp(2rem, 9vw, 2.6rem);
+  }
+
+
+  .project-screen-index {
+    right: -8px;
+
+    font-size: 7rem;
+  }
+
+}
