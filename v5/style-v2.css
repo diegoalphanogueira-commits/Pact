@@ -7372,13 +7372,13 @@ transform: scaleX(var(--reasoning-line-progress, 1));
 
 @media (min-width: 1001px) {
 
+  @media (min-width: 1001px) {
+
   .project-journey-viewport {
     position: relative;
 
-    height:
-      min(620px, calc(100vh - 110px));
-
-    min-height: 500px;
+    height: 720px;
+    min-height: 720px;
 
     margin-top: 108px;
 
