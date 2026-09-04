@@ -13065,3 +13065,557 @@ min-height: 620px;
   }
 
 }
+
+/* =========================================================
+   PACT REPORT V2 — INTELLIGENCE
+========================================================= */
+
+.assessment-intelligence {
+  margin-top: 78px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.92fr)
+    minmax(0, 1.08fr);
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.assessment-radar-card,
+.assessment-executive-card {
+  min-height: 480px;
+
+  padding:
+    34px;
+}
+
+
+.assessment-radar-card {
+  border-right:
+    1px solid rgba(255, 255, 255, 0.065);
+}
+
+
+.assessment-report-block-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+}
+
+
+.assessment-report-block-head > span {
+  color:
+    rgba(213, 255, 63, 0.7);
+
+  font-size: 0.57rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+
+.assessment-report-block-head > small {
+  color:
+    rgba(246, 247, 248, 0.22);
+
+  font-size: 0.5rem;
+  font-weight: 600;
+
+  letter-spacing: 0.11em;
+}
+
+
+
+/* RADAR */
+
+.assessment-radar {
+  position: relative;
+
+  width:
+    min(360px, 100%);
+
+  margin:
+    46px auto 0;
+}
+
+
+.assessment-radar svg {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  overflow: visible;
+}
+
+
+.assessment-radar-grid {
+  fill:
+    rgba(255, 255, 255, 0.008);
+
+  stroke:
+    rgba(255, 255, 255, 0.065);
+
+  stroke-width: 1;
+}
+
+
+.assessment-radar-grid-outer {
+  stroke:
+    rgba(213, 255, 63, 0.12);
+}
+
+
+.assessment-radar-axis {
+  stroke:
+    rgba(255, 255, 255, 0.045);
+
+  stroke-width: 1;
+}
+
+
+.assessment-radar-data {
+  fill:
+    rgba(213, 255, 63, 0.085);
+
+  stroke: #d5ff3f;
+
+  stroke-width: 1.5;
+
+  filter:
+    drop-shadow(
+      0 0 10px
+      rgba(213, 255, 63, 0.12)
+    );
+}
+
+
+.assessment-radar-label {
+  position: absolute;
+
+  width: 32px;
+  height: 32px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background:
+    #090c0f;
+
+  border:
+    1px solid rgba(213, 255, 63, 0.18);
+
+  color: #d5ff3f;
+
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+
+.assessment-radar-label-p {
+  left: 50%;
+  top: -3px;
+
+  transform:
+    translateX(-50%);
+}
+
+
+.assessment-radar-label-a {
+  right: -3px;
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+}
+
+
+.assessment-radar-label-c {
+  left: 50%;
+  bottom: -3px;
+
+  transform:
+    translateX(-50%);
+}
+
+
+.assessment-radar-label-t {
+  left: -3px;
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+}
+
+
+
+/* EXECUTIVE */
+
+.assessment-executive-grid {
+  margin-top: 46px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.06);
+
+  border-left:
+    1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.assessment-executive-metric {
+  min-height: 172px;
+
+  padding:
+    24px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  border-right:
+    1px solid rgba(255, 255, 255, 0.06);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.assessment-executive-metric > span {
+  color:
+    rgba(246, 247, 248, 0.28);
+
+  font-size: 0.5rem;
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+}
+
+
+.assessment-executive-metric > strong {
+  margin-top: auto;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(2.1rem, 3vw, 3.1rem);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.05em;
+
+  font-weight: 500;
+}
+
+
+.assessment-executive-metric
+.assessment-executive-word {
+  max-width: 220px;
+
+  font-size:
+    clamp(1.35rem, 2vw, 1.9rem);
+
+  line-height: 1.05;
+}
+
+
+.assessment-executive-metric > small {
+  margin-top: 10px;
+
+  color:
+    rgba(246, 247, 248, 0.3);
+
+  font-size: 0.58rem;
+
+  line-height: 1.45;
+}
+
+
+.assessment-executive-metric.is-critical
+> strong {
+  color: #d5ff3f;
+}
+
+
+
+/* =========================================================
+   MICRODIAGNOSTIC
+========================================================= */
+
+.assessment-microdiagnostic {
+  margin-top: 96px;
+}
+
+
+.assessment-micro-grid {
+  margin-top: 36px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1px;
+
+  background:
+    rgba(255, 255, 255, 0.055);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.055);
+}
+
+
+.assessment-micro-card {
+  min-height: 360px;
+
+  padding:
+    30px;
+
+  background:
+    #070a0d;
+}
+
+
+.assessment-micro-card.is-bottleneck {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(213, 255, 63, 0.045),
+      #070a0d 62%
+    );
+}
+
+
+.assessment-micro-card-head {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  padding-bottom: 24px;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.assessment-micro-card-head > span {
+  width: 46px;
+  height: 46px;
+
+  flex:
+    0 0 46px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.09);
+
+  color:
+    rgba(246, 247, 248, 0.58);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+
+.assessment-micro-card.is-bottleneck
+.assessment-micro-card-head > span {
+  background: #d5ff3f;
+
+  border-color: #d5ff3f;
+
+  color: #050709;
+}
+
+
+.assessment-micro-card-head > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.assessment-micro-card-head small {
+  color:
+    rgba(246, 247, 248, 0.28);
+
+  font-size: 0.5rem;
+  font-weight: 600;
+
+  letter-spacing: 0.11em;
+}
+
+
+.assessment-micro-card-head strong {
+  color:
+    rgba(246, 247, 248, 0.8);
+
+  font-size: 0.86rem;
+
+  font-weight: 500;
+}
+
+
+.assessment-micro-list {
+  margin-top: 28px;
+}
+
+
+.assessment-micro-item + .assessment-micro-item {
+  margin-top: 25px;
+}
+
+
+.assessment-micro-copy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.assessment-micro-copy span {
+  color:
+    rgba(246, 247, 248, 0.5);
+
+  font-size: 0.72rem;
+}
+
+
+.assessment-micro-copy strong {
+  color:
+    rgba(246, 247, 248, 0.65);
+
+  font-size: 0.7rem;
+
+  font-weight: 600;
+}
+
+
+.assessment-micro-bar {
+  height: 2px;
+
+  margin-top: 9px;
+
+  overflow: hidden;
+
+  background:
+    rgba(255, 255, 255, 0.055);
+}
+
+
+.assessment-micro-bar i {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  transform-origin:
+    left center;
+
+  background:
+    rgba(246, 247, 248, 0.34);
+}
+
+
+.assessment-micro-card.is-bottleneck
+.assessment-micro-bar i {
+  background: #d5ff3f;
+}
+
+
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+
+  .assessment-intelligence {
+    display: block;
+  }
+
+
+  .assessment-radar-card,
+  .assessment-executive-card {
+    min-height: 0;
+
+    padding:
+      28px 0;
+  }
+
+
+  .assessment-radar-card {
+    border-right: 0;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.065);
+  }
+
+
+  .assessment-radar {
+    width:
+      min(310px, 90%);
+  }
+
+
+  .assessment-executive-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .assessment-executive-metric {
+    min-height: 135px;
+  }
+
+
+  .assessment-microdiagnostic {
+    margin-top: 72px;
+  }
+
+
+  .assessment-micro-grid {
+    display: block;
+
+    background: transparent;
+
+    border: 0;
+  }
+
+
+  .assessment-micro-card {
+    min-height: 0;
+
+    padding:
+      28px 0;
+
+    border-top:
+      1px solid rgba(255, 255, 255, 0.06);
+  }
+
+
+  .assessment-micro-card:last-child {
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.06);
+  }
+
+}
