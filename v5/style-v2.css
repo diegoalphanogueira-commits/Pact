@@ -11069,3 +11069,53 @@ min-height: 620px;
   }
 
 }
+/* =========================================================
+   ASSESSMENT — CONTEXT COMPLETE
+========================================================= */
+
+.assessment-context-complete {
+  min-height: 118px;
+
+  padding:
+    26px 28px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  border:
+    1px solid rgba(213, 255, 63, 0.18);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(213, 255, 63, 0.045),
+      transparent
+    );
+}
+
+.assessment-context-complete span {
+  color:
+    rgba(213, 255, 63, 0.62);
+
+  font-size: 0.55rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+.assessment-context-complete strong {
+  color: #f6f7f8;
+
+  font-size:
+    clamp(1.7rem, 2.8vw, 2.5rem);
+
+  line-height: 1.1;
+
+  letter-spacing: -0.04em;
+
+  font-weight: 500;
+}
