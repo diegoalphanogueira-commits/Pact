@@ -3549,6 +3549,639 @@
 
   </main>
 
+  /* =========================================================
+   FOOTER — PACT
+========================================================= */
+
+.pact-footer {
+  position: relative;
+
+  overflow: hidden;
+
+  padding:
+    0 5vw;
+
+  background:
+    #050709;
+
+  color:
+    #f6f7f8;
+}
+
+
+.pact-footer::before {
+  content: "";
+
+  position: absolute;
+
+  left: 14%;
+  bottom: -220px;
+
+  width: 480px;
+  height: 480px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(213, 255, 63, 0.035),
+      transparent 68%
+    );
+
+  filter:
+    blur(40px);
+
+  pointer-events: none;
+}
+
+
+.pact-footer-shell {
+  position: relative;
+
+  max-width: 1180px;
+
+  margin:
+    0 auto;
+
+  padding:
+    90px 0 34px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+
+/* =========================================================
+   TOP
+========================================================= */
+
+.pact-footer-top {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.2fr)
+    minmax(0, 1fr)
+    minmax(0, 0.8fr);
+
+  gap:
+    70px;
+
+  align-items:
+    start;
+}
+
+
+
+/* BRAND */
+
+.pact-footer-logo {
+  display:
+    inline-block;
+
+  color:
+    #f6f7f8;
+
+  text-decoration:
+    none;
+
+  font-size:
+    1.65rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    -0.06em;
+}
+
+
+.pact-footer-positioning {
+  margin-top:
+    18px;
+
+  color:
+    rgba(246, 247, 248, 0.56);
+
+  font-size:
+    0.82rem;
+
+  line-height:
+    1.5;
+}
+
+
+.pact-footer-pillars {
+  margin-top:
+    28px;
+
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  color:
+    rgba(246, 247, 248, 0.25);
+
+  font-size:
+    0.54rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.pact-footer-pillars i {
+  width:
+    3px;
+
+  height:
+    3px;
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(213, 255, 63, 0.58);
+}
+
+
+
+/* =========================================================
+   MANIFESTO
+========================================================= */
+
+.pact-footer-manifesto {
+  padding-top:
+    4px;
+}
+
+
+.pact-footer-manifesto > span,
+.pact-footer-author > span {
+  display:
+    block;
+
+  color:
+    rgba(213, 255, 63, 0.58);
+
+  font-size:
+    0.52rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.14em;
+}
+
+
+.pact-footer-manifesto strong {
+  display:
+    block;
+
+  margin-top:
+    18px;
+
+  color:
+    rgba(246, 247, 248, 0.9);
+
+  font-size:
+    clamp(
+      1.45rem,
+      2.2vw,
+      2rem
+    );
+
+  line-height:
+    1.16;
+
+  letter-spacing:
+    -0.045em;
+
+  font-weight:
+    500;
+}
+
+
+
+/* =========================================================
+   AUTHOR
+========================================================= */
+
+.pact-footer-author {
+  padding-top:
+    4px;
+}
+
+
+.pact-footer-author strong {
+  display:
+    block;
+
+  margin-top:
+    18px;
+
+  color:
+    rgba(246, 247, 248, 0.86);
+
+  font-size:
+    0.86rem;
+
+  font-weight:
+    500;
+}
+
+
+.pact-footer-author p {
+  max-width:
+    220px;
+
+  margin-top:
+    8px;
+
+  color:
+    rgba(246, 247, 248, 0.32);
+
+  font-size:
+    0.67rem;
+
+  line-height:
+    1.6;
+}
+
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.pact-footer-divider {
+  height:
+    1px;
+
+  margin:
+    72px 0 29px;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+}
+
+
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+.pact-footer-bottom {
+  display:
+    grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items:
+    center;
+
+  gap:
+    40px;
+}
+
+
+
+/* COPYRIGHT */
+
+.pact-footer-copyright {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  white-space:
+    nowrap;
+}
+
+
+.pact-footer-copyright span {
+  color:
+    rgba(246, 247, 248, 0.42);
+
+  font-size:
+    0.58rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+.pact-footer-copyright small {
+  color:
+    rgba(246, 247, 248, 0.19);
+
+  font-size:
+    0.56rem;
+}
+
+
+
+/* LINKS */
+
+.pact-footer-links {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    26px;
+}
+
+
+.pact-footer-links a,
+.pact-footer-link-disabled {
+  position:
+    relative;
+
+  color:
+    rgba(246, 247, 248, 0.35);
+
+  font-size:
+    0.59rem;
+
+  font-weight:
+    500;
+
+  text-decoration:
+    none;
+
+  transition:
+    color 180ms ease;
+}
+
+
+.pact-footer-links a {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    5px;
+}
+
+
+.pact-footer-links a span {
+  color:
+    rgba(213, 255, 63, 0.45);
+
+  font-size:
+    0.58rem;
+
+  transition:
+    transform 180ms ease;
+}
+
+
+.pact-footer-links a:hover {
+  color:
+    #f6f7f8;
+}
+
+
+.pact-footer-links a:hover span {
+  transform:
+    translate(
+      2px,
+      -2px
+    );
+}
+
+
+.pact-footer-link-disabled {
+  cursor:
+    default;
+
+  opacity:
+    0.62;
+}
+
+
+
+/* STATUS */
+
+.pact-footer-status {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    flex-end;
+
+  gap:
+    8px;
+
+  white-space:
+    nowrap;
+}
+
+
+.pact-footer-status > span {
+  width:
+    5px;
+
+  height:
+    5px;
+
+  flex:
+    0 0 5px;
+
+  border-radius:
+    50%;
+
+  background:
+    #d5ff3f;
+
+  box-shadow:
+    0 0 12px
+    rgba(213, 255, 63, 0.28);
+}
+
+
+.pact-footer-status small {
+  color:
+    rgba(246, 247, 248, 0.22);
+
+  font-size:
+    0.49rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .pact-footer {
+    padding:
+      0 22px;
+  }
+
+
+  .pact-footer-shell {
+    padding:
+      68px 0 28px;
+  }
+
+
+  .pact-footer-top {
+    display:
+      block;
+  }
+
+
+  .pact-footer-logo {
+    font-size:
+      1.55rem;
+  }
+
+
+  .pact-footer-pillars {
+    max-width:
+      310px;
+
+    line-height:
+      1.8;
+  }
+
+
+
+  /* MANIFESTO */
+
+  .pact-footer-manifesto {
+    margin-top:
+      58px;
+  }
+
+
+  .pact-footer-manifesto strong {
+    margin-top:
+      15px;
+
+    font-size:
+      1.65rem;
+  }
+
+
+
+  /* AUTHOR */
+
+  .pact-footer-author {
+    margin-top:
+      50px;
+  }
+
+
+  .pact-footer-author p {
+    max-width:
+      260px;
+  }
+
+
+
+  /* DIVIDER */
+
+  .pact-footer-divider {
+    margin:
+      54px 0 26px;
+  }
+
+
+
+  /* BOTTOM */
+
+  .pact-footer-bottom {
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+    gap:
+      30px;
+  }
+
+
+  .pact-footer-copyright {
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+    gap:
+      4px;
+  }
+
+
+  .pact-footer-links {
+    flex-wrap:
+      wrap;
+
+    justify-content:
+      flex-start;
+
+    gap:
+      18px 24px;
+  }
+
+
+  .pact-footer-status {
+    justify-content:
+      flex-start;
+  }
+
+}
 
 <!-- GSAP -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
