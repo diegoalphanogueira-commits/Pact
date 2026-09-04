@@ -5493,6 +5493,108 @@ assessmentQuestions.push(
 );
 
 /* ======================================================
+   PHASE TRANSITION
+====================================================== */
+
+function showAssessmentTransition(
+  label,
+  title,
+  buttonLabel,
+  letter = ""
+) {
+
+  assessmentAnswerArea.innerHTML =
+    `
+      <div class="assessment-phase-complete">
+
+        ${
+          letter
+            ? `
+              <div class="assessment-phase-complete-mark">
+                ${letter}
+              </div>
+            `
+            : ""
+        }
+
+        <div>
+
+          <span>
+            ${label}
+          </span>
+
+          <strong>
+            ${escapePACTHTML(
+              title
+            )}
+          </strong>
+
+          <small>
+            O resultado completo será apresentado
+            ao final do Diagnóstico PACT.
+          </small>
+
+          <button
+            type="button"
+            class="assessment-transition-button"
+            id="assessmentContinuePhase"
+          >
+
+            <span>
+              ${buttonLabel}
+            </span>
+
+            <span aria-hidden="true">
+              →
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+    `;
+
+
+  assessmentNextButton.disabled =
+    true;
+
+
+  const button =
+    document.getElementById(
+      "assessmentContinuePhase"
+    );
+
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      assessmentIndex += 1;
+
+
+      gsap.to(
+        "#assessmentQuestion",
+        {
+          autoAlpha: 0,
+          y: -20,
+
+          duration: 0.22,
+
+          ease:
+            "power2.in",
+
+          onComplete:
+            renderAssessmentQuestion
+        }
+      );
+
+    }
+  );
+
+}
+
+/* ======================================================
    SEGMENT INTELLIGENCE
 ====================================================== */
 
