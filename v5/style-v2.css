@@ -7391,6 +7391,14 @@ transform: scaleX(var(--reasoning-line-progress, 1));
     margin-top: 0;
   }
 
+   .project-step {
+  overflow: visible;
+}
+
+.project-step-content {
+  overflow: visible;
+  }
+
 }
 
 
