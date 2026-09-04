@@ -1497,10 +1497,18 @@ const implementationPanels =
     ".implementation-panel"
   );
 
-const implementationLetter =
+const implementationImage =
   document.querySelector(
-    ".implementation-letter"
+    "#implementationImage"
   );
+
+
+const implementationImages = {
+  p: "images/pact-posicionamento.png",
+  a: "images/pact-aquisicao.png",
+  c: "images/pact-comercial.png",
+  t: "images/pact-tecnologia.png"
+};
 
 
 let activeImplementation = "p";
@@ -1568,7 +1576,7 @@ function changeImplementation(pillar) {
     !currentPanel ||
     !nextPanel ||
     !nextTab ||
-    !implementationLetter
+    !implementationImage
   ) {
     return;
   }
@@ -1628,58 +1636,52 @@ function changeImplementation(pillar) {
 
 
   /* ====================================================
-     GIANT LETTER
-  ==================================================== */
+   IMPLEMENTATION IMAGE
+==================================================== */
 
-  const letterTimeline =
-    gsap.timeline();
+const imageTimeline =
+  gsap.timeline();
 
 
-  letterTimeline
+imageTimeline
 
-    .to(
-      implementationLetter,
-      {
-        autoAlpha: 0.08,
+  .to(
+    implementationImage,
+    {
+      autoAlpha: 0,
 
-        scale: 0.82,
+      scale: 1.04,
 
-        y: -18,
+      duration: 0.22,
 
-        duration: 0.20,
+      ease: "power2.in",
 
-        ease: "power2.in",
+      onComplete: () => {
 
-        onComplete: () => {
+        implementationImage.src =
+          implementationImages[pillar];
 
-          implementationLetter.textContent =
-            pillar.toUpperCase();
-
-        }
       }
-    )
+    }
+  )
 
-    .fromTo(
-      implementationLetter,
-      {
-        autoAlpha: 0.025,
+  .fromTo(
+    implementationImage,
+    {
+      autoAlpha: 0,
 
-        scale: 1.15,
+      scale: 1.06
+    },
+    {
+      autoAlpha: 1,
 
-        y: 24
-      },
-      {
-        autoAlpha: 1,
+      scale: 1,
 
-        scale: 1,
+      duration: 0.62,
 
-        y: 0,
-
-        duration: 0.62,
-
-        ease: "power3.out"
-      }
-    );
+      ease: "power3.out"
+    }
+  );
 
 
 
