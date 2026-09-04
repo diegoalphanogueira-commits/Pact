@@ -8942,8 +8942,6 @@ const pactMetricGroups =
         </button>
       `;
 
-      `;
-
 
 /* ======================================================
    START PACT CONVERSATION
