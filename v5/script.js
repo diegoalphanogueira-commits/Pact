@@ -8420,37 +8420,70 @@ async function showPactNextStep(
           selected.label;
 
 
-        if (
-          selected.value ===
-          "schedule"
-        ) {
+       
 
-          await appendDiegoMessage(
-            "Perfeito."
-          );
+       if (
+  selected.value ===
+  "schedule"
+) {
 
-
-          await appendDiegoMessage(
-            "Vou abrir a etapa de agenda para você escolher um horário."
-          );
+  await appendDiegoMessage(
+    "Perfeito."
+  );
 
 
-          if (status) {
-
-            status.textContent =
-              "PRONTO PARA AGENDAR";
-
-          }
+  await appendDiegoMessage(
+    "Então vamos fazer assim: me chama direto no WhatsApp."
+  );
 
 
-          /*
-            Na próxima missão:
-            horários reais da agenda.
-          */
+  await appendDiegoMessage(
+    "Me manda um oi por lá que eu já te envio os próximos horários disponíveis e a gente escolhe o melhor para você."
+  );
 
-          return;
 
-        }
+  if (status) {
+
+    status.textContent =
+      "PRONTO PARA AGENDAR";
+
+  }
+
+
+  renderPactConversationOptions(
+    [
+      {
+        value: "open_schedule_whatsapp",
+        label: "Ver horários no WhatsApp ↗"
+      }
+    ],
+
+    async () => {
+
+      const message =
+`Oi, Diego! Quero ver os horários disponíveis para conversarmos sobre meu Diagnóstico PACT.
+
+Empresa: ${assessmentAnswers.company || ""}
+Score PACT: ${report.overallScore}/100
+Gargalo: ${report.bottleneckName}`;
+
+
+      window.open(
+        `https://wa.me/5511970349654?text=${
+          encodeURIComponent(
+            message
+          )
+        }`,
+        "_blank"
+      );
+
+    }
+  );
+
+
+  return;
+
+}
 
 
         if (
