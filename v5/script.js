@@ -4864,6 +4864,8 @@ let assessmentIndex = 0;
 
 const assessmentAnswers = {};
 
+  const ASSESSMENT_TOTAL_PLANNED = 20;
+
 
 
 /* ======================================================
@@ -5040,6 +5042,225 @@ const assessmentQuestions = [
 
 ];
 
+  /* ======================================================
+   P — POSICIONAMENTO
+====================================================== */
+
+assessmentQuestions.push(
+
+  {
+    id: "p_clarity",
+
+    phase: "p",
+
+    eyebrow: "POSICIONAMENTO · 01",
+
+    title:
+      "Quando alguém conhece sua empresa pela primeira vez, entende rapidamente por que deveria escolher vocês?",
+
+    description:
+      "Considere a clareza da comunicação, o problema que vocês resolvem e o motivo para escolher sua empresa em vez de outra.",
+
+    type: "options",
+
+    options: [
+
+      {
+        value: "very_clear",
+        label:
+          "Sim. Nossa proposta e nossos diferenciais são muito claros.",
+        score: 100,
+        signal: "strong_positioning"
+      },
+
+      {
+        value: "clear_offer_weak_difference",
+        label:
+          "Entendem o que fazemos, mas o diferencial ainda não é tão evidente.",
+        score: 72,
+        signal: "weak_differentiation"
+      },
+
+      {
+        value: "needs_explanation",
+        label:
+          "Normalmente precisamos explicar bastante para o cliente perceber o valor.",
+        score: 42,
+        signal: "unclear_value"
+      },
+
+      {
+        value: "confusing",
+        label:
+          "Nossa comunicação ainda é confusa ou muda muito de um canal para outro.",
+        score: 20,
+        signal: "fragmented_positioning"
+      }
+
+    ]
+  },
+
+
+  {
+    id: "p_audience",
+
+    phase: "p",
+
+    eyebrow: "POSICIONAMENTO · 02",
+
+    title:
+      "Quão claro está quem é o cliente ideal do seu negócio?",
+
+    description:
+      "Quanto mais claro o público, mais fácil construir oferta, comunicação e aquisição eficientes.",
+
+    type: "options",
+
+    options: [
+
+      {
+        value: "defined",
+        label:
+          "Muito claro. Sabemos exatamente quem queremos atrair e quais problemas resolvemos.",
+        score: 100,
+        signal: "clear_audience"
+      },
+
+      {
+        value: "mostly_defined",
+        label:
+          "Temos uma boa noção, mas ainda atendemos perfis bastante diferentes.",
+        score: 74,
+        signal: "broad_audience"
+      },
+
+      {
+        value: "broad",
+        label:
+          "Nosso público é amplo e ainda não temos um perfil prioritário bem definido.",
+        score: 43,
+        signal: "undefined_priority_audience"
+      },
+
+      {
+        value: "anyone",
+        label:
+          "Hoje tentamos vender para praticamente qualquer pessoa que possa comprar.",
+        score: 18,
+        signal: "no_audience_definition"
+      }
+
+    ]
+  },
+
+
+  {
+    id: "p_trust",
+
+    phase: "p",
+
+    eyebrow: "POSICIONAMENTO · 03",
+
+    title:
+      "Se um potencial cliente pesquisar sua empresa antes de entrar em contato, o que ele encontra?",
+
+    description:
+      "Considere site, Google, redes sociais, avaliações, cases, trabalhos realizados e outras provas de confiança.",
+
+    type: "options",
+
+    options: [
+
+      {
+        value: "strong_presence",
+        label:
+          "Uma presença profissional, coerente e com boas provas de confiança.",
+        score: 100,
+        signal: "strong_trust"
+      },
+
+      {
+        value: "basic_presence",
+        label:
+          "Encontra informações boas, mas nossa autoridade e provas ainda poderiam ser mais fortes.",
+        score: 72,
+        signal: "weak_social_proof"
+      },
+
+      {
+        value: "fragmented_presence",
+        label:
+          "Encontra algumas coisas, mas a presença é incompleta ou pouco organizada.",
+        score: 42,
+        signal: "fragmented_presence"
+      },
+
+      {
+        value: "weak_presence",
+        label:
+          "Encontra pouco conteúdo ou quase nada que ajude a confiar na empresa.",
+        score: 18,
+        signal: "low_digital_trust"
+      }
+
+    ]
+  },
+
+
+  {
+    id: "p_offer",
+
+    phase: "p",
+
+    eyebrow: "POSICIONAMENTO · 04",
+
+    title:
+      "Hoje sua principal oferta é fácil de entender e de comprar?",
+
+    description:
+      "Pense se o cliente entende o que recebe, qual transformação ou benefício existe e qual é o próximo passo.",
+
+    type: "options",
+
+    options: [
+
+      {
+        value: "structured_offer",
+        label:
+          "Sim. Temos uma oferta clara, bem apresentada e com próximo passo definido.",
+        score: 100,
+        signal: "strong_offer"
+      },
+
+      {
+        value: "clear_service",
+        label:
+          "O serviço é claro, mas ainda pode ser melhor estruturado como oferta.",
+        score: 73,
+        signal: "offer_needs_structure"
+      },
+
+      {
+        value: "custom_every_time",
+        label:
+          "Cada venda acaba sendo explicada ou montada praticamente do zero.",
+        score: 40,
+        signal: "unstructured_offer"
+      },
+
+      {
+        value: "confusing_offer",
+        label:
+          "O cliente muitas vezes não entende exatamente o que oferecemos ou qual caminho seguir.",
+        score: 17,
+        signal: "unclear_offer"
+      }
+
+    ]
+  }
+
+);
+
 
 
 /* ======================================================
@@ -5054,11 +5275,140 @@ function getAssessmentQuestion() {
 
 }
 
+  /* ======================================================
+   SCORE ENGINE
+====================================================== */
+
+function getAssessmentOptionData(
+  question,
+  value
+) {
+
+  if (
+    !question ||
+    !question.options
+  ) {
+    return null;
+  }
+
+
+  return question.options.find(
+    (option) =>
+      option.value === value
+  ) || null;
+
+}
+
+
+
+function calculateAssessmentPhaseScore(
+  phase
+) {
+
+  const phaseQuestions =
+    assessmentQuestions.filter(
+      (question) =>
+        question.phase === phase &&
+        question.options
+    );
+
+
+  let totalScore = 0;
+  let answered = 0;
+
+
+  phaseQuestions.forEach(
+    (question) => {
+
+      const answer =
+        assessmentAnswers[
+          question.id
+        ];
+
+
+      const option =
+        getAssessmentOptionData(
+          question,
+          answer
+        );
+
+
+      if (
+        option &&
+        typeof option.score === "number"
+      ) {
+
+        totalScore +=
+          option.score;
+
+        answered += 1;
+
+      }
+
+    }
+  );
+
+
+  if (!answered) {
+    return 0;
+  }
+
+
+  return Math.round(
+    totalScore / answered
+  );
+
+}
+
+
+
+function getAssessmentPhaseSignals(
+  phase
+) {
+
+  const signals = [];
+
+
+  assessmentQuestions
+    .filter(
+      (question) =>
+        question.phase === phase
+    )
+    .forEach(
+      (question) => {
+
+        const option =
+          getAssessmentOptionData(
+            question,
+            assessmentAnswers[
+              question.id
+            ]
+          );
+
+
+        if (
+          option &&
+          option.signal
+        ) {
+
+          signals.push(
+            option.signal
+          );
+
+        }
+
+      }
+    );
+
+
+  return signals;
+
+}
 
 function updateAssessmentProgress() {
 
   const total =
-    assessmentQuestions.length;
+  ASSESSMENT_TOTAL_PLANNED;
 
   const current =
     assessmentIndex + 1;
@@ -5509,74 +5859,206 @@ function goToNextAssessmentQuestion() {
     terminando apenas CONTEXTO
   */
 
-  if (
-    assessmentIndex ===
-    assessmentQuestions.length - 1
-  ) {
+  /* ====================================================
+   CONTEXTO → POSICIONAMENTO
+==================================================== */
 
-    console.log(
-      "PACT CONTEXT:",
-      assessmentAnswers
+const currentQuestion =
+  getAssessmentQuestion();
+
+
+if (
+  currentQuestion &&
+  currentQuestion.id === "goal"
+) {
+
+  assessmentQuestionEyebrow
+    .textContent =
+      "CONTEXTO CONCLUÍDO";
+
+
+  assessmentQuestionTitle
+    .textContent =
+      `Perfeito${
+        assessmentAnswers.name
+          ? `, ${assessmentAnswers.name}`
+          : ""
+      }. Agora vamos analisar seu Posicionamento.`;
+
+
+  assessmentQuestionDescription
+    .textContent =
+      "A partir daqui, cada resposta começa a alimentar o seu diagnóstico PACT.";
+
+
+  assessmentAnswerArea.innerHTML =
+    `
+      <div class="assessment-context-complete">
+
+        <span>
+          CONTEXTO IDENTIFICADO
+        </span>
+
+        <strong>
+          ${
+            assessmentAnswers.company ||
+            "Seu negócio"
+          }
+        </strong>
+
+        <button
+          type="button"
+          class="assessment-transition-button"
+          id="assessmentStartPositioning"
+        >
+
+          <span>
+            Analisar Posicionamento
+          </span>
+
+          <span aria-hidden="true">
+            →
+          </span>
+
+        </button>
+
+      </div>
+    `;
+
+
+  assessmentNextButton.disabled =
+    true;
+
+
+  const startPositioningButton =
+    document.getElementById(
+      "assessmentStartPositioning"
     );
 
 
-    /*
-      temporário:
-      próxima missão começa P
-    */
+  startPositioningButton
+    .addEventListener(
+      "click",
+      () => {
 
-    assessmentQuestionEyebrow
-      .textContent =
-        "CONTEXTO CONCLUÍDO";
+        assessmentIndex += 1;
 
+        gsap.to(
+          "#assessmentQuestion",
+          {
+            autoAlpha: 0,
+            y: -20,
 
-    assessmentQuestionTitle
-      .textContent =
-        `Perfeito${
-          assessmentAnswers.name
-            ? `, ${assessmentAnswers.name}`
-            : ""
-        }. Agora vamos analisar seu Posicionamento.`;
+            duration: 0.22,
 
+            ease:
+              "power2.in",
 
-    assessmentQuestionDescription
-      .textContent =
-        "Na próxima etapa, o PACT começa a investigar como o mercado percebe, encontra e entende o seu negócio.";
+            onComplete:
+              renderAssessmentQuestion
+          }
+        );
 
-
-    assessmentAnswerArea.innerHTML =
-      `
-        <div class="assessment-context-complete">
-          <span>
-            CONTEXTO IDENTIFICADO
-          </span>
-
-          <strong>
-            ${
-              assessmentAnswers.company ||
-              "Seu negócio"
-            }
-          </strong>
-        </div>
-      `;
-
-
-    assessmentNextButton.disabled =
-      true;
-
-
-    gsap.to(
-      assessmentProgressBar,
-      {
-        scaleX: 1,
-
-        duration: 0.5
       }
     );
 
 
-    return;
+  return;
+
   }
+
+  /* ====================================================
+   POSICIONAMENTO CONCLUÍDO
+==================================================== */
+
+if (
+  currentQuestion &&
+  currentQuestion.id === "p_offer"
+) {
+
+  const positioningScore =
+    calculateAssessmentPhaseScore(
+      "p"
+    );
+
+
+  const positioningSignals =
+    getAssessmentPhaseSignals(
+      "p"
+    );
+
+
+  assessmentAnswers.p_score =
+    positioningScore;
+
+
+  assessmentAnswers.p_signals =
+    positioningSignals;
+
+
+  assessmentQuestionEyebrow
+    .textContent =
+      "POSICIONAMENTO ANALISADO";
+
+
+  assessmentQuestionTitle
+    .textContent =
+      "O primeiro pilar do seu diagnóstico está concluído.";
+
+
+  assessmentQuestionDescription
+    .textContent =
+      "Já identificamos sinais sobre clareza, público, confiança e estrutura da sua oferta. Agora precisamos entender como novas oportunidades chegam até o negócio.";
+
+
+  assessmentAnswerArea.innerHTML =
+    `
+      <div class="assessment-phase-complete">
+
+        <div class="assessment-phase-complete-mark">
+          P
+        </div>
+
+        <div>
+
+          <span>
+            POSICIONAMENTO
+          </span>
+
+          <strong>
+            Leitura registrada
+          </strong>
+
+          <small>
+            O resultado completo será apresentado
+            ao final do Diagnóstico PACT.
+          </small>
+
+        </div>
+
+      </div>
+    `;
+
+
+  assessmentNextButton.disabled =
+    true;
+
+
+  console.log(
+    "PACT POSITIONING SCORE:",
+    positioningScore
+  );
+
+
+  console.log(
+    "PACT POSITIONING SIGNALS:",
+    positioningSignals
+  );
+
+
+  return;
+
+}
 
 
   assessmentIndex += 1;
