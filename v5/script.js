@@ -3423,6 +3423,17 @@ mm.add("(min-width: 641px)", () => {
 
       });
 
+    if (
+  markerPoints[3] &&
+  markerPoints[0]
+) {
+
+  rowShift =
+    markerPoints[3].y -
+    markerPoints[0].y;
+
+}
+
   }
 
 
@@ -3471,7 +3482,7 @@ mm.add("(min-width: 641px)", () => {
     ScrollTrigger.create({
 
       trigger:
-        ".project-journey",
+  ".project-journey-viewport",
 
       start:
         "top 14%",
@@ -3518,6 +3529,31 @@ mm.add("(min-width: 641px)", () => {
         setProjectStep(
           stepIndex
         );
+        /* ==============================================
+   CAMERA FOLLOWS ROW 01 → ROW 02
+============================================== */
+
+const cameraStart = 0.46;
+const cameraEnd = 0.60;
+
+
+const cameraProgress =
+  gsap.utils.clamp(
+    0,
+    1,
+    (progress - cameraStart) /
+    (cameraEnd - cameraStart)
+  );
+
+
+gsap.set(
+  ".project-journey",
+  {
+    y:
+      -rowShift *
+      cameraProgress
+  }
+);
 
 
 
