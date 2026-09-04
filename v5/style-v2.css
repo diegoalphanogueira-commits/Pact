@@ -15974,8 +15974,10 @@ and (
   .implementation-visual {
     width: 100%;
 
-    height: 320px;
-    min-height: 320px;
+    height: auto;
+    min-height: 0;
+
+    aspect-ratio: 4 / 5;
 
     border-right: 0;
 
@@ -15985,8 +15987,13 @@ and (
 
 
   .implementation-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
     object-position:
-      center 38%;
+      center center;
   }
 
 
