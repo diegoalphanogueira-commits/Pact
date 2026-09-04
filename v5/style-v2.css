@@ -14967,3 +14967,145 @@ min-height: 620px;
   }
 
 }
+/* =========================================================
+   PACT CHAT — HUMAN EXPERIENCE
+========================================================= */
+
+.pact-conversation {
+  max-width: 760px;
+}
+
+
+.pact-conversation-messages {
+  min-height: 320px;
+  max-height: 520px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(213, 255, 63, 0.16)
+    transparent;
+
+  scroll-behavior: smooth;
+}
+
+
+.pact-conversation-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+
+.pact-conversation-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.pact-conversation-messages::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+
+  background:
+    rgba(213, 255, 63, 0.14);
+}
+
+
+
+/* EVENT */
+
+.pact-chat-event {
+  margin:
+    3px 0 18px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  color:
+    rgba(246, 247, 248, 0.2);
+}
+
+
+.pact-chat-event > span {
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background:
+    #d5ff3f;
+
+  box-shadow:
+    0 0 10px
+    rgba(213, 255, 63, 0.25);
+}
+
+
+.pact-chat-event small {
+  font-size: 0.51rem;
+
+  letter-spacing: 0.04em;
+}
+
+
+
+/* TYPING WRAPPER */
+
+.pact-chat-typing-wrap {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  width: fit-content;
+}
+
+
+.pact-chat-typing-wrap > small {
+  color:
+    rgba(246, 247, 248, 0.18);
+
+  font-size: 0.51rem;
+}
+
+
+
+/* MORE NATURAL BUBBLES */
+
+.pact-chat-message-diego
+.pact-chat-bubble {
+  max-width: 68%;
+}
+
+
+.pact-chat-message-lead
+.pact-chat-bubble {
+  max-width: 64%;
+}
+
+
+@media (max-width: 640px) {
+
+  .pact-conversation {
+    max-width: 100%;
+  }
+
+
+  .pact-conversation-messages {
+    min-height: 300px;
+    max-height: 470px;
+  }
+
+
+  .pact-chat-message-diego
+  .pact-chat-bubble,
+  .pact-chat-message-lead
+  .pact-chat-bubble {
+    max-width: 88%;
+  }
+
+}
