@@ -11280,3 +11280,757 @@ min-height: 620px;
   }
 
 }
+
+/* =========================================================
+   ASSESSMENT — PROCESSING
+========================================================= */
+
+.assessment-processing {
+  min-height: 180px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  gap: 8px;
+
+  border:
+    1px solid rgba(213, 255, 63, 0.14);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(213, 255, 63, 0.05),
+      transparent 65%
+    );
+}
+
+
+.assessment-processing-ring {
+  width: 50px;
+  height: 50px;
+
+  margin-bottom: 14px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid rgba(213, 255, 63, 0.16);
+
+  border-top-color:
+    #d5ff3f;
+
+  animation:
+    pactProcessing 900ms linear infinite;
+}
+
+
+@keyframes pactProcessing {
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+
+}
+
+
+.assessment-processing strong {
+  color: #d5ff3f;
+
+  font-size: 0.64rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+
+.assessment-processing small {
+  color:
+    rgba(246, 247, 248, 0.34);
+
+  font-size: 0.65rem;
+}
+
+
+
+/* =========================================================
+   ASSESSMENT RESULT
+========================================================= */
+
+.assessment-result {
+  padding:
+    18px 0 40px;
+}
+
+
+.assessment-result-header {
+  padding-bottom: 64px;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.assessment-result-kicker {
+  color: #d5ff3f;
+
+  font-size: 0.64rem;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
+
+.assessment-result-heading {
+  margin-top: 38px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 60px;
+}
+
+
+.assessment-result-heading h2 {
+  color: #f6f7f8;
+
+  font-size:
+    clamp(3rem, 5vw, 5rem);
+
+  line-height: 1;
+
+  letter-spacing: -0.055em;
+
+  font-weight: 500;
+}
+
+
+.assessment-result-heading p {
+  margin-top: 15px;
+
+  color:
+    rgba(246, 247, 248, 0.42);
+
+  font-size: 0.86rem;
+}
+
+
+.assessment-result-score {
+  min-width: 190px;
+
+  text-align: right;
+}
+
+
+.assessment-result-score span {
+  display: block;
+
+  color:
+    rgba(246, 247, 248, 0.3);
+
+  font-size: 0.55rem;
+
+  letter-spacing: 0.13em;
+}
+
+
+.assessment-result-score strong {
+  color: #d5ff3f;
+
+  font-size: 5rem;
+
+  line-height: 0.9;
+
+  font-weight: 500;
+
+  letter-spacing: -0.07em;
+}
+
+
+.assessment-result-score small {
+  color:
+    rgba(246, 247, 248, 0.32);
+}
+
+
+.assessment-result-maturity {
+  margin-top: 48px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.assessment-result-maturity span {
+  color:
+    rgba(246, 247, 248, 0.25);
+
+  font-size: 0.53rem;
+
+  letter-spacing: 0.13em;
+}
+
+
+.assessment-result-maturity strong {
+  color:
+    rgba(246, 247, 248, 0.8);
+
+  font-size: 0.9rem;
+
+  font-weight: 500;
+}
+
+
+
+/* PILLARS */
+
+.assessment-result-pillars {
+  margin-top: 72px;
+}
+
+
+.assessment-result-pillar {
+  padding:
+    24px 0;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.assessment-result-pillar-head {
+  display: grid;
+
+  grid-template-columns:
+    48px 1fr auto;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+
+.assessment-result-pillar-head > span {
+  width: 40px;
+  height: 40px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.09);
+
+  color:
+    rgba(246, 247, 248, 0.6);
+
+  font-size: 0.74rem;
+
+  font-weight: 700;
+}
+
+
+.assessment-result-pillar-head strong {
+  color:
+    rgba(246, 247, 248, 0.72);
+
+  font-size: 0.74rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+}
+
+
+.assessment-result-pillar-head b {
+  color:
+    rgba(246, 247, 248, 0.52);
+
+  font-size: 0.82rem;
+}
+
+
+.assessment-result-pillar.is-bottleneck
+.assessment-result-pillar-head > span {
+  color: #050709;
+
+  background: #d5ff3f;
+
+  border-color: #d5ff3f;
+}
+
+
+.assessment-result-pillar.is-bottleneck
+.assessment-result-pillar-head b {
+  color: #d5ff3f;
+}
+
+
+.assessment-result-bar {
+  height: 2px;
+
+  margin:
+    17px 0 0 64px;
+
+  overflow: hidden;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+}
+
+
+.assessment-result-bar i {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  transform-origin:
+    left center;
+
+  background:
+    rgba(246, 247, 248, 0.35);
+}
+
+
+.assessment-result-pillar.is-bottleneck
+.assessment-result-bar i {
+  background: #d5ff3f;
+}
+
+
+
+/* BOTTLENECK */
+
+.assessment-result-bottleneck {
+  margin-top: 96px;
+
+  padding:
+    54px 0;
+
+  display: grid;
+
+  grid-template-columns:
+    180px minmax(0, 1fr);
+
+  gap: 54px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.assessment-result-bottleneck-mark {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  border-right:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.assessment-result-bottleneck-mark span,
+.assessment-result-area {
+  color:
+    rgba(213, 255, 63, 0.68);
+
+  font-size: 0.56rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+
+.assessment-result-bottleneck-mark strong {
+  margin-top: 10px;
+
+  color: #d5ff3f;
+
+  font-size: 5rem;
+
+  line-height: 1;
+
+  font-weight: 500;
+}
+
+
+.assessment-result-bottleneck h3 {
+  max-width: 760px;
+
+  margin-top: 12px;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(2.3rem, 4vw, 3.8rem);
+
+  line-height: 1.03;
+
+  letter-spacing: -0.05em;
+
+  font-weight: 500;
+}
+
+
+.assessment-result-bottleneck p {
+  max-width: 700px;
+
+  margin-top: 24px;
+
+  color:
+    rgba(246, 247, 248, 0.46);
+
+  font-size: 0.88rem;
+
+  line-height: 1.75;
+}
+
+
+
+/* READING */
+
+.assessment-result-reading {
+  max-width: 850px;
+
+  margin:
+    88px auto 0;
+
+  text-align: center;
+}
+
+
+.assessment-result-reading > span,
+.assessment-result-actions > span,
+.assessment-result-avoid > span {
+  color:
+    rgba(213, 255, 63, 0.64);
+
+  font-size: 0.58rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+
+.assessment-result-reading p {
+  margin-top: 24px;
+
+  color:
+    rgba(246, 247, 248, 0.42);
+
+  font-size:
+    clamp(1.7rem, 2.7vw, 2.5rem);
+
+  line-height: 1.3;
+
+  letter-spacing: -0.035em;
+}
+
+
+.assessment-result-reading strong {
+  color: #f6f7f8;
+
+  font-weight: 500;
+}
+
+
+
+/* ACTIONS */
+
+.assessment-result-actions {
+  margin-top: 96px;
+}
+
+
+.assessment-result-action-grid {
+  margin-top: 34px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.assessment-result-action {
+  min-height: 210px;
+
+  padding:
+    30px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  border-right:
+    1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.assessment-result-action:last-child {
+  border-right: 0;
+}
+
+
+.assessment-result-action span {
+  color:
+    rgba(213, 255, 63, 0.5);
+
+  font-size: 0.62rem;
+
+  font-weight: 700;
+}
+
+
+.assessment-result-action strong {
+  color:
+    rgba(246, 247, 248, 0.8);
+
+  font-size: 0.94rem;
+
+  line-height: 1.55;
+
+  font-weight: 500;
+}
+
+
+
+/* DON'T PRIORITIZE */
+
+.assessment-result-avoid {
+  margin-top: 76px;
+
+  padding:
+    34px;
+
+  border-left:
+    2px solid #d5ff3f;
+
+  background:
+    rgba(213, 255, 63, 0.025);
+}
+
+
+.assessment-result-avoid strong {
+  display: block;
+
+  max-width: 780px;
+
+  margin-top: 13px;
+
+  color:
+    rgba(246, 247, 248, 0.78);
+
+  font-size: 1rem;
+
+  line-height: 1.6;
+
+  font-weight: 500;
+}
+
+
+
+/* CTA */
+
+.assessment-result-cta {
+  margin-top: 100px;
+
+  padding:
+    52px 0;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 60px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.assessment-result-cta > div {
+  max-width: 700px;
+}
+
+
+.assessment-result-cta > div > span {
+  color: #d5ff3f;
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.14em;
+}
+
+
+.assessment-result-cta h3 {
+  margin-top: 16px;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(2.2rem, 3.8vw, 3.7rem);
+
+  line-height: 1.04;
+
+  letter-spacing: -0.05em;
+
+  font-weight: 500;
+}
+
+
+.assessment-result-cta p {
+  max-width: 560px;
+
+  margin-top: 20px;
+
+  color:
+    rgba(246, 247, 248, 0.42);
+
+  font-size: 0.84rem;
+
+  line-height: 1.7;
+}
+
+
+.assessment-result-contact {
+  min-height: 58px;
+
+  flex-shrink: 0;
+
+  padding:
+    0 24px;
+
+  border: 0;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 22px;
+
+  background: #d5ff3f;
+  color: #050709;
+
+  cursor: pointer;
+
+  font-size: 0.78rem;
+
+  font-weight: 700;
+}
+
+
+.assessment-result-restart {
+  margin-top: 32px;
+
+  border: 0;
+
+  background: transparent;
+
+  color:
+    rgba(246, 247, 248, 0.34);
+
+  cursor: pointer;
+
+  font-size: 0.7rem;
+}
+
+
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+
+  .assessment-result-heading {
+    display: block;
+  }
+
+
+  .assessment-result-score {
+    margin-top: 44px;
+
+    text-align: left;
+  }
+
+
+  .assessment-result-bottleneck {
+    display: block;
+  }
+
+
+  .assessment-result-bottleneck-mark {
+    padding-bottom: 30px;
+
+    border-right: 0;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.07);
+  }
+
+
+  .assessment-result-bottleneck > div:last-child {
+    padding-top: 32px;
+  }
+
+
+  .assessment-result-reading {
+    text-align: left;
+  }
+
+
+  .assessment-result-action-grid {
+    display: block;
+  }
+
+
+  .assessment-result-action {
+    min-height: 150px;
+
+    padding:
+      26px 0;
+
+    border-right: 0;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.06);
+  }
+
+
+  .assessment-result-cta {
+    display: block;
+  }
+
+
+  .assessment-result-contact {
+    width: 100%;
+
+    margin-top: 34px;
+
+    justify-content: space-between;
+  }
+
+}
