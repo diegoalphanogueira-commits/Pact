@@ -4770,6 +4770,1052 @@ if (authorSection) {
   });
 
 }
+/* ======================================================
+   SCREEN 10 — PACT ASSESSMENT ENGINE
+====================================================== */
+
+const assessmentEntry =
+  document.getElementById(
+    "assessmentEntry"
+  );
+
+const assessmentApp =
+  document.getElementById(
+    "assessmentApp"
+  );
+
+const assessmentResult =
+  document.getElementById(
+    "assessmentResult"
+  );
+
+const assessmentStartButton =
+  document.getElementById(
+    "assessmentStartButton"
+  );
+
+const assessmentCloseButton =
+  document.getElementById(
+    "assessmentCloseButton"
+  );
+
+const assessmentBackButton =
+  document.getElementById(
+    "assessmentBackButton"
+  );
+
+const assessmentNextButton =
+  document.getElementById(
+    "assessmentNextButton"
+  );
+
+const assessmentAnswerArea =
+  document.getElementById(
+    "assessmentAnswerArea"
+  );
+
+const assessmentQuestionEyebrow =
+  document.getElementById(
+    "assessmentQuestionEyebrow"
+  );
+
+const assessmentQuestionTitle =
+  document.getElementById(
+    "assessmentQuestionTitle"
+  );
+
+const assessmentQuestionDescription =
+  document.getElementById(
+    "assessmentQuestionDescription"
+  );
+
+const assessmentProgressText =
+  document.getElementById(
+    "assessmentProgressText"
+  );
+
+const assessmentProgressBar =
+  document.getElementById(
+    "assessmentProgressBar"
+  );
+
+const assessmentPhaseLabel =
+  document.getElementById(
+    "assessmentPhaseLabel"
+  );
+
+const assessmentCurrentQuestion =
+  document.getElementById(
+    "assessmentCurrentQuestion"
+  );
+
+const assessmentTotalQuestions =
+  document.getElementById(
+    "assessmentTotalQuestions"
+  );
+
+
+
+/* ======================================================
+   STATE
+====================================================== */
+
+let assessmentIndex = 0;
+
+const assessmentAnswers = {};
+
+
+
+/* ======================================================
+   CONTEXT QUESTIONS
+====================================================== */
+
+const assessmentQuestions = [
+
+  {
+    id: "name",
+
+    phase: "context",
+
+    eyebrow: "CONTEXTO · 01",
+
+    title:
+      "Antes de falar do negócio, como você se chama?",
+
+    description:
+      "Vamos usar seu nome para personalizar a análise.",
+
+    type: "text",
+
+    placeholder:
+      "Digite seu primeiro nome",
+
+    autocomplete: "given-name"
+  },
+
+
+  {
+    id: "company",
+
+    phase: "context",
+
+    eyebrow: "CONTEXTO · 02",
+
+    title:
+      "Qual é o nome do seu negócio?",
+
+    description:
+      "Pode ser o nome da empresa, marca ou operação que você quer analisar.",
+
+    type: "text",
+
+    placeholder:
+      "Ex.: Studio Bella",
+
+    autocomplete: "organization"
+  },
+
+
+  {
+    id: "segment",
+
+    phase: "context",
+
+    eyebrow: "CONTEXTO · 03",
+
+    title:
+      "Qual dessas opções mais se aproxima do seu negócio?",
+
+    description:
+      "Isso muda a forma como o PACT interpreta as próximas respostas.",
+
+    type: "options",
+
+    options: [
+
+      {
+        value: "beauty",
+        label: "Beleza e estética"
+      },
+
+      {
+        value: "health",
+        label: "Saúde e clínica"
+      },
+
+      {
+        value: "local_service",
+        label: "Serviços locais"
+      },
+
+      {
+        value: "professional",
+        label: "Serviços profissionais"
+      },
+
+      {
+        value: "b2b",
+        label: "Serviços B2B"
+      },
+
+      {
+        value: "retail",
+        label: "Loja ou comércio"
+      },
+
+      {
+        value: "ecommerce",
+        label: "E-commerce"
+      },
+
+      {
+        value: "education",
+        label: "Educação ou treinamento"
+      },
+
+      {
+        value: "other",
+        label: "Outro segmento"
+      }
+
+    ]
+  },
+
+
+  {
+    id: "goal",
+
+    phase: "context",
+
+    eyebrow: "CONTEXTO · 04",
+
+    title:
+      "Qual é o principal objetivo do negócio agora?",
+
+    description:
+      "Escolha o movimento que mais representa o momento atual.",
+
+    type: "options",
+
+    options: [
+
+      {
+        value: "more_customers",
+        label:
+          "Atrair mais clientes"
+      },
+
+      {
+        value: "sell_more",
+        label:
+          "Vender mais das oportunidades que já chegam"
+      },
+
+      {
+        value: "positioning",
+        label:
+          "Melhorar posicionamento e percepção"
+      },
+
+      {
+        value: "organization",
+        label:
+          "Organizar o comercial"
+      },
+
+      {
+        value: "automation",
+        label:
+          "Automatizar e ganhar eficiência"
+      },
+
+      {
+        value: "scale",
+        label:
+          "Criar estrutura para crescer"
+      }
+
+    ]
+  }
+
+];
+
+
+
+/* ======================================================
+   HELPERS
+====================================================== */
+
+function getAssessmentQuestion() {
+
+  return assessmentQuestions[
+    assessmentIndex
+  ];
+
+}
+
+
+function updateAssessmentProgress() {
+
+  const total =
+    assessmentQuestions.length;
+
+  const current =
+    assessmentIndex + 1;
+
+  const progress =
+    current / total;
+
+
+  assessmentCurrentQuestion.textContent =
+    String(current).padStart(
+      2,
+      "0"
+    );
+
+
+  assessmentTotalQuestions.textContent =
+    String(total).padStart(
+      2,
+      "0"
+    );
+
+
+  assessmentProgressText.textContent =
+    `${Math.round(
+      progress * 100
+    )}%`;
+
+
+  gsap.to(
+    assessmentProgressBar,
+    {
+      scaleX: progress,
+
+      duration: 0.45,
+
+      ease: "power3.out"
+    }
+  );
+
+}
+
+
+
+/* ======================================================
+   PHASE
+====================================================== */
+
+function updateAssessmentPhase(
+  phase
+) {
+
+  document
+    .querySelectorAll(
+      ".assessment-phase"
+    )
+    .forEach(
+      (item) => {
+
+        item.classList.toggle(
+          "active",
+          item.dataset.phase === phase
+        );
+
+      }
+    );
+
+
+  const phaseNames = {
+
+    context:
+      "CONTEXTO",
+
+    p:
+      "POSICIONAMENTO",
+
+    a:
+      "AQUISIÇÃO",
+
+    c:
+      "COMERCIAL",
+
+    t:
+      "TECNOLOGIA"
+
+  };
+
+
+  assessmentPhaseLabel.textContent =
+    phaseNames[phase] ||
+    "DIAGNÓSTICO";
+
+}
+
+
+
+/* ======================================================
+   OPTION SELECT
+====================================================== */
+
+function selectAssessmentOption(
+  button,
+  value
+) {
+
+  assessmentAnswerArea
+    .querySelectorAll(
+      ".assessment-option"
+    )
+    .forEach(
+      (option) => {
+
+        option.classList.remove(
+          "selected"
+        );
+
+      }
+    );
+
+
+  button.classList.add(
+    "selected"
+  );
+
+
+  const question =
+    getAssessmentQuestion();
+
+
+  assessmentAnswers[
+    question.id
+  ] = value;
+
+
+  assessmentNextButton.disabled =
+    false;
+
+
+
+  /* feedback visual */
+
+  gsap.fromTo(
+    button,
+    {
+      scale: 0.985
+    },
+    {
+      scale: 1,
+
+      duration: 0.32,
+
+      ease:
+        "back.out(1.5)"
+    }
+  );
+
+}
+
+
+
+/* ======================================================
+   RENDER QUESTION
+====================================================== */
+
+function renderAssessmentQuestion() {
+
+  const question =
+    getAssessmentQuestion();
+
+
+  if (!question) {
+    return;
+  }
+
+
+  assessmentQuestionEyebrow
+    .textContent =
+      question.eyebrow;
+
+
+  /*
+    personalização depois
+    da primeira resposta
+  */
+
+  if (
+    question.id === "company" &&
+    assessmentAnswers.name
+  ) {
+
+    assessmentQuestionTitle
+      .textContent =
+        `${assessmentAnswers.name}, qual é o nome do seu negócio?`;
+
+  }
+
+  else {
+
+    assessmentQuestionTitle
+      .textContent =
+        question.title;
+
+  }
+
+
+  assessmentQuestionDescription
+    .textContent =
+      question.description;
+
+
+  assessmentAnswerArea.innerHTML =
+    "";
+
+
+  updateAssessmentProgress();
+
+  updateAssessmentPhase(
+    question.phase
+  );
+
+
+  assessmentBackButton.disabled =
+    assessmentIndex === 0;
+
+
+  assessmentNextButton.disabled =
+    !assessmentAnswers[
+      question.id
+    ];
+
+
+
+  /* ====================================================
+     TEXT
+  ==================================================== */
+
+  if (
+    question.type === "text"
+  ) {
+
+    const input =
+      document.createElement(
+        "input"
+      );
+
+
+    input.type = "text";
+
+    input.className =
+      "assessment-field";
+
+
+    input.placeholder =
+      question.placeholder ||
+      "";
+
+
+    input.autocomplete =
+      question.autocomplete ||
+      "off";
+
+
+    input.value =
+      assessmentAnswers[
+        question.id
+      ] || "";
+
+
+    assessmentAnswerArea.appendChild(
+      input
+    );
+
+
+    input.addEventListener(
+      "input",
+      () => {
+
+        const value =
+          input.value.trim();
+
+
+        assessmentAnswers[
+          question.id
+        ] = value;
+
+
+        assessmentNextButton.disabled =
+          value.length < 2;
+
+      }
+    );
+
+
+    input.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (
+          event.key === "Enter" &&
+          !assessmentNextButton.disabled
+        ) {
+
+          goToNextAssessmentQuestion();
+
+        }
+
+      }
+    );
+
+
+    setTimeout(
+      () => input.focus(),
+      260
+    );
+
+  }
+
+
+
+  /* ====================================================
+     OPTIONS
+  ==================================================== */
+
+  if (
+    question.type === "options"
+  ) {
+
+    const grid =
+      document.createElement(
+        "div"
+      );
+
+
+    grid.className =
+      "assessment-option-grid";
+
+
+    question.options.forEach(
+      (option) => {
+
+        const button =
+          document.createElement(
+            "button"
+          );
+
+
+        button.type =
+          "button";
+
+
+        button.className =
+          "assessment-option";
+
+
+        button.innerHTML = `
+          <span>
+            ${option.label}
+          </span>
+
+          <small>
+            →
+          </small>
+        `;
+
+
+        if (
+          assessmentAnswers[
+            question.id
+          ] === option.value
+        ) {
+
+          button.classList.add(
+            "selected"
+          );
+
+        }
+
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            selectAssessmentOption(
+              button,
+              option.value
+            );
+
+          }
+        );
+
+
+        grid.appendChild(
+          button
+        );
+
+      }
+    );
+
+
+    assessmentAnswerArea
+      .appendChild(
+        grid
+      );
+
+  }
+
+
+
+  /* entrance */
+
+  gsap.fromTo(
+    "#assessmentQuestion",
+    {
+      autoAlpha: 0,
+
+      y: 28
+    },
+    {
+      autoAlpha: 1,
+
+      y: 0,
+
+      duration: 0.48,
+
+      ease:
+        "power3.out"
+    }
+  );
+
+}
+
+
+
+/* ======================================================
+   NEXT
+====================================================== */
+
+function goToNextAssessmentQuestion() {
+
+  if (
+    assessmentNextButton.disabled
+  ) {
+    return;
+  }
+
+
+  /*
+    por enquanto estamos
+    terminando apenas CONTEXTO
+  */
+
+  if (
+    assessmentIndex ===
+    assessmentQuestions.length - 1
+  ) {
+
+    console.log(
+      "PACT CONTEXT:",
+      assessmentAnswers
+    );
+
+
+    /*
+      temporário:
+      próxima missão começa P
+    */
+
+    assessmentQuestionEyebrow
+      .textContent =
+        "CONTEXTO CONCLUÍDO";
+
+
+    assessmentQuestionTitle
+      .textContent =
+        `Perfeito${
+          assessmentAnswers.name
+            ? `, ${assessmentAnswers.name}`
+            : ""
+        }. Agora vamos analisar seu Posicionamento.`;
+
+
+    assessmentQuestionDescription
+      .textContent =
+        "Na próxima etapa, o PACT começa a investigar como o mercado percebe, encontra e entende o seu negócio.";
+
+
+    assessmentAnswerArea.innerHTML =
+      `
+        <div class="assessment-context-complete">
+          <span>
+            CONTEXTO IDENTIFICADO
+          </span>
+
+          <strong>
+            ${
+              assessmentAnswers.company ||
+              "Seu negócio"
+            }
+          </strong>
+        </div>
+      `;
+
+
+    assessmentNextButton.disabled =
+      true;
+
+
+    gsap.to(
+      assessmentProgressBar,
+      {
+        scaleX: 1,
+
+        duration: 0.5
+      }
+    );
+
+
+    return;
+  }
+
+
+  assessmentIndex += 1;
+
+
+  gsap.to(
+    "#assessmentQuestion",
+    {
+      autoAlpha: 0,
+
+      y: -20,
+
+      duration: 0.2,
+
+      ease: "power2.in",
+
+      onComplete:
+        renderAssessmentQuestion
+    }
+  );
+
+}
+
+
+
+/* ======================================================
+   BACK
+====================================================== */
+
+function goToPreviousAssessmentQuestion() {
+
+  if (
+    assessmentIndex <= 0
+  ) {
+    return;
+  }
+
+
+  assessmentIndex -= 1;
+
+
+  gsap.to(
+    "#assessmentQuestion",
+    {
+      autoAlpha: 0,
+
+      y: 20,
+
+      duration: 0.2,
+
+      ease: "power2.in",
+
+      onComplete:
+        renderAssessmentQuestion
+    }
+  );
+
+}
+
+
+
+/* ======================================================
+   OPEN APP
+====================================================== */
+
+function openAssessment() {
+
+  assessmentIndex = 0;
+
+
+  gsap.to(
+    assessmentEntry,
+    {
+      autoAlpha: 0,
+
+      y: -26,
+
+      duration: 0.36,
+
+      ease: "power2.in",
+
+      onComplete: () => {
+
+        assessmentEntry.hidden =
+          true;
+
+
+        assessmentApp.hidden =
+          false;
+
+
+        gsap.fromTo(
+          assessmentApp,
+          {
+            autoAlpha: 0,
+
+            y: 28
+          },
+          {
+            autoAlpha: 1,
+
+            y: 0,
+
+            duration: 0.55,
+
+            ease:
+              "power3.out"
+          }
+        );
+
+
+        renderAssessmentQuestion();
+
+
+        assessmentApp
+          .scrollIntoView({
+            behavior:
+              "smooth",
+
+            block:
+              "start"
+          });
+
+      }
+
+    }
+  );
+
+}
+
+
+
+/* ======================================================
+   CLOSE APP
+====================================================== */
+
+function closeAssessment() {
+
+  gsap.to(
+    assessmentApp,
+    {
+      autoAlpha: 0,
+
+      y: 22,
+
+      duration: 0.3,
+
+      onComplete: () => {
+
+        assessmentApp.hidden =
+          true;
+
+
+        assessmentEntry.hidden =
+          false;
+
+
+        gsap.fromTo(
+          assessmentEntry,
+          {
+            autoAlpha: 0,
+
+            y: 20
+          },
+          {
+            autoAlpha: 1,
+
+            y: 0,
+
+            duration: 0.46,
+
+            ease:
+              "power3.out"
+          }
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+
+/* ======================================================
+   EVENTS
+====================================================== */
+
+if (
+  assessmentStartButton
+) {
+
+  assessmentStartButton
+    .addEventListener(
+      "click",
+      openAssessment
+    );
+
+}
+
+
+if (
+  assessmentNextButton
+) {
+
+  assessmentNextButton
+    .addEventListener(
+      "click",
+      goToNextAssessmentQuestion
+    );
+
+}
+
+
+if (
+  assessmentBackButton
+) {
+
+  assessmentBackButton
+    .addEventListener(
+      "click",
+      goToPreviousAssessmentQuestion
+    );
+
+}
+
+
+if (
+  assessmentCloseButton
+) {
+
+  assessmentCloseButton
+    .addEventListener(
+      "click",
+      closeAssessment
+    );
+
+}
   
   /* ======================================================
      REFRESH
