@@ -3311,6 +3311,505 @@ mm.add("(max-width: 640px)", () => {
   };
 
 });
+
+/* ======================================================
+   SCREEN 07 — PROJECT PACT JOURNEY
+====================================================== */
+
+const projectSteps =
+  gsap.utils.toArray(
+    ".project-step"
+  );
+
+const projectSignal =
+  document.querySelector(
+    ".project-progress-signal"
+  );
+
+const projectProgress =
+  document.querySelector(
+    ".project-progress"
+  );
+
+const projectProgressActive =
+  document.querySelector(
+    ".project-progress-active"
+  );
+
+
+
+/* ======================================================
+   STEP STATE
+====================================================== */
+
+function setProjectStep(activeIndex) {
+
+  projectSteps.forEach(
+    (step, index) => {
+
+      step.classList.toggle(
+        "active",
+        index === activeIndex
+      );
+
+
+      step.classList.toggle(
+        "completed",
+        index < activeIndex
+      );
+
+    }
+  );
+
+}
+
+
+
+/* ======================================================
+   DESKTOP
+====================================================== */
+
+mm.add("(min-width: 641px)", () => {
+
+  if (
+    !projectSteps.length ||
+    !projectSignal ||
+    !projectProgress
+  ) {
+    return;
+  }
+
+
+  let markerPoints = [];
+
+
+
+  /* ====================================================
+     CALCULATE REAL MARKER POSITIONS
+  ==================================================== */
+
+  function calculateProjectPoints() {
+
+    const progressRect =
+      projectProgress.getBoundingClientRect();
+
+
+    markerPoints =
+      projectSteps.map((step) => {
+
+        const marker =
+          step.querySelector(
+            ".project-step-marker"
+          );
+
+
+        const markerRect =
+          marker.getBoundingClientRect();
+
+
+        return {
+
+          x:
+            markerRect.left +
+            markerRect.width / 2 -
+            progressRect.left,
+
+          y:
+            markerRect.top +
+            markerRect.height / 2 -
+            progressRect.top
+
+        };
+
+      });
+
+  }
+
+
+
+  /* ====================================================
+     SIGNAL INITIAL STATE
+  ==================================================== */
+
+  gsap.set(
+    projectSignal,
+    {
+      left: 0,
+      top: 0,
+
+      xPercent: -50,
+      yPercent: -50
+    }
+  );
+
+
+  calculateProjectPoints();
+
+
+  if (markerPoints[0]) {
+
+    gsap.set(
+      projectSignal,
+      {
+        x: markerPoints[0].x,
+        y: markerPoints[0].y
+      }
+    );
+
+  }
+
+
+  setProjectStep(0);
+
+
+
+  /* ====================================================
+     SCROLL STORY
+  ==================================================== */
+
+  const projectJourneyTrigger =
+    ScrollTrigger.create({
+
+      trigger:
+        ".project-journey",
+
+      start:
+        "top 14%",
+
+      end:
+        "+=230%",
+
+      pin: true,
+
+      scrub: true,
+
+      anticipatePin: 1,
+
+      invalidateOnRefresh: true,
+
+
+      onRefresh: () => {
+
+        calculateProjectPoints();
+
+      },
+
+
+      onUpdate: (self) => {
+
+        const progress =
+          self.progress;
+
+
+        /* ==============================================
+           ACTIVE STEP
+        ============================================== */
+
+        const stepIndex =
+          Math.min(
+            projectSteps.length - 1,
+            Math.floor(
+              progress *
+              projectSteps.length
+            )
+          );
+
+
+        setProjectStep(
+          stepIndex
+        );
+
+
+
+        /* ==============================================
+           SIGNAL TRAVELS MARKER → MARKER
+        ============================================== */
+
+        if (
+          markerPoints.length > 1
+        ) {
+
+          const pathProgress =
+            progress *
+            (markerPoints.length - 1);
+
+
+          const fromIndex =
+            Math.min(
+              markerPoints.length - 2,
+              Math.floor(pathProgress)
+            );
+
+
+          const toIndex =
+            fromIndex + 1;
+
+
+          const localProgress =
+            Math.min(
+              1,
+              Math.max(
+                0,
+                pathProgress -
+                fromIndex
+              )
+            );
+
+
+          const from =
+            markerPoints[fromIndex];
+
+
+          const to =
+            markerPoints[toIndex];
+
+
+          const x =
+            from.x +
+            (to.x - from.x) *
+            localProgress;
+
+
+          const y =
+            from.y +
+            (to.y - from.y) *
+            localProgress;
+
+
+          gsap.set(
+            projectSignal,
+            {
+              x,
+              y
+            }
+          );
+
+        }
+
+
+
+        /* ==============================================
+           FIRST ROW ACTIVE LINE
+        ============================================== */
+
+        if (projectProgressActive) {
+
+          const firstRowProgress =
+            Math.min(
+              progress / 0.40,
+              1
+            );
+
+
+          gsap.set(
+            projectProgressActive,
+            {
+              scaleX:
+                Math.max(
+                  0.03,
+                  firstRowProgress
+                )
+            }
+          );
+
+        }
+
+      },
+
+
+      onLeave: () => {
+
+        setProjectStep(
+          projectSteps.length - 1
+        );
+
+      },
+
+
+      onLeaveBack: () => {
+
+        setProjectStep(0);
+
+      }
+
+    });
+
+
+  return () => {
+
+    setProjectStep(0);
+
+    projectJourneyTrigger.kill();
+
+  };
+
+});
+
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+mm.add("(max-width: 640px)", () => {
+
+  if (
+    !projectSteps.length ||
+    !projectSignal ||
+    !projectProgressActive
+  ) {
+    return;
+  }
+
+
+  setProjectStep(0);
+
+
+
+  /* ====================================================
+     VERTICAL PROGRESS
+  ==================================================== */
+
+  gsap.fromTo(
+    projectProgressActive,
+    {
+      scaleY: 0
+    },
+    {
+      scaleY: 1,
+
+      ease: "none",
+
+      scrollTrigger: {
+
+        trigger:
+          ".project-journey",
+
+        start:
+          "top 68%",
+
+        end:
+          "bottom 38%",
+
+        scrub: 0.7,
+
+        invalidateOnRefresh: true
+
+      }
+
+    }
+  );
+
+
+
+  /* ====================================================
+     GREEN SIGNAL MOVES DOWN
+  ==================================================== */
+
+  gsap.fromTo(
+    projectSignal,
+    {
+      top: "0%"
+    },
+    {
+      top: "100%",
+
+      ease: "none",
+
+      scrollTrigger: {
+
+        trigger:
+          ".project-journey",
+
+        start:
+          "top 68%",
+
+        end:
+          "bottom 38%",
+
+        scrub: 0.7
+
+      }
+
+    }
+  );
+
+
+
+  /* ====================================================
+     EACH STEP BECOMES ACTIVE
+  ==================================================== */
+
+  projectSteps.forEach(
+    (step, index) => {
+
+      ScrollTrigger.create({
+
+        trigger: step,
+
+        start:
+          "top 58%",
+
+        end:
+          "bottom 42%",
+
+
+        onEnter: () => {
+
+          setProjectStep(index);
+
+        },
+
+
+        onEnterBack: () => {
+
+          setProjectStep(index);
+
+        }
+
+      });
+
+
+
+      /* conteúdo entra suavemente */
+
+      gsap.from(
+        step.querySelector(
+          ".project-step-content"
+        ),
+        {
+          autoAlpha: 0,
+
+          y: 24,
+
+          scrollTrigger: {
+
+            trigger: step,
+
+            start:
+              "top 78%",
+
+            end:
+              "top 52%",
+
+            scrub: 0.6
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+  return () => {
+
+    setProjectStep(0);
+
+  };
+
+});
   
   /* ======================================================
      REFRESH
