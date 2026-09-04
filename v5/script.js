@@ -7724,8 +7724,8 @@ const pactMetricGroups =
                         <div class="assessment-micro-bar">
 
                           <i
-                            style="transform:scaleX(${metric.score / 100})"
-                          ></i>
+  data-micro-score="${metric.score}"
+></i>
 
                         </div>
 
@@ -7998,41 +7998,516 @@ const pactMetricGroups =
 
 
 
-  gsap.utils
-    .toArray(
-      ".assessment-result-bar i"
-    )
-    .forEach(
-      (bar) => {
+/* ======================================================
+   PACT REPORT V2 — CINEMATIC REVEAL
+====================================================== */
 
-        const score =
-          Number(
-            bar.dataset.resultScore ||
-            0
-          );
+const resultScoreElement =
+  assessmentResult.querySelector(
+    ".assessment-result-score strong"
+  );
 
 
-        gsap.fromTo(
-          bar,
-          {
-            scaleX:
-              0
-          },
-          {
-            scaleX:
-              score / 100,
+const radarData =
+  assessmentResult.querySelector(
+    ".assessment-radar-data"
+  );
 
-            duration:
-              0.9,
 
-            ease:
-              "power3.out"
-          }
-        );
+const radarLabels =
+  assessmentResult.querySelectorAll(
+    ".assessment-radar-label"
+  );
+
+
+const executiveMetrics =
+  assessmentResult.querySelectorAll(
+    ".assessment-executive-metric"
+  );
+
+
+const resultPillars =
+  assessmentResult.querySelectorAll(
+    ".assessment-result-pillar"
+  );
+
+
+const resultBars =
+  assessmentResult.querySelectorAll(
+    ".assessment-result-bar i"
+  );
+
+
+const microCards =
+  assessmentResult.querySelectorAll(
+    ".assessment-micro-card"
+  );
+
+
+const microBars =
+  assessmentResult.querySelectorAll(
+    ".assessment-micro-bar i"
+  );
+
+
+const bottleneckBlock =
+  assessmentResult.querySelector(
+    ".assessment-result-bottleneck"
+  );
+
+
+const strategicReading =
+  assessmentResult.querySelector(
+    ".assessment-result-reading"
+  );
+
+
+const recommendedActions =
+  assessmentResult.querySelector(
+    ".assessment-result-actions"
+  );
+
+
+const avoidBlock =
+  assessmentResult.querySelector(
+    ".assessment-result-avoid"
+  );
+
+
+const resultCta =
+  assessmentResult.querySelector(
+    ".assessment-result-cta"
+  );
+
+
+
+/* ====================================================
+   INITIAL STATES
+==================================================== */
+
+if (radarData) {
+
+  gsap.set(
+    radarData,
+    {
+      scale: 0.08,
+      autoAlpha: 0,
+
+      transformOrigin:
+        "50% 50%"
+    }
+  );
+
+}
+
+
+gsap.set(
+  radarLabels,
+  {
+    scale: 0.7,
+    autoAlpha: 0
+  }
+);
+
+
+gsap.set(
+  executiveMetrics,
+  {
+    y: 18,
+    autoAlpha: 0
+  }
+);
+
+
+gsap.set(
+  resultPillars,
+  {
+    y: 14,
+    autoAlpha: 0
+  }
+);
+
+
+gsap.set(
+  resultBars,
+  {
+    scaleX: 0,
+
+    transformOrigin:
+      "left center"
+  }
+);
+
+
+gsap.set(
+  microCards,
+  {
+    y: 20,
+    autoAlpha: 0
+  }
+);
+
+
+gsap.set(
+  microBars,
+  {
+    scaleX: 0,
+
+    transformOrigin:
+      "left center"
+  }
+);
+
+
+gsap.set(
+  [
+    bottleneckBlock,
+    strategicReading,
+    recommendedActions,
+    avoidBlock,
+    resultCta
+  ].filter(Boolean),
+  {
+    y: 24,
+    autoAlpha: 0
+  }
+);
+
+
+
+/* ====================================================
+   SCORE COUNTER
+==================================================== */
+
+const pactScoreCounter = {
+  value: 0
+};
+
+
+if (resultScoreElement) {
+
+  resultScoreElement.textContent =
+    "0";
+
+}
+
+
+
+/* ====================================================
+   MASTER TIMELINE
+==================================================== */
+
+const pactReportTimeline =
+  gsap.timeline({
+
+    defaults: {
+      ease:
+        "power3.out"
+    },
+
+    delay:
+      0.12
+
+  });
+
+
+
+/* SCORE */
+
+pactReportTimeline.to(
+  pactScoreCounter,
+  {
+    value:
+      report.overallScore,
+
+    duration:
+      1.05,
+
+    ease:
+      "power2.out",
+
+    onUpdate: () => {
+
+      if (
+        resultScoreElement
+      ) {
+
+        resultScoreElement
+          .textContent =
+            Math.round(
+              pactScoreCounter.value
+            );
 
       }
+
+    }
+
+  }
+);
+
+
+
+/* RADAR NASCE */
+
+if (radarData) {
+
+  pactReportTimeline.to(
+    radarData,
+    {
+      scale: 1,
+      autoAlpha: 1,
+
+      duration: 0.78,
+
+      ease:
+        "back.out(1.35)"
+    },
+    "-=0.55"
+  );
+
+}
+
+
+
+/* P A C T AROUND RADAR */
+
+pactReportTimeline.to(
+  radarLabels,
+  {
+    scale: 1,
+    autoAlpha: 1,
+
+    duration: 0.35,
+
+    stagger: 0.07,
+
+    ease:
+      "back.out(1.6)"
+  },
+  "-=0.38"
+);
+
+
+
+/* EXECUTIVE METRICS */
+
+pactReportTimeline.to(
+  executiveMetrics,
+  {
+    y: 0,
+    autoAlpha: 1,
+
+    duration: 0.42,
+
+    stagger: 0.075
+  },
+  "-=0.18"
+);
+
+
+
+/* PILLARS */
+
+pactReportTimeline.to(
+  resultPillars,
+  {
+    y: 0,
+    autoAlpha: 1,
+
+    duration: 0.34,
+
+    stagger: 0.055
+  },
+  "-=0.10"
+);
+
+
+
+/* PILLAR BARS */
+
+resultBars.forEach(
+  (bar, index) => {
+
+    const pillarKeys =
+      [
+        "p",
+        "a",
+        "c",
+        "t"
+      ];
+
+
+    const key =
+      pillarKeys[index];
+
+
+    const score =
+      Number(
+        report.scores[key] ||
+        0
+      );
+
+
+    pactReportTimeline.to(
+      bar,
+      {
+        scaleX:
+          score / 100,
+
+        duration:
+          0.62,
+
+        ease:
+          "power3.out"
+      },
+      index === 0
+        ? "-=0.18"
+        : "-=0.48"
     );
 
+  }
+);
+
+
+
+/* ====================================================
+   MICRODIAGNOSTIC
+==================================================== */
+
+pactReportTimeline.to(
+  microCards,
+  {
+    y: 0,
+    autoAlpha: 1,
+
+    duration: 0.42,
+
+    stagger: 0.07
+  },
+  "-=0.08"
+);
+
+
+
+microBars.forEach(
+  (bar, index) => {
+
+    const score =
+      Number(
+        bar.dataset.microScore ||
+        0
+      );
+
+
+    pactReportTimeline.to(
+      bar,
+      {
+        scaleX:
+          score / 100,
+
+        duration:
+          0.46,
+
+        ease:
+          "power3.out"
+      },
+      index === 0
+        ? "-=0.18"
+        : "-=0.39"
+    );
+
+  }
+);
+
+
+
+/* ====================================================
+   STRATEGIC READING
+==================================================== */
+
+if (bottleneckBlock) {
+
+  pactReportTimeline.to(
+    bottleneckBlock,
+    {
+      y: 0,
+      autoAlpha: 1,
+
+      duration:
+        0.52
+    },
+    "-=0.10"
+  );
+
+}
+
+
+if (strategicReading) {
+
+  pactReportTimeline.to(
+    strategicReading,
+    {
+      y: 0,
+      autoAlpha: 1,
+
+      duration:
+        0.48
+    },
+    "-=0.25"
+  );
+
+}
+
+
+if (recommendedActions) {
+
+  pactReportTimeline.to(
+    recommendedActions,
+    {
+      y: 0,
+      autoAlpha: 1,
+
+      duration:
+        0.48
+    },
+    "-=0.22"
+  );
+
+}
+
+
+if (avoidBlock) {
+
+  pactReportTimeline.to(
+    avoidBlock,
+    {
+      y: 0,
+      autoAlpha: 1,
+
+      duration:
+        0.42
+    },
+    "-=0.20"
+  );
+
+}
+
+
+if (resultCta) {
+
+  pactReportTimeline.to(
+    resultCta,
+    {
+      y: 0,
+      autoAlpha: 1,
+
+      duration:
+        0.46
+    },
+    "-=0.18"
+  );
+
+}
 
 
   document
