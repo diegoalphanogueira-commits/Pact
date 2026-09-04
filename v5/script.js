@@ -2848,18 +2848,18 @@ mm.add("(min-width: 641px)", () => {
 
           else {
 
-            muteAllReasoningBranches();
+  resetReasoningBranches();
 
-          }
+}
 
         },
 
 
         onLeave: () => {
 
-          muteAllReasoningBranches();
+  resetReasoningBranches();
 
-        },
+},
 
 
         onLeaveBack: () => {
@@ -2960,18 +2960,18 @@ mm.add("(min-width: 641px)", () => {
       antes da conclusão
     */
 
-    .to(
-      reasoningBranches,
-      {
-        autoAlpha: 0.28,
+   .to(
+  reasoningBranches,
+  {
+    autoAlpha: 1,
 
-        scale: 0.985,
+    scale: 1,
 
-        duration: 0.48,
+    duration: 0.48,
 
-        ease: "power2.out"
-      }
-    )
+    ease: "power2.out"
+  }
+)
 
 
     /*
