@@ -7375,8 +7375,8 @@ transform: scaleX(var(--reasoning-line-progress, 1));
   .project-journey-viewport {
     position: relative;
 
-    height: 760px;
-    min-height: 760px;
+    height: 620px;
+min-height: 620px;
 
     margin-top: 108px;
 
@@ -7412,7 +7412,10 @@ transform: scaleX(var(--reasoning-line-progress, 1));
     opacity: 1 !important;
     visibility: visible !important;
   }
-
+  .project-output {
+    margin-top: 55px;
+  }
+   
 }
 
 
