@@ -6176,11 +6176,376 @@ assessmentQuestionDescription
 
 function goToNextAssessmentQuestion() {
 
+  function goToNextAssessmentQuestion() {
+
   if (
     assessmentNextButton.disabled
   ) {
     return;
   }
+
+
+  const currentQuestion =
+    getAssessmentQuestion();
+
+
+  if (!currentQuestion) {
+    return;
+  }
+
+
+
+  /* ====================================================
+     CONTEXTO → POSICIONAMENTO
+  ==================================================== */
+
+  if (
+    currentQuestion.id === "goal"
+  ) {
+
+    assessmentQuestionEyebrow
+      .textContent =
+        "CONTEXTO CONCLUÍDO";
+
+
+    assessmentQuestionTitle
+      .textContent =
+        `Perfeito${
+          assessmentAnswers.name
+            ? `, ${assessmentAnswers.name}`
+            : ""
+        }. Agora vamos analisar seu Posicionamento.`;
+
+
+    assessmentQuestionDescription
+      .textContent =
+        "A partir daqui, cada resposta começa a alimentar o seu diagnóstico PACT.";
+
+
+    assessmentAnswerArea.innerHTML =
+      `
+        <div class="assessment-context-complete">
+
+          <span>
+            CONTEXTO IDENTIFICADO
+          </span>
+
+          <strong>
+            ${
+              assessmentAnswers.company ||
+              "Seu negócio"
+            }
+          </strong>
+
+          <button
+            type="button"
+            class="assessment-transition-button"
+            id="assessmentStartPositioning"
+          >
+
+            <span>
+              Analisar Posicionamento
+            </span>
+
+            <span aria-hidden="true">
+              →
+            </span>
+
+          </button>
+
+        </div>
+      `;
+
+
+    assessmentNextButton.disabled =
+      true;
+
+
+    const startPositioningButton =
+      document.getElementById(
+        "assessmentStartPositioning"
+      );
+
+
+    startPositioningButton.addEventListener(
+      "click",
+      () => {
+
+        assessmentIndex += 1;
+
+
+        gsap.to(
+          "#assessmentQuestion",
+          {
+            autoAlpha: 0,
+            y: -20,
+
+            duration: 0.22,
+
+            ease: "power2.in",
+
+            onComplete:
+              renderAssessmentQuestion
+          }
+        );
+
+      }
+    );
+
+
+    return;
+
+  }
+
+
+
+  /* ====================================================
+     POSICIONAMENTO CONCLUÍDO
+  ==================================================== */
+
+  if (
+    currentQuestion.id === "p_offer"
+  ) {
+
+    const positioningScore =
+      calculateAssessmentPhaseScore(
+        "p"
+      );
+
+
+    const positioningSignals =
+      getAssessmentPhaseSignals(
+        "p"
+      );
+
+
+    assessmentAnswers.p_score =
+      positioningScore;
+
+
+    assessmentAnswers.p_signals =
+      positioningSignals;
+
+
+    assessmentQuestionEyebrow
+      .textContent =
+        "POSICIONAMENTO ANALISADO";
+
+
+    assessmentQuestionTitle
+      .textContent =
+        "O primeiro pilar do seu diagnóstico está concluído.";
+
+
+    assessmentQuestionDescription
+      .textContent =
+        "Já identificamos sinais sobre clareza, público, confiança e estrutura da sua oferta. Agora precisamos entender como novas oportunidades chegam até o negócio.";
+
+
+    assessmentAnswerArea.innerHTML =
+      `
+        <div class="assessment-phase-complete">
+
+          <div class="assessment-phase-complete-mark">
+            P
+          </div>
+
+          <div>
+
+            <span>
+              POSICIONAMENTO
+            </span>
+
+            <strong>
+              Leitura registrada
+            </strong>
+
+            <small>
+              O resultado completo será apresentado
+              ao final do Diagnóstico PACT.
+            </small>
+
+            <button
+              type="button"
+              class="assessment-transition-button"
+              id="assessmentStartAcquisition"
+            >
+
+              <span>
+                Analisar Aquisição
+              </span>
+
+              <span aria-hidden="true">
+                →
+              </span>
+
+            </button>
+
+          </div>
+
+        </div>
+      `;
+
+
+    assessmentNextButton.disabled =
+      true;
+
+
+    const startAcquisitionButton =
+      document.getElementById(
+        "assessmentStartAcquisition"
+      );
+
+
+    startAcquisitionButton.addEventListener(
+      "click",
+      () => {
+
+        assessmentIndex += 1;
+
+
+        gsap.to(
+          "#assessmentQuestion",
+          {
+            autoAlpha: 0,
+            y: -20,
+
+            duration: 0.22,
+
+            ease: "power2.in",
+
+            onComplete:
+              renderAssessmentQuestion
+          }
+        );
+
+      }
+    );
+
+
+    return;
+
+  }
+
+
+
+  /* ====================================================
+     AQUISIÇÃO CONCLUÍDA
+  ==================================================== */
+
+  if (
+    currentQuestion.id === "a_measurement"
+  ) {
+
+    const acquisitionScore =
+      calculateAssessmentPhaseScore(
+        "a"
+      );
+
+
+    const acquisitionSignals =
+      getAssessmentPhaseSignals(
+        "a"
+      );
+
+
+    assessmentAnswers.a_score =
+      acquisitionScore;
+
+
+    assessmentAnswers.a_signals =
+      acquisitionSignals;
+
+
+    assessmentQuestionEyebrow
+      .textContent =
+        "AQUISIÇÃO ANALISADA";
+
+
+    assessmentQuestionTitle
+      .textContent =
+        "Agora sabemos como as oportunidades chegam até o seu negócio.";
+
+
+    assessmentQuestionDescription
+      .textContent =
+        "O PACT já analisou previsibilidade, volume, presença nos canais e capacidade de medir sua aquisição. O próximo passo é entender o que acontece depois que uma oportunidade chega.";
+
+
+    assessmentAnswerArea.innerHTML =
+      `
+        <div class="assessment-phase-complete">
+
+          <div class="assessment-phase-complete-mark">
+            A
+          </div>
+
+          <div>
+
+            <span>
+              AQUISIÇÃO
+            </span>
+
+            <strong>
+              Leitura registrada
+            </strong>
+
+            <small>
+              Seus sinais de geração de demanda
+              já foram incorporados ao diagnóstico.
+            </small>
+
+          </div>
+
+        </div>
+      `;
+
+
+    assessmentNextButton.disabled =
+      true;
+
+
+    console.log(
+      "PACT ACQUISITION SCORE:",
+      acquisitionScore
+    );
+
+
+    console.log(
+      "PACT ACQUISITION SIGNALS:",
+      acquisitionSignals
+    );
+
+
+    return;
+
+  }
+
+
+
+  /* ====================================================
+     AVANÇO NORMAL
+  ==================================================== */
+
+  assessmentIndex += 1;
+
+
+  gsap.to(
+    "#assessmentQuestion",
+    {
+      autoAlpha: 0,
+      y: -20,
+
+      duration: 0.2,
+
+      ease: "power2.in",
+
+      onComplete:
+        renderAssessmentQuestion
+    }
+  );
+
+}
 
 
   /*
