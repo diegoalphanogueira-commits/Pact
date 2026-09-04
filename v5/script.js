@@ -5261,7 +5261,328 @@ assessmentQuestions.push(
 
 );
 
+  /* ======================================================
+   A — AQUISIÇÃO
+====================================================== */
 
+assessmentQuestions.push(
+
+  {
+    id: "a_predictability",
+
+    phase: "a",
+
+    eyebrow: "AQUISIÇÃO · 01",
+
+    title:
+      "Hoje novas oportunidades entram no seu negócio de forma previsível?",
+
+    description:
+      "Não estamos perguntando se clientes aparecem. Queremos entender se existe um mecanismo capaz de gerar novas oportunidades com consistência.",
+
+    type: "options",
+
+    options: [
+
+      {
+        value: "predictable",
+        label:
+          "Sim. Temos canais que geram oportunidades de forma consistente.",
+        score: 100,
+        signal: "predictable_acquisition"
+      },
+
+      {
+        value: "somewhat_predictable",
+        label:
+          "Existe alguma consistência, mas o volume oscila bastante.",
+        score: 72,
+        signal: "unstable_acquisition"
+      },
+
+      {
+        value: "dependent",
+        label:
+          "Dependemos muito de indicação, períodos específicos ou ações pontuais.",
+        score: 40,
+        signal: "channel_dependency"
+      },
+
+      {
+        value: "random",
+        label:
+          "Não. As oportunidades chegam de forma bastante imprevisível.",
+        score: 15,
+        signal: "no_predictable_acquisition"
+      }
+
+    ]
+  },
+
+
+  {
+    id: "a_volume",
+
+    phase: "a",
+
+    eyebrow: "AQUISIÇÃO · 02",
+
+    title:
+      "Considerando a meta atual da empresa, entram oportunidades suficientes para crescer?",
+
+    description:
+      "Pense na quantidade de novas pessoas ou empresas que demonstram interesse real em comprar.",
+
+    type: "options",
+
+    options: [
+
+      {
+        value: "enough",
+        label:
+          "Sim. Temos volume suficiente para sustentar nossa meta.",
+        score: 100,
+        signal: "healthy_demand_volume"
+      },
+
+      {
+        value: "almost",
+        label:
+          "Estamos próximos, mas ainda existem períodos com pouca demanda.",
+        score: 74,
+        signal: "moderate_demand_gap"
+      },
+
+      {
+        value: "below",
+        label:
+          "Não. Precisaríamos de mais oportunidades entrando para crescer.",
+        score: 38,
+        signal: "low_demand_volume"
+      },
+
+      {
+        value: "very_low",
+        label:
+          "O volume é muito baixo ou não conseguimos gerar demanda com consistência.",
+        score: 14,
+        signal: "critical_demand_gap"
+      }
+
+    ]
+  },
+
+
+  {
+    id: "a_presence",
+
+    phase: "a",
+
+    eyebrow: "AQUISIÇÃO · 03",
+
+    title: () => {
+
+      const segment =
+        getAssessmentSegmentProfile();
+
+      return `Quando alguém procura ${segment.demand}, sua empresa aparece com força nos canais certos?`;
+
+    },
+
+    description: () => {
+
+      const segment =
+        getAssessmentSegmentProfile();
+
+      return `Para negócios de ${segment.label}, alguns canais relevantes costumam envolver ${segment.channels}. Considere sua presença onde existe intenção real de compra.`;
+
+    },
+
+    type: "options",
+
+    options: [
+
+      {
+        value: "strong",
+        label:
+          "Sim. Estamos bem presentes nos canais que realmente geram oportunidades.",
+        score: 100,
+        signal: "strong_channel_presence"
+      },
+
+      {
+        value: "partial",
+        label:
+          "Estamos presentes em alguns canais, mas ainda existem oportunidades importantes pouco exploradas.",
+        score: 72,
+        signal: "channel_opportunity"
+      },
+
+      {
+        value: "weak",
+        label:
+          "Nossa presença existe, mas gera poucas oportunidades comerciais.",
+        score: 40,
+        signal: "weak_channel_performance"
+      },
+
+      {
+        value: "absent",
+        label:
+          "Ainda não temos uma estratégia clara para aparecer onde o cliente procura.",
+        score: 15,
+        signal: "low_demand_capture"
+      }
+
+    ]
+  },
+
+
+  {
+    id: "a_measurement",
+
+    phase: "a",
+
+    eyebrow: "AQUISIÇÃO · 04",
+
+    title:
+      "Você consegue identificar quais canais realmente trazem oportunidades e vendas?",
+
+    description:
+      "Uma operação de aquisição madura sabe de onde as oportunidades vêm e consegue decidir onde vale colocar mais energia ou investimento.",
+
+    type: "options",
+
+    options: [
+
+      {
+        value: "measured",
+        label:
+          "Sim. Acompanhamos origem, volume e resultado dos principais canais.",
+        score: 100,
+        signal: "measured_acquisition"
+      },
+
+      {
+        value: "partial_measurement",
+        label:
+          "Sabemos os principais canais, mas ainda não medimos tudo de forma organizada.",
+        score: 72,
+        signal: "partial_acquisition_measurement"
+      },
+
+      {
+        value: "perception",
+        label:
+          "Temos apenas uma percepção de onde os clientes costumam vir.",
+        score: 38,
+        signal: "acquisition_based_on_perception"
+      },
+
+      {
+        value: "no_measurement",
+        label:
+          "Não acompanhamos de onde vêm as oportunidades ou quais canais funcionam melhor.",
+        score: 14,
+        signal: "no_acquisition_measurement"
+      }
+
+    ]
+  }
+
+);
+
+/* ======================================================
+   SEGMENT INTELLIGENCE
+====================================================== */
+
+const assessmentSegmentProfiles = {
+
+  beauty: {
+    label: "beleza e estética",
+    demand:
+      "serviços como o seu",
+    channels:
+      "Google, avaliações, Instagram, indicação e mídia local"
+  },
+
+  health: {
+    label: "saúde e clínica",
+    demand:
+      "atendimentos como o seu",
+    channels:
+      "Google, avaliações, indicação, conteúdo e presença local"
+  },
+
+  local_service: {
+    label: "serviços locais",
+    demand:
+      "esse tipo de serviço na sua região",
+    channels:
+      "Google, mapas, avaliações, indicação e prospecção"
+  },
+
+  professional: {
+    label: "serviços profissionais",
+    demand:
+      "uma solução como a sua",
+    channels:
+      "Google, autoridade, indicação, conteúdo e relacionamento"
+  },
+
+  b2b: {
+    label: "serviços B2B",
+    demand:
+      "uma solução empresarial como a sua",
+    channels:
+      "prospecção, indicação, LinkedIn, conteúdo e parcerias"
+  },
+
+  retail: {
+    label: "loja ou comércio",
+    demand:
+      "produtos como os seus",
+    channels:
+      "Google, redes sociais, localização, promoções e indicação"
+  },
+
+  ecommerce: {
+    label: "e-commerce",
+    demand:
+      "produtos como os seus",
+    channels:
+      "mídia paga, busca, marketplaces, conteúdo e redes sociais"
+  },
+
+  education: {
+    label: "educação ou treinamento",
+    demand:
+      "uma formação como a sua",
+    channels:
+      "conteúdo, busca, redes sociais, autoridade e indicação"
+  },
+
+  other: {
+    label: "seu segmento",
+    demand:
+      "uma solução como a sua",
+    channels:
+      "os principais canais onde seus clientes procuram soluções"
+  }
+
+};
+
+
+function getAssessmentSegmentProfile() {
+
+  return (
+    assessmentSegmentProfiles[
+      assessmentAnswers.segment
+    ] ||
+    assessmentSegmentProfiles.other
+  );
+
+}
 
 /* ======================================================
    HELPERS
@@ -5593,29 +5914,37 @@ function renderAssessmentQuestion() {
     da primeira resposta
   */
 
-  if (
-    question.id === "company" &&
-    assessmentAnswers.name
-  ) {
-
-    assessmentQuestionTitle
-      .textContent =
-        `${assessmentAnswers.name}, qual é o nome do seu negócio?`;
-
-  }
-
-  else {
-
-    assessmentQuestionTitle
-      .textContent =
-        question.title;
-
-  }
+ let renderedTitle =
+  typeof question.title === "function"
+    ? question.title()
+    : question.title;
 
 
-  assessmentQuestionDescription
-    .textContent =
-      question.description;
+let renderedDescription =
+  typeof question.description === "function"
+    ? question.description()
+    : question.description;
+
+
+if (
+  question.id === "company" &&
+  assessmentAnswers.name
+) {
+
+  renderedTitle =
+    `${assessmentAnswers.name}, qual é o nome do seu negócio?`;
+
+}
+
+
+assessmentQuestionTitle
+  .textContent =
+    renderedTitle;
+
+
+assessmentQuestionDescription
+  .textContent =
+    renderedDescription;
 
 
   assessmentAnswerArea.innerHTML =
@@ -5940,7 +6269,98 @@ if (
     .addEventListener(
       "click",
       () => {
+/* ====================================================
+   AQUISIÇÃO CONCLUÍDA
+==================================================== */
 
+if (
+  currentQuestion &&
+  currentQuestion.id === "a_measurement"
+) {
+
+  const acquisitionScore =
+    calculateAssessmentPhaseScore(
+      "a"
+    );
+
+
+  const acquisitionSignals =
+    getAssessmentPhaseSignals(
+      "a"
+    );
+
+
+  assessmentAnswers.a_score =
+    acquisitionScore;
+
+
+  assessmentAnswers.a_signals =
+    acquisitionSignals;
+
+
+  assessmentQuestionEyebrow
+    .textContent =
+      "AQUISIÇÃO ANALISADA";
+
+
+  assessmentQuestionTitle
+    .textContent =
+      "Agora sabemos como as oportunidades chegam até o seu negócio.";
+
+
+  assessmentQuestionDescription
+    .textContent =
+      "O PACT já consegue avaliar previsibilidade, volume, presença nos canais e capacidade de medir sua aquisição. O próximo passo é entender o que acontece depois que a oportunidade chega.";
+
+
+  assessmentAnswerArea.innerHTML =
+    `
+      <div class="assessment-phase-complete">
+
+        <div class="assessment-phase-complete-mark">
+          A
+        </div>
+
+        <div>
+
+          <span>
+            AQUISIÇÃO
+          </span>
+
+          <strong>
+            Leitura registrada
+          </strong>
+
+          <small>
+            Seus sinais de geração de demanda
+            já foram incorporados ao diagnóstico.
+          </small>
+
+        </div>
+
+      </div>
+    `;
+
+
+  assessmentNextButton.disabled =
+    true;
+
+
+  console.log(
+    "PACT ACQUISITION SCORE:",
+    acquisitionScore
+  );
+
+
+  console.log(
+    "PACT ACQUISITION SIGNALS:",
+    acquisitionSignals
+  );
+
+
+  return;
+
+}
         assessmentIndex += 1;
 
         gsap.to(
@@ -6033,6 +6453,21 @@ if (
             O resultado completo será apresentado
             ao final do Diagnóstico PACT.
           </small>
+<button
+  type="button"
+  class="assessment-transition-button"
+  id="assessmentStartAcquisition"
+>
+
+  <span>
+    Analisar Aquisição
+  </span>
+
+  <span aria-hidden="true">
+    →
+  </span>
+
+</button>
 
         </div>
 
@@ -6042,6 +6477,38 @@ if (
 
   assessmentNextButton.disabled =
     true;
+  const startAcquisitionButton =
+  document.getElementById(
+    "assessmentStartAcquisition"
+  );
+
+
+startAcquisitionButton
+  .addEventListener(
+    "click",
+    () => {
+
+      assessmentIndex += 1;
+
+
+      gsap.to(
+        "#assessmentQuestion",
+        {
+          autoAlpha: 0,
+          y: -20,
+
+          duration: 0.22,
+
+          ease:
+            "power2.in",
+
+          onComplete:
+            renderAssessmentQuestion
+        }
+      );
+
+    }
+  );
 
 
   console.log(
