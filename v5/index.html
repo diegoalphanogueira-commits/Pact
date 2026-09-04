@@ -435,7 +435,8 @@
      SCREEN 03 — PACT SYSTEM
 =========================================== -->
 
-<section class="pact-system-section" id="metodo">
+
+    <section class="pact-system-section" id="metodo">
 
   <div class="pact-system-stage">
 
@@ -445,20 +446,22 @@
     <div class="pact-system-intro">
 
       <span class="pact-system-kicker">
-        O MÉTODO
+        MÉTODO PACT
       </span>
 
       <h2 class="pact-system-title">
-        Quatro pilares.
-        <span>Um negócio.</span>
+        Todo negócio cresce em
+        <span>quatro frentes.</span>
       </h2>
 
       <p class="pact-system-description">
-        O PACT conecta as estruturas que sustentam
-        a capacidade de uma empresa crescer.
+        O PACT organiza o crescimento em quatro pilares
+        que se influenciam. Antes de acelerar, é preciso
+        entender qual deles está limitando o próximo movimento.
       </p>
 
     </div>
+
 
 
     <!-- SISTEMA -->
@@ -466,20 +469,44 @@
     <div class="pact-system-interface">
 
 
-      <!-- LINHAS -->
+      <!-- CONEXÕES -->
 
-      <span class="pact-connection pact-connection-p"></span>
-      <span class="pact-connection pact-connection-a"></span>
-      <span class="pact-connection pact-connection-c"></span>
-      <span class="pact-connection pact-connection-t"></span>
+      <span
+        class="pact-connection pact-connection-p active"
+        aria-hidden="true"
+      ></span>
+
+      <span
+        class="pact-connection pact-connection-a"
+        aria-hidden="true"
+      ></span>
+
+      <span
+        class="pact-connection pact-connection-c"
+        aria-hidden="true"
+      ></span>
+
+      <span
+        class="pact-connection pact-connection-t"
+        aria-hidden="true"
+      ></span>
+
 
 
       <!-- NÚCLEO -->
 
       <div class="pact-core">
 
-        <span class="pact-core-ring pact-core-ring-1"></span>
-        <span class="pact-core-ring pact-core-ring-2"></span>
+        <div
+          class="pact-core-ring pact-core-ring-1"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="pact-core-ring pact-core-ring-2"
+          aria-hidden="true"
+        ></div>
+
 
         <div class="pact-core-inner">
 
@@ -492,7 +519,7 @@
           </strong>
 
           <span class="pact-core-status">
-            ESTRUTURA PARA CRESCER
+            4 PILARES
           </span>
 
         </div>
@@ -500,256 +527,320 @@
       </div>
 
 
+
       <!-- P -->
 
       <button
-        class="pact-node pact-node-p active"
         type="button"
+        class="pact-node pact-node-p active"
         data-pillar="p"
-        aria-label="Posicionamento"
+        aria-pressed="true"
       >
-        <span class="pact-node-letter">P</span>
+
+        <span class="pact-node-letter">
+          P
+        </span>
 
         <span class="pact-node-copy">
-          <strong>Posicionamento</strong>
-          <small>Ser percebido</small>
+
+          <strong>
+            Posicionamento
+          </strong>
+
+          <small>
+            Como o mercado percebe
+          </small>
+
         </span>
+
       </button>
+
 
 
       <!-- A -->
 
       <button
-        class="pact-node pact-node-a"
         type="button"
+        class="pact-node pact-node-a"
         data-pillar="a"
-        aria-label="Aquisição"
+        aria-pressed="false"
       >
-        <span class="pact-node-letter">A</span>
+
+        <span class="pact-node-letter">
+          A
+        </span>
 
         <span class="pact-node-copy">
-          <strong>Aquisição</strong>
-          <small>Gerar oportunidades</small>
+
+          <strong>
+            Aquisição
+          </strong>
+
+          <small>
+            Como oportunidades chegam
+          </small>
+
         </span>
+
       </button>
+
 
 
       <!-- C -->
 
       <button
-        class="pact-node pact-node-c"
         type="button"
+        class="pact-node pact-node-c"
         data-pillar="c"
-        aria-label="Comercial"
+        aria-pressed="false"
       >
-        <span class="pact-node-letter">C</span>
+
+        <span class="pact-node-letter">
+          C
+        </span>
 
         <span class="pact-node-copy">
-          <strong>Comercial</strong>
-          <small>Converter demanda</small>
+
+          <strong>
+            Comercial
+          </strong>
+
+          <small>
+            Como oportunidades avançam
+          </small>
+
         </span>
+
       </button>
+
 
 
       <!-- T -->
 
       <button
-        class="pact-node pact-node-t"
         type="button"
+        class="pact-node pact-node-t"
         data-pillar="t"
-        aria-label="Tecnologia"
+        aria-pressed="false"
       >
-        <span class="pact-node-letter">T</span>
+
+        <span class="pact-node-letter">
+          T
+        </span>
 
         <span class="pact-node-copy">
-          <strong>Tecnologia</strong>
-          <small>Aumentar capacidade</small>
+
+          <strong>
+            Tecnologia
+          </strong>
+
+          <small>
+            Como a operação sustenta
+          </small>
+
         </span>
+
       </button>
 
     </div>
 
 
-    <!-- CONTEÚDO DINÂMICO -->
+
+    <!-- PAINEL -->
 
     <div class="pact-panel">
 
 
       <!-- POSICIONAMENTO -->
 
-      <article
+      <div
         class="pact-panel-content active"
         data-content="p"
       >
 
         <span class="pact-panel-index">
-          P / 01
+          01 · POSICIONAMENTO
         </span>
+
 
         <div class="pact-panel-main">
 
           <h3>
-            Seja entendido antes
-            de tentar ser escolhido.
+            Ser escolhido começa antes da venda.
           </h3>
 
           <p>
-            Estruturamos como a empresa se posiciona,
-            comunica valor e constrói percepção no mercado.
+            Posicionamento mostra com que clareza o mercado
+            entende quem você é, para quem existe e por que
+            deveria escolher o seu negócio. Quando isso é fraco,
+            todo o restante precisa trabalhar mais para convencer.
           </p>
 
         </div>
 
-  <div class="pact-panel-tags">
-  <span>Marca</span>
-  <span>Oferta</span>
-  <span>Site</span>
-  <span>Google</span>
-  <span>Redes sociais</span>
-  <span>Conteúdo</span>
-  <span>Reputação</span>
-</div>
 
-      </article>
+        <div class="pact-panel-tags">
+
+          <span>Clareza</span>
+          <span>Público</span>
+          <span>Confiança</span>
+          <span>Oferta</span>
+
+        </div>
+
+      </div>
+
 
 
       <!-- AQUISIÇÃO -->
 
-      <article
+      <div
         class="pact-panel-content"
         data-content="a"
       >
 
         <span class="pact-panel-index">
-          A / 02
+          02 · AQUISIÇÃO
         </span>
+
 
         <div class="pact-panel-main">
 
           <h3>
-            Crie caminhos para
-            novas oportunidades chegarem.
+            Crescimento precisa de entrada.
           </h3>
 
           <p>
-            Identificamos os canais mais adequados
-            para gerar demanda e aumentar previsibilidade.
+            Aquisição mostra como novas oportunidades chegam
+            ao negócio: se existe volume, previsibilidade,
+            presença nos canais certos e capacidade de entender
+            o que realmente está trazendo resultado.
           </p>
 
         </div>
 
-        <div class="pact-panel-tags">
-  <span>Google</span>
-  <span>Tráfego</span>
-  <span>Conteúdo</span>
-  <span>Prospecção</span>
-  <span>Social selling</span>
-  <span>Indicação</span>
-  <span>Parcerias</span>
-</div>
 
-      </article>
+        <div class="pact-panel-tags">
+
+          <span>Previsibilidade</span>
+          <span>Volume</span>
+          <span>Presença</span>
+          <span>Mensuração</span>
+
+        </div>
+
+      </div>
+
 
 
       <!-- COMERCIAL -->
 
-      <article
+      <div
         class="pact-panel-content"
         data-content="c"
       >
 
         <span class="pact-panel-index">
-          C / 03
+          03 · COMERCIAL
         </span>
+
 
         <div class="pact-panel-main">
 
           <h3>
-            Transforme oportunidade
-            em processo e conversão.
+            Oportunidade só vale quando avança.
           </h3>
 
           <p>
-            Organizamos o caminho entre o primeiro contato
-            e a decisão de compra.
+            Comercial mostra o que acontece depois que o interesse
+            aparece: a velocidade do atendimento, a condução da
+            oportunidade, o acompanhamento e a capacidade de
+            transformar conversas em vendas.
           </p>
 
         </div>
 
+
         <div class="pact-panel-tags">
-          <span>Atendimento</span>
-          <span>Qualificação</span>
-          <span>CRM</span>
-          <span>Pipeline</span>
+
+          <span>Velocidade</span>
+          <span>Processo</span>
           <span>Follow-up</span>
           <span>Conversão</span>
+
         </div>
 
-      </article>
+      </div>
+
 
 
       <!-- TECNOLOGIA -->
 
-      <article
+      <div
         class="pact-panel-content"
         data-content="t"
       >
 
         <span class="pact-panel-index">
-          T / 04
+          04 · TECNOLOGIA
         </span>
+
 
         <div class="pact-panel-main">
 
           <h3>
-            Use tecnologia para
-            aumentar capacidade.
+            Tecnologia deve sustentar, não complicar.
           </h3>
 
           <p>
-            Aplicamos inteligência artificial,
-            automação e integração onde realmente fazem sentido.
+            Tecnologia mostra se a operação consegue organizar
+            informação, reduzir trabalho manual, enxergar dados
+            e absorver crescimento sem perder velocidade,
+            controle ou qualidade.
           </p>
 
         </div>
 
+
         <div class="pact-panel-tags">
-          <span>IA</span>
+
+          <span>Organização</span>
           <span>Automação</span>
-          <span>CRM</span>
-          <span>Integrações</span>
+          <span>Capacidade</span>
           <span>Dados</span>
-          <span>Follow-up automático</span>
+
         </div>
 
-      </article>
+      </div>
 
     </div>
+
 
 
     <!-- FECHAMENTO -->
 
     <div class="pact-system-footer">
 
-      <span>POSICIONAMENTO</span>
-      <i>+</i>
+      <span>
+        OS QUATRO PILARES SE CONECTAM
+      </span>
 
-      <span>AQUISIÇÃO</span>
-      <i>+</i>
-
-      <span>COMERCIAL</span>
-      <i>+</i>
-
-      <span>TECNOLOGIA</span>
+      <i aria-hidden="true">
+        →
+      </i>
 
       <strong>
-        = ESTRUTURA
+        O gargalo de um limita o crescimento dos outros.
       </strong>
 
     </div>
 
 
-    <div class="pact-system-index" aria-hidden="true">
+
+    <div
+      class="pact-system-index"
+      aria-hidden="true"
+    >
       03
     </div>
 
