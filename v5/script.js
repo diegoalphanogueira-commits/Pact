@@ -8932,6 +8932,23 @@ const pactMetricGroups =
 
 </div>
 
+
+        <button
+          type="button"
+          class="assessment-result-restart"
+          id="assessmentRestart"
+        >
+          Refazer diagnóstico
+        </button>
+      `;
+
+      `;
+
+
+/* ======================================================
+   START PACT CONVERSATION
+====================================================== */
+
 document
   .getElementById(
     "pactConversationStart"
@@ -8947,16 +8964,10 @@ document
     }
   );
 
-        <button
-          type="button"
-          class="assessment-result-restart"
-          id="assessmentRestart"
-        >
-          Refazer diagnóstico
-        </button>
-      `;
 
-
+/* ======================================================
+   PACT REPORT V2 — CINEMATIC REVEAL
+====================================================== */
 
 /* ======================================================
    PACT REPORT V2 — CINEMATIC REVEAL
