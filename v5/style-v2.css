@@ -13672,3 +13672,300 @@ min-height: 620px;
   will-change:
     transform;
 }
+/* =========================================================
+   PACT — LEAD CAPTURE
+========================================================= */
+
+.assessment-lead-capture {
+  width: 100%;
+  max-width: 620px;
+
+  padding-top: 6px;
+}
+
+
+.assessment-lead-status {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 36px;
+
+  color:
+    rgba(213, 255, 63, 0.62);
+
+  font-size: 0.54rem;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+
+.assessment-lead-status-dot {
+  width: 6px;
+  height: 6px;
+
+  flex: 0 0 6px;
+
+  border-radius: 50%;
+
+  background: #d5ff3f;
+
+  box-shadow:
+    0 0 16px
+    rgba(213, 255, 63, 0.45);
+}
+
+
+.assessment-lead-heading {
+  margin-bottom: 38px;
+}
+
+
+.assessment-lead-heading > span {
+  color:
+    rgba(246, 247, 248, 0.27);
+
+  font-size: 0.52rem;
+  font-weight: 600;
+
+  letter-spacing: 0.13em;
+}
+
+
+.assessment-lead-heading > strong {
+  display: block;
+
+  margin-top: 10px;
+
+  color: #f6f7f8;
+
+  font-size:
+    clamp(
+      1.7rem,
+      3vw,
+      2.5rem
+    );
+
+  line-height: 1.05;
+
+  letter-spacing:
+    -0.04em;
+
+  font-weight: 500;
+}
+
+
+.assessment-lead-heading p {
+  max-width: 470px;
+
+  margin-top: 12px;
+
+  color:
+    rgba(246, 247, 248, 0.38);
+
+  font-size: 0.76rem;
+
+  line-height: 1.6;
+}
+
+
+
+/* FIELD */
+
+.assessment-lead-field {
+  position: relative;
+
+  padding:
+    18px 0 13px;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.09);
+}
+
+
+.assessment-lead-field + .assessment-lead-field {
+  margin-top: 10px;
+}
+
+
+.assessment-lead-field label {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 8px;
+
+  color:
+    rgba(246, 247, 248, 0.3);
+
+  font-size: 0.5rem;
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+}
+
+
+.assessment-lead-field label small {
+  color:
+    rgba(246, 247, 248, 0.18);
+
+  font-size: 0.48rem;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+
+  text-transform: lowercase;
+}
+
+
+.assessment-lead-field input {
+  width: 100%;
+
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #f6f7f8;
+
+  font: inherit;
+
+  font-size:
+    clamp(
+      1.25rem,
+      2vw,
+      1.6rem
+    );
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.assessment-lead-field input::placeholder {
+  color:
+    rgba(246, 247, 248, 0.16);
+}
+
+
+.assessment-lead-field:focus-within {
+  border-bottom-color:
+    rgba(213, 255, 63, 0.55);
+}
+
+
+
+/* FEEDBACK */
+
+.assessment-lead-feedback {
+  min-height: 20px;
+
+  margin-top: 10px;
+
+  color:
+    rgba(255, 170, 130, 0.72);
+
+  font-size: 0.62rem;
+}
+
+
+
+/* BUTTON */
+
+.assessment-lead-submit {
+  width: 100%;
+  min-height: 62px;
+
+  margin-top: 20px;
+
+  padding:
+    0 23px;
+
+  border: 0;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #d5ff3f;
+
+  color: #050709;
+
+  cursor: pointer;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+
+.assessment-lead-submit:not(:disabled):hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 14px 40px
+    rgba(213, 255, 63, 0.15);
+}
+
+
+.assessment-lead-submit:disabled {
+  opacity: 0.22;
+
+  cursor: not-allowed;
+}
+
+
+.assessment-lead-privacy {
+  display: block;
+
+  max-width: 470px;
+
+  margin-top: 14px;
+
+  color:
+    rgba(246, 247, 248, 0.2);
+
+  font-size: 0.54rem;
+
+  line-height: 1.55;
+}
+
+
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+
+  .assessment-lead-capture {
+    max-width: none;
+  }
+
+
+  .assessment-lead-status {
+    margin-bottom: 28px;
+  }
+
+
+  .assessment-lead-heading {
+    margin-bottom: 30px;
+  }
+
+
+  .assessment-lead-submit {
+    min-height: 58px;
+
+    margin-top: 18px;
+  }
+
+}
