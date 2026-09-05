@@ -19512,3 +19512,242 @@ and (
   }
 
 }
+/* =========================================================
+   PACT FLOATING CHAT — DESKTOP
+========================================================= */
+
+.pact-conversation {
+  position: fixed !important;
+
+  right: 24px !important;
+  bottom: 24px !important;
+
+  width: 390px !important;
+  height: 560px !important;
+  max-height: calc(100vh - 48px) !important;
+
+  margin: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  z-index: 99999 !important;
+
+  overflow: hidden !important;
+
+  border-radius: 22px !important;
+
+  background:
+    rgba(8, 11, 12, 0.985) !important;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.11) !important;
+
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(213, 255, 63, 0.025) !important;
+
+  backdrop-filter:
+    blur(18px) !important;
+
+  -webkit-backdrop-filter:
+    blur(18px) !important;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.pact-conversation-header {
+  position: relative !important;
+
+  flex: 0 0 auto !important;
+
+  min-height: 76px !important;
+
+  padding:
+    16px 18px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  background:
+    rgba(10, 13, 14, 0.98) !important;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+
+/* =========================================================
+   MESSAGES — IMPORTANT
+========================================================= */
+
+.pact-conversation-messages {
+  position: relative !important;
+
+  flex: 1 1 auto !important;
+
+  width: 100% !important;
+
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  overscroll-behavior:
+    contain !important;
+
+  touch-action:
+    pan-y !important;
+
+  padding:
+    20px 18px 28px !important;
+
+  scrollbar-width:
+    thin !important;
+
+  scrollbar-color:
+    rgba(213, 255, 63, 0.25)
+    transparent !important;
+}
+
+
+.pact-conversation-messages::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+.pact-conversation-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.pact-conversation-messages::-webkit-scrollbar-thumb {
+  background:
+    rgba(213, 255, 63, 0.25);
+
+  border-radius:
+    999px;
+}
+
+
+/* =========================================================
+   OPTIONS
+========================================================= */
+
+.pact-conversation-options {
+  flex: 0 0 auto !important;
+
+  max-height: 170px !important;
+
+  overflow-y: auto !important;
+
+  padding:
+    14px 16px 18px !important;
+
+  background:
+    rgba(8, 11, 12, 0.99) !important;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+
+/* =========================================================
+   MESSAGE BUBBLES
+========================================================= */
+
+.pact-chat-message {
+  width: 100% !important;
+
+  margin-bottom:
+    9px !important;
+}
+
+
+.pact-chat-bubble {
+  width:
+    fit-content !important;
+
+  max-width:
+    84% !important;
+
+  padding:
+    10px 13px !important;
+
+  font-size:
+    0.86rem !important;
+
+  line-height:
+    1.46 !important;
+
+  border-radius:
+    15px 15px 15px 5px !important;
+
+  background:
+    rgba(255, 255, 255, 0.055) !important;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.065) !important;
+
+  color:
+    rgba(246, 247, 248, 0.93) !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .pact-conversation {
+    right:
+      12px !important;
+
+    bottom:
+      12px !important;
+
+    width:
+      calc(100vw - 24px) !important;
+
+    height:
+      min(610px, calc(100vh - 24px)) !important;
+
+    max-height:
+      calc(100vh - 24px) !important;
+
+    border-radius:
+      22px !important;
+  }
+
+
+  .pact-conversation-header {
+    min-height:
+      70px !important;
+
+    padding:
+      14px 15px !important;
+  }
+
+
+  .pact-conversation-messages {
+    padding:
+      18px 15px 24px !important;
+  }
+
+
+  .pact-chat-bubble {
+    max-width:
+      90% !important;
+
+    font-size:
+      0.89rem !important;
+  }
+
+}
