@@ -16258,3 +16258,16 @@ and (
   }
 
 }
+/* =========================================================
+   HERO DESCRIPTION — MOBILE PILLARS
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .hero-description strong {
+    display: block;
+
+    margin-top: 8px;
+  }
+
+}
