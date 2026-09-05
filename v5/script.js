@@ -9147,93 +9147,61 @@ if (
       report
     );
 
-
 await pactConversationWait(
-  500
+  600
 );
 
 
-/* Diego entra */
+/* ======================================================
+   ABERTURA HUMANIZADA
+====================================================== */
 
 appendPactConversationEvent(
-  "Diego entrou na conversa"
+  "Diego iniciou sua análise"
 );
 
 
 await pactConversationWait(
-  950
-);
-
-
-/* Saudação */
-
-await appendDiegoMessage(
-  name
-    ? `Opa, ${name}. Tudo bem?`
-    : "Opa! Tudo bem?",
-  850
-);
-
-
-/* Contexto */
-
-await appendDiegoMessage(
-  "Acabei de olhar com calma o resultado do seu Diagnóstico PACT.",
-  1050
-);
-
-
-/* Primeiro gancho */
-
-await appendDiegoMessage(
-  "E tem uma coisa aqui que me chamou atenção.",
   900
 );
 
 
-/* Gargalo */
+/* MENSAGEM 1 */
 
 await appendDiegoMessage(
-  pactConversationPillarCopy[
-    report.bottleneck
-  ],
-  1250
+  name
+    ? `Diego aqui, ${name.trim().split(/\s+/)[0]} 👋`
+    : "Diego aqui 👋",
+  650
 );
 
 
-/* Microindicador */
+/* MENSAGEM 2 */
+
+await appendDiegoMessage(
+  `Vi seu diagnóstico. ${report.bottleneckName} foi o ponto que mais me chamou atenção.`,
+  850
+);
+
+
+/* MENSAGEM 3 */
 
 if (criticalMetric) {
 
   await appendDiegoMessage(
-    `${
-      pactConversationMetricCopy[
-        criticalMetric.id
-      ] ||
-      `Dentro de ${report.bottleneckName}, o indicador que mais merece atenção é ${criticalMetric.label}.`
-    }`,
-    1350
+    `Principalmente ${criticalMetric.label.toLowerCase()}. Isso bate com o que você sente hoje?`,
+    950
   );
 
+}
+else {
 
   await appendDiegoMessage(
-    `${criticalMetric.label.toUpperCase()} · ${criticalMetric.score}/100`,
+    "Isso bate com o que você sente hoje?",
     850
   );
 
 }
-
-
-/* Pergunta */
-
-await appendDiegoMessage(
-  "Mas antes de eu continuar, quero validar isso com você."
-);
-
-
-await appendDiegoMessage(
-  "Essa leitura bate com o que você sente hoje dentro do negócio?"
-);
 
   renderPactConversationOptions(
     [
