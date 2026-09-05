@@ -16271,3 +16271,81 @@ and (
   }
 
 }
+/* =========================================================
+   SCREEN 02 — SCROLL CUE MOBILE FINAL
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .tools-scroll-cue {
+    top: auto !important;
+    bottom: 68px !important;
+
+    left: 50% !important;
+    right: auto !important;
+
+    width: max-content;
+
+    transform: translateX(-50%) !important;
+
+    align-items: center !important;
+
+    gap: 14px !important;
+
+    text-align: center;
+  }
+
+
+  /* CÍRCULO / INDICADOR */
+
+  .tools-orbit {
+    width: 72px !important;
+    height: 72px !important;
+
+    filter:
+      drop-shadow(
+        0 0 18px
+        rgba(213, 255, 63, 0.16)
+      );
+  }
+
+  .tools-orbit-ring-1 {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .tools-orbit-ring-2 {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+
+  /* TEXTO */
+
+  .tools-scroll-label {
+    color: rgba(245, 246, 247, 0.76) !important;
+
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+
+    letter-spacing: 0.18em !important;
+  }
+
+
+  /* BARRA */
+
+  .tools-scroll-progress {
+    width: 190px !important;
+    height: 2px !important;
+
+    background:
+      rgba(255, 255, 255, 0.16) !important;
+  }
+
+  .tools-scroll-progress i {
+    box-shadow:
+      0 0 12px
+      rgba(213, 255, 63, 0.45);
+  }
+
+}
