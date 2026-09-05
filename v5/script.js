@@ -8940,7 +8940,16 @@ async function startPactConversation(
 
   conversation.hidden =
     false;
+  
+/* MOVE CHAT TO GLOBAL FLOATING LAYER */
 
+if (
+  conversation.parentElement !== document.body
+) {
+  document.body.appendChild(
+    conversation
+  );
+}
 
   if (startButton) {
 
