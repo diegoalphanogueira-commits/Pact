@@ -16008,3 +16008,14 @@ and (
   }
 
 }
+/* =========================================================
+   HERO VIDEO — MOBILE POSITION
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .hero-video {
+    object-position: 68% center !important;
+  }
+
+}
