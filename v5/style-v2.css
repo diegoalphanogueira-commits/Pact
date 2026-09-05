@@ -16022,3 +16022,15 @@ and (
   }
 
 }
+
+/* =========================================================
+   HERO VIDEO — DESKTOP FRAMING
+========================================================= */
+
+@media (min-width: 1001px) {
+
+  .hero-video {
+    object-position: center 42% !important;
+  }
+
+}
