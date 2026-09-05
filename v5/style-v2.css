@@ -16393,3 +16393,34 @@ and (
   }
 
 }
+/* =========================================================
+   SCREEN 03 — DESKTOP TITLE FINAL
+========================================================= */
+
+@media (min-width: 901px) {
+
+  .pact-system-intro {
+    max-width: 1050px !important;
+  }
+
+  .pact-system-title {
+    max-width: 1050px !important;
+
+    font-size: clamp(
+      2.75rem,
+      4vw,
+      3.55rem
+    ) !important;
+
+    line-height: 0.98 !important;
+
+    letter-spacing: -0.05em !important;
+  }
+
+  .pact-system-title span {
+    display: block !important;
+
+    color: #d5ff3f !important;
+  }
+
+}
