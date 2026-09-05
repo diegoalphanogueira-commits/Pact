@@ -17428,3 +17428,1716 @@ and (
   }
 
 }
+/* =========================================================
+   SCREEN 10 — DIAGNÓSTICO PACT
+   PREMIUM ENTRY V2
+========================================================= */
+
+
+/* =========================================================
+   BASE
+========================================================= */
+
+.assessment-entry-v2 {
+  position: relative;
+
+  width: 100%;
+
+  padding:
+    94px 0 78px;
+
+  overflow: hidden;
+}
+
+
+.assessment-entry-v2::before {
+  content: "";
+
+  position: absolute;
+
+  width: 720px;
+  height: 720px;
+
+  right: -240px;
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(213, 255, 63, 0.07) 0%,
+      rgba(213, 255, 63, 0.018) 36%,
+      transparent 68%
+    );
+
+  pointer-events: none;
+}
+
+
+.assessment-entry-v2-shell {
+  position: relative;
+  z-index: 2;
+
+  width:
+    min(
+      1280px,
+      calc(100% - 80px)
+    );
+
+  margin:
+    0 auto;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.assessment-entry-v2-top {
+  min-height: 68px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+}
+
+
+.assessment-entry-v2-label,
+.assessment-entry-v2-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  color:
+    rgba(246, 247, 248, 0.46);
+
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-size: 0.61rem;
+  font-weight: 700;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+}
+
+
+.assessment-entry-v2-label i {
+  display: block;
+
+  width: 30px;
+  height: 1px;
+
+  background:
+    #d5ff3f;
+}
+
+
+.assessment-entry-v2-label span {
+  color:
+    #d5ff3f;
+}
+
+
+.assessment-entry-v2-status i {
+  position: relative;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background:
+    #d5ff3f;
+
+  box-shadow:
+    0 0 16px
+    rgba(213, 255, 63, 0.7);
+}
+
+
+.assessment-entry-v2-status i::after {
+  content: "";
+
+  position: absolute;
+
+  inset: -5px;
+
+  border:
+    1px solid
+    rgba(213, 255, 63, 0.25);
+
+  border-radius: 50%;
+
+  animation:
+    pactEntryStatusPulse
+    2.4s
+    ease-in-out
+    infinite;
+}
+
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.assessment-entry-v2-main {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.08fr)
+    minmax(390px, 0.92fr);
+
+  min-height:
+    670px;
+}
+
+
+/* =========================================================
+   LEFT COPY
+========================================================= */
+
+.assessment-entry-v2-copy {
+  padding:
+    74px
+    clamp(52px, 6vw, 86px)
+    68px
+    0;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.assessment-entry-v2-eyebrow {
+  display: block;
+
+  margin-bottom: 24px;
+
+  color:
+    rgba(246, 247, 248, 0.35);
+
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-size: 0.61rem;
+  font-weight: 700;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+}
+
+
+.assessment-entry-v2-title {
+  max-width: 760px;
+
+  margin: 0;
+
+  color:
+    #f6f7f8;
+
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-size:
+    clamp(
+      2.8rem,
+      4.15vw,
+      4rem
+    );
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing:
+    -0.052em;
+}
+
+
+.assessment-entry-v2-title strong {
+  display: block;
+
+  color:
+    #d5ff3f;
+
+  font: inherit;
+}
+
+
+.assessment-entry-v2-description {
+  max-width: 650px;
+
+  margin:
+    30px
+    0
+    0;
+
+  color:
+    rgba(246, 247, 248, 0.53);
+
+  font-size:
+    0.97rem;
+
+  line-height:
+    1.75;
+}
+
+
+/* =========================================================
+   RESULTS / DELIVERABLES
+========================================================= */
+
+.assessment-entry-v2-results {
+  margin-top: auto;
+
+  padding-top: 56px;
+}
+
+
+.assessment-entry-v2-results-head {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  padding-bottom: 15px;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+}
+
+
+.assessment-entry-v2-results-head span,
+.assessment-entry-v2-results-head small {
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-size:
+    0.58rem;
+
+  font-weight: 700;
+
+  letter-spacing:
+    0.15em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.assessment-entry-v2-results-head span {
+  color:
+    #d5ff3f;
+}
+
+
+.assessment-entry-v2-results-head small {
+  color:
+    rgba(246, 247, 248, 0.27);
+}
+
+
+.assessment-entry-v2-results-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+}
+
+
+.assessment-entry-v2-result {
+  min-height: 100px;
+
+  display: grid;
+
+  grid-template-columns:
+    42px
+    1fr;
+
+  gap: 14px;
+
+  align-items: center;
+
+  padding:
+    22px
+    20px
+    22px
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.065);
+}
+
+
+.assessment-entry-v2-result:nth-child(odd) {
+  border-right:
+    1px solid
+    rgba(255, 255, 255, 0.065);
+
+  padding-right:
+    28px;
+}
+
+
+.assessment-entry-v2-result:nth-child(even) {
+  padding-left:
+    28px;
+}
+
+
+.assessment-entry-v2-result > span {
+  align-self: start;
+
+  margin-top: 3px;
+
+  color:
+    #d5ff3f;
+
+  font-size:
+    0.61rem;
+
+  font-weight: 700;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.assessment-entry-v2-result strong {
+  display: block;
+
+  color:
+    rgba(246, 247, 248, 0.9);
+
+  font-size:
+    0.83rem;
+
+  font-weight: 600;
+
+  line-height:
+    1.35;
+}
+
+
+.assessment-entry-v2-result small {
+  display: block;
+
+  margin-top: 6px;
+
+  color:
+    rgba(246, 247, 248, 0.33);
+
+  font-size:
+    0.66rem;
+
+  line-height:
+    1.4;
+}
+
+
+/* =========================================================
+   RIGHT CONSOLE
+========================================================= */
+
+.assessment-entry-v2-console {
+  position: relative;
+
+  padding:
+    34px
+    38px
+    36px;
+
+  border-left:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.018),
+      rgba(213, 255, 63, 0.012)
+    );
+}
+
+
+.assessment-entry-v2-console::before {
+  content: "";
+
+  position: absolute;
+
+  inset:
+    0;
+
+  pointer-events:
+    none;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(213, 255, 63, 0.018),
+      transparent
+    );
+}
+
+
+.assessment-entry-v2-console-head {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 20px;
+}
+
+
+.assessment-entry-v2-console-head span,
+.assessment-entry-v2-console-head small {
+  display: block;
+}
+
+
+.assessment-entry-v2-console-head span {
+  color:
+    #f6f7f8;
+
+  font-size:
+    0.67rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.13em;
+}
+
+
+.assessment-entry-v2-console-head small {
+  margin-top:
+    6px;
+
+  color:
+    rgba(246, 247, 248, 0.31);
+
+  font-size:
+    0.55rem;
+
+  letter-spacing:
+    0.15em;
+}
+
+
+.assessment-entry-v2-console-code {
+  color:
+    #d5ff3f !important;
+
+  font-size:
+    0.55rem !important;
+}
+
+
+/* =========================================================
+   PACT CORE
+========================================================= */
+
+.assessment-entry-v2-core {
+  position: relative;
+
+  width:
+    min(390px, 100%);
+
+  aspect-ratio:
+    1 / 1;
+
+  margin:
+    26px
+    auto
+    18px;
+
+  display: grid;
+
+  place-items: center;
+}
+
+
+.assessment-entry-v2-orbit {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border-radius:
+    50%;
+
+  border:
+    1px solid
+    rgba(213, 255, 63, 0.18);
+}
+
+
+.assessment-entry-v2-orbit.orbit-a {
+  width: 82%;
+  height: 82%;
+
+  animation:
+    pactOrbitBreath
+    5.6s
+    ease-in-out
+    infinite;
+}
+
+
+.assessment-entry-v2-orbit.orbit-b {
+  width: 61%;
+  height: 61%;
+
+  border-color:
+    rgba(213, 255, 63, 0.29);
+
+  animation:
+    pactOrbitBreath
+    5.6s
+    ease-in-out
+    0.7s
+    infinite;
+}
+
+
+.assessment-entry-v2-orbit.orbit-c {
+  width: 41%;
+  height: 41%;
+
+  border-color:
+    rgba(213, 255, 63, 0.13);
+
+  animation:
+    pactOrbitBreath
+    5.6s
+    ease-in-out
+    1.4s
+    infinite;
+}
+
+
+/* subtle crosshair */
+
+.assessment-entry-v2-core::before,
+.assessment-entry-v2-core::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+}
+
+
+.assessment-entry-v2-core::before {
+  width: 88%;
+  height: 1px;
+}
+
+
+.assessment-entry-v2-core::after {
+  width: 1px;
+  height: 88%;
+}
+
+
+/* CENTER */
+
+.assessment-entry-v2-core-center {
+  position: relative;
+  z-index: 5;
+
+  width: 132px;
+  height: 132px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius:
+    50%;
+
+  border:
+    1px solid
+    rgba(213, 255, 63, 0.38);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(213, 255, 63, 0.075),
+      rgba(5, 7, 9, 0.96) 68%
+    );
+
+  box-shadow:
+    0 0 70px
+    rgba(213, 255, 63, 0.055);
+}
+
+
+.assessment-entry-v2-core-center small {
+  color:
+    rgba(246, 247, 248, 0.32);
+
+  font-size:
+    0.49rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.17em;
+}
+
+
+.assessment-entry-v2-core-center strong {
+  margin:
+    4px
+    0;
+
+  color:
+    #f6f7f8;
+
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-size:
+    1.75rem;
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+.assessment-entry-v2-core-center span {
+  color:
+    #d5ff3f;
+
+  font-size:
+    0.47rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.14em;
+}
+
+
+/* NODES */
+
+.assessment-entry-v2-node {
+  position: absolute;
+  z-index: 6;
+
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius:
+    50%;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.13);
+
+  background:
+    #07090c;
+
+  color:
+    rgba(246, 247, 248, 0.48);
+
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-size:
+    0.75rem;
+
+  font-weight:
+    600;
+
+  transition:
+    border-color 0.35s ease,
+    color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+.node-p {
+  top: 10%;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+}
+
+
+.node-a {
+  right: 10%;
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+}
+
+
+.node-c {
+  bottom: 10%;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+}
+
+
+.node-t {
+  left: 10%;
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+}
+
+
+/* rotate the active emphasis */
+
+.assessment-entry-v2-node:nth-of-type(1) {
+  animation:
+    pactNodePulse
+    8s
+    ease-in-out
+    infinite;
+}
+
+
+.assessment-entry-v2-node:nth-of-type(2) {
+  animation:
+    pactNodePulse
+    8s
+    ease-in-out
+    2s
+    infinite;
+}
+
+
+.assessment-entry-v2-node:nth-of-type(3) {
+  animation:
+    pactNodePulse
+    8s
+    ease-in-out
+    4s
+    infinite;
+}
+
+
+.assessment-entry-v2-node:nth-of-type(4) {
+  animation:
+    pactNodePulse
+    8s
+    ease-in-out
+    6s
+    infinite;
+}
+
+
+/* SCAN */
+
+.assessment-entry-v2-scan {
+  position: absolute;
+  z-index: 4;
+
+  left: 50%;
+  top: 50%;
+
+  width: 78%;
+  height: 1px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(213, 255, 63, 0.62),
+      transparent
+    );
+
+  box-shadow:
+    0 0 18px
+    rgba(213, 255, 63, 0.25);
+
+  animation:
+    pactDiagnosticScan
+    5.8s
+    ease-in-out
+    infinite;
+
+  opacity:
+    0.42;
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.assessment-entry-v2-meta {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  margin-top: 8px;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+}
+
+
+.assessment-entry-v2-meta > div {
+  min-height:
+    72px;
+
+  padding:
+    17px
+    14px;
+
+  border-right:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+}
+
+
+.assessment-entry-v2-meta > div:last-child {
+  border-right:
+    0;
+}
+
+
+.assessment-entry-v2-meta span {
+  display:
+    block;
+
+  color:
+    rgba(246, 247, 248, 0.28);
+
+  font-size:
+    0.51rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.13em;
+}
+
+
+.assessment-entry-v2-meta strong {
+  display:
+    block;
+
+  margin-top:
+    8px;
+
+  color:
+    rgba(246, 247, 248, 0.82);
+
+  font-size:
+    0.75rem;
+
+  font-weight:
+    600;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.assessment-entry-v2-button {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+
+  min-height:
+    62px;
+
+  margin-top:
+    28px;
+
+  padding:
+    0 24px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    20px;
+
+  border:
+    1px solid
+    #d5ff3f !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    #d5ff3f !important;
+
+  color:
+    #050709 !important;
+
+  font-family:
+    "Manrope",
+    sans-serif !important;
+
+  font-size:
+    0.78rem !important;
+
+  font-weight:
+    700 !important;
+
+  letter-spacing:
+    -0.01em;
+
+  cursor:
+    pointer;
+
+  overflow:
+    hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.assessment-entry-v2-button::before {
+  content: "";
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  transform:
+    translateX(-105%);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.34),
+      transparent
+    );
+
+  transition:
+    transform 0.65s ease;
+}
+
+
+.assessment-entry-v2-button:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 14px 38px
+    rgba(213, 255, 63, 0.12);
+}
+
+
+.assessment-entry-v2-button:hover::before {
+  transform:
+    translateX(105%);
+}
+
+
+.assessment-entry-v2-button svg {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+.assessment-entry-v2-button span {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+.assessment-entry-v2-button:hover svg {
+  transform:
+    translateX(4px);
+}
+
+
+.assessment-entry-v2-privacy {
+  position: relative;
+  z-index: 2;
+
+  display:
+    block;
+
+  max-width:
+    330px;
+
+  margin:
+    14px auto 0;
+
+  color:
+    rgba(246, 247, 248, 0.25);
+
+  font-size:
+    0.58rem;
+
+  line-height:
+    1.5;
+
+  text-align:
+    center;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.assessment-entry-v2-footer {
+  min-height:
+    62px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    30px;
+
+  color:
+    rgba(246, 247, 248, 0.24);
+
+  font-size:
+    0.53rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.14em;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes pactEntryStatusPulse {
+
+  0%,
+  100% {
+    transform:
+      scale(0.8);
+
+    opacity:
+      0.2;
+  }
+
+  50% {
+    transform:
+      scale(1.28);
+
+    opacity:
+      0.85;
+  }
+}
+
+
+@keyframes pactOrbitBreath {
+
+  0%,
+  100% {
+    opacity:
+      0.35;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(0.99);
+  }
+
+  50% {
+    opacity:
+      0.78;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(1.015);
+  }
+}
+
+
+@keyframes pactNodePulse {
+
+  0%,
+  16%,
+  100% {
+    color:
+      rgba(246, 247, 248, 0.42);
+
+    border-color:
+      rgba(255, 255, 255, 0.12);
+
+    background:
+      #07090c;
+
+    box-shadow:
+      none;
+  }
+
+  5%,
+  11% {
+    color:
+      #050709;
+
+    border-color:
+      #d5ff3f;
+
+    background:
+      #d5ff3f;
+
+    box-shadow:
+      0 0 28px
+      rgba(213, 255, 63, 0.15);
+  }
+}
+
+
+@keyframes pactDiagnosticScan {
+
+  0%,
+  100% {
+    top:
+      24%;
+
+    opacity:
+      0;
+  }
+
+  15% {
+    opacity:
+      0.4;
+  }
+
+  50% {
+    top:
+      76%;
+
+    opacity:
+      0.55;
+  }
+
+  65% {
+    opacity:
+      0.18;
+  }
+
+  80% {
+    top:
+      24%;
+
+    opacity:
+      0;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (
+  min-width: 641px
+)
+and (
+  max-width: 960px
+) {
+
+  .assessment-entry-v2-shell {
+    width:
+      calc(100% - 48px);
+  }
+
+
+  .assessment-entry-v2-main {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .assessment-entry-v2-copy {
+    padding:
+      62px 0;
+  }
+
+
+  .assessment-entry-v2-console {
+    border-left:
+      0;
+
+    border-top:
+      1px solid
+      rgba(255, 255, 255, 0.08);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (
+  max-width: 640px
+) {
+
+  .assessment-entry-v2 {
+    padding:
+      54px 0 60px;
+  }
+
+
+  .assessment-entry-v2-shell {
+    width:
+      calc(100% - 40px);
+  }
+
+
+  /* TOP */
+
+  .assessment-entry-v2-top {
+    min-height:
+      54px;
+  }
+
+
+  .assessment-entry-v2-label,
+  .assessment-entry-v2-status {
+    font-size:
+      0.5rem;
+
+    letter-spacing:
+      0.12em;
+  }
+
+
+  .assessment-entry-v2-label i {
+    width:
+      22px;
+  }
+
+
+  .assessment-entry-v2-status span {
+    display:
+      none;
+  }
+
+
+  /* SINGLE COLUMN */
+
+  .assessment-entry-v2-main {
+    display:
+      block;
+
+    min-height:
+      auto;
+  }
+
+
+  /* COPY */
+
+  .assessment-entry-v2-copy {
+    padding:
+      48px 0 50px;
+  }
+
+
+  .assessment-entry-v2-eyebrow {
+    margin-bottom:
+      17px;
+
+    font-size:
+      0.52rem;
+
+    letter-spacing:
+      0.13em;
+  }
+
+
+  .assessment-entry-v2-title {
+    max-width:
+      100%;
+
+    font-size:
+      clamp(
+        2rem,
+        8.6vw,
+        2.4rem
+      );
+
+    line-height:
+      1.02;
+
+    letter-spacing:
+      -0.045em;
+  }
+
+
+  .assessment-entry-v2-title strong {
+    display:
+      block;
+  }
+
+
+  .assessment-entry-v2-description {
+    margin-top:
+      23px;
+
+    font-size:
+      0.89rem;
+
+    line-height:
+      1.65;
+  }
+
+
+  /* RESULTS */
+
+  .assessment-entry-v2-results {
+    margin-top:
+      42px;
+
+    padding-top:
+      0;
+  }
+
+
+  .assessment-entry-v2-results-head {
+    padding-bottom:
+      12px;
+  }
+
+
+  .assessment-entry-v2-results-head small {
+    display:
+      none;
+  }
+
+
+  .assessment-entry-v2-results-grid {
+    display:
+      block;
+  }
+
+
+  .assessment-entry-v2-result {
+    min-height:
+      76px;
+
+    grid-template-columns:
+      34px 1fr;
+
+    padding:
+      16px 0 !important;
+
+    border-right:
+      0 !important;
+
+    border-bottom:
+      1px solid
+      rgba(255, 255, 255, 0.065);
+  }
+
+
+  .assessment-entry-v2-result strong {
+    font-size:
+      0.79rem;
+  }
+
+
+  .assessment-entry-v2-result small {
+    font-size:
+      0.62rem;
+  }
+
+
+  /* CONSOLE */
+
+  .assessment-entry-v2-console {
+    margin:
+      0 -20px;
+
+    padding:
+      28px 20px 34px;
+
+    border-left:
+      0;
+
+    border-top:
+      1px solid
+      rgba(255, 255, 255, 0.08);
+
+    border-bottom:
+      1px solid
+      rgba(255, 255, 255, 0.08);
+
+    background:
+      radial-gradient(
+        circle at 50% 38%,
+        rgba(213, 255, 63, 0.035),
+        transparent 44%
+      );
+  }
+
+
+  .assessment-entry-v2-console-head {
+    padding:
+      0 2px;
+  }
+
+
+  .assessment-entry-v2-core {
+    width:
+      min(
+        320px,
+        92vw
+      );
+
+    margin:
+      22px auto 16px;
+  }
+
+
+  .assessment-entry-v2-core-center {
+    width:
+      112px;
+
+    height:
+      112px;
+  }
+
+
+  .assessment-entry-v2-core-center strong {
+    font-size:
+      1.5rem;
+  }
+
+
+  .assessment-entry-v2-node {
+    width:
+      38px;
+
+    height:
+      38px;
+
+    font-size:
+      0.68rem;
+  }
+
+
+  /* META */
+
+  .assessment-entry-v2-meta > div {
+    min-height:
+      65px;
+
+    padding:
+      14px 8px;
+  }
+
+
+  .assessment-entry-v2-meta span {
+    font-size:
+      0.44rem;
+  }
+
+
+  .assessment-entry-v2-meta strong {
+    font-size:
+      0.67rem;
+  }
+
+
+  /* BUTTON */
+
+  .assessment-entry-v2-button {
+    min-height:
+      60px;
+
+    margin-top:
+      24px;
+
+    padding:
+      0 19px;
+
+    font-size:
+      0.74rem !important;
+  }
+
+
+  .assessment-entry-v2-privacy {
+    font-size:
+      0.55rem;
+  }
+
+
+  /* FOOTER */
+
+  .assessment-entry-v2-footer {
+    min-height:
+      76px;
+
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+    justify-content:
+      center;
+
+    gap:
+      7px;
+
+    font-size:
+      0.46rem;
+
+    letter-spacing:
+      0.11em;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .assessment-entry-v2-orbit,
+  .assessment-entry-v2-node,
+  .assessment-entry-v2-scan,
+  .assessment-entry-v2-status i::after {
+    animation:
+      none !important;
+  }
+
+}
