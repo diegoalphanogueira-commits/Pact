@@ -1504,10 +1504,10 @@ const implementationImage =
 
 
 const implementationImages = {
-  p: "images/pact-posicionamento.png",
-  a: "images/pact-aquisicao.png",
-  c: "images/pact-comercial.png",
-  t: "images/pact-tecnologia.png"
+  p: "images/pact-posicionamento.webp",
+  a: "images/pact-aquisicao.webp",
+  c: "images/pact-comercial.webp",
+  t: "images/pact-tecnologia.webp"
 };
 
 
