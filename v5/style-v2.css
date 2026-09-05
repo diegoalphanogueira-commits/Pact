@@ -16278,15 +16278,16 @@ and (
 @media (max-width: 640px) {
 
   .tools-scroll-cue {
-    top: auto !important;
-    bottom: 68px !important;
+    top: 56% !important;
+    bottom: auto !important;
 
     left: 50% !important;
     right: auto !important;
 
     width: max-content;
 
-    transform: translateX(-50%) !important;
+    transform:
+      translate(-50%, -50%) !important;
 
     align-items: center !important;
 
@@ -16294,6 +16295,8 @@ and (
 
     text-align: center;
   }
+
+}
 
 
   /* CÍRCULO / INDICADOR */
