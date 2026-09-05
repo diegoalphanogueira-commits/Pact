@@ -4843,6 +4843,35 @@ const assessmentPhaseLabel = document.getElementById("assessmentPhaseLabel");
 const assessmentCurrentQuestion = document.getElementById("assessmentCurrentQuestion");
 const assessmentTotalQuestions = document.getElementById("assessmentTotalQuestions");
 
+  /* ======================================================
+   CENTER ASSESSMENT EXPERIENCE
+====================================================== */
+
+function centerAssessmentView() {
+
+  if (window.innerWidth <= 640) {
+    return;
+  }
+
+  setTimeout(
+    () => {
+
+      const question =
+        document.getElementById(
+          "assessmentQuestion"
+        );
+
+      question?.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+    },
+    80
+  );
+
+}
+
 let assessmentIndex = 0;
 const assessmentAnswers = {};
 
@@ -7024,7 +7053,7 @@ function showAssessmentTransition(
 
       }
     );
-
+centerAssessmentView();
 }
 
 
@@ -11310,7 +11339,7 @@ function goToNextAssessmentQuestion() {
         renderAssessmentQuestion
     }
   );
-
+centerAssessmentView();
 }
 
 
