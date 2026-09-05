@@ -16535,3 +16535,73 @@ and (
   }
 
 }
+/* =========================================================
+   PRIORITY — TITLE FINAL STANDARD
+========================================================= */
+
+.priority-title {
+  max-width: 880px !important;
+
+  margin-top: 22px !important;
+
+  font-family: "Manrope", sans-serif !important;
+  font-weight: 500 !important;
+
+  font-size: clamp(
+    3rem,
+    4.35vw,
+    4.15rem
+  ) !important;
+
+  line-height: 1 !important;
+
+  letter-spacing: -0.052em !important;
+
+  color: #f6f7f8 !important;
+}
+
+
+/* segunda frase */
+.priority-title strong {
+  display: block !important;
+
+  margin-top: 10px !important;
+
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+
+  color: #d5ff3f !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .priority-title {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin-top: 18px !important;
+
+    font-size: clamp(
+      2.05rem,
+      8.8vw,
+      2.45rem
+    ) !important;
+
+    line-height: 1.03 !important;
+
+    letter-spacing: -0.045em !important;
+  }
+
+  .priority-title strong {
+    margin-top: 8px !important;
+  }
+
+}
