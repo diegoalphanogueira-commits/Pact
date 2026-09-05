@@ -16034,3 +16034,71 @@ and (
   }
 
 }
+/* =========================================================
+   HERO TITLE — FINAL RESPONSIVE SIZE
+========================================================= */
+
+/* DESKTOP */
+@media (min-width: 901px) {
+
+  .hero-content {
+    width: min(100%, 760px);
+  }
+
+  .hero-title {
+    max-width: 760px;
+
+    font-size: clamp(3.15rem, 4.15vw, 3.65rem) !important;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
+  }
+
+}
+
+
+/* TABLET */
+@media (min-width: 641px) and (max-width: 900px) {
+
+  .hero-title {
+    font-size: clamp(2.7rem, 6vw, 3.25rem) !important;
+
+    line-height: 1;
+  }
+
+}
+
+
+/* MOBILE */
+@media (max-width: 640px) {
+
+  .hero-title {
+    max-width: 100%;
+
+    font-size: clamp(1.95rem, 8.5vw, 2.35rem) !important;
+
+    line-height: 1.02;
+
+    letter-spacing: -0.045em;
+  }
+
+  .hero-description {
+    margin-top: 18px;
+
+    font-size: 0.91rem;
+
+    line-height: 1.58;
+  }
+
+}
+
+
+/* MOBILE PEQUENO */
+@media (max-width: 380px) {
+
+  .hero-title {
+    font-size: 1.9rem !important;
+  }
+
+}
