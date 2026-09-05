@@ -7896,6 +7896,72 @@ document.addEventListener(
   }
 );
 
+/* ======================================================
+   FLOATING CHAT — MINIMIZE / EXPAND
+====================================================== */
+
+document.addEventListener(
+  "click",
+  (event) => {
+
+    const toggle =
+      event.target.closest(
+        "#pactConversationToggle"
+      );
+
+    if (!toggle) {
+      return;
+    }
+
+
+    const conversation =
+      document.getElementById(
+        "pactConversation"
+      );
+
+
+    if (!conversation) {
+      return;
+    }
+
+
+    const minimized =
+      conversation.classList.toggle(
+        "is-minimized"
+      );
+
+
+    toggle.setAttribute(
+      "aria-expanded",
+      String(!minimized)
+    );
+
+
+    toggle.setAttribute(
+      "aria-label",
+      minimized
+        ? "Abrir conversa"
+        : "Minimizar conversa"
+    );
+
+
+    const icon =
+      toggle.querySelector(
+        "span"
+      );
+
+
+    if (icon) {
+      icon.textContent =
+        minimized
+          ? "↑"
+          : "−";
+    }
+
+  }
+);
+
+  
 function renderPactConversationOptions(
   options,
   onSelect
@@ -9911,7 +9977,15 @@ const pactMetricGroups =
       </small>
 
     </div>
-
+<button
+  type="button"
+  class="pact-conversation-toggle"
+  id="pactConversationToggle"
+  aria-label="Minimizar conversa"
+  aria-expanded="true"
+>
+  <span>−</span>
+</button>
   </div>
 
 
