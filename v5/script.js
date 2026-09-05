@@ -4849,10 +4849,6 @@ const assessmentTotalQuestions = document.getElementById("assessmentTotalQuestio
 
 function centerAssessmentView() {
 
-  if (window.innerWidth <= 640) {
-    return;
-  }
-
   setTimeout(
     () => {
 
@@ -4861,17 +4857,75 @@ function centerAssessmentView() {
           "assessmentQuestion"
         );
 
-      question?.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
+      if (!question) {
+        return;
+      }
+
+
+      const rect =
+        question.getBoundingClientRect();
+
+
+      const viewportHeight =
+        window.innerHeight;
+
+
+      const isMobile =
+        window.innerWidth <= 640;
+
+
+      /*
+        No mobile deixamos um pouco mais de
+        respiro acima para não encostar no header.
+      */
+
+      const topSpace =
+        isMobile
+          ? 92
+          : 28;
+
+
+      /*
+        Se o bloco couber na tela,
+        centralizamos.
+
+        Se for maior que a tela,
+        mostramos o início dele com respiro.
+      */
+
+      const centerSpace =
+        Math.max(
+          topSpace,
+          (
+            viewportHeight -
+            rect.height
+          ) / 2
+        );
+
+
+      const targetY =
+        window.scrollY +
+        rect.top -
+        centerSpace;
+
+
+      window.scrollTo({
+        top:
+          Math.max(
+            0,
+            targetY
+          ),
+
+        behavior:
+          "smooth"
       });
 
     },
-    80
+    120
   );
 
 }
-
+  
 let assessmentIndex = 0;
 const assessmentAnswers = {};
 
