@@ -9815,21 +9815,7 @@ const pactMetricGroups =
 
   <div class="pact-conversation-entry-actions">
 
-    <button
-      type="button"
-      class="assessment-result-contact"
-      id="pactConversationStart"
-    >
 
-      <span>
-        Continuar análise comigo
-      </span>
-
-      <span aria-hidden="true">
-        →
-      </span>
-
-    </button>
 
 
     <button
@@ -9918,23 +9904,22 @@ const pactMetricGroups =
 
 
 /* ======================================================
-   START PACT CONVERSATION
+   AUTO START PACT CONVERSATION
 ====================================================== */
 
-document
-  .getElementById(
-    "pactConversationStart"
-  )
-  ?.addEventListener(
-    "click",
-    () => {
+setTimeout(
+  () => {
 
-      startPactConversation(
-        report
-      );
+    startPactConversation(
+      report,
+      {
+        autoScroll: false
+      }
+    );
 
-    }
-  );
+  },
+  3200
+);
 
 
 /* ======================================================
