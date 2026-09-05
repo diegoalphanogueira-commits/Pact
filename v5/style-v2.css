@@ -19751,3 +19751,110 @@ and (
   }
 
 }
+/* =========================================================
+   PACT FLOATING CHAT — MINIMIZE
+========================================================= */
+
+.pact-conversation {
+  transition:
+    height 0.35s ease,
+    width 0.35s ease,
+    border-radius 0.35s ease,
+    box-shadow 0.35s ease !important;
+}
+
+
+.pact-conversation-toggle {
+  width: 34px !important;
+  height: 34px !important;
+
+  flex: 0 0 34px !important;
+
+  margin-left: 10px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  border-radius: 50% !important;
+
+  border:
+    1px solid rgba(255,255,255,0.10) !important;
+
+  background:
+    rgba(255,255,255,0.045) !important;
+
+  color:
+    rgba(246,247,248,0.74) !important;
+
+  cursor: pointer !important;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease !important;
+}
+
+
+.pact-conversation-toggle:hover {
+  background:
+    rgba(213,255,63,0.10) !important;
+
+  color:
+    #d5ff3f !important;
+}
+
+
+.pact-conversation-toggle span {
+  font-size: 1rem !important;
+  line-height: 1 !important;
+}
+
+
+/* MINIMIZADO */
+
+.pact-conversation.is-minimized {
+  width: 320px !important;
+  height: 72px !important;
+
+  border-radius: 20px !important;
+}
+
+
+.pact-conversation.is-minimized
+.pact-conversation-header {
+  min-height: 72px !important;
+
+  border-bottom: 0 !important;
+}
+
+
+.pact-conversation.is-minimized
+.pact-conversation-messages,
+
+.pact-conversation.is-minimized
+.pact-conversation-options {
+  display: none !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+
+  .pact-conversation.is-minimized {
+    width:
+      min(330px, calc(100vw - 24px)) !important;
+
+    height: 70px !important;
+
+    right: 12px !important;
+    bottom: 12px !important;
+  }
+
+
+  .pact-conversation.is-minimized
+  .pact-conversation-stage {
+    display: none !important;
+  }
+
+}
