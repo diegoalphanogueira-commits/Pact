@@ -9539,6 +9539,9 @@ function renderAssessmentResult() {
 
   const report =
     buildAssessmentReport();
+sendPactLeadToSheet(
+  report
+);
 const pactBalance =
   getPactBalance(
     report.scores
@@ -11017,7 +11020,202 @@ function isValidAssessmentPhone(
 
 }
 
+/* ======================================================
+   PACT LEADS — GOOGLE SHEETS
+====================================================== */
 
+const PACT_LEADS_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbwKhDnr5RK4UhfhKKL8Pk7_N_3FuqkIabGsnHZ80_2EKLKjnbzl92N6lV5rbjq1ltGZaw/exec";
+
+
+function getPactLeadId() {
+
+  if (
+    !assessmentAnswers.lead_id
+  ) {
+
+    assessmentAnswers.lead_id =
+      typeof crypto !== "undefined" &&
+      crypto.randomUUID
+        ? crypto.randomUUID()
+        : `pact-${Date.now()}-${Math.random()
+            .toString(36)
+            .slice(2, 10)}`;
+
+  }
+
+
+  return assessmentAnswers.lead_id;
+
+}
+
+
+function sendPactLeadToSheet(
+  report
+) {
+
+  if (
+    !report ||
+    !PACT_LEADS_ENDPOINT
+  ) {
+    return;
+  }
+
+
+  const criticalMetric =
+    getLowestPactMetric(
+      report.bottleneck
+    );
+
+
+  const conversation =
+    assessmentAnswers
+      .pact_conversation ||
+    {};
+
+
+  const payload = {
+
+    leadId:
+      getPactLeadId(),
+
+    name:
+      assessmentAnswers.name ||
+      "",
+
+    company:
+      assessmentAnswers.company ||
+      "",
+
+    phone:
+      assessmentAnswers.phone ||
+      "",
+
+    email:
+      assessmentAnswers.email ||
+      "",
+
+    segment:
+      report.segment ||
+      assessmentAnswers.segment ||
+      "",
+
+    objective:
+      report.objective ||
+      assessmentAnswers.objective ||
+      "",
+
+    overallScore:
+      report.overallScore,
+
+    scores:
+      {
+        p:
+          report.scores?.p,
+
+        a:
+          report.scores?.a,
+
+        c:
+          report.scores?.c,
+
+        t:
+          report.scores?.t
+      },
+
+    bottleneckName:
+      report.bottleneckName ||
+      "",
+
+    criticalMetricLabel:
+      criticalMetric?.label ||
+      "",
+
+    criticalMetricScore:
+      criticalMetric?.score ??
+      "",
+
+    priority:
+      report.priority ||
+      "",
+
+    diagnosis:
+      report.diagnosis ||
+      "",
+
+    recommendations:
+      report.recommendations ||
+      [],
+
+    avoid:
+      report.avoid ||
+      "",
+
+
+    /* DADOS DA CONVERSA */
+
+    realityLabel:
+      conversation.reality_label ||
+      "",
+
+    impactLabel:
+      conversation.impact_label ||
+      "",
+
+    timingLabel:
+      conversation.timing_label ||
+      "",
+
+    temperature:
+      conversation.temperature ||
+      "",
+
+    nextStepLabel:
+      conversation.next_step_label ||
+      "",
+
+
+    /* RESPOSTAS COMPLETAS */
+
+    answers:
+      assessmentAnswers
+
+  };
+
+
+  fetch(
+    PACT_LEADS_ENDPOINT,
+    {
+      method:
+        "POST",
+
+      mode:
+        "no-cors",
+
+      headers:
+        {
+          "Content-Type":
+            "text/plain;charset=utf-8"
+        },
+
+      body:
+        JSON.stringify(
+          payload
+        )
+    }
+  )
+    .catch(
+      (error) => {
+
+        console.error(
+          "PACT Leads:",
+          error
+        );
+
+      }
+    );
+
+}
 
 /* ======================================================
    CONTACT GATE
