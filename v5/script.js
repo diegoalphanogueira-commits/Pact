@@ -1510,6 +1510,56 @@ const implementationImages = {
   t: "images/pact-tecnologia.webp"
 };
 
+  const preloadImplementationImages =
+  () => {
+
+    Object.values(
+      implementationImages
+    ).forEach(
+      (src) => {
+
+        const image =
+          new Image();
+
+        image.src =
+          src;
+
+
+        if (
+          image.decode
+        ) {
+
+          image
+            .decode()
+            .catch(
+              () => {}
+            );
+
+        }
+
+      }
+    );
+
+  };
+
+
+if (
+  "requestIdleCallback" in window
+) {
+
+  requestIdleCallback(
+    preloadImplementationImages
+  );
+
+} else {
+
+  setTimeout(
+    preloadImplementationImages,
+    900
+  );
+
+}
+
 
 let activeImplementation = "p";
 let implementationIsChanging = false;
