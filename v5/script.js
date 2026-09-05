@@ -11052,7 +11052,11 @@ function getPactLeadId() {
 
 function sendPactLeadToSheet(
   report
-) {
+) { 
+  console.log(
+  "PACT SHEETS: função chamada",
+  report
+);
 
   if (
     !report ||
@@ -11182,7 +11186,10 @@ function sendPactLeadToSheet(
 
   };
 
-
+console.log(
+  "PACT SHEETS: enviando para",
+  PACT_LEADS_ENDPOINT
+);
   fetch(
     PACT_LEADS_ENDPOINT,
     {
