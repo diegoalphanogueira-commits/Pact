@@ -16207,3 +16207,54 @@ and (
   }
 
 }
+/* =========================================================
+   HERO TITLE — DESKTOP 3 LINES
+========================================================= */
+
+.hero-title-main {
+  color: #f5f6f7;
+}
+
+.hero-title-accent {
+  color: rgba(245, 246, 247, 0.56);
+}
+
+
+/* DESKTOP */
+
+@media (min-width: 901px) {
+
+  .hero-title {
+    max-width: 900px !important;
+
+    font-size: clamp(
+      3.55rem,
+      4.6vw,
+      4.35rem
+    ) !important;
+
+    line-height: 0.98 !important;
+  }
+
+  .hero-break-desktop {
+    display: block;
+  }
+
+}
+
+
+/* MOBILE + TABLET:
+   não força essas 3 linhas */
+
+@media (max-width: 900px) {
+
+  .hero-break-desktop {
+    display: none;
+  }
+
+  .hero-title-main,
+  .hero-title-accent {
+    display: inline;
+  }
+
+}
