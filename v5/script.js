@@ -8879,8 +8879,13 @@ async function showPactPerceivedPillarQuestion(
 
 
 async function startPactConversation(
-  report
+  report,
+  options = {}
 ) {
+
+  const {
+    autoScroll = true
+  } = options;
 
   const conversation =
     document.getElementById(
@@ -8913,17 +8918,20 @@ async function startPactConversation(
 
 
   if (
-    state.started
-  ) {
+  state.started
+) {
+
+  if (autoScroll) {
 
     conversation.scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
 
-    return;
-
   }
+
+  return;
+}
 
 
   state.started =
@@ -8963,10 +8971,14 @@ async function startPactConversation(
   );
 
 
+  if (autoScroll) {
+
   conversation.scrollIntoView({
     behavior: "smooth",
     block: "start"
   });
+
+}
 
 
   const name =
