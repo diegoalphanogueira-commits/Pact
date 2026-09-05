@@ -16370,3 +16370,26 @@ and (
   }
 
 }
+/* =========================================================
+   SCREEN 03 — MOBILE TITLE FINAL
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .pact-system-title {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    font-size: clamp(1.95rem, 8.6vw, 2.25rem) !important;
+
+    line-height: 1.02 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  .pact-system-title span {
+    display: inline !important;
+
+    color: #d5ff3f !important;
+  }
+
+}
