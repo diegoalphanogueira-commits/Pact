@@ -7535,17 +7535,18 @@ const pactConversationRealityOptions = {
     },
     {
       value: "audience",
-      label: "Atendemos públicos muito diferentes"
+      label: "Falamos com públicos demais"
     },
     {
       value: "trust",
-      label: "Falta autoridade e confiança"
+      label: "Falta confiança na marca"
     },
     {
       value: "offer",
-      label: "Nossa oferta ainda é confusa"
+      label: "Nossa oferta ainda confunde"
     }
   ],
+
 
   a: [
     {
@@ -7558,7 +7559,7 @@ const pactConversationRealityOptions = {
     },
     {
       value: "unstable",
-      label: "Fazemos ações, mas tudo oscila"
+      label: "O volume oscila demais"
     },
     {
       value: "unknown_channel",
@@ -7566,10 +7567,11 @@ const pactConversationRealityOptions = {
     }
   ],
 
+
   c: [
     {
       value: "response",
-      label: "Demoramos para responder"
+      label: "Demoramos pra responder"
     },
     {
       value: "process",
@@ -7577,22 +7579,23 @@ const pactConversationRealityOptions = {
     },
     {
       value: "followup",
-      label: "Perdemos follow-ups"
+      label: "O follow-up acaba se perdendo"
     },
     {
       value: "conversion",
-      label: "Não sabemos nossa conversão"
+      label: "Não acompanhamos a conversão"
     }
   ],
+
 
   t: [
     {
       value: "scattered",
-      label: "Informações ficam espalhadas"
+      label: "As informações ficam espalhadas"
     },
     {
       value: "manual",
-      label: "Existe muito trabalho manual"
+      label: "Tem muito trabalho manual"
     },
     {
       value: "capacity",
@@ -7600,13 +7603,24 @@ const pactConversationRealityOptions = {
     },
     {
       value: "visibility",
-      label: "Faltam indicadores e controle"
+      label: "Falta controle do que acontece"
     }
   ]
 
 };
 
+const pactConversationRealityQuestions = {
 
+  p: "Hoje, onde você sente mais dificuldade no posicionamento?",
+
+  a: "Hoje, o que mais incomoda na entrada de novos clientes?",
+
+  c: "E no comercial, onde você sente que mais perde oportunidade?",
+
+  t: "E na operação, o que mais está pesando hoje?"
+
+};
+  
 
 function getPactConversationState() {
 
@@ -8189,18 +8203,16 @@ async function showPactImpactQuestion(
   if (status) {
 
     status.textContent =
-      "ENTENDENDO IMPACTO";
+      "ANÁLISE EM ANDAMENTO";
 
   }
 
 
-  await appendDiegoMessage(
-    "Agora quero entender uma coisa mais importante."
-  );
-
+  /* PERGUNTA */
 
   await appendDiegoMessage(
-    "Quando esse problema acontece, qual consequência mais pesa hoje no negócio?"
+    "E isso hoje pesa onde de verdade?",
+    700
   );
 
 
@@ -8208,17 +8220,17 @@ async function showPactImpactQuestion(
     [
       {
         value: "lost_sales",
-        label: "Acabamos perdendo vendas"
+        label: "Estamos perdendo vendas"
       },
 
       {
         value: "blocked_growth",
-        label: "Isso trava nosso crescimento"
+        label: "Está travando o crescimento"
       },
 
       {
         value: "time",
-        label: "Consome tempo demais"
+        label: "Está tomando tempo demais"
       },
 
       {
@@ -8228,7 +8240,7 @@ async function showPactImpactQuestion(
 
       {
         value: "not_urgent",
-        label: "Ainda não é uma urgência"
+        label: "Ainda não pesa tanto"
       }
     ],
 
@@ -8239,66 +8251,70 @@ async function showPactImpactQuestion(
       state.impact =
         selected.value;
 
-
       state.impact_label =
         selected.label;
 
 
-      if (
-        selected.value ===
-        "lost_sales"
-      ) {
+     if (
+  selected.value ===
+  "lost_sales"
+) {
 
-        await appendDiegoMessage(
-          "Entendi. Então já existe um impacto financeiro claro, não é apenas uma questão de organização."
-        );
+  await appendDiegoMessage(
+    "Aí já muda de figura. Está virando venda perdida.",
+    600
+  );
 
-      }
-
-
-      else if (
-        selected.value ===
-        "blocked_growth"
-      ) {
-
-        await appendDiegoMessage(
-          "Entendi. Nesse caso o problema já está funcionando como um limite para o próximo nível do negócio."
-        );
-
-      }
+}
 
 
-      else if (
-        selected.value ===
-        "time"
-      ) {
+else if (
+  selected.value ===
+  "blocked_growth"
+) {
 
-        await appendDiegoMessage(
-          "Faz sentido. Quando a estrutura começa a consumir tempo demais, normalmente o crescimento passa a depender cada vez mais das pessoas."
-        );
+  await appendDiegoMessage(
+    "Entendi. Então isso já está segurando vocês.",
+    600
+  );
 
-      }
-
-
-      else if (
-        selected.value ===
-        "unpredictability"
-      ) {
-
-        await appendDiegoMessage(
-          "Esse ponto é importante. Crescer sem previsibilidade deixa qualquer decisão de investimento muito mais difícil."
-        );
-
-      }
+}
 
 
-      else {
+else if (
+  selected.value ===
+  "time"
+) {
 
-        await appendDiegoMessage(
-          "Perfeito. É importante saber disso também. Nem todo gargalo precisa virar prioridade imediatamente."
-        );
+  await appendDiegoMessage(
+    "Entendi. Está roubando tempo demais da operação.",
+    600
+  );
 
-      }
+}
+
+
+else if (
+  selected.value ===
+  "unpredictability"
+) {
+
+  await appendDiegoMessage(
+    "Sim. Sem previsibilidade fica difícil decidir.",
+    600
+  );
+
+}
+
+
+else {
+
+  await appendDiegoMessage(
+    "Boa. Então não precisa virar prioridade agora.",
+    600
+  );
+
+}
 
 
       await showPactTimingQuestion(
@@ -8309,7 +8325,6 @@ async function showPactImpactQuestion(
   );
 
 }
-
 /* ======================================================
    PACT CONVERSATION — TIMING
 ====================================================== */
@@ -8331,18 +8346,14 @@ async function showPactTimingQuestion(
   if (status) {
 
     status.textContent =
-      "ENTENDENDO MOMENTO";
+      "ANÁLISE EM ANDAMENTO";
 
   }
 
 
   await appendDiegoMessage(
-    "E olhando para esse cenário agora..."
-  );
-
-
-  await appendDiegoMessage(
-    "Se existisse uma sequência clara para corrigir essa estrutura, em que momento você gostaria de atacar isso?"
+    "E você quer resolver isso quando?",
+    700
   );
 
 
@@ -8360,12 +8371,12 @@ async function showPactTimingQuestion(
 
       {
         value: "months",
-        label: "Nos próximos meses"
+        label: "Mais pra frente"
       },
 
       {
         value: "exploring",
-        label: "Só estou entendendo o cenário"
+        label: "Só estou entendendo"
       }
     ],
 
@@ -8375,7 +8386,6 @@ async function showPactTimingQuestion(
 
       state.timing =
         selected.value;
-
 
       state.timing_label =
         selected.label;
@@ -8391,7 +8401,8 @@ async function showPactTimingQuestion(
 
 
         await appendDiegoMessage(
-          "Perfeito. Então faz sentido tratar isso como prioridade."
+          "Boa. Então isso já é prioridade.",
+          550
         );
 
       }
@@ -8407,7 +8418,8 @@ async function showPactTimingQuestion(
 
 
         await appendDiegoMessage(
-          "Ótimo. Trinta dias é um horizonte bom para organizar uma sequência sem sair implementando coisa aleatória."
+          "Perfeito. Dá pra organizar isso sem correria.",
+          600
         );
 
       }
@@ -8423,7 +8435,8 @@ async function showPactTimingQuestion(
 
 
         await appendDiegoMessage(
-          "Entendi. Então o mais importante agora é você sair daqui sabendo qual estrutura precisa estar pronta quando chegar esse momento."
+          "Entendi. Então você não precisa correr agora.",
+          600
         );
 
       }
@@ -8436,7 +8449,8 @@ async function showPactTimingQuestion(
 
 
         await appendDiegoMessage(
-          "Perfeito. Então não quero transformar essa conversa em uma venda. Vamos usar o diagnóstico para te dar clareza."
+          "Tranquilo. Então vamos usar isso só pra te dar clareza.",
+          600
         );
 
       }
@@ -8472,94 +8486,55 @@ async function showPactPrescription(
   if (status) {
 
     status.textContent =
-      "LEITURA ESTRATÉGICA";
+      "ANÁLISE EM ANDAMENTO";
 
   }
 
 
+  /* SÍNTESE */
+
   await appendDiegoMessage(
-    "Beleza. Agora consigo juntar o diagnóstico com o que você acabou de me contar."
+    "Beleza. Agora ficou mais claro.",
+    600
   );
 
 
   await appendDiegoMessage(
-    `Hoje o PACT encontrou ${report.bottleneckName} como seu principal gargalo.`
+    `Eu olharia primeiro para ${report.bottleneckName.toLowerCase()}.`,
+    700
   );
 
 
-  if (
-    state.reality_label
-  ) {
-
-    await appendDiegoMessage(
-      `E na prática você confirmou que "${state.reality_label.toLowerCase()}" é algo que aparece dentro da operação.`
-    );
-
-  }
-
+  /* CONECTA COM O QUE A PESSOA DISSE */
 
   if (
     state.impact_label
   ) {
 
     await appendDiegoMessage(
-      `O impacto que mais pesa para você hoje é: ${state.impact_label.toLowerCase()}.`
+      `Principalmente porque você me disse que ${state.impact_label.toLowerCase()}.`,
+      800
     );
 
   }
 
 
+  /* PRIORIDADE */
+
   await appendDiegoMessage(
-    "Então eu não tentaria resolver dez coisas ao mesmo tempo."
+    "Eu não tentaria mexer em tudo agora.",
+    650
   );
 
 
   await appendDiegoMessage(
-    `Eu começaria por uma prioridade: ${report.priority}`
-  );
-
-
-  /*
-    PRIMEIRO MOVIMENTO
-  */
-
-  if (
-    report.recommendations[0]
-  ) {
-
-    await appendDiegoMessage(
-      `Primeiro: ${report.recommendations[0]}`
-    );
-
-  }
-
-
-  /*
-    SEGUNDO MOVIMENTO
-  */
-
-  if (
-    report.recommendations[1]
-  ) {
-
-    await appendDiegoMessage(
-      `Depois: ${report.recommendations[1]}`
-    );
-
-  }
-
-
-  /*
-    O QUE NÃO FAZER
-  */
-
-  await appendDiegoMessage(
-    `E tem uma coisa que eu evitaria agora: ${report.avoid}`
+    `Começaria por isso: ${report.priority}`,
+    850
   );
 
 
   await pactConversationWait(
-    500
+    450
   );
 
 
@@ -8586,35 +8561,35 @@ async function showPactNextStep(
     );
 
 
-  if (status) {
-
-    status.textContent =
-      "PRÓXIMO PASSO";
-
-  }
-
-
-  /*
-    LEAD QUENTE / MORNO
-  */
+  /* ======================================================
+     QUENTE / MORNO
+  ====================================================== */
 
   if (
-    state.temperature === "hot" ||
-    state.temperature === "warm"
-  ) {
+  state.temperature === "hot"
+) {
+
+    if (status) {
+      status.textContent =
+        "PRÓXIMO PASSO";
+    }
+
 
     await appendDiegoMessage(
-      "Pelo que você me mostrou, acho que existe material suficiente para a gente conversar de forma mais estratégica."
+      "Acho que aqui já vale uma conversa rápida.",
+      700
     );
 
 
     await appendDiegoMessage(
-      "E você não vai precisar começar a reunião me explicando tudo do zero. Eu já tenho seu diagnóstico e todo esse contexto."
+      "Eu já vou com seu diagnóstico em mãos.",
+      650
     );
 
 
     await appendDiegoMessage(
-      "Quer que eu te mostre os próximos horários disponíveis?"
+      "Quer ver um horário comigo pelo WhatsApp?",
+      750
     );
 
 
@@ -8622,17 +8597,17 @@ async function showPactNextStep(
       [
         {
           value: "schedule",
-          label: "Sim, quero ver os horários"
+          label: "Quero agendar"
         },
 
         {
           value: "whatsapp",
-          label: "Prefiro falar pelo WhatsApp"
+          label: "Prefiro falar primeiro"
         },
 
         {
           value: "later",
-          label: "Quero pensar um pouco antes"
+          label: "Agora não"
         }
       ],
 
@@ -8643,76 +8618,85 @@ async function showPactNextStep(
         state.next_step =
           selected.value;
 
-
         state.next_step_label =
           selected.label;
 
 
-       
+        /* ==================================================
+           AGENDAR
+        ================================================== */
 
-       if (
-  selected.value ===
-  "schedule"
-) {
+        if (
+          selected.value ===
+          "schedule"
+        ) {
 
-  await appendDiegoMessage(
-    "Perfeito."
-  );
-
-
-  await appendDiegoMessage(
-    "Então vamos fazer assim: me chama direto no WhatsApp."
-  );
+          await appendDiegoMessage(
+            "Fechado.",
+            500
+          );
 
 
-  await appendDiegoMessage(
-    "Me manda um oi por lá que eu já te envio os próximos horários disponíveis e a gente escolhe o melhor para você."
-  );
+          await appendDiegoMessage(
+            "Me chama por lá e eu te mando os próximos horários.",
+            700
+          );
 
 
-  if (status) {
-
-    status.textContent =
-      "PRONTO PARA AGENDAR";
-
-  }
+          if (status) {
+            status.textContent =
+              "PRONTO PARA AGENDAR";
+          }
 
 
-  renderPactConversationOptions(
-    [
-      {
-        value: "open_schedule_whatsapp",
-        label: "Ver horários no WhatsApp ↗"
-      }
-    ],
+          renderPactConversationOptions(
+            [
+              {
+                value: "open_schedule_whatsapp",
+                label: "Ver horários no WhatsApp ↗"
+              }
+            ],
 
-    async () => {
+            async () => {
 
-      const message =
-`Oi, Diego! Quero ver os horários disponíveis para conversarmos sobre meu Diagnóstico PACT.
+              const firstName =
+                (
+                  assessmentAnswers.name ||
+                  ""
+                )
+                  .trim()
+                  .split(/\s+/)[0];
+
+
+              const message =
+`Oi, Diego! Sou ${firstName || "eu"}.
+
+Acabei de concluir meu Diagnóstico PACT e quero ver um horário para conversarmos.
 
 Empresa: ${assessmentAnswers.company || ""}
-Score PACT: ${report.overallScore}/100
-Gargalo: ${report.bottleneckName}`;
+Principal ponto: ${report.bottleneckName}`;
 
 
-      window.open(
-        `https://wa.me/5511970349654?text=${
-          encodeURIComponent(
-            message
-          )
-        }`,
-        "_blank"
-      );
+              window.open(
+                `https://wa.me/5511970349654?text=${
+                  encodeURIComponent(
+                    message
+                  )
+                }`,
+                "_blank"
+              );
 
-    }
-  );
+            }
+          );
 
 
-  return;
+          return;
+        }
 
-}
 
+        /* ==================================================
+           FALAR PRIMEIRO
+        ================================================== */
 
         if (
           selected.value ===
@@ -8720,7 +8704,14 @@ Gargalo: ${report.bottleneckName}`;
         ) {
 
           await appendDiegoMessage(
-            "Claro. Vou te deixar um botão para continuar essa conversa comigo no WhatsApp."
+            "Claro.",
+            500
+          );
+
+
+          await appendDiegoMessage(
+            "Pode me chamar por lá e a gente continua.",
+            650
           );
 
 
@@ -8728,19 +8719,28 @@ Gargalo: ${report.bottleneckName}`;
             [
               {
                 value: "open_whatsapp",
-                label: "Continuar no WhatsApp ↗"
+                label: "Falar com Diego no WhatsApp ↗"
               }
             ],
 
             async () => {
 
+              const firstName =
+                (
+                  assessmentAnswers.name ||
+                  ""
+                )
+                  .trim()
+                  .split(/\s+/)[0];
+
+
               const message =
-`Olá, Diego. Acabei de concluir o Diagnóstico PACT.
+`Oi, Diego! Sou ${firstName || "eu"}.
+
+Acabei de fazer meu Diagnóstico PACT.
 
 Empresa: ${assessmentAnswers.company || ""}
-Score: ${report.overallScore}/100
-Gargalo: ${report.bottleneckName}
-Prioridade: ${report.priority}
+Principal ponto: ${report.bottleneckName}
 
 Quero continuar nossa conversa por aqui.`;
 
@@ -8759,20 +8759,28 @@ Quero continuar nossa conversa por aqui.`;
 
 
           return;
-
         }
 
 
+        /* ==================================================
+           AGORA NÃO
+        ================================================== */
+
         await appendDiegoMessage(
-          "Sem problema. O diagnóstico continua válido e você já sabe qual ponto merece mais atenção quando decidir avançar."
+          "Tranquilo.",
+          500
+        );
+
+
+        await appendDiegoMessage(
+          "Seu diagnóstico já te mostra onde olhar primeiro.",
+          700
         );
 
 
         if (status) {
-
           status.textContent =
             "ANÁLISE CONCLUÍDA";
-
         }
 
       }
@@ -8780,21 +8788,150 @@ Quero continuar nossa conversa por aqui.`;
 
 
     return;
+  }
+  /* ======================================================
+     MAIS PRA FRENTE
+  ====================================================== */
 
+  if (
+    state.temperature === "warm"
+  ) {
+
+    if (status) {
+      status.textContent =
+        "ANÁLISE CONCLUÍDA";
+    }
+
+
+    await appendDiegoMessage(
+      "Entendi. Então eu deixaria isso no radar, sem pressa.",
+      650
+    );
+
+
+    await appendDiegoMessage(
+      "Se quiser, posso te deixar meu WhatsApp e você fala comigo quando fizer sentido.",
+      750
+    );
+
+
+    renderPactConversationOptions(
+      [
+        {
+          value: "whatsapp",
+          label: "Quero seu WhatsApp"
+        },
+
+        {
+          value: "finish",
+          label: "Por enquanto está ótimo"
+        }
+      ],
+
+      async (
+        selected
+      ) => {
+
+        state.next_step =
+          selected.value;
+
+        state.next_step_label =
+          selected.label;
+
+
+        if (
+          selected.value ===
+          "whatsapp"
+        ) {
+
+          await appendDiegoMessage(
+            "Claro.",
+            450
+          );
+
+
+          await appendDiegoMessage(
+            "Me chama por lá quando quiser continuar.",
+            650
+          );
+
+
+          renderPactConversationOptions(
+            [
+              {
+                value: "open_whatsapp",
+                label: "Falar com Diego no WhatsApp ↗"
+              }
+            ],
+
+            async () => {
+
+              const firstName =
+                (
+                  assessmentAnswers.name ||
+                  ""
+                )
+                  .trim()
+                  .split(/\s+/)[0];
+
+
+              const message =
+`Oi, Diego! Sou ${firstName || "eu"}.
+
+Fiz meu Diagnóstico PACT e quero deixar essa conversa no radar para retomarmos mais pra frente.
+
+Empresa: ${assessmentAnswers.company || ""}
+Principal ponto: ${report.bottleneckName}`;
+
+
+              window.open(
+                `https://wa.me/5511970349654?text=${
+                  encodeURIComponent(
+                    message
+                  )
+                }`,
+                "_blank"
+              );
+
+            }
+          );
+
+
+          return;
+        }
+
+
+        await appendDiegoMessage(
+          "Boa. Então fica com essa prioridade em mente.",
+          600
+        );
+
+      }
+    );
+
+
+    return;
+  }
+
+  /* ======================================================
+     AINDA ESTÁ ENTENDENDO
+  ====================================================== */
+
+  if (status) {
+    status.textContent =
+      "ANÁLISE CONCLUÍDA";
   }
 
 
-  /*
-    LEAD EM NUTRIÇÃO
-  */
-
   await appendDiegoMessage(
-    "Como você está mais no momento de entender o cenário, eu não acho que faça sentido te empurrar para uma reunião agora."
+    "Pelo seu momento, eu não forçaria uma reunião agora.",
+    700
   );
 
 
   await appendDiegoMessage(
-    "O mais importante é guardar essa prioridade e evitar começar justamente pelo que o diagnóstico mostrou que não deveria vir primeiro."
+    "Guarda essa prioridade e volta nela quando fizer sentido.",
+    700
   );
 
 
@@ -8802,12 +8939,12 @@ Quero continuar nossa conversa por aqui.`;
     [
       {
         value: "whatsapp",
-        label: "Quero guardar isso no WhatsApp"
+        label: "Quero falar com o Diego"
       },
 
       {
         value: "finish",
-        label: "Perfeito, ficou claro"
+        label: "Ficou claro"
       }
     ],
 
@@ -8820,15 +8957,22 @@ Quero continuar nossa conversa por aqui.`;
         "whatsapp"
       ) {
 
+        const firstName =
+          (
+            assessmentAnswers.name ||
+            ""
+          )
+            .trim()
+            .split(/\s+/)[0];
+
+
         const message =
-`Olá, Diego. Fiz meu Diagnóstico PACT.
+`Oi, Diego! Sou ${firstName || "eu"}.
+
+Fiz meu Diagnóstico PACT e queria trocar uma ideia com você.
 
 Empresa: ${assessmentAnswers.company || ""}
-Score: ${report.overallScore}/100
-Gargalo: ${report.bottleneckName}
-Prioridade: ${report.priority}
-
-Estou guardando meu diagnóstico para acompanhar depois.`;
+Principal ponto: ${report.bottleneckName}`;
 
 
         window.open(
@@ -8842,27 +8986,18 @@ Estou guardando meu diagnóstico para acompanhar depois.`;
 
 
         return;
-
       }
 
 
       await appendDiegoMessage(
-        "Boa. Então cumprimos o objetivo daqui: clareza antes de qualquer decisão."
+        "Boa. Espero que tenha te dado clareza.",
+        600
       );
-
-
-      if (status) {
-
-        status.textContent =
-          "ANÁLISE CONCLUÍDA";
-
-      }
 
     }
   );
 
 }
-
 async function showPactRealityQuestion(
   report,
   phase = report.bottleneck
@@ -8872,10 +9007,81 @@ async function showPactRealityQuestion(
     getPactConversationState();
 
 
-  await appendDiegoMessage(
-    "Quero entender onde isso aparece com mais força na prática."
-  );
+  /* PERGUNTA CURTA */
 
+  await appendDiegoMessage(
+  pactConversationRealityQuestions[
+    phase
+  ] ||
+  pactConversationRealityQuestions[
+    report.bottleneck
+  ] ||
+  "E onde isso mais pega hoje?",
+  700
+);
+
+const pactConversationRealityReplies = {
+
+  /* POSICIONAMENTO */
+
+  difference:
+    "Entendi. Então o diferencial ainda não está ficando claro.",
+
+  audience:
+    "Entendi. Parece que a comunicação está tentando falar com gente demais.",
+
+  trust:
+    "Faz sentido. Confiança pesa muito na decisão.",
+
+  offer:
+    "Entendi. Então a oferta ainda precisa ficar mais simples de entender.",
+
+
+  /* AQUISIÇÃO */
+
+  referral:
+    "Entendi. Então indicação ainda carrega boa parte da entrada de clientes.",
+
+  low_volume:
+    "Entendi. Então o problema começa no volume de oportunidades.",
+
+  unstable:
+    "Entendi. Então até entra demanda, mas não dá pra contar com ela.",
+
+  unknown_channel:
+    "Faz sentido. Sem saber o que funciona fica difícil repetir resultado.",
+
+
+  /* COMERCIAL */
+
+  response:
+    "Entendi. Então algumas oportunidades já esfriam no começo.",
+
+  process:
+    "Entendi. Então cada atendimento acaba acontecendo de um jeito.",
+
+  followup:
+    "Entendi. Então algumas oportunidades estão ficando pelo caminho.",
+
+  conversion:
+    "Entendi. Sem acompanhar isso fica difícil saber onde as vendas estão escapando.",
+
+
+  /* TECNOLOGIA */
+
+  scattered:
+    "Entendi. Então a informação acaba ficando espalhada demais.",
+
+  manual:
+    "Entendi. Então tem coisa demais dependendo de trabalho manual.",
+
+  capacity:
+    "Entendi. A operação já está começando a bater no limite.",
+
+  visibility:
+    "Entendi. Então falta enxergar o que está acontecendo com clareza."
+
+};
 
   const options =
     pactConversationRealityOptions[
@@ -8888,6 +9094,7 @@ async function showPactRealityQuestion(
 
   renderPactConversationOptions(
     options,
+
     async (
       selected
     ) => {
@@ -8895,28 +9102,26 @@ async function showPactRealityQuestion(
       state.reality =
         selected.value;
 
-
       state.reality_label =
         selected.label;
 
 
-      await appendDiegoMessage(
-        "Entendi. Isso adiciona uma camada importante ao diagnóstico."
-      );
-
+      /* REAÇÃO HUMANA */
 
       await appendDiegoMessage(
-        "Agora eu consigo comparar o que o PACT encontrou com aquilo que você está sentindo dentro da operação."
-      );
+  pactConversationRealityReplies[
+    selected.value
+  ] ||
+  "Entendi.",
+  650
+);
 
 
-      await appendDiegoMessage(
-        "Na próxima etapa eu quero entender o impacto real disso no negócio — porque é isso que define o que deve ou não virar prioridade."
-      );
+      /* PRÓXIMA ETAPA */
 
       await showPactImpactQuestion(
-  report
-);
+        report
+      );
 
 
       const status =
@@ -8928,7 +9133,7 @@ async function showPactRealityQuestion(
       if (status) {
 
         status.textContent =
-          "LEITURA VALIDADA";
+          "ENTENDENDO O CENÁRIO";
 
       }
 
@@ -8938,23 +9143,33 @@ async function showPactRealityQuestion(
 }
 
 
-
 async function showPactPerceivedPillarQuestion(
-  report
+  report,
+  options = {}
 ) {
+
+  const {
+    skipIntro = false
+  } = options;
+
 
   const state =
     getPactConversationState();
 
 
-  await appendDiegoMessage(
-    "Então quero comparar sua percepção com o que apareceu estruturalmente no diagnóstico."
-  );
+  /*
+    Só faz a pergunta se ela
+    ainda não tiver sido feita.
+  */
 
+  if (!skipIntro) {
 
-  await appendDiegoMessage(
-    "Qual área você sente que mais limita o negócio hoje?"
-  );
+    await appendDiegoMessage(
+      "Qual área você sente mais no dia a dia?",
+      700
+    );
+
+  }
 
 
   renderPactConversationOptions(
@@ -8976,6 +9191,7 @@ async function showPactPerceivedPillarQuestion(
         label: "Tecnologia"
       }
     ],
+
     async (
       selected
     ) => {
@@ -8983,10 +9199,14 @@ async function showPactPerceivedPillarQuestion(
       state.perceived_pillar =
         selected.value;
 
-
       state.perceived_pillar_label =
         selected.label;
 
+
+      /*
+        A percepção bateu
+        com o diagnóstico.
+      */
 
       if (
         selected.value ===
@@ -8994,20 +9214,28 @@ async function showPactPerceivedPillarQuestion(
       ) {
 
         await appendDiegoMessage(
-          `Interessante. Sua percepção e o diagnóstico apontaram para a mesma área: ${report.bottleneckName}.`
+          "Boa. Então estamos olhando para o mesmo ponto.",
+          650
         );
 
       }
 
+      /*
+        A pessoa percebe
+        outra área.
+      */
+
       else {
 
         await appendDiegoMessage(
-          `Interessante. Você percebe ${selected.label} como o principal problema, enquanto o diagnóstico encontrou ${report.bottleneckName} como o maior gargalo estrutural.`
+          `Entendi. Você sente ${selected.label.toLowerCase()} mais forte hoje.`,
+          700
         );
 
 
         await appendDiegoMessage(
-          "Essa diferença não significa que uma das leituras esteja errada. Na verdade, é justamente o tipo de coisa que eu gosto de investigar antes de prescrever qualquer solução."
+          `${report.bottleneckName} apareceu mais no diagnóstico.`,
+          700
         );
 
       }
@@ -9022,7 +9250,6 @@ async function showPactPerceivedPillarQuestion(
   );
 
 }
-
 
 
 async function startPactConversation(
@@ -9222,69 +9449,92 @@ else {
     ],
 
     async (
-      selected
-    ) => {
+  selected
+) => {
 
-      state.validation =
-        selected.value;
+  state.validation =
+    selected.value;
 
-
-      state.validation_label =
-        selected.label;
-
-
-      if (
-        selected.value ===
-        "yes"
-      ) {
-
-        await appendDiegoMessage(
-          "Faz sentido. Então quero sair do diagnóstico e entender onde isso realmente aparece na rotina."
-        );
+  state.validation_label =
+    selected.label;
 
 
-        await showPactRealityQuestion(
-          report
-        );
+  /* SIM */
 
-        return;
+  if (
+    selected.value ===
+    "yes"
+  ) {
 
+    await appendDiegoMessage(
+      "Faz sentido.",
+      550
+    );
+
+
+    await showPactRealityQuestion(
+      report
+    );
+
+    return;
+  }
+
+
+  /* MAIS OU MENOS */
+
+  if (
+    selected.value ===
+    "partly"
+  ) {
+
+    await appendDiegoMessage(
+      "Entendi.",
+      500
+    );
+
+
+    await appendDiegoMessage(
+      "Qual área você sente mais no dia a dia?",
+      750
+    );
+
+
+    await showPactPerceivedPillarQuestion(
+      report,
+      {
+        skipIntro: true
       }
+    );
+
+    return;
+  }
 
 
-      if (
-        selected.value ===
-        "partly"
-      ) {
+  /* ACHO QUE É OUTRO PROBLEMA */
 
-        await appendDiegoMessage(
-          "Interessante. Às vezes o problema percebido e o gargalo estrutural não são exatamente a mesma coisa."
-        );
+  await appendDiegoMessage(
+    "Pode ser.",
+    500
+  );
 
 
-        await showPactPerceivedPillarQuestion(
-          report
-        );
-
-        return;
-
-      }
+  await appendDiegoMessage(
+    "O que você sente que mais pesa hoje?",
+    750
+  );
 
 
-      await appendDiegoMessage(
-        "Isso é importante. O diagnóstico é uma leitura estrutural, mas a sua percepção de quem vive a operação também precisa entrar na análise."
-      );
-
-
-      await showPactPerceivedPillarQuestion(
-        report
-      );
-
+  await showPactPerceivedPillarQuestion(
+    report,
+    {
+      skipIntro: true
     }
   );
 
 }
+  );
 
+}
 function renderAssessmentResult() {
 
   const report =
