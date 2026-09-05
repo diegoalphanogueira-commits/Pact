@@ -17379,3 +17379,52 @@ and (
   }
 
 }
+/* =========================================================
+   DIAGNÓSTICO SHOWCASE — TITLE STANDARD
+========================================================= */
+
+.diagnostic-intro-title-final {
+  max-width: 780px !important;
+
+  font-family: "Manrope", sans-serif !important;
+
+  font-size:
+    clamp(2.8rem, 4.2vw, 4rem) !important;
+
+  font-weight: 500 !important;
+
+  line-height: 1 !important;
+  letter-spacing: -0.05em !important;
+
+  color: #f6f7f8 !important;
+}
+
+.diagnostic-intro-title-final span {
+  display: block !important;
+
+  color: #d5ff3f !important;
+
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+
+  .diagnostic-intro-title-final {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    font-size:
+      clamp(2rem, 8.7vw, 2.4rem) !important;
+
+    line-height: 1.02 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+}
