@@ -7867,7 +7867,34 @@ async function appendDiegoMessage(
 
 }
 
+/* ======================================================
+   FLOATING CHAT — INTERNAL WHEEL CONTROL
+====================================================== */
 
+document.addEventListener(
+  "wheel",
+  (event) => {
+
+    const messages =
+      event.target.closest(
+        ".pact-conversation-messages"
+      );
+
+    if (!messages) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    messages.scrollTop +=
+      event.deltaY;
+
+  },
+  {
+    passive: false
+  }
+);
 
 function renderPactConversationOptions(
   options,
