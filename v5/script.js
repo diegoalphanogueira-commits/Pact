@@ -6945,7 +6945,7 @@ function renderAssessmentQuestion() {
         "power3.out"
     }
   );
-
+centerAssessmentView();
 }
 
 
@@ -11439,16 +11439,9 @@ function openAssessment() {
 
 
           renderAssessmentQuestion();
+          centerAssessmentView();
 
-
-          assessmentApp
-            .scrollIntoView({
-              behavior:
-                "smooth",
-
-              block:
-                "start"
-            });
+          
 
         }
     }
