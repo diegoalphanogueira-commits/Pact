@@ -16512,3 +16512,26 @@ and (
   }
 
 }
+/* =========================================================
+   SCREEN 04 — IMPLEMENTATION TITLE FINAL
+========================================================= */
+
+/* DESKTOP + MOBILE: remove o cinza */
+.implementation-title span {
+  color: #f6f7f8 !important;
+}
+
+
+/* MOBILE: coloca "no diagnóstico." na linha do meio */
+@media (max-width: 640px) {
+
+  .implementation-title span {
+    display: block !important;
+  }
+
+  .implementation-title strong {
+    display: block !important;
+    color: #d5ff3f !important;
+  }
+
+}
