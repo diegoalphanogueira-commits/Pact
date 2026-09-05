@@ -16352,3 +16352,21 @@ and (
   }
 
 }
+/* =========================================================
+   SCREEN 03 — MOBILE TITLE SIZE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .pact-system-title {
+    font-size: clamp(2.15rem, 9.6vw, 2.65rem) !important;
+    line-height: 1 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  .pact-system-description {
+    font-size: 0.94rem !important;
+    line-height: 1.62 !important;
+  }
+
+}
