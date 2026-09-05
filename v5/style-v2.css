@@ -16008,14 +16008,17 @@ and (
   }
 
 }
+
 /* =========================================================
-   HERO VIDEO — MOBILE POSITION
+   HERO VIDEO — MOBILE FRAMING
 ========================================================= */
 
 @media (max-width: 640px) {
 
   .hero-video {
-    object-position: 68% center !important;
+    object-position: 74% 42% !important;
+
+    transform: scale(1) !important;
   }
 
 }
