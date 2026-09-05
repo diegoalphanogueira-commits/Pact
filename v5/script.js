@@ -11492,6 +11492,27 @@ assessmentStartButton
     openAssessment
   );
 
+  /* ======================================================
+   GLOBAL PACT DIAGNOSTIC CTAs
+====================================================== */
+
+document
+  .querySelectorAll("[data-start-pact]")
+  .forEach((trigger) => {
+
+    trigger.addEventListener(
+      "click",
+      (event) => {
+
+        event.preventDefault();
+
+        openAssessment();
+
+      }
+    );
+
+  });
+
 
 assessmentNextButton
   ?.addEventListener(
