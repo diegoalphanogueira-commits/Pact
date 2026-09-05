@@ -19318,3 +19318,197 @@ and (
   }
 
 }
+/* =========================================================
+   PACT CHAT — INTERNAL SCROLL FIX
+========================================================= */
+
+.pact-conversation {
+  width: min(860px, calc(100% - 40px)) !important;
+  margin: 56px auto 32px !important;
+
+  border-radius: 24px !important;
+  overflow: hidden !important;
+
+  background: #090c0d !important;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.10) !important;
+}
+
+
+/* CABEÇALHO FIXO */
+
+.pact-conversation-header {
+  flex-shrink: 0 !important;
+
+  padding:
+    18px 22px !important;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07) !important;
+
+  background:
+    rgba(10, 13, 14, 0.98) !important;
+}
+
+
+/* =========================================================
+   JANELA DE MENSAGENS
+========================================================= */
+
+.pact-conversation-messages {
+  position: relative !important;
+
+  height: 380px !important;
+  max-height: 380px !important;
+
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  overscroll-behavior: contain !important;
+
+  padding:
+    24px 24px 34px !important;
+
+  scroll-behavior: smooth !important;
+
+  scrollbar-width: thin !important;
+  scrollbar-color:
+    rgba(213, 255, 63, 0.28)
+    transparent !important;
+}
+
+
+/* CHROME / EDGE / SAFARI */
+
+.pact-conversation-messages::-webkit-scrollbar {
+  width: 5px;
+}
+
+.pact-conversation-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pact-conversation-messages::-webkit-scrollbar-thumb {
+  background:
+    rgba(213, 255, 63, 0.26);
+
+  border-radius: 999px;
+}
+
+
+/* =========================================================
+   MENSAGENS
+========================================================= */
+
+.pact-chat-message {
+  margin-bottom: 10px !important;
+}
+
+
+.pact-chat-bubble {
+  width: fit-content !important;
+  max-width: 72% !important;
+
+  padding:
+    11px 14px !important;
+
+  border-radius:
+    15px 15px 15px 5px !important;
+
+  background:
+    rgba(255, 255, 255, 0.055) !important;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.065) !important;
+
+  color:
+    rgba(246, 247, 248, 0.93) !important;
+
+  font-size:
+    0.88rem !important;
+
+  line-height:
+    1.48 !important;
+}
+
+
+/* =========================================================
+   DIGITANDO
+========================================================= */
+
+.pact-chat-typing-wrap {
+  margin-top: 8px !important;
+  margin-bottom: 12px !important;
+}
+
+
+/* =========================================================
+   RESPOSTAS
+========================================================= */
+
+.pact-conversation-options {
+  flex-shrink: 0 !important;
+
+  padding:
+    16px 20px 20px !important;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07) !important;
+
+  background:
+    #090c0d !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .pact-conversation {
+    width:
+      calc(100% - 28px) !important;
+
+    margin:
+      42px auto 24px !important;
+
+    border-radius:
+      21px !important;
+  }
+
+
+  .pact-conversation-header {
+    padding:
+      16px !important;
+  }
+
+
+  .pact-conversation-messages {
+    height:
+      400px !important;
+
+    max-height:
+      400px !important;
+
+    padding:
+      20px 16px 28px !important;
+  }
+
+
+  .pact-chat-bubble {
+    max-width:
+      88% !important;
+
+    font-size:
+      0.9rem !important;
+  }
+
+
+  .pact-conversation-options {
+    padding:
+      14px 16px 18px !important;
+  }
+
+}
