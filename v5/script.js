@@ -1487,82 +1487,27 @@ mm.add("(max-width: 640px)", () => {
    SCREEN 04 — IMPLEMENTATION INTERACTION
 ====================================================== */
 
+/* ======================================================
+   SCREEN 04 — IMPLEMENTATION INTERACTION
+====================================================== */
+
 const implementationTabs =
   document.querySelectorAll(
     ".implementation-tab"
   );
+
 
 const implementationPanels =
   document.querySelectorAll(
     ".implementation-panel"
   );
 
-const implementationImage =
-  document.querySelector(
-    "#implementationImage"
-  );
 
+let activeImplementation =
+  "p";
 
-const implementationImages = {
-  p: "images/pact-posicionamento.webp",
-  a: "images/pact-aquisicao.webp",
-  c: "images/pact-comercial.webp",
-  t: "images/pact-tecnologia.webp"
-};
-
-  const preloadImplementationImages =
-  () => {
-
-    Object.values(
-      implementationImages
-    ).forEach(
-      (src) => {
-
-        const image =
-          new Image();
-
-        image.src =
-          src;
-
-
-        if (
-          image.decode
-        ) {
-
-          image
-            .decode()
-            .catch(
-              () => {}
-            );
-
-        }
-
-      }
-    );
-
-  };
-
-
-if (
-  "requestIdleCallback" in window
-) {
-
-  requestIdleCallback(
-    preloadImplementationImages
-  );
-
-} else {
-
-  setTimeout(
-    preloadImplementationImages,
-    900
-  );
-
-}
-
-
-let activeImplementation = "p";
-let implementationIsChanging = false;
+let implementationIsChanging =
+  false;
 
 
 
@@ -1570,26 +1515,338 @@ let implementationIsChanging = false;
    INITIAL ARIA STATE
 ====================================================== */
 
-implementationTabs.forEach((tab) => {
+implementationTabs.forEach(
+  (tab) => {
 
-  const pillar =
-    tab.dataset.implementation;
+    const pillar =
+      tab.dataset.implementation;
 
-  const isActive =
-    pillar === activeImplementation;
+    const isActive =
+      pillar ===
+      activeImplementation;
 
 
-  tab.setAttribute(
-    "aria-selected",
-    isActive
-      ? "true"
-      : "false"
+    tab.setAttribute(
+      "aria-selected",
+      isActive
+        ? "true"
+        : "false"
+    );
+
+  }
+);
+
+
+
+/* ======================================================
+   CHANGE IMPLEMENTATION
+====================================================== */
+
+function changeImplementation(
+  pillar
+) {
+
+  if (
+    pillar ===
+      activeImplementation ||
+    implementationIsChanging
+  ) {
+    return;
+  }
+
+
+  const currentPanel =
+    document.querySelector(
+      ".implementation-panel.active"
+    );
+
+
+  const nextPanel =
+    document.querySelector(
+      `.implementation-panel[data-implementation-content="${pillar}"]`
+    );
+
+
+  const nextTab =
+    document.querySelector(
+      `.implementation-tab[data-implementation="${pillar}"]`
+    );
+
+
+  if (
+    !currentPanel ||
+    !nextPanel ||
+    !nextTab
+  ) {
+    return;
+  }
+
+
+  implementationIsChanging =
+    true;
+
+
+
+  /* ====================================================
+     TAB ACTIVE STATE
+  ==================================================== */
+
+  implementationTabs.forEach(
+    (tab) => {
+
+      const isActive =
+        tab.dataset
+          .implementation ===
+        pillar;
+
+
+      tab.classList.toggle(
+        "active",
+        isActive
+      );
+
+
+      tab.setAttribute(
+        "aria-selected",
+        isActive
+          ? "true"
+          : "false"
+      );
+
+    }
   );
 
-});
+
+
+  /* ====================================================
+     TAB FEEDBACK
+  ==================================================== */
+
+  const tabLetter =
+    nextTab.querySelector(
+      "strong"
+    );
+
+
+  if (tabLetter) {
+
+    gsap.fromTo(
+      tabLetter,
+      {
+        scale: 0.78,
+        autoAlpha: 0.45
+      },
+      {
+        scale: 1,
+        autoAlpha: 1,
+
+        duration: 0.42,
+
+        ease:
+          "back.out(1.7)"
+      }
+    );
+
+  }
 
 
 
+  /* ====================================================
+     CURRENT PANEL OUT
+  ==================================================== */
+
+  gsap.to(
+    currentPanel,
+    {
+      autoAlpha: 0,
+
+      y: -18,
+
+      duration: 0.22,
+
+      ease:
+        "power2.in",
+
+
+      onComplete: () => {
+
+
+        currentPanel
+          .classList
+          .remove(
+            "active"
+          );
+
+
+        gsap.set(
+          currentPanel,
+          {
+            clearProps:
+              "opacity,visibility,transform"
+          }
+        );
+
+
+
+        /* ===============================================
+           SHOW NEXT PANEL
+        =============================================== */
+
+        nextPanel
+          .classList
+          .add(
+            "active"
+          );
+
+
+        const nextHead =
+          nextPanel.querySelector(
+            ".implementation-panel-head"
+          );
+
+
+        const nextTitle =
+          nextPanel.querySelector(
+            ".implementation-panel-copy h3"
+          );
+
+
+        const nextDescription =
+          nextPanel.querySelector(
+            ".implementation-panel-copy p"
+          );
+
+
+        const nextCapabilities =
+          nextPanel.querySelectorAll(
+            ".implementation-capabilities span"
+          );
+
+
+
+        /* ===============================================
+           NEXT PANEL ENTRANCE
+        =============================================== */
+
+        const timeline =
+          gsap.timeline({
+
+            defaults: {
+              ease:
+                "power3.out"
+            },
+
+
+            onComplete:
+              () => {
+
+                implementationIsChanging =
+                  false;
+
+              }
+
+          });
+
+
+
+        timeline
+
+          .fromTo(
+            nextPanel,
+            {
+              autoAlpha: 0
+            },
+            {
+              autoAlpha: 1,
+
+              duration: 0.18
+            }
+          )
+
+
+          .fromTo(
+            nextHead,
+            {
+              autoAlpha: 0,
+
+              y: 10
+            },
+            {
+              autoAlpha: 1,
+
+              y: 0,
+
+              duration: 0.30
+            },
+            "-=0.08"
+          )
+
+
+          .fromTo(
+            nextTitle,
+            {
+              autoAlpha: 0,
+
+              y: 28
+            },
+            {
+              autoAlpha: 1,
+
+              y: 0,
+
+              duration: 0.52
+            },
+            "-=0.10"
+          )
+
+
+          .fromTo(
+            nextDescription,
+            {
+              autoAlpha: 0,
+
+              y: 18
+            },
+            {
+              autoAlpha: 1,
+
+              y: 0,
+
+              duration: 0.40
+            },
+            "-=0.27"
+          )
+
+
+          .fromTo(
+            nextCapabilities,
+            {
+              autoAlpha: 0,
+
+              y: 12
+            },
+            {
+              autoAlpha: 1,
+
+              y: 0,
+
+              duration: 0.32,
+
+              stagger: 0.045
+            },
+            "-=0.18"
+          );
+
+      }
+
+    }
+  );
+
+
+  activeImplementation =
+    pillar;
+
+}
 /* ======================================================
    CHANGE IMPLEMENTATION
 ====================================================== */
