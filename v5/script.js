@@ -1482,11 +1482,6 @@ mm.add("(max-width: 640px)", () => {
     );
 
 });
-
-/* ======================================================
-   SCREEN 04 — IMPLEMENTATION INTERACTION
-====================================================== */
-
 /* ======================================================
    SCREEN 04 — IMPLEMENTATION INTERACTION
 ====================================================== */
@@ -1496,15 +1491,24 @@ const implementationTabs =
     ".implementation-tab"
   );
 
-
 const implementationPanels =
   document.querySelectorAll(
     ".implementation-panel"
   );
 
 
+const initialImplementationPanel =
+  document.querySelector(
+    ".implementation-panel.active"
+  );
+
+
 let activeImplementation =
-  "p";
+  initialImplementationPanel
+    ? initialImplementationPanel.dataset
+        .implementationContent
+    : "p";
+
 
 let implementationIsChanging =
   false;
@@ -1512,18 +1516,21 @@ let implementationIsChanging =
 
 
 /* ======================================================
-   INITIAL ARIA STATE
+   INITIAL STATE
 ====================================================== */
 
 implementationTabs.forEach(
   (tab) => {
 
-    const pillar =
-      tab.dataset.implementation;
-
     const isActive =
-      pillar ===
+      tab.dataset.implementation ===
       activeImplementation;
+
+
+    tab.classList.toggle(
+      "active",
+      isActive
+    );
 
 
     tab.setAttribute(
@@ -1547,9 +1554,8 @@ function changeImplementation(
 ) {
 
   if (
-    pillar ===
-      activeImplementation ||
-    implementationIsChanging
+    implementationIsChanging ||
+    pillar === activeImplementation
   ) {
     return;
   }
@@ -1578,6 +1584,12 @@ function changeImplementation(
     !nextPanel ||
     !nextTab
   ) {
+
+    console.warn(
+      "PACT: painel não encontrado",
+      pillar
+    );
+
     return;
   }
 
@@ -1587,16 +1599,11 @@ function changeImplementation(
 
 
 
-  /* ====================================================
-     TAB ACTIVE STATE
-  ==================================================== */
-
   implementationTabs.forEach(
     (tab) => {
 
       const isActive =
-        tab.dataset
-          .implementation ===
+        tab.dataset.implementation ===
         pillar;
 
 
@@ -1618,10 +1625,6 @@ function changeImplementation(
 
 
 
-  /* ====================================================
-     TAB FEEDBACK
-  ==================================================== */
-
   const tabLetter =
     nextTab.querySelector(
       "strong"
@@ -1633,384 +1636,30 @@ function changeImplementation(
     gsap.fromTo(
       tabLetter,
       {
-        scale: 0.78,
-        autoAlpha: 0.45
+        scale: 0.82,
+        autoAlpha: 0.5
       },
       {
         scale: 1,
         autoAlpha: 1,
-
-        duration: 0.42,
-
-        ease:
-          "back.out(1.7)"
+        duration: 0.35,
+        ease: "back.out(1.6)"
       }
     );
 
   }
 
 
-
-  /* ====================================================
-     CURRENT PANEL OUT
-  ==================================================== */
 
   gsap.to(
     currentPanel,
     {
       autoAlpha: 0,
-
-      y: -18,
-
+      y: -14,
       duration: 0.22,
-
-      ease:
-        "power2.in",
-
-
-      onComplete: () => {
-
-
-        currentPanel
-          .classList
-          .remove(
-            "active"
-          );
-
-
-        gsap.set(
-          currentPanel,
-          {
-            clearProps:
-              "opacity,visibility,transform"
-          }
-        );
-
-
-
-        /* ===============================================
-           SHOW NEXT PANEL
-        =============================================== */
-
-        nextPanel
-          .classList
-          .add(
-            "active"
-          );
-
-
-        const nextHead =
-          nextPanel.querySelector(
-            ".implementation-panel-head"
-          );
-
-
-        const nextTitle =
-          nextPanel.querySelector(
-            ".implementation-panel-copy h3"
-          );
-
-
-        const nextDescription =
-          nextPanel.querySelector(
-            ".implementation-panel-copy p"
-          );
-
-
-        const nextCapabilities =
-          nextPanel.querySelectorAll(
-            ".implementation-capabilities span"
-          );
-
-
-
-        /* ===============================================
-           NEXT PANEL ENTRANCE
-        =============================================== */
-
-        const timeline =
-          gsap.timeline({
-
-            defaults: {
-              ease:
-                "power3.out"
-            },
-
-
-            onComplete:
-              () => {
-
-                implementationIsChanging =
-                  false;
-
-              }
-
-          });
-
-
-
-        timeline
-
-          .fromTo(
-            nextPanel,
-            {
-              autoAlpha: 0
-            },
-            {
-              autoAlpha: 1,
-
-              duration: 0.18
-            }
-          )
-
-
-          .fromTo(
-            nextHead,
-            {
-              autoAlpha: 0,
-
-              y: 10
-            },
-            {
-              autoAlpha: 1,
-
-              y: 0,
-
-              duration: 0.30
-            },
-            "-=0.08"
-          )
-
-
-          .fromTo(
-            nextTitle,
-            {
-              autoAlpha: 0,
-
-              y: 28
-            },
-            {
-              autoAlpha: 1,
-
-              y: 0,
-
-              duration: 0.52
-            },
-            "-=0.10"
-          )
-
-
-          .fromTo(
-            nextDescription,
-            {
-              autoAlpha: 0,
-
-              y: 18
-            },
-            {
-              autoAlpha: 1,
-
-              y: 0,
-
-              duration: 0.40
-            },
-            "-=0.27"
-          )
-
-
-          .fromTo(
-            nextCapabilities,
-            {
-              autoAlpha: 0,
-
-              y: 12
-            },
-            {
-              autoAlpha: 1,
-
-              y: 0,
-
-              duration: 0.32,
-
-              stagger: 0.045
-            },
-            "-=0.18"
-          );
-
-      }
-
-    }
-  );
-
-
-  activeImplementation =
-    pillar;
-
-}
-/* ======================================================
-   CHANGE IMPLEMENTATION
-====================================================== */
-
-function changeImplementation(pillar) {
-
-  if (
-    pillar === activeImplementation ||
-    implementationIsChanging
-  ) {
-    return;
-  }
-
-
-  const currentPanel =
-    document.querySelector(
-      ".implementation-panel.active"
-    );
-
-
-  const nextPanel =
-    document.querySelector(
-      `.implementation-panel[data-implementation-content="${pillar}"]`
-    );
-
-
-  const nextTab =
-    document.querySelector(
-      `.implementation-tab[data-implementation="${pillar}"]`
-    );
-
-
-  if (
-    !currentPanel ||
-    !nextPanel ||
-    !nextTab ||
-    !implementationImage
-  ) {
-    return;
-  }
-
-
-  implementationIsChanging = true;
-
-
-
-  /* ====================================================
-     TAB ACTIVE STATE
-  ==================================================== */
-
-  implementationTabs.forEach((tab) => {
-
-    const isActive =
-      tab.dataset.implementation === pillar;
-
-
-    tab.classList.toggle(
-      "active",
-      isActive
-    );
-
-
-    tab.setAttribute(
-      "aria-selected",
-      isActive
-        ? "true"
-        : "false"
-    );
-
-  });
-
-
-
-  /* ====================================================
-     TAB FEEDBACK
-  ==================================================== */
-
-  gsap.fromTo(
-    nextTab.querySelector("strong"),
-    {
-      scale: 0.78,
-      autoAlpha: 0.45
-    },
-    {
-      scale: 1,
-      autoAlpha: 1,
-
-      duration: 0.42,
-
-      ease: "back.out(1.7)"
-    }
-  );
-
-
-
-  /* ====================================================
-   IMPLEMENTATION IMAGE
-==================================================== */
-
-const imageTimeline =
-  gsap.timeline();
-
-
-imageTimeline
-
-  .to(
-    implementationImage,
-    {
-      autoAlpha: 0,
-
-      scale: 1.04,
-
-      duration: 0.22,
-
       ease: "power2.in",
 
       onComplete: () => {
-
-        implementationImage.src =
-          implementationImages[pillar];
-
-      }
-    }
-  )
-
-  .fromTo(
-    implementationImage,
-    {
-      autoAlpha: 0,
-
-      scale: 1.06
-    },
-    {
-      autoAlpha: 1,
-
-      scale: 1,
-
-      duration: 0.62,
-
-      ease: "power3.out"
-    }
-  );
-
-
-
-  /* ====================================================
-     CURRENT PANEL OUT
-  ==================================================== */
-
-  gsap.to(
-    currentPanel,
-    {
-      autoAlpha: 0,
-
-      y: -18,
-
-      duration: 0.22,
-
-      ease: "power2.in",
-
-      onComplete: () => {
-
-
-        /* remove painel atual */
 
         currentPanel.classList.remove(
           "active"
@@ -2026,11 +1675,16 @@ imageTimeline
         );
 
 
-
-        /* mostra próximo */
-
         nextPanel.classList.add(
           "active"
+        );
+
+
+        gsap.set(
+          nextPanel,
+          {
+            autoAlpha: 1
+          }
         );
 
 
@@ -2058,12 +1712,7 @@ imageTimeline
           );
 
 
-
-        /* =================================================
-           NEXT PANEL ENTRANCE
-        ================================================= */
-
-        const implementationTimeline =
+        const timeline =
           gsap.timeline({
 
             defaults: {
@@ -2080,103 +1729,95 @@ imageTimeline
           });
 
 
-        implementationTimeline
+        if (nextHead) {
 
-          /* painel */
-
-          .fromTo(
-            nextPanel,
-            {
-              autoAlpha: 0
-            },
-            {
-              autoAlpha: 1,
-
-              duration: 0.18
-            }
-          )
-
-
-          /* índice + categoria */
-
-          .fromTo(
+          timeline.fromTo(
             nextHead,
             {
               autoAlpha: 0,
-
               y: 10
             },
             {
               autoAlpha: 1,
-
               y: 0,
+              duration: 0.28
+            }
+          );
 
-              duration: 0.30
-            },
-            "-=0.08"
-          )
+        }
 
 
-          /* headline */
+        if (nextTitle) {
 
-          .fromTo(
+          timeline.fromTo(
             nextTitle,
             {
               autoAlpha: 0,
-
-              y: 28
+              y: 24
             },
             {
               autoAlpha: 1,
-
               y: 0,
-
-              duration: 0.52
+              duration: 0.48
             },
-            "-=0.10"
-          )
+            "-=0.12"
+          );
+
+        }
 
 
-          /* descrição */
+        if (nextDescription) {
 
-          .fromTo(
+          timeline.fromTo(
             nextDescription,
             {
               autoAlpha: 0,
-
-              y: 18
+              y: 14
             },
             {
               autoAlpha: 1,
-
               y: 0,
-
-              duration: 0.40
+              duration: 0.36
             },
-            "-=0.27"
-          )
+            "-=0.24"
+          );
+
+        }
 
 
-          /* capacidades */
+        if (
+          nextCapabilities.length
+        ) {
 
-          .fromTo(
+          timeline.fromTo(
             nextCapabilities,
             {
               autoAlpha: 0,
-
-              y: 12
+              y: 10
             },
             {
               autoAlpha: 1,
-
               y: 0,
-
-              duration: 0.32,
-
-              stagger: 0.045
+              duration: 0.28,
+              stagger: 0.04
             },
             "-=0.18"
           );
+
+        }
+
+
+        if (
+          !nextHead &&
+          !nextTitle &&
+          !nextDescription &&
+          !nextCapabilities.length
+        ) {
+
+          implementationIsChanging =
+            false;
+
+        }
 
       }
 
@@ -2184,7 +1825,8 @@ imageTimeline
   );
 
 
-  activeImplementation = pillar;
+  activeImplementation =
+    pillar;
 
 }
 
@@ -2194,20 +1836,23 @@ imageTimeline
    CLICK / TAP
 ====================================================== */
 
-implementationTabs.forEach((tab) => {
+implementationTabs.forEach(
+  (tab) => {
 
-  tab.addEventListener(
-    "click",
-    () => {
+    tab.addEventListener(
+      "click",
+      () => {
 
-      changeImplementation(
-        tab.dataset.implementation
-      );
+        changeImplementation(
+          tab.dataset.implementation
+        );
 
-    }
-  );
+      }
+    );
 
-});
+  }
+);
+
 
 /* ======================================================
    SCREEN 05 — PRIORITY / DIAGNOSTIC STORY
